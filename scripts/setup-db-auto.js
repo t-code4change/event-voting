@@ -8,7 +8,7 @@
 const { createClient } = require('@supabase/supabase-js')
 const fs = require('fs')
 const path = require('path')
-require('dotenv').config({ path: '.env.local' })
+require('dotenv').config({ path: '.env' })
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
 const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY
@@ -18,7 +18,7 @@ console.log('=' .repeat(50))
 
 if (!supabaseUrl || !supabaseServiceKey) {
   console.error('\n❌ Missing Supabase credentials!')
-  console.error('Please set in .env.local:')
+  console.error('Please set in .env:')
   console.error('  - NEXT_PUBLIC_SUPABASE_URL')
   console.error('  - SUPABASE_SERVICE_ROLE_KEY')
   console.error('\n📖 See QUICKSTART.md for instructions')
@@ -30,7 +30,7 @@ if (supabaseServiceKey === 'placeholder-service-key') {
   console.error('\n📝 Steps to get real key:')
   console.error('1. Go to: https://supabase.com/dashboard/project/xicdommyxzsschupzvsx/settings/api')
   console.error('2. Copy "service_role" key (yellow/secret key)')
-  console.error('3. Update .env.local: SUPABASE_SERVICE_ROLE_KEY=your-key')
+  console.error('3. Update .env: SUPABASE_SERVICE_ROLE_KEY=your-key')
   console.error('\n📖 See QUICKSTART.md for detailed instructions')
   process.exit(1)
 }

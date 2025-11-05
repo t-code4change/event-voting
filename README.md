@@ -234,7 +234,7 @@ View realtime results
 # vercel.com/import
 
 # 3. Add Environment Variables
-# Copy from .env.local
+# Copy from .env
 
 # 4. Deploy!
 ```

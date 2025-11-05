@@ -1,0 +1,15 @@
+"use strict";(()=>{var e={};e.id=981,e.ids=[981],e.modules={2934:e=>{e.exports=require("next/dist/client/components/action-async-storage.external.js")},4580:e=>{e.exports=require("next/dist/client/components/request-async-storage.external.js")},5869:e=>{e.exports=require("next/dist/client/components/static-generation-async-storage.external.js")},399:e=>{e.exports=require("next/dist/compiled/next-server/app-page.runtime.prod.js")},517:e=>{e.exports=require("next/dist/compiled/next-server/app-route.runtime.prod.js")},8023:(e,t,r)=>{r.r(t),r.d(t,{originalPathname:()=>m,patchFetch:()=>g,requestAsyncStorage:()=>u,routeModule:()=>p,serverHooks:()=>v,staticGenerationAsyncStorage:()=>l});var s={};r.r(s),r.d(s,{GET:()=>d});var o=r(9303),n=r(8716),i=r(670),a=r(7070),c=r(9692);async function d(e,{params:t}){try{let e=(0,c.e)(),{data:r,error:s}=await e.from("categories").select(`
+        id,
+        name,
+        description,
+        emoji,
+        max_votes_per_voter,
+        display_order,
+        candidates (
+          id,
+          name,
+          description,
+          photo_url,
+          display_order
+        )
+      `).eq("event_id",t.eventId).order("display_order",{ascending:!0});if(s)return console.error("Error fetching categories:",s),a.NextResponse.json({message:"Failed to fetch categories"},{status:500});let o=r.map(e=>({...e,candidates:(e.candidates||[]).sort((e,t)=>e.display_order-t.display_order)}));return a.NextResponse.json({categories:o})}catch(e){return console.error("Error in categories route:",e),a.NextResponse.json({message:"Internal server error"},{status:500})}}let p=new o.AppRouteRouteModule({definition:{kind:n.x.APP_ROUTE,page:"/api/events/[eventId]/categories/route",pathname:"/api/events/[eventId]/categories",filename:"route",bundlePath:"app/api/events/[eventId]/categories/route"},resolvedPagePath:"/Users/tuanpham/MyLife/CRM-Pacificwide/event-voting/app/api/events/[eventId]/categories/route.ts",nextConfigOutput:"",userland:s}),{requestAsyncStorage:u,staticGenerationAsyncStorage:l,serverHooks:v}=p,m="/api/events/[eventId]/categories/route";function g(){return(0,i.patchFetch)({serverHooks:v,staticGenerationAsyncStorage:l})}},9692:(e,t,r)=>{r.d(t,{e:()=>n});var s=r(5117),o=r(1615);function n(){let e=(0,o.cookies)();return(0,s.lx)("https://xicdommyxzsschupzvsx.supabase.co","eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhpY2RvbW15eHpzc2NodXB6dnN4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjIzMTc3NzcsImV4cCI6MjA3Nzg5Mzc3N30.MAmu4KlsDw-GuE_PT6ApiBq58eH3r8xnbcuQjQ4PzME",{cookies:{get:t=>e.get(t)?.value,set(t,r,s){try{e.set({name:t,value:r,...s})}catch(e){}},remove(t,r){try{e.set({name:t,value:"",...r})}catch(e){}}}})}}};var t=require("../../../../../webpack-runtime.js");t.C(e);var r=e=>t(t.s=e),s=t.X(0,[276,615,972,117],()=>r(8023));module.exports=s})();

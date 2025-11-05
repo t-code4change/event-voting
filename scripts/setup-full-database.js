@@ -8,7 +8,7 @@
 const https = require('https')
 const fs = require('fs')
 const path = require('path')
-require('dotenv').config({ path: '.env.local' })
+require('dotenv').config({ path: '.env' })
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
 const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY
@@ -17,7 +17,7 @@ console.log('🚀 Full Database Setup\n')
 console.log('=' .repeat(50))
 
 if (!supabaseUrl || !supabaseKey) {
-  console.error('\n❌ Missing Supabase credentials in .env.local')
+  console.error('\n❌ Missing Supabase credentials in .env')
   process.exit(1)
 }
 

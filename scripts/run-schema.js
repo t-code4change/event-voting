@@ -8,7 +8,7 @@
 const { createClient } = require('@supabase/supabase-js')
 const fs = require('fs')
 const path = require('path')
-require('dotenv').config({ path: '.env.local' })
+require('dotenv').config({ path: '.env' })
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
 const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY
@@ -16,7 +16,7 @@ const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY
 console.log('🔧 Creating Database Schema...\n')
 
 if (!supabaseUrl || !supabaseKey) {
-  console.error('❌ Missing Supabase credentials in .env.local')
+  console.error('❌ Missing Supabase credentials in .env')
   process.exit(1)
 }
 
