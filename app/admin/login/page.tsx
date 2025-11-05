@@ -98,8 +98,7 @@ export default function AdminLoginPage() {
           </form>
 
           <div className="mt-6 text-center text-sm text-muted-foreground">
-            <p>Mật khẩu mặc định: admin123</p>
-            <p className="mt-1">Vui lòng thay đổi trong file .env.local</p>
+            <p>Mật khẩu demo: admin123</p>
           </div>
         </CardContent>
       </Card>
