@@ -40,12 +40,12 @@ export default function ConfettiEffect({
       numberOfPieces={500}
       gravity={0.3}
       colors={[
-        "#3b82f6", // primary blue
+        "#FFD700", // gold
+        "#FDB931", // golden yellow
+        "#FFE68A", // light gold
         "#8b5cf6", // purple
         "#ec4899", // pink
-        "#10b981", // green
         "#f59e0b", // amber
-        "#ef4444", // red
       ]}
     />
   )

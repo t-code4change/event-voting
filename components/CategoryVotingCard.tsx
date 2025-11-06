@@ -6,21 +6,60 @@ import { Badge } from "@/components/ui/badge"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Category } from "@/types/voting"
-import { CheckCircle2 } from "lucide-react"
+import { CheckCircle2, TrendingUp } from "lucide-react"
+import confetti from "canvas-confetti"
 
 interface CategoryVotingCardProps {
   category: Category
   selectedCandidates: string[]
   onToggleCandidate: (candidateId: string) => void
+  showVoteCounts?: boolean
+  voteCounts?: Record<string, number>
 }
 
 export default function CategoryVotingCard({
   category,
   selectedCandidates,
   onToggleCandidate,
+  showVoteCounts = false,
+  voteCounts = {},
 }: CategoryVotingCardProps) {
   const canSelectMore = selectedCandidates.length < category.max_votes_per_voter
   const isMaxReached = selectedCandidates.length >= category.max_votes_per_voter
+
+  // Calculate vote statistics
+  const totalVotes = Object.values(voteCounts).reduce((sum, count) => sum + count, 0)
+  const maxVotes = Math.max(...Object.values(voteCounts), 0)
+
+  const getCandidateVotePercentage = (candidateId: string) => {
+    const votes = voteCounts[candidateId] || 0
+    return totalVotes > 0 ? Math.round((votes / totalVotes) * 100) : 0
+  }
+
+  const isLeading = (candidateId: string) => {
+    return voteCounts[candidateId] === maxVotes && maxVotes > 0
+  }
+
+  const handleCandidateClick = (candidateId: string, isCurrentlySelected: boolean, event: React.MouseEvent) => {
+    // Trigger confetti on selection (not deselection)
+    if (!isCurrentlySelected) {
+      const rect = (event.currentTarget as HTMLElement).getBoundingClientRect()
+      const x = (rect.left + rect.width / 2) / window.innerWidth
+      const y = (rect.top + rect.height / 2) / window.innerHeight
+
+      confetti({
+        particleCount: 50,
+        spread: 60,
+        origin: { x, y },
+        colors: ['#FFD700', '#FDB931', '#FFE68A', '#8b5cf6', '#ec4899'],
+        scalar: 0.8,
+        gravity: 1.2,
+        ticks: 200,
+      })
+    }
+
+    onToggleCandidate(candidateId)
+  }
 
   return (
     <Card className="border-2 border-[#FFD700]/30 bg-[#1a1a1a]">
@@ -77,16 +116,16 @@ export default function CategoryVotingCard({
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
               >
                 <Card
-                  className={`cursor-pointer transition-all relative overflow-hidden ${
+                  className={`cursor-pointer transition-all relative overflow-hidden min-h-[320px] flex flex-col ${
                     isSelected
                       ? "border-[#FFD700] border-2 bg-[#FFD700]/10 shadow-lg shadow-[#FFD700]/30"
                       : isDisabled
                       ? "opacity-50 cursor-not-allowed border-[#FFD700]/10 bg-[#0B0B0B]"
                       : "border-[#FFD700]/20 bg-[#0B0B0B] hover:border-[#FFD700]/60 hover:bg-[#FFD700]/5 hover:shadow-lg hover:shadow-[#FFD700]/20"
                   }`}
-                  onClick={() => {
+                  onClick={(e) => {
                     if (!isDisabled) {
-                      onToggleCandidate(candidate.id)
+                      handleCandidateClick(candidate.id, isSelected, e)
                     }
                   }}
                 >
@@ -109,15 +148,15 @@ export default function CategoryVotingCard({
                     </motion.div>
                   )}
 
-                  <CardContent className="p-4">
-                    <div className="flex flex-col gap-3">
+                  <CardContent className="p-4 flex-1 flex flex-col">
+                    <div className="flex flex-col gap-3 h-full">
                       {/* Avatar and Name */}
                       <div className="flex items-center gap-3">
                         <motion.div
                           whileHover={{ scale: 1.1, rotate: 5 }}
                           transition={{ type: "spring", stiffness: 400, damping: 10 }}
                         >
-                          <Avatar className={`h-16 w-16 border-2 transition-all ${
+                          <Avatar className={`h-20 w-20 border-2 transition-all ${
                             isSelected
                               ? "border-[#FFD700] shadow-lg shadow-[#FFD700]/50"
                               : "border-[#FFD700]/30"
@@ -125,6 +164,7 @@ export default function CategoryVotingCard({
                             <AvatarImage
                               src={candidate.photo_url || ""}
                               alt={candidate.name}
+                              className="object-cover object-center"
                             />
                             <AvatarFallback className="text-lg font-semibold bg-gradient-to-br from-[#FFD700]/20 to-purple-600/20 text-[#FFD700]">
                               {candidate.name.slice(0, 2).toUpperCase()}
@@ -137,18 +177,46 @@ export default function CategoryVotingCard({
                           }`}>
                             {candidate.name}
                           </h3>
+                          {showVoteCounts && isLeading(candidate.id) && (
+                            <Badge className="mt-1 bg-gradient-to-r from-[#FFD700] to-[#FDB931] text-black text-xs border-0">
+                              <TrendingUp className="h-3 w-3 mr-1" />
+                              Dẫn đầu
+                            </Badge>
+                          )}
                         </div>
                       </div>
 
                       {/* Description */}
                       {candidate.description && (
-                        <p className="text-sm text-[#FAF3E0]/70 line-clamp-2 leading-relaxed">
+                        <p className="text-sm text-[#FAF3E0]/70 line-clamp-3 leading-relaxed flex-1">
                           {candidate.description}
                         </p>
                       )}
 
+                      {/* Vote Progress Bar */}
+                      {showVoteCounts && totalVotes > 0 && (
+                        <div className="space-y-1">
+                          <div className="flex items-center justify-between text-xs">
+                            <span className="text-[#FFE68A]">
+                              {voteCounts[candidate.id] || 0} lượt
+                            </span>
+                            <span className="text-[#FFE68A] font-semibold">
+                              {getCandidateVotePercentage(candidate.id)}%
+                            </span>
+                          </div>
+                          <div className="w-full bg-[#1a1a1a] rounded-full h-2 overflow-hidden border border-[#FFD700]/20">
+                            <motion.div
+                              className="bg-gradient-to-r from-[#FFD700] to-[#FDB931] h-full rounded-full"
+                              initial={{ width: 0 }}
+                              animate={{ width: `${getCandidateVotePercentage(candidate.id)}%` }}
+                              transition={{ duration: 0.8, ease: "easeOut" }}
+                            />
+                          </div>
+                        </div>
+                      )}
+
                       {/* Checkbox */}
-                      <div className="flex items-center gap-2 pt-2 border-t border-[#FFD700]/10">
+                      <div className="flex items-center gap-2 pt-2 border-t border-[#FFD700]/10 mt-auto">
                         <Checkbox
                           checked={isSelected}
                           disabled={isDisabled}

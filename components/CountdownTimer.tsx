@@ -17,6 +17,8 @@ export default function CountdownTimer({ endTime, onTimeUp }: CountdownTimerProp
     isExpired: false,
   })
 
+  const isUrgent = timeLeft.hours === 0 && timeLeft.minutes < 5 && !timeLeft.isExpired
+
   useEffect(() => {
     const calculateTimeLeft = () => {
       const now = new Date().getTime()
@@ -60,58 +62,121 @@ export default function CountdownTimer({ endTime, onTimeUp }: CountdownTimerProp
   }
 
   return (
-    <motion.div
-      className="flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-[#FFD700]/20 to-[#FDB931]/20 border-2 border-[#FFD700]"
-      initial={{ scale: 0.8, opacity: 0 }}
-      animate={{ scale: 1, opacity: 1 }}
-      transition={{ duration: 0.5 }}
-    >
+    <div className="relative">
+      {/* Urgent warning badge */}
+      {isUrgent && (
+        <motion.div
+          className="absolute -top-10 left-1/2 -translate-x-1/2 bg-red-500 text-white px-4 py-1 rounded-full text-sm font-bold shadow-lg z-10"
+          initial={{ y: -10, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.3 }}
+        >
+          <motion.span
+            animate={{ y: [0, -3, 0] }}
+            transition={{ duration: 0.6, repeat: Infinity }}
+            className="inline-block"
+          >
+            ⚠️ SẮP HẾT GIỜ!
+          </motion.span>
+        </motion.div>
+      )}
+
       <motion.div
-        animate={{ rotate: [0, 10, -10, 0] }}
-        transition={{ duration: 1, repeat: Infinity, repeatDelay: 2 }}
+        className={`flex items-center justify-center gap-3 px-8 py-4 rounded-full border-2 ${
+          isUrgent
+            ? "bg-gradient-to-r from-red-500/20 to-orange-500/20 border-red-500"
+            : "bg-gradient-to-r from-[#FFD700]/20 to-[#FDB931]/20 border-[#FFD700]"
+        }`}
+        initial={{ scale: 0.8, opacity: 0 }}
+        animate={
+          isUrgent
+            ? {
+                scale: [1, 1.02, 1],
+                boxShadow: [
+                  "0 0 0 0 rgba(239, 68, 68, 0.7)",
+                  "0 0 0 10px rgba(239, 68, 68, 0)",
+                  "0 0 0 0 rgba(239, 68, 68, 0)",
+                ],
+              }
+            : { scale: 1, opacity: 1 }
+        }
+        transition={
+          isUrgent
+            ? { duration: 1.5, repeat: Infinity }
+            : { duration: 0.5 }
+        }
       >
-        <Clock className="h-6 w-6 text-[#FFD700]" />
-      </motion.div>
-      <div className="flex items-center gap-4">
+        <motion.div
+          animate={
+            isUrgent
+              ? { rotate: [0, 15, -15, 0], scale: [1, 1.1, 1] }
+              : { rotate: [0, 10, -10, 0] }
+          }
+          transition={
+            isUrgent
+              ? { duration: 0.5, repeat: Infinity }
+              : { duration: 1, repeat: Infinity, repeatDelay: 2 }
+          }
+        >
+          <Clock className={`h-6 w-6 ${isUrgent ? "text-red-500" : "text-[#FFD700]"}`} />
+        </motion.div>
+        <div className="flex items-center gap-4">
         <div className="text-center">
           <motion.div
-            className="text-3xl md:text-4xl font-bold text-[#FFD700] font-mono"
+            className={`text-3xl md:text-4xl font-bold font-mono ${
+              isUrgent ? "text-red-500" : "text-[#FFD700]"
+            }`}
             key={timeLeft.hours}
-            initial={{ scale: 1.2, color: "#FFF" }}
-            animate={{ scale: 1, color: "#FFD700" }}
+            initial={{ scale: 1.2, color: isUrgent ? "#ef4444" : "#FFF" }}
+            animate={{ scale: 1, color: isUrgent ? "#ef4444" : "#FFD700" }}
             transition={{ duration: 0.3 }}
           >
             {String(timeLeft.hours).padStart(2, "0")}
           </motion.div>
-          <p className="text-xs text-[#FFE68A] font-medium mt-1">giờ</p>
+          <p className={`text-xs font-medium mt-1 ${isUrgent ? "text-red-400" : "text-[#FFE68A]"}`}>
+            giờ
+          </p>
         </div>
-        <span className="text-3xl md:text-4xl font-bold text-[#FFD700] animate-pulse">:</span>
+        <span className={`text-3xl md:text-4xl font-bold animate-pulse ${
+          isUrgent ? "text-red-500" : "text-[#FFD700]"
+        }`}>:</span>
         <div className="text-center">
           <motion.div
-            className="text-3xl md:text-4xl font-bold text-[#FFD700] font-mono"
+            className={`text-3xl md:text-4xl font-bold font-mono ${
+              isUrgent ? "text-red-500" : "text-[#FFD700]"
+            }`}
             key={timeLeft.minutes}
-            initial={{ scale: 1.2, color: "#FFF" }}
-            animate={{ scale: 1, color: "#FFD700" }}
+            initial={{ scale: 1.2, color: isUrgent ? "#ef4444" : "#FFF" }}
+            animate={{ scale: 1, color: isUrgent ? "#ef4444" : "#FFD700" }}
             transition={{ duration: 0.3 }}
           >
             {String(timeLeft.minutes).padStart(2, "0")}
           </motion.div>
-          <p className="text-xs text-[#FFE68A] font-medium mt-1">phút</p>
+          <p className={`text-xs font-medium mt-1 ${isUrgent ? "text-red-400" : "text-[#FFE68A]"}`}>
+            phút
+          </p>
         </div>
-        <span className="text-3xl md:text-4xl font-bold text-[#FFD700] animate-pulse">:</span>
+        <span className={`text-3xl md:text-4xl font-bold animate-pulse ${
+          isUrgent ? "text-red-500" : "text-[#FFD700]"
+        }`}>:</span>
         <div className="text-center">
           <motion.div
-            className="text-3xl md:text-4xl font-bold text-[#FFD700] font-mono"
+            className={`text-3xl md:text-4xl font-bold font-mono ${
+              isUrgent ? "text-red-500" : "text-[#FFD700]"
+            }`}
             key={timeLeft.seconds}
-            initial={{ scale: 1.2, color: "#FFF" }}
-            animate={{ scale: 1, color: "#FFD700" }}
+            initial={{ scale: 1.2, color: isUrgent ? "#ef4444" : "#FFF" }}
+            animate={{ scale: 1, color: isUrgent ? "#ef4444" : "#FFD700" }}
             transition={{ duration: 0.3 }}
           >
             {String(timeLeft.seconds).padStart(2, "0")}
           </motion.div>
-          <p className="text-xs text-[#FFE68A] font-medium mt-1">giây</p>
+          <p className={`text-xs font-medium mt-1 ${isUrgent ? "text-red-400" : "text-[#FFE68A]"}`}>
+            giây
+          </p>
         </div>
       </div>
-    </motion.div>
+      </motion.div>
+    </div>
   )
 }

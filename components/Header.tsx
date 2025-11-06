@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Crown, BarChart3, Settings } from "lucide-react"
+import { Crown, BarChart3, Settings, DollarSign } from "lucide-react"
 
 export default function Header() {
   return (
@@ -9,11 +9,21 @@ export default function Header() {
         <Link href="/" className="flex items-center space-x-2 group">
           <Crown className="h-6 w-6 text-[#FFD700] group-hover:scale-110 transition-transform" />
           <span className="text-xl font-bold bg-gradient-to-r from-[#FFD700] to-[#FDB931] bg-clip-text text-transparent">
-            King & Queen Gala
+            Event Voting
           </span>
         </Link>
 
         <nav className="flex items-center gap-2">
+          <Button
+            variant="ghost"
+            asChild
+            className="hidden md:flex text-[#FAF3E0] hover:text-[#FFD700] hover:bg-[#FFD700]/10"
+          >
+            <Link href="/pricing">
+              <DollarSign className="mr-2 h-4 w-4" />
+              Bảng giá
+            </Link>
+          </Button>
           <Button
             variant="ghost"
             asChild

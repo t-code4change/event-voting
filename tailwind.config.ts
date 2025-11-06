@@ -18,7 +18,19 @@ const config = {
     },
     extend: {
       fontFamily: {
-        sans: ["var(--font-inter)"],
+        sans: [
+          "SF Pro Display",
+          "SF Pro",
+          "-apple-system",
+          "BlinkMacSystemFont",
+          "Segoe UI",
+          "Roboto",
+          "Oxygen",
+          "Ubuntu",
+          "Cantarell",
+          "Helvetica Neue",
+          "sans-serif",
+        ],
         playfair: ["var(--font-playfair)"],
       },
       colors: {
@@ -74,11 +86,21 @@ const config = {
           "0%": { backgroundPosition: "-1000px 0" },
           "100%": { backgroundPosition: "1000px 0" },
         },
+        glow: {
+          "0%, 100%": { opacity: "0.75" },
+          "50%": { opacity: "1" },
+        },
+        gradient: {
+          "0%, 100%": { backgroundPosition: "0% 50%" },
+          "50%": { backgroundPosition: "100% 50%" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         shimmer: "shimmer 3s linear infinite",
+        glow: "glow 2s ease-in-out infinite",
+        gradient: "gradient 3s ease infinite",
       },
     },
   },

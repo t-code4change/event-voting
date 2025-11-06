@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect, useMemo } from "react"
+import { motion } from "framer-motion"
 import Header from "@/components/Header"
 import AuthModal from "@/components/AuthModal"
 import CategoryVotingCard from "@/components/CategoryVotingCard"
@@ -9,9 +10,10 @@ import CountdownTimer from "@/components/CountdownTimer"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { CheckCircle2, Loader2, Lock } from "lucide-react"
+import { CheckCircle2, Loader2, Lock, Eye, EyeOff } from "lucide-react"
 import { toast } from "sonner"
 import { Category, VotesByCategory } from "@/types/voting"
+import { useRealtimeVotes } from "@/hooks/useRealtimeVotes"
 
 export default function VotingPage() {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
@@ -25,6 +27,10 @@ export default function VotingPage() {
   const [eventName, setEventName] = useState<string>("")
   const [showConfetti, setShowConfetti] = useState(false)
   const [votingEnded, setVotingEnded] = useState(false)
+  const [showVoteCounts, setShowVoteCounts] = useState(false) // Toggle to show/hide vote counts
+
+  // Realtime vote counts
+  const { voteCounts } = useRealtimeVotes(eventId)
 
   // Demo voting end time: 21:00 today
   const votingEndTime = useMemo(() => {
@@ -206,12 +212,43 @@ export default function VotingPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#0B0B0B] via-[#1a1a1a] to-[#0B0B0B]">
+    <div className="min-h-screen bg-gradient-to-b from-[#0B0B0B] via-[#1a1a1a] to-[#0B0B0B] relative overflow-hidden">
+      {/* Animated Spotlight Background */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden">
+        <motion.div
+          className="absolute top-0 left-1/4 w-96 h-96 bg-[#FFD700]/10 rounded-full blur-3xl"
+          animate={{
+            x: [0, 100, 0],
+            y: [0, 50, 0],
+            scale: [1, 1.2, 1],
+          }}
+          transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+        />
+        <motion.div
+          className="absolute top-1/2 right-1/4 w-64 h-64 bg-purple-600/10 rounded-full blur-3xl"
+          animate={{
+            x: [0, -80, 0],
+            y: [0, 80, 0],
+            scale: [1, 1.3, 1],
+          }}
+          transition={{ duration: 12, repeat: Infinity, ease: "linear", delay: 1 }}
+        />
+        <motion.div
+          className="absolute bottom-1/4 left-1/2 w-80 h-80 bg-[#FDB931]/8 rounded-full blur-3xl"
+          animate={{
+            x: [0, -60, 0],
+            y: [0, -40, 0],
+            scale: [1, 1.15, 1],
+          }}
+          transition={{ duration: 15, repeat: Infinity, ease: "linear", delay: 2 }}
+        />
+      </div>
+
       <Header />
 
       <ConfettiEffect show={showConfetti} duration={5000} />
 
-      <div className="container px-4 py-8 max-w-6xl">
+      <div className="container px-4 py-8 max-w-6xl relative z-10">
         {/* Header with Countdown */}
         <div className="mb-8">
           <div className="flex flex-col items-center gap-6">
@@ -234,6 +271,26 @@ export default function VotingPage() {
                 }}
               />
             </div>
+
+            {/* Toggle Vote Counts Button */}
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setShowVoteCounts(!showVoteCounts)}
+              className="border-[#FFD700]/30 bg-[#1a1a1a] text-[#FFD700] hover:bg-[#FFD700]/10 hover:text-[#FFD700] hover:border-[#FFD700]"
+            >
+              {showVoteCounts ? (
+                <>
+                  <EyeOff className="mr-2 h-4 w-4" />
+                  Ẩn kết quả
+                </>
+              ) : (
+                <>
+                  <Eye className="mr-2 h-4 w-4" />
+                  Xem kết quả
+                </>
+              )}
+            </Button>
           </div>
         </div>
 
@@ -280,6 +337,8 @@ export default function VotingPage() {
                 onToggleCandidate={(candidateId) =>
                   toggleCandidate(category.id, candidateId)
                 }
+                showVoteCounts={showVoteCounts}
+                voteCounts={voteCounts}
               />
             ))}
 
@@ -295,29 +354,39 @@ export default function VotingPage() {
                   </p>
                 )}
               </div>
-              <Button
-                size="lg"
-                className="px-12 rounded-full bg-gradient-to-r from-[#FFD700] to-[#FDB931] hover:from-[#FDB931] hover:to-[#FFD700] text-black font-semibold shadow-lg hover:shadow-[#FFD700]/50 transition-all duration-300"
-                disabled={submitting || getTotalSelectedVotes() === 0 || votingEnded}
-                onClick={handleSubmit}
+              <motion.div
+                whileHover={!votingEnded && getTotalSelectedVotes() > 0 ? { scale: 1.05 } : {}}
+                whileTap={!votingEnded && getTotalSelectedVotes() > 0 ? { scale: 0.95 } : {}}
+                className="relative group"
               >
-                {votingEnded ? (
-                  <>
-                    <Lock className="mr-2 h-5 w-5" />
-                    Đã hết thời gian
-                  </>
-                ) : submitting ? (
-                  <>
-                    <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                    Đang gửi...
-                  </>
-                ) : (
-                  <>
-                    <CheckCircle2 className="mr-2 h-5 w-5" />
-                    {!isAuthenticated ? "Đăng nhập & Gửi bình chọn" : "Xác nhận bình chọn"}
-                  </>
+                {/* Animated glow effect */}
+                {!votingEnded && getTotalSelectedVotes() > 0 && (
+                  <div className="absolute -inset-1 bg-gradient-to-r from-[#FFD700] via-[#FDB931] to-[#FFD700] rounded-full blur-lg opacity-75 group-hover:opacity-100 transition duration-500 animate-glow" />
                 )}
-              </Button>
+                <Button
+                  size="lg"
+                  className="relative px-16 py-6 rounded-full bg-gradient-to-r from-[#FFD700] via-[#FDB931] to-[#FFD700] bg-[length:200%_100%] hover:bg-right text-black font-bold text-lg shadow-2xl transition-all duration-500 disabled:opacity-50 disabled:cursor-not-allowed"
+                  disabled={submitting || getTotalSelectedVotes() === 0 || votingEnded}
+                  onClick={handleSubmit}
+                >
+                  {votingEnded ? (
+                    <>
+                      <Lock className="mr-2 h-5 w-5" />
+                      Đã hết thời gian
+                    </>
+                  ) : submitting ? (
+                    <>
+                      <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                      Đang gửi...
+                    </>
+                  ) : (
+                    <>
+                      <CheckCircle2 className="mr-2 h-5 w-5" />
+                      {!isAuthenticated ? "Đăng nhập & Gửi bình chọn" : "Xác nhận bình chọn"}
+                    </>
+                  )}
+                </Button>
+              </motion.div>
             </div>
           </div>
         )}

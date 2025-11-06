@@ -233,9 +233,6 @@ export default function AdminSettingsPage() {
                   value="admin123"
                   disabled
                 />
-                <p className="text-sm text-muted-foreground">
-                  Thay đổi trong file .env.local
-                </p>
               </div>
             </CardContent>
           </Card>

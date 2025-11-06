@@ -1,14 +1,8 @@
 import type { Metadata } from "next"
-import { Inter, Playfair_Display } from "next/font/google"
+import { Playfair_Display } from "next/font/google"
 import "./globals.css"
 import { Toaster } from "sonner"
-
-const inter = Inter({
-  subsets: ["latin", "vietnamese"],
-  weight: ["300", "400", "500", "600", "700"],
-  display: "swap",
-  variable: "--font-inter",
-})
+import { AuthProvider } from "@/contexts/AuthContext"
 
 const playfair = Playfair_Display({
   subsets: ["latin", "vietnamese"],
@@ -29,9 +23,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="vi">
-      <body className={`${inter.variable} ${playfair.variable} ${inter.className}`}>
-        {children}
-        <Toaster position="top-center" richColors />
+      <body className={`${playfair.variable} font-sans`}>
+        <AuthProvider>
+          {children}
+          <Toaster position="top-center" richColors />
+        </AuthProvider>
       </body>
     </html>
   )
