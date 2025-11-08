@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
-import { Button } from "@/components/ui/button"
+import MyButton from "@/components/MyButton"
 import { cn } from "@/lib/utils"
 import {
   LayoutDashboard,
@@ -79,7 +79,7 @@ export default function AdminSidebar() {
             <h1 className="text-xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
               Admin Panel
             </h1>
-            <p className="text-xs text-muted-foreground">Event Voting</p>
+            <p className="text-xs text-muted-foreground">GalaVote</p>
           </div>
         </Link>
       </div>
@@ -92,16 +92,18 @@ export default function AdminSidebar() {
 
           return (
             <Link key={item.href} href={item.href}>
-              <Button
-                variant={isActive ? "default" : "ghost"}
+              <MyButton
+                variant={isActive ? "primary" : "ghost"}
+                size="medium"
                 className={cn(
                   "w-full justify-start",
                   isActive && "bg-primary text-primary-foreground"
                 )}
+                icon={<Icon className="h-5 w-5" />}
+                iconPosition="left"
               >
-                <Icon className="mr-3 h-5 w-5" />
                 {item.title}
-              </Button>
+              </MyButton>
             </Link>
           )
         })}
@@ -109,14 +111,16 @@ export default function AdminSidebar() {
 
       {/* Logout Button */}
       <div className="p-4 border-t">
-        <Button
+        <MyButton
           variant="ghost"
+          size="medium"
           className="w-full justify-start text-destructive hover:text-destructive hover:bg-destructive/10"
           onClick={handleLogout}
+          icon={<LogOut className="h-5 w-5" />}
+          iconPosition="left"
         >
-          <LogOut className="mr-3 h-5 w-5" />
           Đăng xuất
-        </Button>
+        </MyButton>
       </div>
     </div>
   )

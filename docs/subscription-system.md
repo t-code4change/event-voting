@@ -2,7 +2,7 @@
 
 ## 🎯 Overview
 
-Hệ thống quản lý gói dịch vụ (subscription), thanh toán và xuất hóa đơn VAT cho Event Voting System.
+Hệ thống quản lý gói dịch vụ (subscription), thanh toán và xuất hóa đơn VAT cho GalaVote.
 
 ---
 

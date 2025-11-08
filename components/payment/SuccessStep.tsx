@@ -3,7 +3,7 @@
 import { motion } from "framer-motion"
 import { Crown, Home, BookOpen } from "lucide-react"
 import { GradientButton } from "@/components/ui/gradient-button"
-import { Button } from "@/components/ui/button"
+import MyButton from "@/components/MyButton"
 import { MESSAGES } from "@/constants/text"
 
 interface SuccessStepProps {
@@ -128,7 +128,7 @@ export default function SuccessStep({ planName, successText, onClose }: SuccessS
           transition={{ delay: 2 }}
           className="text-xl text-[#FAF3E0] mt-6"
         >
-          Cảm ơn bạn đã chọn Event Voting
+          Cảm ơn bạn đã chọn GalaVote
         </motion.p>
 
         <motion.p
@@ -148,21 +148,23 @@ export default function SuccessStep({ planName, successText, onClose }: SuccessS
         transition={{ delay: 3 }}
         className="flex gap-4 relative z-10"
       >
-        <GradientButton
+        <MyButton
           variant="primary"
+          size="large"
           onClick={onClose}
-          className="px-8 py-6"
+          icon={<Home className="h-5 w-5" />}
+          iconPosition="left"
         >
-          <Home className="mr-2 h-5 w-5" />
           {MESSAGES.BUTTONS.BACK_TO_HOME}
-        </GradientButton>
-        <Button
+        </MyButton>
+        <MyButton
           variant="outline"
-          className="border-2 border-[#FFD700] text-[#FFD700] hover:bg-[#FFD700] hover:text-black px-8 py-6"
+          size="large"
+          icon={<BookOpen className="h-5 w-5" />}
+          iconPosition="left"
         >
-          <BookOpen className="mr-2 h-5 w-5" />
           Hướng dẫn sử dụng
-        </Button>
+        </MyButton>
       </motion.div>
     </motion.div>
   )

@@ -1,4 +1,4 @@
-# TECH STACK - EVENT VOTING SYSTEM
+# TECH STACK - GalaVote
 
 > Chi tiết về tất cả công nghệ, thư viện và dịch vụ được sử dụng trong dự án
 

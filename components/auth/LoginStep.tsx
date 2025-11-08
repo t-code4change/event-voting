@@ -3,7 +3,7 @@
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Mail, Lock, UserPlus, ArrowRight, AlertCircle } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import MyButton from "@/components/MyButton"
 import { GradientButton } from "@/components/ui/gradient-button"
 import {
   DialogHeader,
@@ -175,21 +175,21 @@ export default function LoginStep({
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
           >
-            <Button
+            <MyButton
               variant="ghost"
+              size="medium"
               onClick={() => setIsRegistering(!isRegistering)}
               disabled={isLoading}
-              className="w-full text-[#FFD76A] hover:text-[#FDB931] hover:bg-[#FFD76A]/5 h-12 rounded-xl transition-all"
+              className="w-full"
+              icon={!isRegistering ? <UserPlus className="h-4 w-4" /> : undefined}
+              iconPosition="left"
             >
               {isRegistering ? (
                 <>Đã có tài khoản? Đăng nhập</>
               ) : (
-                <>
-                  <UserPlus className="mr-2 h-4 w-4" />
-                  Chưa có tài khoản? Đăng ký ngay
-                </>
+                <>Chưa có tài khoản? Đăng ký ngay</>
               )}
-            </Button>
+            </MyButton>
           </motion.div>
 
           <div className="relative">

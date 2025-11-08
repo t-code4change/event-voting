@@ -1,5 +1,5 @@
 -- =============================================
--- EVENT VOTING SYSTEM - DATABASE SCHEMA
+-- GalaVote - DATABASE SCHEMA
 -- Supabase (PostgreSQL 15)
 -- Updated: 2025-11-05
 -- =============================================

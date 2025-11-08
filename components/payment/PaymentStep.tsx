@@ -3,7 +3,7 @@
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Check, X, CreditCard, Building2, FileText } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import MyButton from "@/components/MyButton"
 import { GradientButton } from "@/components/ui/gradient-button"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Label } from "@/components/ui/label"
@@ -97,14 +97,16 @@ export default function PaymentStep({ selectedPlan, onClose, onConfirm }: Paymen
             {MESSAGES.BUTTONS.PAYMENT_CONFIRMED}
           </GradientButton>
 
-          <Button
+          <MyButton
             variant="outline"
+            size="medium"
             onClick={onClose}
-            className="w-full border-2 border-[#FAF3E0]/30 text-[#FAF3E0] hover:bg-[#FAF3E0]/10"
+            icon={<X className="h-5 w-5" />}
+            iconPosition="left"
+            className="w-full"
           >
-            <X className="mr-2 h-5 w-5" />
             {MESSAGES.BUTTONS.CANCEL_PAYMENT}
-          </Button>
+          </MyButton>
         </div>
       </div>
     </motion.div>

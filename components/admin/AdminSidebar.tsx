@@ -18,7 +18,7 @@ import {
   ChevronRight,
   Home,
 } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import MyButton from "@/components/MyButton"
 import { UserRole } from "@/types/subscription"
 
 interface AdminSidebarProps {
@@ -106,18 +106,18 @@ export default function AdminSidebar({ userRole }: AdminSidebarProps) {
               <p className="text-gray-400 text-xs mt-1">{userRole}</p>
             </motion.div>
           )}
-          <Button
+          <MyButton
             variant="ghost"
-            size="icon"
+            size="small"
             onClick={() => setIsCollapsed(!isCollapsed)}
-            className="text-gray-400 hover:text-white"
+            className="text-gray-400 hover:text-white px-2"
           >
             {isCollapsed ? (
               <ChevronRight className="h-5 w-5" />
             ) : (
               <ChevronLeft className="h-5 w-5" />
             )}
-          </Button>
+          </MyButton>
         </div>
       </div>
 
@@ -125,15 +125,17 @@ export default function AdminSidebar({ userRole }: AdminSidebarProps) {
       <nav className="flex-1 p-4 space-y-2">
         {/* Home Link */}
         <Link href="/">
-          <Button
+          <MyButton
             variant="ghost"
+            size="medium"
             className={`w-full justify-start gap-3 text-gray-400 hover:text-white hover:bg-[#FFD700]/10 ${
               isCollapsed ? "px-3" : ""
             }`}
+            icon={<Home className="h-5 w-5 flex-shrink-0" />}
+            iconPosition="left"
           >
-            <Home className="h-5 w-5 flex-shrink-0" />
             {!isCollapsed && <span>Về Trang Chủ</span>}
-          </Button>
+          </MyButton>
         </Link>
 
         <div className="h-px bg-[#FFD700]/10 my-4" />
@@ -144,17 +146,19 @@ export default function AdminSidebar({ userRole }: AdminSidebarProps) {
 
           return (
             <Link key={item.href} href={item.href}>
-              <Button
-                variant={isActive ? "default" : "ghost"}
+              <MyButton
+                variant={isActive ? "primary" : "ghost"}
+                size="medium"
                 className={`w-full justify-start gap-3 ${
                   isActive
                     ? "bg-gradient-to-r from-[#FFD700]/20 to-[#FF9E00]/10 text-[#FFD700] hover:from-[#FFD700]/30 hover:to-[#FF9E00]/20"
                     : "text-gray-400 hover:text-white hover:bg-[#FFD700]/10"
                 } ${isCollapsed ? "px-3" : ""}`}
+                icon={<Icon className="h-5 w-5 flex-shrink-0" />}
+                iconPosition="left"
               >
-                <Icon className="h-5 w-5 flex-shrink-0" />
                 {!isCollapsed && <span>{item.title}</span>}
-              </Button>
+              </MyButton>
             </Link>
           )
         })}
@@ -162,8 +166,9 @@ export default function AdminSidebar({ userRole }: AdminSidebarProps) {
 
       {/* Footer */}
       <div className="p-4 border-t border-[#FFD700]/20">
-        <Button
+        <MyButton
           variant="ghost"
+          size="medium"
           className={`w-full justify-start gap-3 text-red-400 hover:text-red-300 hover:bg-red-500/10 ${
             isCollapsed ? "px-3" : ""
           }`}
@@ -171,10 +176,11 @@ export default function AdminSidebar({ userRole }: AdminSidebarProps) {
             // TODO: Implement logout
             window.location.href = "/api/auth/logout"
           }}
+          icon={<LogOut className="h-5 w-5 flex-shrink-0" />}
+          iconPosition="left"
         >
-          <LogOut className="h-5 w-5 flex-shrink-0" />
           {!isCollapsed && <span>Đăng Xuất</span>}
-        </Button>
+        </MyButton>
       </div>
     </motion.div>
   )

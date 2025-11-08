@@ -1,4 +1,4 @@
-# KẾ HOẠCH TRIỂN KHAI CHI TIẾT - EVENT VOTING SYSTEM
+# KẾ HOẠCH TRIỂN KHAI CHI TIẾT - GalaVote
 
 > **Tài liệu tham chiếu chính** cho toàn bộ quá trình phát triển dự án
 
@@ -44,7 +44,7 @@ Xây dựng hệ thống voting cho sự kiện với các tính năng:
 
 ```mermaid
 gantt
-    title Event Voting System - Development Timeline
+    title GalaVote - Development Timeline
     dateFormat  YYYY-MM-DD
     section Phase 1
     Project Setup           :2025-11-05, 2d

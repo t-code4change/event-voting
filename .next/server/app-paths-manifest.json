@@ -1,3 +1,8 @@
 {
-  "/page": "app/page.js"
+  "/pricing/page": "app/pricing/page.js",
+  "/admin/login/page": "app/admin/login/page.js",
+  "/page": "app/page.js",
+  "/event/[eventId]/page": "app/event/[eventId]/page.js",
+  "/event/[eventId]/vote/page": "app/event/[eventId]/vote/page.js",
+  "/event/[eventId]/results/page": "app/event/[eventId]/results/page.js"
 }

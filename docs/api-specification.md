@@ -1,4 +1,4 @@
-# API SPECIFICATION - EVENT VOTING SYSTEM
+# API SPECIFICATION - GalaVote
 
 > Chi tiết về tất cả API endpoints, request/response formats, và business logic
 

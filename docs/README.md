@@ -1,4 +1,4 @@
-# EVENT VOTING SYSTEM - DOCUMENTATION
+# GalaVote - DOCUMENTATION
 
 > Hệ thống bình chọn sự kiện với authentication linh hoạt và realtime results
 

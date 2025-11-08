@@ -1,4 +1,4 @@
-# PAGES SPECIFICATION - EVENT VOTING SYSTEM
+# PAGES SPECIFICATION - GalaVote
 
 > Mô tả chi tiết tất cả pages, layouts và navigation flows
 
@@ -60,7 +60,7 @@ event-voting/
 ```
 ┌─────────────────────────────────────────────┐
 │ Header                                      │
-│ [Logo] Event Voting      [Results] [Admin] │
+│ [Logo] GalaVote      [Results] [Admin] │
 ├─────────────────────────────────────────────┤
 │                                             │
 │           🎉 HERO SECTION                   │

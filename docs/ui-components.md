@@ -1,4 +1,4 @@
-# UI COMPONENTS SPECIFICATION - EVENT VOTING SYSTEM
+# UI COMPONENTS SPECIFICATION - GalaVote
 
 > Chi tiết về tất cả components, pages và UI/UX flows
 
@@ -780,7 +780,7 @@ export default function Header() {
     <header className="border-b">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         <Link href="/" className="text-2xl font-bold">
-          Event Voting
+          GalaVote
         </Link>
 
         <nav className="flex items-center gap-4">

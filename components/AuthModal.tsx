@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
-import { Button } from "@/components/ui/button"
+import MyButton from "@/components/MyButton"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Loader2, Mail, Phone, Lock } from "lucide-react"
@@ -331,26 +331,24 @@ export default function AuthModal({ isOpen, onClose, onSuccess, eventId }: AuthM
               </div>
             )}
 
-            <Button
+            <MyButton
               onClick={handleSubmit}
               disabled={loading}
-              className="w-full h-12 text-base rounded-full"
-              size="lg"
+              loading={loading}
+              className="w-full"
+              variant="primary"
+              size="medium"
+              icon={!loading && authSettings.require_otp ? <Lock className="h-5 w-5" /> : undefined}
+              iconPosition="left"
             >
               {loading ? (
-                <>
-                  <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                  Đang xử lý...
-                </>
+                "Đang xử lý..."
               ) : authSettings.require_otp ? (
-                <>
-                  <Lock className="mr-2 h-5 w-5" />
-                  Gửi mã xác thực
-                </>
+                "Gửi mã xác thực"
               ) : (
                 "Bắt đầu bình chọn"
               )}
-            </Button>
+            </MyButton>
           </div>
         ) : (
           <div className="space-y-6 py-4">
@@ -362,39 +360,36 @@ export default function AuthModal({ isOpen, onClose, onSuccess, eventId }: AuthM
             />
 
             <div className="space-y-3">
-              <Button
+              <MyButton
                 onClick={handleVerifyOTP}
                 disabled={loading || otp.length !== 6}
-                className="w-full h-12 text-base rounded-full"
-                size="lg"
+                loading={loading}
+                className="w-full"
+                variant="primary"
+                size="medium"
               >
-                {loading ? (
-                  <>
-                    <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                    Đang xác thực...
-                  </>
-                ) : (
-                  "Xác nhận"
-                )}
-              </Button>
+                {loading ? "Đang xác thực..." : "Xác nhận"}
+              </MyButton>
 
               <div className="flex items-center justify-between text-sm">
-                <Button
+                <MyButton
                   variant="ghost"
+                  size="small"
                   onClick={() => setStep("input")}
                   disabled={loading}
                   className="h-auto p-0 text-muted-foreground hover:text-foreground"
                 >
                   ← Quay lại
-                </Button>
-                <Button
+                </MyButton>
+                <MyButton
                   variant="ghost"
+                  size="small"
                   onClick={handleResendOTP}
                   disabled={loading}
                   className="h-auto p-0 text-primary hover:text-primary/80"
                 >
                   Gửi lại OTP
-                </Button>
+                </MyButton>
               </div>
             </div>
           </div>

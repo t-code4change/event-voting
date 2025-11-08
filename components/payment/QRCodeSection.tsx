@@ -57,7 +57,7 @@ export default function QRCodeSection({ price }: QRCodeSectionProps) {
       </motion.div>
 
       <div className="text-center space-y-2">
-        <p className="text-[#FAF3E0] font-semibold">Event Voting Co., Ltd</p>
+        <p className="text-[#FAF3E0] font-semibold">GalaVote Co., Ltd</p>
         <p className="text-[#FAF3E0]/60">Vietcombank - 1234567890</p>
         <p className="text-3xl font-bold bg-gradient-to-r from-[#FFD700] to-[#FF9E00] bg-clip-text text-transparent">
           {price}

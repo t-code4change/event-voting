@@ -14,6 +14,7 @@ import {
   Shield, Smartphone, BarChart3, Headphones, Zap, Globe,
   Users, Trophy, Sparkles, TrendingUp
 } from "lucide-react"
+import MyButton from "@/components/MyButton";
 
 interface PricingPlan {
   name: string
@@ -458,67 +459,75 @@ export default function PricingPage() {
 
       {/* CTA Footer */}
       <section className="container px-4 py-20">
-        <motion.div
-          className="mx-auto max-w-5xl"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          <Card className="border-2 border-[#FFD700]/50 bg-gradient-to-br from-[#FFD700]/10 via-[#FDB931]/5 to-[#FFD700]/10 relative overflow-hidden shadow-2xl shadow-[#FFD700]/20">
-            {/* Sparkle effects */}
-            <div className="absolute inset-0 pointer-events-none">
-              {[...Array(30)].map((_, i) => (
-                <motion.div
-                  key={i}
-                  className="absolute rounded-full"
-                  style={{
-                    width: `${Math.random() * 3 + 1}px`,
-                    height: `${Math.random() * 3 + 1}px`,
-                    left: `${Math.random() * 100}%`,
-                    top: `${Math.random() * 100}%`,
-                    background: i % 2 === 0 ? '#FFD700' : '#FDB931',
-                    boxShadow: '0 0 4px rgba(255, 215, 0, 0.8)',
-                  }}
-                  animate={{
-                    opacity: [0, 1, 0],
-                    scale: [0, 1.5, 0],
-                  }}
-                  transition={{
-                    duration: 3 + Math.random() * 2,
-                    repeat: Infinity,
-                    delay: Math.random() * 3,
-                  }}
-                />
-              ))}
-            </div>
+          <div className="container px-4 relative z-10">
+              <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8 }}
+                  className="max-w-4xl mx-auto text-center space-y-8"
+              >
+                  <motion.div
+                      initial={{ scale: 0 }}
+                      whileInView={{ scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ type: "spring", duration: 0.8 }}
+                  >
+                      <Sparkles className="w-20 h-20 mx-auto text-[#FFD700] mb-8" />
+                  </motion.div>
 
-            <CardContent className="p-12 text-center space-y-6 relative z-10">
-              <Sparkles className="h-16 w-16 text-[#FFD700] mx-auto" />
-              <h2 className="text-3xl md:text-4xl font-playfair font-bold text-white" style={{ textShadow: '0 0 20px rgba(255,215,0,0.5)' }}>
-                Sẵn sàng tạo nên đêm Gala đáng nhớ?
-              </h2>
-              <p className="text-lg text-[#FAF3E0] max-w-2xl mx-auto">
-                Đội ngũ chuyên gia của chúng tôi sẵn sàng tư vấn gói phù hợp nhất cho sự kiện của bạn
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-                <Button
-                  size="lg"
-                  className="text-lg px-8 py-6 rounded-full bg-gradient-to-r from-[#FFD700] to-[#FDB931] hover:from-[#FDB931] hover:to-[#FFD700] text-black font-semibold shadow-lg"
-                >
-                  Đặt lịch Demo
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="text-lg px-8 py-6 rounded-full border-2 border-white text-white hover:bg-white hover:text-black"
-                >
-                  Liên hệ Bán hàng
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-        </motion.div>
+                  <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+                      Sự kiện không chỉ là chương trình<br />
+                      <span className="text-[#FFD700]">— đó là trải nghiệm</span>
+                  </h2>
+
+                  <p className="text-xl md:text-2xl text-gray-300">
+                      Khởi động hành trình của bạn cùng <strong className="text-[#FFD700]">GalaVote</strong>
+                  </p>
+
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
+                      <Link href="/admin/login">
+                          <motion.div
+                              whileHover={{ scale: 1.05 }}
+                              whileTap={{ scale: 0.98 }}
+                          >
+                              <MyButton
+                                  variant="primary"
+                                  size="large"
+                                  className="text-lg px-10 py-7 rounded-full bg-gradient-to-r from-[#FFD700] to-[#FDB931] hover:from-[#FDB931] hover:to-[#FFD700] text-black font-bold shadow-2xl"
+                                  icon={<TrendingUp className="h-6 w-6" />}
+                                  iconPosition="left"
+                              >
+                    <span className="flex items-center gap-2">
+                      Tạo sự kiện của bạn
+                      <motion.div
+                          animate={{ scale: [1, 1.2, 1] }}
+                          transition={{ duration: 2, repeat: Infinity }}
+                      >
+                        <Sparkles className="h-5 w-5" />
+                      </motion.div>
+                    </span>
+                              </MyButton>
+                          </motion.div>
+                      </Link>
+
+                      <Link href="/hello">
+                          <motion.div
+                              whileHover={{ scale: 1.05 }}
+                              whileTap={{ scale: 0.98 }}
+                          >
+                              <MyButton
+                                  variant="outline"
+                                  size="large"
+                                  className="text-lg px-10 py-7 rounded-full border-2 border-white text-white hover:bg-white hover:text-[#9C27FF] font-semibold"
+                              >
+                                  Tìm hiểu thêm
+                              </MyButton>
+                          </motion.div>
+                      </Link>
+                  </div>
+              </motion.div>
+          </div>
       </section>
 
       {/* Payment Flow Modal */}
@@ -536,13 +545,13 @@ export default function PricingPage() {
             <div className="flex items-center justify-center gap-2 group">
               <Crown className="h-6 w-6 text-[#FFD700] group-hover:scale-110 transition-transform" />
               <span className="text-xl font-playfair font-bold bg-gradient-to-r from-[#FFD700] to-white bg-clip-text text-transparent">
-                Event Voting System
+                GalaVote
               </span>
             </div>
 
             <div className="space-y-2">
               <p className="text-sm text-[#FFE68A] font-medium">
-                © 2025 Event Voting by Code4Change.tech
+                © 2025 GalaVote by Code4Change.tech
               </p>
               <p className="text-sm text-[#FAF3E0]/60">
                 Website: <a href="https://quaysotrungthuong.vn" className="hover:text-[#FFD700] transition-colors">quaysotrungthuong.vn</a>

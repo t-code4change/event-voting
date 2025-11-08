@@ -3,7 +3,7 @@
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { ChevronLeft, ChevronRight } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import MyButton from "@/components/MyButton"
 
 const images = [
   {
@@ -96,22 +96,22 @@ export default function PhotoCarousel() {
       </AnimatePresence>
 
       {/* Navigation Buttons */}
-      <Button
+      <MyButton
         variant="ghost"
-        size="icon"
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-[#0B0B0B]/50 hover:bg-[#FFD700]/20 text-[#FFD700] backdrop-blur-sm"
+        size="small"
+        className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-[#0B0B0B]/50 hover:bg-[#FFD700]/20 text-[#FFD700] backdrop-blur-sm px-2"
         onClick={() => paginate(-1)}
       >
         <ChevronLeft className="h-8 w-8" />
-      </Button>
-      <Button
+      </MyButton>
+      <MyButton
         variant="ghost"
-        size="icon"
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-[#0B0B0B]/50 hover:bg-[#FFD700]/20 text-[#FFD700] backdrop-blur-sm"
+        size="small"
+        className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-[#0B0B0B]/50 hover:bg-[#FFD700]/20 text-[#FFD700] backdrop-blur-sm px-2"
         onClick={() => paginate(1)}
       >
         <ChevronRight className="h-8 w-8" />
-      </Button>
+      </MyButton>
 
       {/* Dots indicator */}
       <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2 z-10">

@@ -1,4 +1,4 @@
-# DEPLOYMENT GUIDE - EVENT VOTING SYSTEM
+# DEPLOYMENT GUIDE - GalaVote
 
 > Hướng dẫn chi tiết triển khai production từ A-Z
 

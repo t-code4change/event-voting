@@ -12,7 +12,7 @@ const playfair = Playfair_Display({
 })
 
 export const metadata: Metadata = {
-  title: "Event Voting - Hệ thống Bình chọn Sự kiện",
+  title: "GalaVote - Hệ thống Bình chọn Sự kiện",
   description: "Hệ thống bình chọn sự kiện hiện đại, minh bạch và dễ sử dụng",
 }
 
