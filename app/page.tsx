@@ -661,30 +661,36 @@ export default function GalaVotePage() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
-              <Link href="/admin/login">
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.98 }}
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <MyButton
+                  onClick={() => {
+                    // Save redirect intent and trigger Settings button click
+                    localStorage.setItem('auth_redirect', '/admin/dashboard')
+                    // Scroll to header and visually indicate Settings button
+                    window.scrollTo({ top: 0, behavior: 'smooth' })
+                    // Or redirect to pricing page with login modal
+                    window.location.href = '/pricing#create-event'
+                  }}
+                  variant="primary"
+                  size="large"
+                  className="text-lg px-10 py-7 rounded-full bg-gradient-to-r from-[#FFD700] to-[#FDB931] hover:from-[#FDB931] hover:to-[#FFD700] text-black font-bold shadow-2xl"
+                  icon={<TrendingUp className="h-6 w-6" />}
+                  iconPosition="left"
                 >
-                  <MyButton
-                    variant="primary"
-                    size="large"
-                    className="text-lg px-10 py-7 rounded-full bg-gradient-to-r from-[#FFD700] to-[#FDB931] hover:from-[#FDB931] hover:to-[#FFD700] text-black font-bold shadow-2xl"
-                    icon={<TrendingUp className="h-6 w-6" />}
-                    iconPosition="left"
-                  >
-                    <span className="flex items-center gap-2">
-                      Tạo sự kiện của bạn
-                      <motion.div
-                        animate={{ scale: [1, 1.2, 1] }}
-                        transition={{ duration: 2, repeat: Infinity }}
-                      >
-                        <Sparkles className="h-5 w-5" />
-                      </motion.div>
-                    </span>
-                  </MyButton>
-                </motion.div>
-              </Link>
+                  <span className="flex items-center gap-2">
+                    Tạo sự kiện của bạn
+                    <motion.div
+                      animate={{ scale: [1, 1.2, 1] }}
+                      transition={{ duration: 2, repeat: Infinity }}
+                    >
+                      <Sparkles className="h-5 w-5" />
+                    </motion.div>
+                  </span>
+                </MyButton>
+              </motion.div>
 
               <Link href="/hello">
                 <motion.div
@@ -730,7 +736,10 @@ export default function GalaVotePage() {
                 {[
                   { label: "Tham gia", onClick: () => setShowEventSearch(true) },
                   { label: "Giới thiệu", href: "/hello" },
-                  { label: "Đăng nhập", href: "/admin/login" },
+                  { label: "Đăng nhập", onClick: () => {
+                    localStorage.setItem('auth_redirect', '/admin/dashboard')
+                    window.location.href = '/pricing#create-event'
+                  }},
                 ].map((link, idx) => (
                   <div key={idx}>
                     {link.href ? (

@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 import { motion, AnimatePresence } from "framer-motion"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
@@ -9,6 +10,7 @@ import { Badge } from "@/components/ui/badge"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import Header from "@/components/Header"
 import PaymentFlow from "@/components/PaymentFlow"
+import { useAuth } from "@/contexts/AuthContext"
 import {
   Check, Crown, ArrowRight, Star, ChevronDown, ChevronUp,
   Shield, Smartphone, BarChart3, Headphones, Zap, Globe,
@@ -42,9 +44,30 @@ interface FAQ {
 }
 
 export default function PricingPage() {
+  const { user } = useAuth()
+  const router = useRouter()
   const [selectedPlan, setSelectedPlan] = useState<PricingPlan | null>(null)
   const [expandedFAQ, setExpandedFAQ] = useState<number | null>(null)
   const [currentTestimonial, setCurrentTestimonial] = useState(0)
+
+  // Dummy plan for "Create Event" button - just to trigger login modal
+  const CREATE_EVENT_PLAN = {
+    name: "Create Event",
+    price: "0",
+    description: "Đăng nhập để tạo sự kiện của bạn",
+  }
+
+  const handleCreateEvent = () => {
+    // Check if user is already logged in
+    if (user) {
+      // User is logged in, go directly to admin dashboard
+      router.push('/admin/dashboard')
+    } else {
+      // User not logged in, save redirect intent and open login modal
+      localStorage.setItem('auth_redirect', '/admin/dashboard')
+      setSelectedPlan(CREATE_EVENT_PLAN)
+    }
+  }
 
   const plans: PricingPlan[] = [
     {
@@ -486,30 +509,29 @@ export default function PricingPage() {
                   </p>
 
                   <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
-                      <Link href="/admin/login">
-                          <motion.div
-                              whileHover={{ scale: 1.05 }}
-                              whileTap={{ scale: 0.98 }}
-                          >
-                              <MyButton
-                                  variant="primary"
-                                  size="large"
-                                  className="text-lg px-10 py-7 rounded-full bg-gradient-to-r from-[#FFD700] to-[#FDB931] hover:from-[#FDB931] hover:to-[#FFD700] text-black font-bold shadow-2xl"
-                                  icon={<TrendingUp className="h-6 w-6" />}
-                                  iconPosition="left"
-                              >
-                    <span className="flex items-center gap-2">
-                      Tạo sự kiện của bạn
                       <motion.div
-                          animate={{ scale: [1, 1.2, 1] }}
-                          transition={{ duration: 2, repeat: Infinity }}
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.98 }}
                       >
-                        <Sparkles className="h-5 w-5" />
+                          <MyButton
+                              onClick={handleCreateEvent}
+                              variant="primary"
+                              size="large"
+                              className="text-lg px-10 py-7 rounded-full bg-gradient-to-r from-[#FFD700] to-[#FDB931] hover:from-[#FDB931] hover:to-[#FFD700] text-black font-bold shadow-2xl"
+                              icon={<TrendingUp className="h-6 w-6" />}
+                              iconPosition="left"
+                          >
+                <span className="flex items-center gap-2">
+                  Tạo sự kiện của bạn
+                  <motion.div
+                      animate={{ scale: [1, 1.2, 1] }}
+                      transition={{ duration: 2, repeat: Infinity }}
+                  >
+                    <Sparkles className="h-5 w-5" />
+                  </motion.div>
+                </span>
+                          </MyButton>
                       </motion.div>
-                    </span>
-                              </MyButton>
-                          </motion.div>
-                      </Link>
 
                       <Link href="/hello">
                           <motion.div

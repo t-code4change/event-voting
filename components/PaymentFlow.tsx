@@ -49,10 +49,35 @@ export default function PaymentFlow({ selectedPlan, onClose }: PaymentFlowProps)
 
   // If user is already logged in, skip to payment step
   useEffect(() => {
-    if (user && step === 'login') {
-      setStep('payment')
+    if (user && selectedPlan) {
+      // User is already authenticated, go straight to payment
+      if (step === 'login' || step === 'register') {
+        setStep('payment')
+      }
     }
-  }, [user, step])
+  }, [user, selectedPlan, step])
+
+  // Reset state when dialog closes
+  useEffect(() => {
+    if (!selectedPlan) {
+      // Reset all states when modal is closed
+      setStep('login')
+      setEmail('')
+      setPassword('')
+      setConfirmPassword('')
+      setError(null)
+      setResetEmailSent(false)
+      setNeedInvoice(false)
+      setInvoiceData({
+        companyName: '',
+        taxCode: '',
+        address: '',
+        invoiceEmail: '',
+      })
+      setVerificationProgress(0)
+      setSuccessText('')
+    }
+  }, [selectedPlan])
 
   // Handle login
   const handleLogin = async () => {
@@ -80,7 +105,15 @@ export default function PaymentFlow({ selectedPlan, onClose }: PaymentFlowProps)
     setShowConfetti(true)
     setTimeout(() => {
       setShowConfetti(false)
-      setStep('payment')
+
+      // Check if there's a redirect path in localStorage
+      const redirectPath = localStorage.getItem('auth_redirect')
+      if (redirectPath) {
+        localStorage.removeItem('auth_redirect')
+        window.location.href = redirectPath
+      } else {
+        setStep('payment')
+      }
     }, 2000)
   }
 
@@ -117,11 +150,31 @@ export default function PaymentFlow({ selectedPlan, onClose }: PaymentFlowProps)
     }
 
     setIsLoading(false)
-    setShowConfetti(true)
-    setTimeout(() => {
-      setShowConfetti(false)
-      setStep('payment')
-    }, 2000)
+
+    // Check if user session is fully established
+    if (data?.user && data?.session) {
+      // User is logged in successfully
+      setShowConfetti(true)
+      setTimeout(() => {
+        setShowConfetti(false)
+
+        // Check if there's a redirect path in localStorage
+        const redirectPath = localStorage.getItem('auth_redirect')
+        if (redirectPath) {
+          localStorage.removeItem('auth_redirect')
+          window.location.href = redirectPath
+        } else {
+          setStep('payment')
+        }
+      }, 2000)
+    } else {
+      // Registration successful but not logged in yet, need to login
+      setError('Đăng ký thành công! Vui lòng xác nhận email và đăng nhập để tiếp tục.')
+      setTimeout(() => {
+        setError(null)
+        setStep('login')
+      }, 2000)
+    }
   }
 
   // Handle forgot password
