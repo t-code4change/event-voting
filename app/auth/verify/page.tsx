@@ -294,13 +294,13 @@ export default function EmailVerificationPage() {
                 )}
 
                 <MyButton
-                  onClick={() => router.push("/admin/login")}
+                  onClick={() => router.push("/")}
                   variant="primary"
                   icon={<ArrowRight className="h-5 w-5" />}
                   iconPosition="right"
                   className="w-full py-6 text-lg rounded-full bg-gradient-to-r from-[#FFD700] to-[#FDB931] hover:from-[#FDB931] hover:to-[#FFD700] text-black font-bold"
                 >
-                  Quay lại trang đăng nhập
+                  Quay lại trang chủ
                 </MyButton>
               </motion.div>
             </motion.div>
