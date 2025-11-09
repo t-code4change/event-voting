@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { motion, AnimatePresence } from "framer-motion"
 import Link from "next/link"
@@ -11,6 +11,7 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import Header from "@/components/Header"
 import PaymentFlow from "@/components/PaymentFlow"
 import { useAuth } from "@/contexts/AuthContext"
+import DiscordLogger from "@/lib/discord-logger"
 import {
   Check, Crown, ArrowRight, Star, ChevronDown, ChevronUp,
   Shield, Smartphone, BarChart3, Headphones, Zap, Globe,
@@ -49,6 +50,11 @@ export default function PricingPage() {
   const [selectedPlan, setSelectedPlan] = useState<PricingPlan | null>(null)
   const [expandedFAQ, setExpandedFAQ] = useState<number | null>(null)
   const [currentTestimonial, setCurrentTestimonial] = useState(0)
+
+  // Log page view on mount
+  useEffect(() => {
+    DiscordLogger.pageView('/pricing', user?.email)
+  }, [user])
 
   // Dummy plan for "Create Event" button - just to trigger login modal
   const CREATE_EVENT_PLAN = {

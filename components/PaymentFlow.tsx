@@ -9,6 +9,7 @@ import {
 import { signUpWithEmail, signInWithEmail } from "@/lib/supabase"
 import { signInWithGoogle, sendPasswordResetEmail } from "@/lib/supabase-enhanced"
 import { useAuth } from "@/contexts/AuthContext"
+import DiscordLogger from "@/lib/discord-logger"
 import LoginForm from "./payment-flow/LoginForm"
 import RegisterForm from "./payment-flow/RegisterForm"
 import ForgotPasswordForm from "./payment-flow/ForgotPasswordForm"
@@ -103,6 +104,10 @@ export default function PaymentFlow({ selectedPlan, onClose }: PaymentFlowProps)
 
     setIsLoading(false)
     setShowConfetti(true)
+
+    // Log successful login
+    await DiscordLogger.userLogin(email, 'email')
+
     setTimeout(() => {
       setShowConfetti(false)
 
@@ -155,6 +160,10 @@ export default function PaymentFlow({ selectedPlan, onClose }: PaymentFlowProps)
     if (data?.user && data?.session) {
       // User is logged in successfully
       setShowConfetti(true)
+
+      // Log successful registration
+      await DiscordLogger.userRegister(email, 'email')
+
       setTimeout(() => {
         setShowConfetti(false)
 
@@ -169,6 +178,7 @@ export default function PaymentFlow({ selectedPlan, onClose }: PaymentFlowProps)
       }, 2000)
     } else {
       // Registration successful but not logged in yet, need to login
+      await DiscordLogger.userRegister(email, 'email')
       setError('Đăng ký thành công! Vui lòng xác nhận email và đăng nhập để tiếp tục.')
       setTimeout(() => {
         setError(null)
@@ -216,7 +226,17 @@ export default function PaymentFlow({ selectedPlan, onClose }: PaymentFlowProps)
   }
 
   // Simulate payment confirmation
-  const handlePaymentConfirm = () => {
+  const handlePaymentConfirm = async () => {
+    // Log payment initiated
+    if (selectedPlan && user?.email) {
+      await DiscordLogger.paymentInitiated(
+        selectedPlan.name,
+        selectedPlan.price,
+        user.email,
+        needInvoice
+      )
+    }
+
     setStep('verifying')
   }
 
@@ -227,7 +247,17 @@ export default function PaymentFlow({ selectedPlan, onClose }: PaymentFlowProps)
         setVerificationProgress((prev) => {
           if (prev >= 100) {
             clearInterval(interval)
-            setTimeout(() => setStep('success'), 300)
+            setTimeout(() => {
+              // Log payment confirmed
+              if (selectedPlan && user?.email) {
+                DiscordLogger.paymentConfirmed(
+                  selectedPlan.name,
+                  selectedPlan.price,
+                  user.email
+                )
+              }
+              setStep('success')
+            }, 300)
             return 100
           }
           return prev + 2
@@ -235,7 +265,7 @@ export default function PaymentFlow({ selectedPlan, onClose }: PaymentFlowProps)
       }, 60)
       return () => clearInterval(interval)
     }
-  }, [step])
+  }, [step, selectedPlan, user])
 
   // Typing animation for success
   useEffect(() => {
