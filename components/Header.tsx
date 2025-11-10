@@ -1,24 +1,19 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { usePathname } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 import Link from "next/link"
 import MyButton from "@/components/MyButton"
-import { Crown, BarChart3, Settings, BadgeDollarSign, Vote, Gift } from "lucide-react"
-import { useAuth } from "@/contexts/AuthContext"
-import PaymentFlow from "@/components/PaymentFlow"
-
-// Dummy plan for login-only flow
-const LOGIN_PLAN = {
-  name: "Admin",
-  price: "0",
-  description: "Đăng nhập vào trang quản trị",
-}
+import { Crown, BarChart3, Settings, BadgeDollarSign, Vote, Gift, LogOut } from "lucide-react"
+import { useAppDispatch, useAppSelector } from "@/store/hooks"
+import { openLoginModal } from "@/store/slices/modalSlice"
+import { logout } from "@/store/slices/authSlice"
 
 export default function Header() {
-  const { user, loading } = useAuth()
+  const dispatch = useAppDispatch()
+  const router = useRouter()
+  const { user, isAuthenticated, loading } = useAppSelector((state) => state.auth)
   const [isAdmin, setIsAdmin] = useState(false)
-  const [showLoginModal, setShowLoginModal] = useState(false)
   const pathname = usePathname()
 
   // Check if current path is in event pages
@@ -47,6 +42,11 @@ export default function Header() {
 
     return () => clearInterval(intervalId)
   }, [user, loading])
+
+  const handleLogout = () => {
+    dispatch(logout())
+    router.push('/')
+  }
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-[#FFD700]/20 bg-[#0B0B0B]/95 backdrop-blur supports-[backdrop-filter]:bg-[#0B0B0B]/80">
@@ -115,7 +115,7 @@ export default function Header() {
               </Link>
 
               {/* Results button - mobile */}
-              <Link href={`/event/${eventId}/results`}>
+              <Link href={`/admin/dashboard`}>
                 <MyButton
                   variant="ghost"
                   size="small"
@@ -153,23 +153,32 @@ export default function Header() {
 
           {/* Admin Settings - show when logged in (go to dashboard) or not logged in (open login modal) */}
           {(user || isAdmin) ? (
-            <Link href="/admin/dashboard">
-              <MyButton
-                variant="ghost"
-                size="small"
-                className="text-[#FAF3E0] hover:text-[#FFD700] hover:bg-[#FFD700]/10 px-2"
+            <>
+              <Link href="/admin/dashboard" className="inline-block">
+                <button
+                  className="inline-flex items-center justify-center h-9 px-2 text-[#FAF3E0] hover:text-[#FFD700] hover:bg-[#FFD700]/10 rounded-lg transition-all duration-200"
+                  title="Dashboard"
+                >
+                  <Settings className="h-4 w-4" />
+                </button>
+              </Link>
+              <button
+                onClick={handleLogout}
+                className="inline-flex items-center justify-center h-9 px-2 text-[#FAF3E0] hover:text-red-500 hover:bg-red-500/10 rounded-lg transition-all duration-200"
+                title="Đăng xuất"
               >
-                <Settings className="h-4 w-4" />
-              </MyButton>
-            </Link>
+                <LogOut className="h-4 w-4" />
+              </button>
+            </>
           ) : (
             <MyButton
               variant="ghost"
               size="small"
               onClick={() => {
-                // Save redirect intent to localStorage
-                localStorage.setItem('auth_redirect', '/admin/dashboard')
-                setShowLoginModal(true)
+                dispatch(openLoginModal({
+                  postLoginAction: 'dashboard',
+                  redirectPath: '/admin/dashboard'
+                }))
               }}
               className="text-[#FAF3E0] hover:text-[#FFD700] hover:bg-[#FFD700]/10 px-2"
             >
@@ -178,12 +187,6 @@ export default function Header() {
           )}
         </nav>
       </div>
-
-      {/* Login Modal - reuse PaymentFlow component for authentication */}
-      <PaymentFlow
-        selectedPlan={showLoginModal ? LOGIN_PLAN : null}
-        onClose={() => setShowLoginModal(false)}
-      />
     </header>
   )
 }

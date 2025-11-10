@@ -6,8 +6,8 @@ export const ROUTES = {
   VOTE: '/vote',
   RESULTS: '/results',
 
-  // Auth routes
-  LOGIN: '/admin/login',
+  // Auth routes (now handled via modals on home page)
+  LOGIN: '/?action=login',
 
   // User dashboard routes
   DASHBOARD: '/dashboard',

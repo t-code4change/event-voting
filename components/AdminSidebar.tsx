@@ -63,7 +63,7 @@ export default function AdminSidebar() {
       }
 
       toast.success("Đã đăng xuất")
-      router.push("/admin/login")
+      router.push("/")
     } catch (error) {
       toast.error("Có lỗi khi đăng xuất")
     }

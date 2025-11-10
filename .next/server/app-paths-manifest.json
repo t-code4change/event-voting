@@ -1,6 +1,6 @@
 {
-  "/event/[eventId]/results/page": "app/event/[eventId]/results/page.js",
+  "/hello/page": "app/hello/page.js",
   "/page": "app/page.js",
-  "/auth/verify/page": "app/auth/verify/page.js",
-  "/pricing/page": "app/pricing/page.js"
+  "/pricing/page": "app/pricing/page.js",
+  "/_not-found/page": "app/_not-found/page.js"
 }

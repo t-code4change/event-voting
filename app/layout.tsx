@@ -2,7 +2,9 @@ import type { Metadata } from "next"
 import { Playfair_Display } from "next/font/google"
 import "./globals.css"
 import { Toaster } from "sonner"
-import { AuthProvider } from "@/contexts/AuthContext"
+import ReduxProvider from "@/components/ReduxProvider"
+import ModalManager from "@/components/modals/ModalManager"
+import AutoOpenModal from "@/components/AutoOpenModal"
 
 const playfair = Playfair_Display({
   subsets: ["latin", "vietnamese"],
@@ -24,10 +26,12 @@ export default function RootLayout({
   return (
     <html lang="vi">
       <body className={`${playfair.variable} font-sans`}>
-        <AuthProvider>
+        <ReduxProvider>
+          <AutoOpenModal />
           {children}
+          <ModalManager />
           <Toaster position="top-center" richColors />
-        </AuthProvider>
+        </ReduxProvider>
       </body>
     </html>
   )

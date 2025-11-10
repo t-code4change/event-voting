@@ -9,15 +9,15 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import Header from "@/components/Header"
-import PaymentFlow from "@/components/PaymentFlow"
-import { useAuth } from "@/contexts/AuthContext"
 import DiscordLogger from "@/lib/discord-logger"
 import {
   Check, Crown, ArrowRight, Star, ChevronDown, ChevronUp,
   Shield, Smartphone, BarChart3, Headphones, Zap, Globe,
   Users, Trophy, Sparkles, TrendingUp
 } from "lucide-react"
-import MyButton from "@/components/MyButton";
+import MyButton from "@/components/MyButton"
+import { useAppDispatch, useAppSelector } from "@/store/hooks"
+import { openLoginModal, openPaymentModal } from "@/store/slices/modalSlice"
 
 interface PricingPlan {
   name: string
@@ -45,9 +45,9 @@ interface FAQ {
 }
 
 export default function PricingPage() {
-  const { user } = useAuth()
+  const dispatch = useAppDispatch()
   const router = useRouter()
-  const [selectedPlan, setSelectedPlan] = useState<PricingPlan | null>(null)
+  const { user } = useAppSelector((state) => state.auth)
   const [expandedFAQ, setExpandedFAQ] = useState<number | null>(null)
   const [currentTestimonial, setCurrentTestimonial] = useState(0)
 
@@ -56,22 +56,17 @@ export default function PricingPage() {
     DiscordLogger.pageView('/pricing', user?.email)
   }, [user])
 
-  // Dummy plan for "Create Event" button - just to trigger login modal
-  const CREATE_EVENT_PLAN = {
-    name: "Create Event",
-    price: "0",
-    description: "Đăng nhập để tạo sự kiện của bạn",
-  }
-
   const handleCreateEvent = () => {
     // Check if user is already logged in
     if (user) {
       // User is logged in, go directly to admin dashboard
       router.push('/admin/dashboard')
     } else {
-      // User not logged in, save redirect intent and open login modal
-      localStorage.setItem('auth_redirect', '/admin/dashboard')
-      setSelectedPlan(CREATE_EVENT_PLAN)
+      // User not logged in, open login modal with redirect intent
+      dispatch(openLoginModal({
+        postLoginAction: 'create-event',
+        redirectPath: '/admin/dashboard'
+      }))
     }
   }
 
@@ -193,7 +188,29 @@ export default function PricingPage() {
   ]
 
   const handlePlanSelect = (plan: PricingPlan) => {
-    setSelectedPlan(plan)
+    // Check if user is logged in
+    if (user) {
+      // User is logged in, open payment modal with plan details
+      dispatch(openPaymentModal({
+        name: plan.name,
+        price: plan.price,
+        description: plan.description
+      }))
+    } else {
+      // User not logged in, save plan to Redux and open login modal
+      // After login, the payment modal will open automatically with this plan
+      dispatch(openLoginModal({
+        postLoginAction: 'payment',
+        redirectPath: '/pricing'
+      }))
+
+      // Save selected plan to show after login
+      localStorage.setItem('selected_plan', JSON.stringify({
+        name: plan.name,
+        price: plan.price,
+        description: plan.description
+      }))
+    }
   }
 
   const fadeIn = {
@@ -557,12 +574,6 @@ export default function PricingPage() {
               </motion.div>
           </div>
       </section>
-
-      {/* Payment Flow Modal */}
-      <PaymentFlow
-        selectedPlan={selectedPlan}
-        onClose={() => setSelectedPlan(null)}
-      />
 
       {/* Footer */}
       <footer className="relative border-t border-[#FFD700]/30 mt-16 bg-[#0B0B0B]">
