@@ -73,58 +73,58 @@ export default function PricingPage() {
   const plans: PricingPlan[] = [
     {
       name: "Basic",
-      price: "Liên hệ",
+      price: "300.000đ",
       description: "Dành cho sự kiện nhỏ và vừa",
       maxParticipants: "Tối đa 200 người",
       features: [
-        "Link bình chọn online",
-        "Kết quả realtime cơ bản",
+        "Bình chọn trực tuyến qua link",
+        "Kết quả hiển thị realtime cơ bản",
         "Tối đa 5 danh hiệu bình chọn",
-        "Báo cáo sau sự kiện",
+        "Báo cáo kết quả sau sự kiện",
         "Hỗ trợ qua email",
-        "Giao diện chuẩn",
+        "Giao diện mặc định chuyên nghiệp",
         "Tương thích đa thiết bị",
       ],
       cta: "Chọn gói Basic",
     },
     {
       name: "Pro",
-      price: "Liên hệ",
+      price: "500.000đ",
       description: "Phổ biến nhất cho doanh nghiệp",
-      maxParticipants: "Tối đa 1,000 người",
+      maxParticipants: "Tối đa 1.000 người",
       features: [
-        "Tất cả tính năng Basic",
-        "Push notification tự động",
-        "Hiển thị lên màn hình LED/Projector",
-        "Custom branding (logo, màu sắc)",
-        "Không giới hạn danh hiệu",
-        "Hỗ trợ chat 24/7",
+        "Tất cả tính năng gói Basic",
+        "Gửi thông báo tự động (Push notification)",
+        "Hiển thị kết quả lên màn hình LED/Projector",
+        "Tùy chỉnh giao diện theo thương hiệu (logo, màu sắc)",
+        "Không giới hạn danh hiệu bình chọn",
+        "Hỗ trợ trực tuyến 24/7",
         "Xuất báo cáo chi tiết (Excel/PDF)",
-        "QR code check-in",
-        "Quản lý đa sự kiện",
+        "QR Code Check-in thông minh",
+        "Quản lý nhiều sự kiện trong năm",
       ],
       highlighted: true,
       popular: true,
-      cta: "Chọn gói Pro",
+      cta: "Đăng ký gói Pro ngay",
     },
     {
       name: "Enterprise",
-      price: "Báo giá riêng",
+      price: "1.000.000đ",
       description: "Giải pháp toàn diện cho tập đoàn",
       maxParticipants: "Không giới hạn",
       features: [
-        "Tất cả tính năng Pro",
-        "Dedicated Account Manager",
-        "API tích hợp hệ thống riêng",
-        "Custom development theo yêu cầu",
-        "SSO & Advanced Security",
-        "SLA 99.9% uptime",
+        "Tất cả tính năng gói Pro",
+        "Quản lý không giới hạn người tham dự",
+        "Tài khoản quản lý riêng (Account Manager)",
+        "API tích hợp hệ thống nội bộ",
+        "Tùy chỉnh phát triển theo yêu cầu",
+        "Bảo mật nâng cao & xác thực SSO",
+        "Cam kết hoạt động 99.9% uptime",
         "Đào tạo đội ngũ sử dụng",
-        "White-label solution",
-        "Multi-tenant support",
-        "Priority support & hotline",
+        "Giao diện riêng (White-label solution)",
+        "Hỗ trợ ưu tiên qua hotline riêng",
       ],
-      cta: "Liên hệ tư vấn",
+      cta: "Đăng ký gói Enterprise",
     },
   ]
 
@@ -181,10 +181,10 @@ export default function PricingPage() {
   const allIncluded = [
     "Xác thực phiếu bầu chống gian lận",
     "Tương thích mọi thiết bị (PC, Mobile, Tablet)",
-    "Báo cáo & thống kê sau sự kiện",
+    "Báo cáo thống kê chi tiết",
     "Bảo mật dữ liệu SSL 256-bit",
-    "Cập nhật tính năng miễn phí",
-    "Hỗ trợ tiếng Việt",
+    "Cập nhật tính năng tự động",
+    "Hỗ trợ tiếng Việt & tư vấn miễn phí",
   ]
 
   const handlePlanSelect = (plan: PricingPlan) => {
@@ -243,16 +243,17 @@ export default function PricingPage() {
               Bảng giá minh bạch
             </Badge>
 
-            <h1 className="text-4xl md:text-6xl font-playfair font-bold text-white" style={{ textShadow: '0 0 20px rgba(255,215,0,0.4), 0 2px 8px rgba(0,0,0,0.8)' }}>
-              Gói & Giá
+            <h1 className="text-4xl md:text-6xl font-playfair font-bold text-white leading-tight" style={{ textShadow: '0 0 20px rgba(255,215,0,0.4), 0 2px 8px rgba(0,0,0,0.8)' }}>
+              Bảng giá dịch vụ GalaVote
             </h1>
 
             <p className="text-xl md:text-2xl text-[#FFE68A] max-w-3xl mx-auto" style={{ textShadow: '0 2px 6px rgba(0,0,0,0.8)' }}>
-              Chọn giải pháp bình chọn cho sự kiện của bạn
+              Giải pháp trọn gói cho mọi sự kiện
             </p>
 
-            <p className="text-lg text-[#FAF3E0]/80">
-              Dành cho Gala, Company Party, Year-end Party – Từ quy mô nhỏ đến hàng ngàn khách mời
+            <p className="text-lg text-[#FAF3E0]/80 max-w-4xl mx-auto">
+              Chọn gói phù hợp với quy mô và nhu cầu sự kiện của bạn. <br className="hidden md:block" />
+              Từ Gala Dinner, Year-end Party đến sự kiện hàng nghìn khách – GalaVote luôn sẵn sàng đồng hành.
             </p>
           </motion.div>
         </div>
@@ -524,11 +525,14 @@ export default function PricingPage() {
 
                   <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
                       Sự kiện không chỉ là chương trình<br />
-                      <span className="text-[#FFD700]">— đó là trải nghiệm</span>
+                      <span className="text-[#FFD700]">— đó là trải nghiệm đáng nhớ</span>
                   </h2>
 
-                  <p className="text-xl md:text-2xl text-gray-300">
-                      Khởi động hành trình của bạn cùng <strong className="text-[#FFD700]">GalaVote</strong>
+                  <p className="text-xl md:text-2xl text-gray-300 mb-2">
+                      Hãy để <strong className="text-[#FFD700]">GalaVote</strong> giúp bạn tạo nên khoảnh khắc ấn tượng
+                  </p>
+                  <p className="text-lg text-gray-400">
+                      cho doanh nghiệp của bạn
                   </p>
 
                   <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
@@ -545,7 +549,7 @@ export default function PricingPage() {
                               iconPosition="left"
                           >
                 <span className="flex items-center gap-2">
-                  Tạo sự kiện của bạn
+                  Bắt đầu ngay
                   <motion.div
                       animate={{ scale: [1, 1.2, 1] }}
                       transition={{ duration: 2, repeat: Infinity }}
@@ -556,7 +560,7 @@ export default function PricingPage() {
                           </MyButton>
                       </motion.div>
 
-                      <Link href="/hello">
+                      <Link href="/guide">
                           <motion.div
                               whileHover={{ scale: 1.05 }}
                               whileTap={{ scale: 0.98 }}
@@ -564,9 +568,9 @@ export default function PricingPage() {
                               <MyButton
                                   variant="outline"
                                   size="large"
-                                  className="text-lg px-10 py-7 rounded-full border-2 border-white text-white hover:bg-white hover:text-[#9C27FF] font-semibold"
+                                  className="text-lg px-10 py-7 rounded-full border-2 border-white text-white hover:bg-white hover:text-[#0A0A0A] font-semibold"
                               >
-                                  Tìm hiểu thêm
+                                  Xem hướng dẫn thiết lập
                               </MyButton>
                           </motion.div>
                       </Link>

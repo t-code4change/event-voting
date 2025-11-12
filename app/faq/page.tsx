@@ -94,7 +94,7 @@ const faqData: FAQCategory[] = [
       },
       {
         question: 'Có hỗ trợ 24/7 không?',
-        answer: 'Có! Chúng tôi có đội ngũ hỗ trợ 24/7 qua: (1) Hotline: (+84) 901 333 434, (2) Email: support@galavote.vn, (3) Live chat trên website, (4) Hỗ trợ kỹ thuật tại chỗ cho gói Enterprise. Thời gian phản hồi trung bình < 5 phút.'
+        answer: 'Có! Chúng tôi có đội ngũ hỗ trợ 24/7 qua: (1) Hotline: (+84) 901 333 434, (2) Email: code4change.co@gmail.com, (3) Live chat trên website, (4) Hỗ trợ kỹ thuật tại chỗ cho gói Enterprise. Thời gian phản hồi trung bình < 5 phút.'
       },
       {
         question: 'GalaVote có tích hợp API không?',
@@ -312,14 +312,14 @@ export default function FAQPage() {
                 </motion.a>
 
                 <motion.a
-                  href="mailto:support@galavote.vn"
+                  href="mailto:code4change.co@gmail.com"
                   whileHover={{ scale: 1.05, y: -5 }}
                   className="flex flex-col items-center gap-3 p-4 bg-[#111] border border-[#FFD700]/30 rounded-xl hover:border-[#FFD700] hover:shadow-[0_0_20px_rgba(255,215,0,0.2)] transition-all"
                 >
                   <Mail className="w-8 h-8 text-[#FFD700]" />
                   <div>
                     <div className="text-sm text-[#AAAAAA]">Email</div>
-                    <div className="text-[#EAEAEA] font-semibold">support@galavote.vn</div>
+                    <div className="text-[#EAEAEA] font-semibold">code4change.co@gmail.com</div>
                   </div>
                 </motion.a>
 
@@ -367,7 +367,7 @@ export default function FAQPage() {
               cùng GalaVote? 🚀
             </p>
             <p className="text-lg text-[#AAAAAA] mb-12 max-w-2xl mx-auto">
-              Bắt đầu ngay hôm nay với gói Free Trial 14 ngày – không cần thẻ tín dụng
+              Bắt đầu ngay hôm nay với gói Free Trial 14 ngày
             </p>
 
             <motion.button

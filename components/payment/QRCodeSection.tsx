@@ -74,19 +74,6 @@ export default function QRCodeSection({
         </p>
       </div>
 
-      {/* Package Info Card */}
-      <motion.div
-        initial={{ y: 20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.1 }}
-        className="w-full bg-gradient-to-r from-[#FFD700]/10 to-[#FF9E00]/10 border border-[#FFD700]/30 rounded-xl p-4"
-      >
-        <div className="text-center space-y-1">
-          <h4 className="text-lg font-bold text-white">{packageName}</h4>
-          <p className="text-xs text-[#FAF3E0]/60">{packageDescription}</p>
-        </div>
-      </motion.div>
-
       {/* QR Code */}
       <motion.div
         initial={{ scale: 0.9, opacity: 0 }}

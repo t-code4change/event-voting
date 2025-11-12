@@ -111,7 +111,7 @@ export default function PaymentModal() {
 
   return (
     <Dialog open={isOpen} onOpenChange={handleClose}>
-      <DialogContent className="bg-[#0E0E0E] border-2 border-[#FFD76A]/20 text-white max-w-2xl p-0 overflow-hidden">
+      <DialogContent className="bg-gradient-to-br from-[#0A0A0A] via-[#1a1a1a] to-[#0A0A0A] border-2 border-[#FFD700]/30  text-white max-w-[900px] w-[90vw] p-0 overflow-hidden shadow-[0_0_50px_rgba(255,215,0,0.3)]">
         <AnimatePresence mode="wait">
           {step === 'payment' && (
             <PaymentStepComponent
