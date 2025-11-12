@@ -765,7 +765,7 @@ export default function GalaVotePage() {
             <div>
               <h3 className="text-white font-semibold mb-4">Contact</h3>
               <div className="space-y-2 text-gray-400">
-                <p>contact@code4change.tech</p>
+                <p>code4change.co@gmail.com</p>
                 <p>quaysotrungthuong.vn</p>
                 <div className="flex gap-4 pt-2">
                   {['Facebook', 'Twitter', 'LinkedIn'].map((social) => (

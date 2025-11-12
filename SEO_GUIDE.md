@@ -262,7 +262,7 @@ npm start
 ## Liên Hệ và Hỗ Trợ
 
 Nếu cần hỗ trợ thêm về SEO, liên hệ:
-- Email: contact@code4change.tech
+- Email: code4change.co@gmail.com
 - Website: https://quaysotrungthuong.vn
 
 ---

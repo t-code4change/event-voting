@@ -65,7 +65,7 @@ export default function GuideLayout({ children }: { children: React.ReactNode })
 - Contact form: name, email, phone, message
 - Support info box:
   - Hotline: 1900-xxx-xxx
-  - Email: contact@code4change.tech
+  - Email: code4change.co@gmail.com
   - Địa chỉ: TP.HCM
 - Success animation: canvas-confetti
 - Google Maps embed (optional)

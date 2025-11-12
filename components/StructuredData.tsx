@@ -28,7 +28,7 @@ export function OrganizationSchema({
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'Customer Service',
-      email: 'contact@code4change.tech',
+      email: 'code4change.co@gmail.com',
     },
     sameAs: [
       'https://www.facebook.com/quaysotrungthuong.vn',

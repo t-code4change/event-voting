@@ -271,5 +271,5 @@ View live voting results
 
 **Happy Navigating! 🚀**
 
-For support: contact@code4change.tech
+For support: code4change.co@gmail.com
 Website: quaysotrungthuong.vn

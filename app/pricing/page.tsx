@@ -596,7 +596,7 @@ export default function PricingPage() {
                 Website: <a href="https://quaysotrungthuong.vn" className="hover:text-[#FFD700] transition-colors">quaysotrungthuong.vn</a>
               </p>
               <p className="text-sm text-[#FAF3E0]/60">
-                Liên hệ: <a href="mailto:contact@code4change.tech" className="hover:text-[#FFD700] transition-colors">contact@code4change.tech</a>
+                Liên hệ: <a href="mailto:code4change.co@gmail.com" className="hover:text-[#FFD700] transition-colors">code4change.co@gmail.com</a>
               </p>
             </div>
 

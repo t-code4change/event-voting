@@ -579,6 +579,6 @@ Steps:
 ## 📞 Support
 
 For questions or issues, contact:
-- **Email**: contact@code4change.tech
+- **Email**: code4change.co@gmail.com
 - **Docs**: https://docs.eventvoting.vn
 - **Status**: https://status.eventvoting.vn
