@@ -47,8 +47,9 @@ export default function BlogDetailPage() {
 
       const extractedHeadings: Heading[] = Array.from(headingElements).map((heading, index) => {
         let text = heading.textContent || ''
-        // Remove emojis from TOC text
-        text = text.replace(/[\u{1F300}-\u{1F9FF}]|[\u{2600}-\u{26FF}]|[\u{2700}-\u{27BF}]/gu, '').trim()
+        // Remove emojis and special symbols from TOC text
+        // Keep Vietnamese, English letters, numbers, spaces and basic punctuation
+        text = text.replace(/[^\u0000-\u007F\u00C0-\u1EF9\s]/g, '').replace(/\s+/g, ' ').trim()
         const id = `heading-${index}`
         heading.id = id
         return {
