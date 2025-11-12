@@ -1,4 +1,4 @@
-# TECH STACK - GalaVote
+# TECH STACK - Bright4Event
 
 > Chi tiết về tất cả công nghệ, thư viện và dịch vụ được sử dụng trong dự án
 

@@ -79,7 +79,7 @@ export default function AdminSidebar() {
             <h1 className="text-xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
               Admin Panel
             </h1>
-            <p className="text-xs text-muted-foreground">GalaVote</p>
+            <p className="text-xs text-muted-foreground">Bright4Event</p>
           </div>
         </Link>
       </div>

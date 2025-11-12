@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: post.excerpt,
     path: `/blog/${params.slug}`,
     image: post.image,
-    keywords: [post.category, 'blog', 'sự kiện', 'galavote'],
+    keywords: [post.category, 'blog', 'sự kiện', 'Bright4Event'],
   })
 }
 

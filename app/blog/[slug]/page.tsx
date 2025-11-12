@@ -406,7 +406,7 @@ export default function BlogDetailPage() {
                   Bạn đã sẵn sàng cho sự kiện của mình?
                 </h3>
                 <p className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
-                  Hãy để GalaVote giúp bạn tổ chức một sự kiện hoàn hảo với công nghệ bình chọn hiện đại nhất!
+                  Hãy để Bright4Event giúp bạn tổ chức một sự kiện hoàn hảo với công nghệ bình chọn hiện đại nhất!
                 </p>
                 <div className="flex gap-4 justify-center flex-wrap">
                   <Link href="/pricing">
@@ -634,7 +634,7 @@ export default function BlogDetailPage() {
 
       {/* FOOTER */}
       <footer className="bg-[#0A0A0A] border-t border-[#FFD700]/20 py-12 text-center text-gray-500">
-        <p>© 2025 GalaVote by Code4Change Media</p>
+        <p>© 2025 Bright4Event by Code4Change Media</p>
       </footer>
     </div>
   )

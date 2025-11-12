@@ -121,7 +121,7 @@ export default function BlogPage() {
             <h2 className="text-4xl font-bold text-white mb-4">
               Muốn nhận thông tin sự kiện mới nhất?
             </h2>
-            <p className="text-gray-400 mb-8">Đăng ký nhận bản tin từ GalaVote</p>
+            <p className="text-gray-400 mb-8">Đăng ký nhận bản tin từ Bright4Event</p>
             <div className="flex gap-4 max-w-md mx-auto">
               <input
                 type="email"
@@ -137,7 +137,7 @@ export default function BlogPage() {
       </section>
 
       <footer className="bg-[#0A0A0A] border-t border-[#FFD700]/20 py-12 text-center text-gray-500">
-        <p>© 2025 GalaVote by Code4Change Media</p>
+        <p>© 2025 Bright4Event by Code4Change Media</p>
       </footer>
     </div>
   )

@@ -8,7 +8,7 @@ interface OrganizationSchemaProps {
 }
 
 export function OrganizationSchema({
-  name = 'GalaVote',
+  name = 'Bright4Event',
   url = 'https://quaysotrungthuong.vn',
   logo = 'https://quaysotrungthuong.vn/logo.png',
   description = 'Nền tảng bình chọn sự kiện hàng đầu Việt Nam',
@@ -52,7 +52,7 @@ interface WebsiteSchemaProps {
 }
 
 export function WebsiteSchema({
-  name = 'GalaVote',
+  name = 'Bright4Event',
   url = 'https://quaysotrungthuong.vn',
   description = 'Hệ thống bình chọn sự kiện chuyên nghiệp',
 }: WebsiteSchemaProps) {
@@ -131,7 +131,7 @@ export function EventSchema({
     }),
     organizer: {
       '@type': 'Organization',
-      name: 'GalaVote',
+      name: 'Bright4Event',
       url: 'https://quaysotrungthuong.vn',
     },
   }
@@ -210,7 +210,7 @@ export function ProductSchema({
     }),
     brand: {
       '@type': 'Brand',
-      name: 'GalaVote',
+      name: 'Bright4Event',
     },
     aggregateRating: {
       '@type': 'AggregateRating',

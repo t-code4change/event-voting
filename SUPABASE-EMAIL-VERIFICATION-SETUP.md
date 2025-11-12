@@ -1,6 +1,6 @@
 # 📧 Supabase Email Verification Setup Guide
 
-Hướng dẫn cấu hình email verification cho Supabase Auth trong dự án GalaVote.
+Hướng dẫn cấu hình email verification cho Supabase Auth trong dự án Bright4Event.
 
 ---
 
@@ -60,7 +60,7 @@ Email template mặc định của Supabase:
 
 ```html
 <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-  <h2 style="color: #FFD700;">🎉 Chào mừng đến với GalaVote!</h2>
+  <h2 style="color: #FFD700;">🎉 Chào mừng đến với Bright4Event!</h2>
   <p>Cảm ơn bạn đã đăng ký. Vui lòng xác thực email để hoàn tất đăng ký.</p>
   <a href="{{ .ConfirmationURL }}"
      style="display: inline-block; background: #FFD700; color: #000;
@@ -236,7 +236,7 @@ Sau khi deploy lên Vercel/Production:
 
 ## 📝 Next Steps
 
-1. **Tùy chỉnh email template** với branding của GalaVote
+1. **Tùy chỉnh email template** với branding của Bright4Event
 2. **Thêm analytics** để track conversion rate
 3. **Implement password reset flow** tương tự
 4. **Add notification** khi resend email thành công

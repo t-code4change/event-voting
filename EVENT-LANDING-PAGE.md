@@ -231,7 +231,7 @@ This is a premium, full-featured microsite that embodies elegance and celebratio
 **Content**:
 - ✨ **ABC Media** logo (centered)
 - **Social Links**: Facebook, Instagram, LinkedIn, YouTube
-- **Powered by**: GalaVote Platform
+- **Powered by**: Bright4Event Platform
 - **Copyright**: © 2025 ABC Media
 
 **Style**:

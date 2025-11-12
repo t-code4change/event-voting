@@ -1,4 +1,4 @@
-# API SPECIFICATION - GalaVote
+# API SPECIFICATION - Bright4Event
 
 > Chi tiết về tất cả API endpoints, request/response formats, và business logic
 

@@ -1,4 +1,4 @@
-# Hướng Dẫn Các Trang SEO Mới - GalaVote
+# Hướng Dẫn Các Trang SEO Mới - Bright4Event
 
 ## ✅ Đã Hoàn Thành
 
@@ -29,10 +29,10 @@ import { Metadata } from 'next'
 import { generateSEO } from '@/lib/metadata'
 
 export const metadata: Metadata = generateSEO({
-  title: 'Hướng Dẫn Sử Dụng - GalaVote',
-  description: 'Hướng dẫn chi tiết cách sử dụng GalaVote: Đăng ký, tạo sự kiện, tùy chỉnh giao diện, quản lý và xuất kết quả bình chọn.',
+  title: 'Hướng Dẫn Sử Dụng - Bright4Event',
+  description: 'Hướng dẫn chi tiết cách sử dụng Bright4Event: Đăng ký, tạo sự kiện, tùy chỉnh giao diện, quản lý và xuất kết quả bình chọn.',
   path: '/guide',
-  keywords: ['hướng dẫn galavote', 'cách sử dụng', 'tạo sự kiện', 'bình chọn online'],
+  keywords: ['hướng dẫn Bright4Event', 'cách sử dụng', 'tạo sự kiện', 'bình chọn online'],
 })
 
 export default function GuideLayout({ children }: { children: React.ReactNode }) {
@@ -41,7 +41,7 @@ export default function GuideLayout({ children }: { children: React.ReactNode })
 ```
 
 **Page.tsx Structure:**
-- Hero: "Hướng Dẫn Sử Dụng GalaVote"
+- Hero: "Hướng Dẫn Sử Dụng Bright4Event"
 - 4 Steps timeline với icons:
   1. Đăng ký tài khoản (User icon)
   2. Tạo sự kiện (Plus icon)
@@ -87,7 +87,7 @@ export default function GuideLayout({ children }: { children: React.ReactNode })
 **Features:**
 - Accordion list (shadcn/ui)
 - 10+ FAQs optimized:
-  - "GalaVote hoạt động thế nào?"
+  - "Bright4Event hoạt động thế nào?"
   - "Có hỗ trợ hiển thị LED không?"
   - "Giá cả như thế nào?"
   - "Có hỗ trợ offline không?"
@@ -174,7 +174,7 @@ guide: generateSEO({
   title: 'Hướng Dẫn Sử Dụng',
   description: '...',
   path: '/guide',
-  keywords: ['hướng dẫn galavote', '...']
+  keywords: ['hướng dẫn Bright4Event', '...']
 }),
 policy: generateSEO({ ... }),
 contact: generateSEO({ ... }),

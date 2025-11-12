@@ -2,8 +2,8 @@ import { MetadataRoute } from 'next'
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'GalaVote - Hệ thống Bình chọn Sự kiện Chuyên Nghiệp',
-    short_name: 'GalaVote',
+    name: 'Bright4Event - Hệ thống Bình chọn Sự kiện Chuyên Nghiệp',
+    short_name: 'Bright4Event',
     description: 'Nền tảng bình chọn sự kiện hàng đầu Việt Nam. Check-in QR Code, Vote realtime, Lucky Draw và Analytics cho sự kiện của bạn.',
     start_url: '/',
     display: 'standalone',

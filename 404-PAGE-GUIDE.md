@@ -2,7 +2,7 @@
 
 ## 🎨 Design Overview
 
-Trang 404 của GalaVote được thiết kế với phong cách sang trọng, sự kiện cao cấp với các hiệu ứng animation mượt mà.
+Trang 404 của Bright4Event được thiết kế với phong cách sang trọng, sự kiện cao cấp với các hiệu ứng animation mượt mà.
 
 ### Màu sắc chính:
 - **Background**: Gradient từ `#0A0A0A` đến `#1A1A1A` (đen sâu)
@@ -249,7 +249,7 @@ transition={{ duration: 0.3 }}
 ## 🎨 Design Credits
 
 - **Inspiration**: Premium event platforms, award show websites
-- **Color palette**: GalaVote brand colors
+- **Color palette**: Bright4Event brand colors
 - **Animation style**: Modern, smooth, luxurious
 - **UX**: Clear CTAs, friendly error messaging
 

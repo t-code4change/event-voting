@@ -72,7 +72,7 @@ export async function logToDiscord(
           fields,
           timestamp: new Date().toISOString(),
           footer: {
-            text: 'GalaVote Event Tracking',
+            text: 'Bright4Event Event Tracking',
           },
         },
       ],

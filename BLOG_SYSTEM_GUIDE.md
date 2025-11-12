@@ -1,4 +1,4 @@
-# Blog System Enhancement Guide - GalaVote
+# Blog System Enhancement Guide - Bright4Event
 
 ## ✅ Đã Hoàn Thành
 
@@ -341,7 +341,7 @@ export default function BlogDetailPage() {
 
       {/* FOOTER */}
       <footer className="bg-[#0A0A0A] border-t border-[#FFD700]/20 py-12 text-center text-gray-500">
-        <p>© 2025 GalaVote by Code4Change Media</p>
+        <p>© 2025 Bright4Event by Code4Change Media</p>
       </footer>
     </div>
   )
@@ -463,4 +463,4 @@ const blogPosts = getAllPosts()
 6. Test confetti at 90% scroll
 7. Deploy!
 
-**All code follows GalaVote dark-gold premium theme!** 🌟
+**All code follows Bright4Event dark-gold premium theme!** 🌟

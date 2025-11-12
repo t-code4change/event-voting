@@ -1,4 +1,4 @@
-# GalaVote - DOCUMENTATION
+# Bright4Event - DOCUMENTATION
 
 > Hệ thống bình chọn sự kiện với authentication linh hoạt và realtime results
 

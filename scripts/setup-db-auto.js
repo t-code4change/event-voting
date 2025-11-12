@@ -13,7 +13,7 @@ require('dotenv').config({ path: '.env' })
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
 const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY
 
-console.log('🚀 GalaVote - Database Setup')
+console.log('🚀 Bright4Event - Database Setup')
 console.log('=' .repeat(50))
 
 if (!supabaseUrl || !supabaseServiceKey) {

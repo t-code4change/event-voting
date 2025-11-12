@@ -1,4 +1,4 @@
-# robots.txt for GalaVote Event Voting System
+# robots.txt for Bright4Event Event Voting System
 # https://quaysotrungthuong.vn
 
 # Allow all crawlers

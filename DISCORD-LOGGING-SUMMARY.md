@@ -153,7 +153,7 @@ Email: user@example.com
 Method: email
 Timestamp: 10/11/2025 14:30:45
 
-GalaVote Event Tracking
+Bright4Event Event Tracking
 ```
 
 ### Payment Initiated (Gold)
@@ -166,7 +166,7 @@ User: user@example.com
 Invoice Required: Yes
 Timestamp: 10/11/2025 14:35:20
 
-GalaVote Event Tracking
+Bright4Event Event Tracking
 ```
 
 ### Error (Red)
@@ -178,7 +178,7 @@ Component: VoteForm
 User: voter@example.com
 Timestamp: 10/11/2025 14:40:15
 
-GalaVote Event Tracking
+Bright4Event Event Tracking
 ```
 
 ---
@@ -215,12 +215,12 @@ npx tsx test-env-check.ts
 ### Discord Channel Structure:
 ```
 📊 analytics
-  ├─ #galavote-all (all events)
-  ├─ #galavote-auth (login, register)
-  ├─ #galavote-payments (payment events)
-  ├─ #galavote-votes (voting activity)
-  ├─ #galavote-errors (errors only)
-  └─ #galavote-admin (admin actions)
+  ├─ #Bright4Event-all (all events)
+  ├─ #Bright4Event-auth (login, register)
+  ├─ #Bright4Event-payments (payment events)
+  ├─ #Bright4Event-votes (voting activity)
+  ├─ #Bright4Event-errors (errors only)
+  └─ #Bright4Event-admin (admin actions)
 ```
 
 ### Metrics to Track:

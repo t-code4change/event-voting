@@ -32,7 +32,7 @@ interface QRCodeSectionProps {
 export default function QRCodeSection({
   price,
   useCompanyAccount = false,
-  transferCode = 'GALAVOTE',
+  transferCode = 'Bright4Event',
   packageName = 'Gói Pro',
   packageDescription = 'Bao gồm tất cả tính năng nâng cao'
 }: QRCodeSectionProps) {

@@ -1,5 +1,5 @@
 -- =============================================
--- GalaVote - DATABASE SCHEMA
+-- Bright4Event - DATABASE SCHEMA
 -- Supabase (PostgreSQL 15)
 -- Updated: 2025-11-05
 -- =============================================

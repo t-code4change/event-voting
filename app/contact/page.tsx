@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import confetti from 'canvas-confetti'
 import { Mail, Phone, MapPin, Send, Home, Sparkles } from 'lucide-react'
 import Link from 'next/link'
+import Header from '@/components/Header'
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -32,7 +33,7 @@ export default function ContactPage() {
 
       const discordMessage = {
         embeds: [{
-          title: '🎯 Yêu cầu liên hệ mới từ GalaVote',
+          title: '🎯 Yêu cầu liên hệ mới từ Bright4Event',
           color: 0xFFD700,
           fields: [
             { name: '👤 Họ và tên', value: formData.name, inline: true },
@@ -43,7 +44,7 @@ export default function ContactPage() {
           ],
           timestamp: new Date().toISOString(),
           footer: {
-            text: 'GalaVote Contact Form'
+            text: 'Bright4Event Contact Form'
           }
         }]
       }
@@ -128,6 +129,7 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen bg-[#0A0A0A] text-[#EAEAEA] relative overflow-hidden">
+      <Header />
       <div className="absolute inset-0 bg-gradient-to-br from-[#0A0A0A] via-[#1A1A1A] to-[#0A0A0A] opacity-50" />
 
       <div className="absolute inset-0">
@@ -175,7 +177,7 @@ export default function ContactPage() {
             </motion.div>
 
             <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-[#FFD700] via-[#FDB931] to-[#FFD700] bg-clip-text text-transparent">
-              Hãy để GalaVote giúp bạn
+              Hãy để Bright4Event giúp bạn
             </h1>
             <p className="text-2xl md:text-3xl mb-4 text-[#FFD700]">
               tạo nên sự kiện đáng nhớ ✨
@@ -411,7 +413,7 @@ export default function ContactPage() {
               thành trải nghiệm đáng nhớ? ✨
             </p>
             <p className="text-lg text-[#AAAAAA] mb-12 max-w-2xl mx-auto">
-              Hãy để GalaVote đồng hành cùng bạn tạo nên những khoảnh khắc kỳ diệu,
+              Hãy để Bright4Event đồng hành cùng bạn tạo nên những khoảnh khắc kỳ diệu,
               với công nghệ hiện đại và dịch vụ tận tâm.
             </p>
 

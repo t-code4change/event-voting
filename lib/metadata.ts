@@ -20,7 +20,7 @@ export function generateSEO({
   noIndex = false,
 }: SEOProps): Metadata {
   const url = `${baseUrl}${path}`
-  const fullTitle = title.includes('GalaVote') ? title : `${title} | GalaVote`
+  const fullTitle = title.includes('Bright4Event') ? title : `${title} | Bright4Event`
 
   return {
     title: fullTitle,
@@ -36,7 +36,7 @@ export function generateSEO({
       type: 'website',
       locale: 'vi_VN',
       url,
-      siteName: 'GalaVote',
+      siteName: 'Bright4Event',
       title: fullTitle,
       description,
       images: [
@@ -53,7 +53,7 @@ export function generateSEO({
       title: fullTitle,
       description,
       images: [image],
-      creator: '@galavote',
+      creator: '@Bright4Event',
     },
     alternates: {
       canonical: url,
@@ -80,7 +80,7 @@ export function generateSEO({
 // Pre-defined metadata for common pages
 export const pageMetadata = {
   home: generateSEO({
-    title: 'GalaVote - Hệ thống Bình chọn Sự kiện Chuyên Nghiệp',
+    title: 'Bright4Event - Hệ thống Bình chọn Sự kiện Chuyên Nghiệp',
     description:
       'Nền tảng bình chọn sự kiện hàng đầu Việt Nam. Check-in QR Code, Vote realtime, Lucky Draw và Analytics chuyên nghiệp cho Gala, Company Party, Year-end Party. Minh bạch, dễ sử dụng, được tin tưởng bởi hàng trăm sự kiện.',
     path: '/',
@@ -97,7 +97,7 @@ export const pageMetadata = {
   pricing: generateSEO({
     title: 'Bảng Giá - Gói Dịch Vụ Bình Chọn Sự Kiện',
     description:
-      'Xem bảng giá và gói dịch vụ bình chọn sự kiện GalaVote. Từ gói Basic cho sự kiện nhỏ đến gói Enterprise cho tập đoàn. Hỗ trợ tận tình 24/7, custom branding, hiển thị LED/Projector.',
+      'Xem bảng giá và gói dịch vụ bình chọn sự kiện Bright4Event. Từ gói Basic cho sự kiện nhỏ đến gói Enterprise cho tập đoàn. Hỗ trợ tận tình 24/7, custom branding, hiển thị LED/Projector.',
     path: '/pricing',
     keywords: [
       'bảng giá bình chọn',
@@ -111,7 +111,7 @@ export const pageMetadata = {
   results: generateSEO({
     title: 'Kết Quả Bình Chọn Realtime',
     description:
-      'Xem kết quả bình chọn sự kiện realtime. Thống kê chi tiết, biểu đồ trực quan, báo cáo đầy đủ cho mọi sự kiện trên GalaVote.',
+      'Xem kết quả bình chọn sự kiện realtime. Thống kê chi tiết, biểu đồ trực quan, báo cáo đầy đủ cho mọi sự kiện trên Bright4Event.',
     path: '/results',
     keywords: [
       'kết quả bình chọn',
@@ -123,12 +123,12 @@ export const pageMetadata = {
   }),
 
   hello: generateSEO({
-    title: 'Giới Thiệu - Về GalaVote',
+    title: 'Giới Thiệu - Về Bright4Event',
     description:
-      'Tìm hiểu về GalaVote - nền tảng bình chọn sự kiện chuyên nghiệp. Công nghệ hiện đại, dễ sử dụng, được tin tưởng bởi các doanh nghiệp hàng đầu Việt Nam.',
+      'Tìm hiểu về Bright4Event - nền tảng bình chọn sự kiện chuyên nghiệp. Công nghệ hiện đại, dễ sử dụng, được tin tưởng bởi các doanh nghiệp hàng đầu Việt Nam.',
     path: '/hello',
     keywords: [
-      'giới thiệu galavote',
+      'giới thiệu Bright4Event',
       'về chúng tôi',
       'about us',
       'event technology',
@@ -137,14 +137,14 @@ export const pageMetadata = {
   }),
 
   about: generateSEO({
-    title: 'Về GalaVote - Sứ Mệnh & Đội Ngũ',
+    title: 'Về Bright4Event - Sứ Mệnh & Đội Ngũ',
     description:
-      'Tìm hiểu sứ mệnh, tầm nhìn và đội ngũ Code4Change đằng sau GalaVote. Nền tảng bình chọn sự kiện hàng đầu Việt Nam với công nghệ tiên tiến.',
+      'Tìm hiểu sứ mệnh, tầm nhìn và đội ngũ Code4Change đằng sau Bright4Event. Nền tảng bình chọn sự kiện hàng đầu Việt Nam với công nghệ tiên tiến.',
     path: '/about',
     keywords: [
-      'về galavote',
+      'về Bright4Event',
       'code4change',
-      'đội ngũ galavote',
+      'đội ngũ Bright4Event',
       'sứ mệnh',
       'tầm nhìn',
     ],
@@ -153,7 +153,7 @@ export const pageMetadata = {
   blog: generateSEO({
     title: 'Blog - Kinh Nghiệm Tổ Chức Sự Kiện',
     description:
-      'Chia sẻ kinh nghiệm tổ chức Gala, Year-end Party, Team Building. Xu hướng sự kiện 2025 và case study thành công từ GalaVote.',
+      'Chia sẻ kinh nghiệm tổ chức Gala, Year-end Party, Team Building. Xu hướng sự kiện 2025 và case study thành công từ Bright4Event.',
     path: '/blog',
     keywords: [
       'blog sự kiện',
@@ -164,12 +164,12 @@ export const pageMetadata = {
   }),
 
   guide: generateSEO({
-    title: 'Hướng Dẫn Sử Dụng GalaVote',
+    title: 'Hướng Dẫn Sử Dụng Bright4Event',
     description:
-      'Hướng dẫn chi tiết cách đăng ký, tạo sự kiện, tùy chỉnh giao diện và quản lý bình chọn với GalaVote. Dễ dàng cho người mới bắt đầu.',
+      'Hướng dẫn chi tiết cách đăng ký, tạo sự kiện, tùy chỉnh giao diện và quản lý bình chọn với Bright4Event. Dễ dàng cho người mới bắt đầu.',
     path: '/guide',
     keywords: [
-      'hướng dẫn galavote',
+      'hướng dẫn Bright4Event',
       'cách sử dụng',
       'tạo sự kiện',
       'tutorial',
@@ -179,15 +179,15 @@ export const pageMetadata = {
   faq: generateSEO({
     title: 'Câu Hỏi Thường Gặp - FAQ',
     description:
-      'Giải đáp các câu hỏi thường gặp về GalaVote: giá cả, tính năng, hỗ trợ LED, bảo mật và cách sử dụng hệ thống bình chọn sự kiện.',
+      'Giải đáp các câu hỏi thường gặp về Bright4Event: giá cả, tính năng, hỗ trợ LED, bảo mật và cách sử dụng hệ thống bình chọn sự kiện.',
     path: '/faq',
-    keywords: ['faq', 'câu hỏi', 'hỗ trợ', 'galavote hoạt động', 'giá cả'],
+    keywords: ['faq', 'câu hỏi', 'hỗ trợ', 'Bright4Event hoạt động', 'giá cả'],
   }),
 
   contact: generateSEO({
-    title: 'Liên Hệ - GalaVote',
+    title: 'Liên Hệ - Bright4Event',
     description:
-      'Liên hệ với GalaVote để được tư vấn và hỗ trợ tổ chức sự kiện. Hotline, email và địa chỉ văn phòng tại TP.HCM.',
+      'Liên hệ với Bright4Event để được tư vấn và hỗ trợ tổ chức sự kiện. Hotline, email và địa chỉ văn phòng tại TP.HCM.',
     path: '/contact',
     keywords: ['liên hệ', 'contact', 'hỗ trợ', 'hotline', 'tư vấn sự kiện'],
   }),
@@ -195,7 +195,7 @@ export const pageMetadata = {
   caseStudies: generateSEO({
     title: 'Khách Hàng & Case Study Thành Công',
     description:
-      'Khám phá các case study và sự kiện thành công đã sử dụng GalaVote. Từ Gala 500+ người đến Year-end Party doanh nghiệp lớn.',
+      'Khám phá các case study và sự kiện thành công đã sử dụng Bright4Event. Từ Gala 500+ người đến Year-end Party doanh nghiệp lớn.',
     path: '/case-studies',
     keywords: [
       'case study',
@@ -208,7 +208,7 @@ export const pageMetadata = {
   policy: generateSEO({
     title: 'Chính Sách & Điều Khoản',
     description:
-      'Điều khoản sử dụng, chính sách bảo mật, thanh toán và hoàn tiền của GalaVote. Cam kết minh bạch và bảo vệ quyền lợi khách hàng.',
+      'Điều khoản sử dụng, chính sách bảo mật, thanh toán và hoàn tiền của Bright4Event. Cam kết minh bạch và bảo vệ quyền lợi khách hàng.',
     path: '/policy',
     keywords: [
       'chính sách',
@@ -223,7 +223,7 @@ export const pageMetadata = {
   vote: generateSEO({
     title: 'Bình Chọn Sự Kiện',
     description:
-      'Tham gia bình chọn sự kiện trên GalaVote. Giao diện đơn giản, bình chọn nhanh chóng, kết quả minh bạch.',
+      'Tham gia bình chọn sự kiện trên Bright4Event. Giao diện đơn giản, bình chọn nhanh chóng, kết quả minh bạch.',
     path: '/vote',
     keywords: [
       'bình chọn online',
@@ -244,7 +244,7 @@ export function generateEventMetadata(
     title: eventName || `Sự Kiện ${eventId}`,
     description:
       eventDescription ||
-      `Tham gia bình chọn và xem kết quả sự kiện ${eventName || eventId} trên GalaVote. Check-in, vote và trải nghiệm sự kiện một cách chuyên nghiệp nhất.`,
+      `Tham gia bình chọn và xem kết quả sự kiện ${eventName || eventId} trên Bright4Event. Check-in, vote và trải nghiệm sự kiện một cách chuyên nghiệp nhất.`,
     path: `/event/${eventId}`,
     keywords: [
       eventName || '',

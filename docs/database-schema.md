@@ -1,4 +1,4 @@
-# DATABASE SCHEMA - GalaVote
+# DATABASE SCHEMA - Bright4Event
 
 > Chi tiết về cấu trúc database, SQL scripts, relationships và RLS policies
 
@@ -386,7 +386,7 @@ COMMENT ON COLUMN otp_verifications.expires_at IS 'OTP expires after 10 minutes'
 
 ```sql
 -- =============================================
--- GalaVote - DATABASE SCHEMA
+-- Bright4Event - DATABASE SCHEMA
 -- Supabase (PostgreSQL 15)
 -- =============================================
 

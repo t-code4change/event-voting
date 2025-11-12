@@ -6,6 +6,7 @@ import confetti from 'canvas-confetti'
 import { Sparkles, ArrowRight, Users, Clock, BarChart3, PartyPopper, TrendingUp, Award, Zap, CheckCircle } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
+import Header from '@/components/Header'
 
 // Mock data - Replace with real data from API/CMS
 const caseStudies = [
@@ -132,6 +133,7 @@ export default function CaseStudiesPage() {
 
   return (
     <div className="min-h-screen bg-[#0A0A0A] text-[#EAEAEA] relative overflow-hidden">
+      <Header />
       <div className="absolute inset-0 bg-gradient-to-br from-[#0A0A0A] via-[#1A1A1A] to-[#0A0A0A] opacity-50" />
 
       <div className="absolute inset-0">
@@ -184,11 +186,11 @@ export default function CaseStudiesPage() {
               Câu Chuyện Thành Công
             </h1>
             <p className="text-2xl md:text-3xl mb-4 text-[#FFD700]">
-              Cùng GalaVote ✨
+              Cùng Bright4Event ✨
             </p>
             <p className="text-lg md:text-xl text-[#AAAAAA] mb-8 max-w-3xl mx-auto">
               Khám phá cách các doanh nghiệp hàng đầu đã biến sự kiện của họ trở nên đáng nhớ,
-              tương tác hơn và chuyên nghiệp hơn với GalaVote.
+              tương tác hơn và chuyên nghiệp hơn với Bright4Event.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -244,7 +246,7 @@ export default function CaseStudiesPage() {
                   </p>
 
                   <blockquote className="text-lg italic text-[#AAAAAA] mb-8 max-w-2xl mx-auto border-l-4 border-[#FFD700] pl-6">
-                    "GalaVote giúp chúng tôi tiết kiệm hơn 3 giờ vận hành và tạo nên trải nghiệm sự kiện đáng nhớ!"
+                    "Bright4Event giúp chúng tôi tiết kiệm hơn 3 giờ vận hành và tạo nên trải nghiệm sự kiện đáng nhớ!"
                     <footer className="text-sm mt-2 text-[#FFD700] not-italic">
                       — Event Manager, TechViet
                     </footer>
@@ -278,7 +280,7 @@ export default function CaseStudiesPage() {
                 Các Case Study Nổi Bật
               </h2>
               <p className="text-lg text-[#AAAAAA]">
-                Hơn 500+ sự kiện thành công cùng GalaVote
+                Hơn 500+ sự kiện thành công cùng Bright4Event
               </p>
             </motion.div>
 
@@ -362,7 +364,7 @@ export default function CaseStudiesPage() {
               className="text-center mb-16"
             >
               <h2 className="text-3xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-[#FFD700] to-[#FDB931] bg-clip-text text-transparent">
-                Lợi Ích Khi Sử Dụng GalaVote
+                Lợi Ích Khi Sử Dụng Bright4Event
               </h2>
               <p className="text-lg text-[#AAAAAA]">
                 Tạo sự khác biệt cho sự kiện của bạn
@@ -417,7 +419,7 @@ export default function CaseStudiesPage() {
               trở thành câu chuyện thành công tiếp theo? 🚀
             </p>
             <p className="text-lg text-[#AAAAAA] mb-12 max-w-2xl mx-auto">
-              Hãy để GalaVote giúp bạn tạo nên sự kiện đáng nhớ, chuyên nghiệp và ấn tượng
+              Hãy để Bright4Event giúp bạn tạo nên sự kiện đáng nhớ, chuyên nghiệp và ấn tượng
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

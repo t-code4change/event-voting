@@ -207,7 +207,7 @@ export default function HelloPage() {
 
                 <motion.div variants={fadeIn} className="space-y-6">
                   <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-gray-900">
-                    GalaVote
+                    Bright4Event
                     <span className="block mt-2 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                       Biến mỗi sự kiện
                     </span>
@@ -765,7 +765,7 @@ export default function HelloPage() {
               transition={{ delay: 0.5, duration: 0.6 }}
               className="text-xl md:text-2xl leading-relaxed"
             >
-              Hãy để <strong>GalaVote</strong> biến mỗi sự kiện thành một trải nghiệm đáng nhớ
+              Hãy để <strong>Bright4Event</strong> biến mỗi sự kiện thành một trải nghiệm đáng nhớ
             </motion.p>
 
             <motion.div
@@ -829,13 +829,13 @@ export default function HelloPage() {
             <div className="flex items-center justify-center gap-2">
               <Trophy className="h-6 w-6 text-blue-400" />
               <span className="text-xl font-bold">
-                GalaVote
+                Bright4Event
               </span>
             </div>
 
             <div className="space-y-2">
               <p className="text-sm text-gray-400">
-                © 2025 GalaVote by Code4Change.tech
+                © 2025 Bright4Event by Code4Change.tech
               </p>
               <p className="text-sm text-gray-400">
                 Website: <a href="https://quaysotrungthuong.vn" className="hover:text-blue-400 transition-colors">quaysotrungthuong.vn</a>

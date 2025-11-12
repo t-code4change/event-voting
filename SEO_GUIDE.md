@@ -1,4 +1,4 @@
-# Hướng Dẫn SEO Cho GalaVote
+# Hướng Dẫn SEO Cho Bright4Event
 
 ## Tổng Quan
 
@@ -195,7 +195,7 @@ npm start
 - Độ dài: 50-60 ký tự
 - Chứa keyword chính
 - Mỗi trang có title unique
-- Format: `Page Title | GalaVote`
+- Format: `Page Title | Bright4Event`
 
 ### 2. Meta Descriptions
 - Độ dài: 150-160 ký tự

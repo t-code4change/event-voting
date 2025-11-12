@@ -349,7 +349,7 @@ export default function GuidePage() {
     {
       icon: Code,
       title: "Tích hợp API & xuất dữ liệu",
-      description: "Kết nối GalaVote với hệ thống CRM, ERP của bạn thông qua API. Xuất dữ liệu vote, check-in và analytics ra nhiều định dạng (JSON, CSV, Excel) để phân tích sâu hơn.",
+      description: "Kết nối Bright4Event với hệ thống CRM, ERP của bạn thông qua API. Xuất dữ liệu vote, check-in và analytics ra nhiều định dạng (JSON, CSV, Excel) để phân tích sâu hơn.",
     },
     {
       icon: Gift,
@@ -505,7 +505,7 @@ export default function GuidePage() {
                 Khởi đầu cùng
               </span>
               <span className="block bg-gradient-to-r from-[#FFD700] via-[#FDB931] to-[#FFD700] bg-clip-text text-transparent">
-                GalaVote
+                Bright4Event
               </span>
             </motion.h1>
 
@@ -752,10 +752,10 @@ export default function GuidePage() {
             className="text-center mb-12"
           >
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-              Trải nghiệm GalaVote trong <span className="text-[#FFD700]">60 giây</span>
+              Trải nghiệm Bright4Event trong <span className="text-[#FFD700]">60 giây</span>
             </h2>
             <p className="text-xl text-gray-400">
-              Xem demo ngay để hiểu rõ cách GalaVote hoạt động
+              Xem demo ngay để hiểu rõ cách Bright4Event hoạt động
             </p>
           </motion.div>
 
@@ -810,7 +810,7 @@ export default function GuidePage() {
               Câu Hỏi <span className="text-[#FFD700]">Thường Gặp</span>
             </h2>
             <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-              Giải đáp những thắc mắc phổ biến về GalaVote
+              Giải đáp những thắc mắc phổ biến về Bright4Event
             </p>
           </motion.div>
 
@@ -875,7 +875,7 @@ export default function GuidePage() {
 
             <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
               Sẵn sàng tổ chức sự kiện<br />
-              <span className="text-[#FFD700]">đáng nhớ cùng GalaVote?</span>
+              <span className="text-[#FFD700]">đáng nhớ cùng Bright4Event?</span>
             </h2>
 
             <p className="text-xl md:text-2xl text-gray-300 max-w-2xl mx-auto">
@@ -925,7 +925,7 @@ export default function GuidePage() {
       <footer className="relative bg-[#0D0D1A] border-t border-[#FFD700]/20 py-12">
         <div className="container px-4">
           <div className="text-center text-gray-500 text-sm">
-            © 2025 GalaVote by Code4Change.tech. All rights reserved.
+            © 2025 Bright4Event by Code4Change.tech. All rights reserved.
           </div>
         </div>
       </footer>

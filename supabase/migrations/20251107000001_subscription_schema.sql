@@ -1,6 +1,6 @@
 -- =============================================
 -- SUBSCRIPTION & BILLING SYSTEM - DATABASE SCHEMA
--- Extension to GalaVote
+-- Extension to Bright4Event
 -- Updated: 2025-11-06
 -- =============================================
 

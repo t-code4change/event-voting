@@ -14,7 +14,7 @@ export default function VoteRedirectPage() {
   const router = useRouter()
 
   useEffect(() => {
-    // Redirect to the demo GalaVote page
+    // Redirect to the demo Bright4Event page
     router.replace(`/event/${DEMO_EVENT_ID}/vote`)
   }, [router])
 

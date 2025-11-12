@@ -1,10 +1,10 @@
-# 🗺️ Navigation Guide - GalaVote Platform
+# 🗺️ Navigation Guide - Bright4Event Platform
 
 ## Quick Start
 
 ### 🏠 Homepage (App Portal) - `/`
 **What you'll see:**
-- Welcome screen with GalaVote logo
+- Welcome screen with Bright4Event logo
 - 3 main action cards:
   - 🎟️ **Tham gia sự kiện** (Join Event)
   - 🔐 **Đăng nhập** (Login)
@@ -14,7 +14,7 @@
 1. **Join an event** → Click "Tham gia sự kiện" → Enter event code → Start voting
 2. **Login as organizer** → Click "Đăng nhập" → Go to admin dashboard
 3. **View results** → Click "Xem kết quả" → See live voting results
-4. **Learn more** → Click "Tìm hiểu thêm về GalaVote" → Go to marketing page
+4. **Learn more** → Click "Tìm hiểu thêm về Bright4Event" → Go to marketing page
 
 ---
 
@@ -74,7 +74,7 @@ Manage events at: /admin/dashboard
 ```
 Start at: /
 ↓
-Click: "Tìm hiểu thêm về GalaVote"
+Click: "Tìm hiểu thêm về Bright4Event"
 ↓
 Arrive at: /hello
 ↓
@@ -142,7 +142,7 @@ View live voting results
 - `/pricing` - Pricing information
 
 ### Event Pages:
-- `/event/[eventId]/vote` - GalaVote page
+- `/event/[eventId]/vote` - Bright4Event page
 - `/event/[eventId]/results` - Event results page
 
 ### Admin Pages:
@@ -231,7 +231,7 @@ View live voting results
     │
     ▼
 ┌──────────────┐
-│ GalaVote │
+│ Bright4Event │
 │    Page      │
 └──────────────┘
 ```

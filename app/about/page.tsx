@@ -101,7 +101,7 @@ export default function AboutPage() {
 
   const milestones = [
     { year: "2023", event: "Thành lập Code4Change Media", highlight: true },
-    { year: "2024", event: "Ra mắt GalaVote Beta với 50+ sự kiện pilot" },
+    { year: "2024", event: "Ra mắt Bright4Event Beta với 50+ sự kiện pilot" },
     { year: "2025 Q1", event: "Đạt 200+ sự kiện thành công, 150K+ người tham gia" },
     { year: "2025 Q4", event: "Mở rộng sang khu vực Đông Nam Á", highlight: true },
   ]
@@ -150,7 +150,7 @@ export default function AboutPage() {
             >
               <span className="block text-white mb-4">Về</span>
               <span className="block bg-gradient-to-r from-[#FFD700] via-[#FDB931] to-[#FFD700] bg-clip-text text-transparent">
-                GalaVote
+                Bright4Event
               </span>
             </motion.h1>
 
@@ -373,7 +373,7 @@ export default function AboutPage() {
               <span className="text-[#FFD700]">của riêng bạn?</span>
             </h2>
             <p className="text-xl text-gray-200 max-w-2xl mx-auto">
-              Hãy để GalaVote đồng hành cùng bạn trong mọi sự kiện đáng nhớ
+              Hãy để Bright4Event đồng hành cùng bạn trong mọi sự kiện đáng nhớ
             </p>
             <motion.button
               whileHover={{ scale: 1.05 }}
@@ -390,7 +390,7 @@ export default function AboutPage() {
       {/* FOOTER */}
       <footer className="relative bg-[#0A0A0A] border-t border-[#FFD700]/20 py-12">
         <div className="container px-4 text-center text-gray-500">
-          <p>© 2025 GalaVote by Code4Change Media. All rights reserved.</p>
+          <p>© 2025 Bright4Event by Code4Change Media. All rights reserved.</p>
         </div>
       </footer>
     </div>

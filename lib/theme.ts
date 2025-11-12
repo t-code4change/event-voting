@@ -1,5 +1,5 @@
 /**
- * Design System - GalaVote Platform
+ * Design System - Bright4Event Platform
  * Main color scheme: Blue (#0072F5) + Purple (#9C27FF)
  */
 

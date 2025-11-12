@@ -65,8 +65,8 @@ Hệ thống logging tự động gửi notifications về Discord channel khi c
 1. Mở Discord server của bạn
 2. Vào **Server Settings** → **Integrations** → **Webhooks**
 3. Click **New Webhook**
-4. Đặt tên: `GalaVote Logs`
-5. Chọn channel để nhận logs (VD: `#galavote-logs`)
+4. Đặt tên: `Bright4Event Logs`
+5. Chọn channel để nhận logs (VD: `#Bright4Event-logs`)
 6. Copy **Webhook URL**
 
 ### 2. Add to Environment Variables
@@ -99,7 +99,7 @@ Email: user@example.com
 Method: email
 Timestamp: 10/11/2025 14:30:45
 
-GalaVote Event Tracking
+Bright4Event Event Tracking
 ```
 
 ### Color Codes:
@@ -288,10 +288,10 @@ Create a dedicated channel structure:
 
 ```
 📊 analytics
-  ├─ 📈 #galavote-logs (all events)
-  ├─ ✅ #galavote-success (login, register, payments)
-  ├─ 🚨 #galavote-errors (errors only)
-  └─ 💰 #galavote-payments (payment events)
+  ├─ 📈 #Bright4Event-logs (all events)
+  ├─ ✅ #Bright4Event-success (login, register, payments)
+  ├─ 🚨 #Bright4Event-errors (errors only)
+  └─ 💰 #Bright4Event-payments (payment events)
 ```
 
 Use multiple webhooks to route events to different channels.

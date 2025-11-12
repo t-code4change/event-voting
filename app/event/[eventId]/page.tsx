@@ -595,7 +595,7 @@ export default function EventLandingPage() {
               >
                 <p className="text-gray-500 text-sm">
                   Powered by{' '}
-                  <span className="text-[#FFD700] font-semibold">GalaVote Platform</span>
+                  <span className="text-[#FFD700] font-semibold">Bright4Event Platform</span>
                 </p>
                 <p className="text-gray-600 text-xs mt-2">
                   � 2025 ABC Media. All rights reserved.

@@ -81,7 +81,7 @@ function Confetti({ show }: { show: boolean }) {
   )
 }
 
-export default function GalaVotePage() {
+export default function Bright4EventPage() {
   const router = useRouter()
   const [showEventSearch, setShowEventSearch] = useState(false)
   const [eventCode, setEventCode] = useState("")
@@ -657,7 +657,7 @@ export default function GalaVotePage() {
             </h2>
 
             <p className="text-xl md:text-2xl text-gray-300">
-              Khởi động hành trình của bạn cùng <strong className="text-[#FFD700]">GalaVote</strong>
+              Khởi động hành trình của bạn cùng <strong className="text-[#FFD700]">Bright4Event</strong>
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
@@ -724,7 +724,7 @@ export default function GalaVotePage() {
             <div className="space-y-4">
               <div className="flex items-center gap-2">
                 <Crown className="h-8 w-8 text-[#FFD700]" />
-                <span className="text-2xl font-bold text-white">GalaVote</span>
+                <span className="text-2xl font-bold text-white">Bright4Event</span>
               </div>
               <p className="text-gray-400 italic">Powering every great event.</p>
             </div>
@@ -783,7 +783,7 @@ export default function GalaVotePage() {
 
           <div className="border-t border-[#FFD700]/20 mt-8 pt-8 text-center">
             <p className="text-gray-500 text-sm">
-              © 2025 GalaVote by Code4Change.tech. All rights reserved.
+              © 2025 Bright4Event by Code4Change.tech. All rights reserved.
             </p>
           </div>
         </motion.div>

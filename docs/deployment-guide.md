@@ -1,4 +1,4 @@
-# DEPLOYMENT GUIDE - GalaVote
+# DEPLOYMENT GUIDE - Bright4Event
 
 > Hướng dẫn chi tiết triển khai production từ A-Z
 

@@ -1,4 +1,4 @@
-# 🗳️ GalaVote
+# 🗳️ Bright4Event
 
 Hệ thống bình chọn sự kiện hiện đại, minh bạch và dễ sử dụng - được xây dựng với Next.js 14 và Supabase.
 

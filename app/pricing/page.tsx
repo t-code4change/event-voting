@@ -244,7 +244,7 @@ export default function PricingPage() {
             </Badge>
 
             <h1 className="text-4xl md:text-6xl font-playfair font-bold text-white leading-tight" style={{ textShadow: '0 0 20px rgba(255,215,0,0.4), 0 2px 8px rgba(0,0,0,0.8)' }}>
-              Bảng giá dịch vụ GalaVote
+              Bảng giá dịch vụ Bright4Event
             </h1>
 
             <p className="text-xl md:text-2xl text-[#FFE68A] max-w-3xl mx-auto" style={{ textShadow: '0 2px 6px rgba(0,0,0,0.8)' }}>
@@ -253,7 +253,7 @@ export default function PricingPage() {
 
             <p className="text-lg text-[#FAF3E0]/80 max-w-4xl mx-auto">
               Chọn gói phù hợp với quy mô và nhu cầu sự kiện của bạn. <br className="hidden md:block" />
-              Từ Gala Dinner, Year-end Party đến sự kiện hàng nghìn khách – GalaVote luôn sẵn sàng đồng hành.
+              Từ Gala Dinner, Year-end Party đến sự kiện hàng nghìn khách – Bright4Event luôn sẵn sàng đồng hành.
             </p>
           </motion.div>
         </div>
@@ -529,7 +529,7 @@ export default function PricingPage() {
                   </h2>
 
                   <p className="text-xl md:text-2xl text-gray-300 mb-2">
-                      Hãy để <strong className="text-[#FFD700]">GalaVote</strong> giúp bạn tạo nên khoảnh khắc ấn tượng
+                      Hãy để <strong className="text-[#FFD700]">Bright4Event</strong> giúp bạn tạo nên khoảnh khắc ấn tượng
                   </p>
                   <p className="text-lg text-gray-400">
                       cho doanh nghiệp của bạn
@@ -588,13 +588,13 @@ export default function PricingPage() {
             <div className="flex items-center justify-center gap-2 group">
               <Crown className="h-6 w-6 text-[#FFD700] group-hover:scale-110 transition-transform" />
               <span className="text-xl font-playfair font-bold bg-gradient-to-r from-[#FFD700] to-white bg-clip-text text-transparent">
-                GalaVote
+                Bright4Event
               </span>
             </div>
 
             <div className="space-y-2">
               <p className="text-sm text-[#FFE68A] font-medium">
-                © 2025 GalaVote by Code4Change.tech
+                © 2025 Bright4Event by Code4Change.tech
               </p>
               <p className="text-sm text-[#FAF3E0]/60">
                 Website: <a href="https://quaysotrungthuong.vn" className="hover:text-[#FFD700] transition-colors">quaysotrungthuong.vn</a>

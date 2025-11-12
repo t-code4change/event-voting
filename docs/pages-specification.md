@@ -1,4 +1,4 @@
-# PAGES SPECIFICATION - GalaVote
+# PAGES SPECIFICATION - Bright4Event
 
 > Mô tả chi tiết tất cả pages, layouts và navigation flows
 
@@ -60,7 +60,7 @@ event-voting/
 ```
 ┌─────────────────────────────────────────────┐
 │ Header                                      │
-│ [Logo] GalaVote      [Results] [Admin] │
+│ [Logo] Bright4Event      [Results] [Admin] │
 ├─────────────────────────────────────────────┤
 │                                             │
 │           🎉 HERO SECTION                   │

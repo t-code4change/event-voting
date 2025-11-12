@@ -126,7 +126,7 @@ export default function SuccessPaymentStep({ successText, planName, onClose }: S
           transition={{ delay: 2 }}
           className="text-xl text-[#FAF3E0] mt-6"
         >
-          Cảm ơn bạn đã chọn GalaVote
+          Cảm ơn bạn đã chọn Bright4Event
         </motion.p>
 
         <motion.p

@@ -1,15 +1,15 @@
-# 👑 GalaVote - Premium Event Portal
+# 👑 Bright4Event - Premium Event Portal
 
 ## ✨ Redesign Complete
 
-Successfully transformed the homepage into a **luxurious, premium event experience** called **GalaVote**.
+Successfully transformed the homepage into a **luxurious, premium event experience** called **Bright4Event**.
 
 ---
 
 ## 🎨 Design Identity
 
 ### Brand Name
-**GalaVote** - Powering every great event.
+**Bright4Event** - Powering every great event.
 
 ### Visual Theme
 - **Premium Event / Gala Night / Live Stage**
@@ -134,7 +134,7 @@ linear-gradient(90deg, #FFD700, #FDB931, #FFD700)
 **Content**:
 - ✨ Large Sparkles icon
 - **Headline**: "Sự kiện không chỉ là chương trình — đó là trải nghiệm"
-- **Subtext**: "Khởi động hành trình của bạn cùng GalaVote"
+- **Subtext**: "Khởi động hành trình của bạn cùng Bright4Event"
 - **2 Buttons**:
   - 📈 **Tạo sự kiện của bạn** (Gold gradient, pulsing sparkle)
   - ✨ **Khám phá thêm tại /hello** (White outline)
@@ -148,7 +148,7 @@ linear-gradient(90deg, #FFD700, #FDB931, #FFD700)
 ---
 
 ### 5. 📞 Footer
-**Brand**: GalaVote with Crown icon
+**Brand**: Bright4Event with Crown icon
 
 **Sections**:
 - **Logo & Slogan**: "Powering every great event."
@@ -159,7 +159,7 @@ linear-gradient(90deg, #FFD700, #FDB931, #FFD700)
 - Dark background (#0D0D1A)
 - Gold border top
 - Gray text with gold hover
-- Copyright: "© 2025 GalaVote by Code4Change.tech"
+- Copyright: "© 2025 Bright4Event by Code4Change.tech"
 
 ---
 
@@ -313,14 +313,14 @@ Infinite loop
 
 ## 📊 Comparison
 
-### Before (GalaVote)
+### Before (Bright4Event)
 - Blue/purple color scheme
 - App portal focus
 - 3 action cards
 - Stats preview
 - Clean, minimal
 
-### After (GalaVote)
+### After (Bright4Event)
 - **Gold/black premium theme**
 - **Gala event atmosphere**
 - **Full immersive hero**
@@ -344,13 +344,13 @@ Infinite loop
 
 ### Removed
 - ❌ Blue/purple app portal theme
-- ❌ "Tìm hiểu thêm về GalaVote" button
+- ❌ "Tìm hiểu thêm về Bright4Event" button
 - ❌ "Xem kết quả" card
 - ❌ Features preview cards
 - ❌ Quick stats bar
 
 ### Added
-- ✅ **GalaVote branding** with Crown icon
+- ✅ **Bright4Event branding** with Crown icon
 - ✅ **Full-screen hero** with stage background
 - ✅ **Spotlight sweep** animation
 - ✅ **Confetti system** on page load
@@ -365,7 +365,7 @@ Infinite loop
 - ✨ **Typography** → Larger, bolder, more confident
 - ✨ **Animations** → More elaborate and celebratory
 - ✨ **Layout** → Premium gala event feel
-- ✨ **Footer** → GalaVote branding
+- ✨ **Footer** → Bright4Event branding
 
 ---
 
@@ -397,7 +397,7 @@ npm start
 
 ### Logo Usage
 ```
-👑 GalaVote
+👑 Bright4Event
 ```
 - Crown icon: `#FFD700`
 - Text: `#FFFFFF`
@@ -443,8 +443,8 @@ npm start
 
 **Created**: November 8, 2025
 **Status**: ✅ Complete and Production-Ready
-**Brand**: GalaVote - Powering every great event.
+**Brand**: Bright4Event - Powering every great event.
 
 ---
 
-**Experience the difference. Feel the celebration. Choose GalaVote.** 👑
+**Experience the difference. Feel the celebration. Choose Bright4Event.** 👑

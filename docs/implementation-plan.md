@@ -1,4 +1,4 @@
-# KẾ HOẠCH TRIỂN KHAI CHI TIẾT - GalaVote
+# KẾ HOẠCH TRIỂN KHAI CHI TIẾT - Bright4Event
 
 > **Tài liệu tham chiếu chính** cho toàn bộ quá trình phát triển dự án
 
@@ -44,7 +44,7 @@ Xây dựng hệ thống voting cho sự kiện với các tính năng:
 
 ```mermaid
 gantt
-    title GalaVote - Development Timeline
+    title Bright4Event - Development Timeline
     dateFormat  YYYY-MM-DD
     section Phase 1
     Project Setup           :2025-11-05, 2d

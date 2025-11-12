@@ -4,7 +4,7 @@ import { ImageResponse } from 'next/og'
 export const runtime = 'edge'
 
 // Image metadata
-export const alt = 'GalaVote - Hệ thống Bình chọn Sự kiện Chuyên Nghiệp'
+export const alt = 'Bright4Event - Hệ thống Bình chọn Sự kiện Chuyên Nghiệp'
 export const size = {
   width: 1200,
   height: 630,
@@ -68,7 +68,7 @@ export default async function Image() {
             padding: '0 40px',
           }}
         >
-          GalaVote
+          Bright4Event
         </div>
 
         {/* Subtitle */}
