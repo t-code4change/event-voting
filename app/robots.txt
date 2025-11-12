@@ -1,0 +1,21 @@
+# robots.txt for GalaVote Event Voting System
+# https://quaysotrungthuong.vn
+
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Disallow admin pages
+Disallow: /admin/
+Disallow: /api/
+Disallow: /dashboard/
+
+# Allow specific public pages
+Allow: /
+Allow: /pricing
+Allow: /event/
+Allow: /results
+Allow: /hello
+
+# Sitemap location
+Sitemap: https://quaysotrungthuong.vn/sitemap.xml

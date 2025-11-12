@@ -59,19 +59,51 @@ export default function Header() {
         </Link>
 
         <nav className="flex items-center gap-2">
-          {/* Pricing - show on all pages except event pages */}
+          {/* Main navigation links - show on all pages except event pages */}
           {!isEventPage && (
-            <Link href={`/pricing`}>
-              <MyButton
-                variant="ghost"
-                size="medium"
-                className="hidden sm:flex text-[#FAF3E0] hover:text-[#FFD700] hover:bg-[#FFD700]/10"
-                icon={<BadgeDollarSign className="h-4 w-4" />}
-                iconPosition="left"
-              >
-                Bảng giá
-              </MyButton>
-            </Link>
+            <>
+              <Link href="/about" className="hidden md:block">
+                <MyButton
+                  variant="ghost"
+                  size="small"
+                  className="text-[#FAF3E0] hover:text-[#FFD700] hover:bg-[#FFD700]/10 font-medium"
+                >
+                  Giới thiệu
+                </MyButton>
+              </Link>
+
+              <Link href="/blog" className="hidden md:block">
+                <MyButton
+                  variant="ghost"
+                  size="small"
+                  className="text-[#FAF3E0] hover:text-[#FFD700] hover:bg-[#FFD700]/10 font-medium"
+                >
+                  Blog
+                </MyButton>
+              </Link>
+
+              <Link href="/pricing" className="hidden md:block">
+                <MyButton
+                  variant="ghost"
+                  size="small"
+                  className="text-[#FAF3E0] hover:text-[#FFD700] hover:bg-[#FFD700]/10 font-medium"
+                  icon={<BadgeDollarSign className="h-4 w-4" />}
+                  iconPosition="left"
+                >
+                  Bảng giá
+                </MyButton>
+              </Link>
+
+              <Link href="/contact" className="hidden lg:block">
+                <MyButton
+                  variant="ghost"
+                  size="small"
+                  className="text-[#FAF3E0] hover:text-[#FFD700] hover:bg-[#FFD700]/10 font-medium"
+                >
+                  Liên hệ
+                </MyButton>
+              </Link>
+            </>
           )}
 
           {/* Event page menus - only show when in /event/[eventId] path */}
