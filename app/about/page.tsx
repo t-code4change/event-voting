@@ -57,24 +57,24 @@ export default function AboutPage() {
 
   const values = [
     {
-      icon: Heart,
-      title: "Tận tâm",
-      description: "Đặt trải nghiệm khách hàng lên hàng đầu trong mọi sản phẩm và dịch vụ"
+      icon: Sparkles,
+      title: "Sáng tạo 🎨",
+      description: "Đổi mới công nghệ, mang đến trải nghiệm sự kiện độc đáo và ấn tượng"
     },
     {
       icon: Zap,
-      title: "Đổi mới",
-      description: "Không ngừng cải tiến công nghệ để mang đến giải pháp tốt nhất"
+      title: "Chính xác ⚙️",
+      description: "Cam kết hệ thống ổn định, dữ liệu chính xác 100% trong mọi tình huống"
+    },
+    {
+      icon: Heart,
+      title: "Trải nghiệm ✨",
+      description: "Tập trung vào trải nghiệm người dùng, giao diện đẹp và dễ sử dụng"
     },
     {
       icon: Shield,
-      title: "Minh bạch",
-      description: "Cam kết về tính chính xác, bảo mật và công khai trong mọi hoạt động"
-    },
-    {
-      icon: Users,
-      title: "Cộng đồng",
-      description: "Xây dựng hệ sinh thái sự kiện kết nối và phát triển bền vững"
+      title: "Minh bạch 🔐",
+      description: "Bảo mật cao, minh bạch về giá cả và cách thức hoạt động"
     }
   ]
 
@@ -160,9 +160,9 @@ export default function AboutPage() {
               transition={{ delay: 0.4 }}
               className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
             >
-              Nền tảng bình chọn sự kiện hàng đầu Việt Nam,
+              Giải pháp công nghệ sự kiện được xây dựng bởi
               <br />
-              được xây dựng bởi <span className="text-[#FFD700] font-semibold">Code4Change Media</span>
+              <span className="text-[#FFD700] font-semibold">Code4Change</span> – Đội ngũ chuyên về giải pháp sự kiện số
             </motion.p>
           </motion.div>
         </div>
@@ -183,12 +183,26 @@ export default function AboutPage() {
               <div className="absolute inset-0 bg-gradient-to-br from-[#FFD700]/10 to-transparent rounded-3xl blur-xl group-hover:blur-2xl transition-all" />
               <div className="relative bg-gradient-to-br from-[#1a1a1a] to-[#0A0A0A] border-2 border-[#FFD700]/20 hover:border-[#FFD700]/50 rounded-3xl p-8 transition-all">
                 <Target className="w-16 h-16 text-[#FFD700] mb-6" />
-                <h2 className="text-3xl font-bold text-white mb-4">Sứ mệnh</h2>
+                <h2 className="text-3xl font-bold text-white mb-4">Sứ mệnh của chúng tôi</h2>
                 <p className="text-gray-300 leading-relaxed text-lg">
-                  Biến mỗi sự kiện thành trải nghiệm đáng nhớ thông qua công nghệ.
-                  Chúng tôi tin rằng mỗi buổi Gala, Year-end Party hay Team Building
-                  đều xứng đáng có một hệ thống bình chọn chuyên nghiệp, minh bạch và dễ sử dụng.
+                  Giúp mỗi doanh nghiệp biến sự kiện của họ thành một trải nghiệm đáng nhớ,
+                  nơi công nghệ và cảm xúc giao thoa. Từ check-in thông minh, bình chọn realtime,
+                  đến màn hình LED chuyên nghiệp – chúng tôi mang đến giải pháp toàn diện cho mọi sự kiện.
                 </p>
+                <div className="mt-6 space-y-3">
+                  <p className="text-gray-400 flex items-start gap-3">
+                    <span className="text-[#FFD700]">✓</span>
+                    <span>Đã triển khai thành công <strong className="text-white">200+ sự kiện</strong> trên toàn quốc</span>
+                  </p>
+                  <p className="text-gray-400 flex items-start gap-3">
+                    <span className="text-[#FFD700]">✓</span>
+                    <span>Cam kết công nghệ ổn định, giao diện thân thiện, hỗ trợ tận tâm</span>
+                  </p>
+                  <p className="text-gray-400 flex items-start gap-3">
+                    <span className="text-[#FFD700]">✓</span>
+                    <span>Được thành lập bởi <strong className="text-white">Code4Change.tech</strong></span>
+                  </p>
+                </div>
               </div>
             </motion.div>
 
@@ -390,7 +404,7 @@ export default function AboutPage() {
       {/* FOOTER */}
       <footer className="relative bg-[#0A0A0A] border-t border-[#FFD700]/20 py-12">
         <div className="container px-4 text-center text-gray-500">
-          <p>© 2025 Bright4Event by Code4Change Media. All rights reserved.</p>
+          <p>© 2025 Bright4Event by Code4Change.tech. All rights reserved.</p>
         </div>
       </footer>
     </div>
