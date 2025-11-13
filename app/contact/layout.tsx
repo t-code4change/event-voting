@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     description: 'Liên hệ với đội ngũ Bright4Event để được tư vấn và hỗ trợ 24/7.',
   },
   alternates: {
-    canonical: 'https://quaysotrungthuong.vn/contact',
+    canonical: 'https://bright4event.com/contact',
   },
 }
 

@@ -1,5 +1,5 @@
 # robots.txt for Bright4Event Event Voting System
-# https://quaysotrungthuong.vn
+# https://bright4event.com
 
 # Allow all crawlers
 User-agent: *
@@ -18,4 +18,4 @@ Allow: /results
 Allow: /hello
 
 # Sitemap location
-Sitemap: https://quaysotrungthuong.vn/sitemap.xml
+Sitemap: https://bright4event.com/sitemap.xml

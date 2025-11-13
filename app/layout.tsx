@@ -15,7 +15,7 @@ const playfair = Playfair_Display({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://quaysotrungthuong.vn'),
+  metadataBase: new URL('https://bright4event.com'),
   title: {
     default: "Bright4Event - Hệ thống Bình chọn Sự kiện Chuyên Nghiệp",
     template: "%s | Bright4Event"
@@ -35,10 +35,14 @@ export const metadata: Metadata = {
     'bình chọn online',
     'quản lý sự kiện',
     'event management',
-    'voting system Vietnam'
+    'voting system Vietnam',
+    'bright4event',
+    'hệ thống sự kiện',
+    'bình chọn trực tuyến',
+    'vote online'
   ],
-  authors: [{ name: 'Code4Change.tech', url: 'https://code4change.tech' }],
-  creator: 'Code4Change.tech',
+  authors: [{ name: 'Bright4Event', url: 'https://bright4event.com' }],
+  creator: 'Bright4Event',
   publisher: 'Bright4Event',
   formatDetection: {
     email: false,
@@ -48,7 +52,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'vi_VN',
-    url: 'https://quaysotrungthuong.vn',
+    url: 'https://bright4event.com',
     siteName: 'Bright4Event',
     title: 'Bright4Event - Hệ thống Bình chọn Sự kiện Chuyên Nghiệp',
     description: 'Nền tảng bình chọn sự kiện hàng đầu Việt Nam. Check-in QR Code, Vote realtime, Lucky Draw và Analytics cho sự kiện của bạn.',
@@ -80,7 +84,7 @@ export const metadata: Metadata = {
     yandex: 'your-yandex-verification-code',
   },
   alternates: {
-    canonical: 'https://quaysotrungthuong.vn',
+    canonical: 'https://bright4event.com',
   },
   category: 'technology',
 }

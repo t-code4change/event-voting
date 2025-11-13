@@ -114,7 +114,7 @@ export default async function Image() {
             color: '#999',
           }}
         >
-          quaysotrungthuong.vn
+          bright4event.com
         </div>
       </div>
     ),

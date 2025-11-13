@@ -309,7 +309,7 @@ export default function Header() {
               </Link>
 
               {/* Lucky Draw button - desktop */}
-              <a href="https://quaysotrungthuong.vn/app" target="_blank" rel="noopener noreferrer">
+              <a href="https://bright4event.com/app" target="_blank" rel="noopener noreferrer">
                 <MyButton
                   variant="ghost"
                   size="medium"
@@ -322,7 +322,7 @@ export default function Header() {
               </a>
 
               {/* Lucky Draw button - mobile */}
-              <a href="https://quaysotrungthuong.vn/app" target="_blank" rel="noopener noreferrer">
+              <a href="https://bright4event.com/app" target="_blank" rel="noopener noreferrer">
                 <MyButton
                   variant="ghost"
                   size="small"

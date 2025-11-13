@@ -766,7 +766,7 @@ export default function Bright4EventPage() {
               <h3 className="text-white font-semibold mb-4">Contact</h3>
               <div className="space-y-2 text-gray-400">
                 <p>code4change.co@gmail.com</p>
-                <p>quaysotrungthuong.vn</p>
+                <p>bright4event.com</p>
                 <div className="flex gap-4 pt-2">
                   {['Facebook', 'Twitter', 'LinkedIn'].map((social) => (
                     <span

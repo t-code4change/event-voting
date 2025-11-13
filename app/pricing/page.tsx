@@ -597,7 +597,7 @@ export default function PricingPage() {
                 © 2025 Bright4Event by Code4Change.tech
               </p>
               <p className="text-sm text-[#FAF3E0]/60">
-                Website: <a href="https://quaysotrungthuong.vn" className="hover:text-[#FFD700] transition-colors">quaysotrungthuong.vn</a>
+                Website: <a href="https://bright4event.com" className="hover:text-[#FFD700] transition-colors">bright4event.com</a>
               </p>
               <p className="text-sm text-[#FAF3E0]/60">
                 Liên hệ: <a href="mailto:code4change.co@gmail.com" className="hover:text-[#FFD700] transition-colors">code4change.co@gmail.com</a>

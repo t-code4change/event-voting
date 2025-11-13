@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 
-const baseUrl = 'https://quaysotrungthuong.vn'
+const baseUrl = 'https://bright4event.com'
 
 interface SEOProps {
   title: string

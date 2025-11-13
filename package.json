@@ -2,6 +2,7 @@
   "name": "event-voting",
   "version": "1.0.0",
   "private": true,
+  "homepage": "https://bright4event.com",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

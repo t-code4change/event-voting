@@ -838,7 +838,7 @@ export default function HelloPage() {
                 © 2025 Bright4Event by Code4Change.tech
               </p>
               <p className="text-sm text-gray-400">
-                Website: <a href="https://quaysotrungthuong.vn" className="hover:text-blue-400 transition-colors">quaysotrungthuong.vn</a>
+                Website: <a href="https://bright4event.com" className="hover:text-blue-400 transition-colors">bright4event.com</a>
               </p>
               <p className="text-sm text-gray-400">
                 Liên hệ: <a href="mailto:code4change.co@gmail.com" className="hover:text-blue-400 transition-colors">code4change.co@gmail.com</a>

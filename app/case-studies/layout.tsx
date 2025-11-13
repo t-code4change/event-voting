@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     description: 'Câu chuyện thành công từ các sự kiện sử dụng nền tảng Bright4Event.',
   },
   alternates: {
-    canonical: 'https://quaysotrungthuong.vn/case-studies',
+    canonical: 'https://bright4event.com/case-studies',
   },
 }
 

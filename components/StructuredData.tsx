@@ -9,8 +9,8 @@ interface OrganizationSchemaProps {
 
 export function OrganizationSchema({
   name = 'Bright4Event',
-  url = 'https://quaysotrungthuong.vn',
-  logo = 'https://quaysotrungthuong.vn/logo.png',
+  url = 'https://bright4event.com',
+  logo = 'https://bright4event.com/logo.png',
   description = 'Nền tảng bình chọn sự kiện hàng đầu Việt Nam',
 }: OrganizationSchemaProps) {
   const schema = {
@@ -31,8 +31,8 @@ export function OrganizationSchema({
       email: 'code4change.co@gmail.com',
     },
     sameAs: [
-      'https://www.facebook.com/quaysotrungthuong.vn',
-      'https://www.linkedin.com/company/code4change',
+      'https://www.facebook.com/bright4event',
+      'https://www.linkedin.com/company/bright4event',
     ],
   }
 
@@ -53,7 +53,7 @@ interface WebsiteSchemaProps {
 
 export function WebsiteSchema({
   name = 'Bright4Event',
-  url = 'https://quaysotrungthuong.vn',
+  url = 'https://bright4event.com',
   description = 'Hệ thống bình chọn sự kiện chuyên nghiệp',
 }: WebsiteSchemaProps) {
   const schema = {
@@ -102,7 +102,7 @@ export function EventSchema({
   startDate,
   endDate,
   location,
-  image = 'https://quaysotrungthuong.vn/og-image.png',
+  image = 'https://bright4event.com/og-image.png',
   url,
   eventAttendanceMode = 'OfflineEventAttendanceMode',
   eventStatus = 'EventScheduled',
@@ -132,7 +132,7 @@ export function EventSchema({
     organizer: {
       '@type': 'Organization',
       name: 'Bright4Event',
-      url: 'https://quaysotrungthuong.vn',
+      url: 'https://bright4event.com',
     },
   }
 
@@ -189,7 +189,7 @@ export function ProductSchema({
   price,
   currency = 'VND',
   availability = 'InStock',
-  image = 'https://quaysotrungthuong.vn/og-image.png',
+  image = 'https://bright4event.com/og-image.png',
   url,
 }: ProductSchemaProps) {
   const schema = {
@@ -205,7 +205,7 @@ export function ProductSchema({
         price,
         priceCurrency: currency,
         availability: `https://schema.org/${availability}`,
-        url: url || 'https://quaysotrungthuong.vn/pricing',
+        url: url || 'https://bright4event.com/pricing',
       },
     }),
     brand: {

@@ -480,7 +480,7 @@ export default function EventLandingPage() {
               whileHover={{ scale: 1.1 }}
               className="inline-block"
             >
-              <Link href={"https://quaysotrungthuong.vn/app"} target={"_blank"} rel="noopener noreferrer">
+              <Link href={"https://bright4event.com/app"} target={"_blank"} rel="noopener noreferrer">
                   <MyButton
                       variant="primary"
                       size="large"
@@ -574,7 +574,7 @@ export default function EventLandingPage() {
               {/* Social Links */}
               <div className="flex gap-6 justify-center mb-8">
                 {['Facebook', 'Instagram', 'LinkedIn', 'YouTube'].map((social) => (
-                  <Link href="https://www.facebook.com/quaysotrungthuong.vn" target="_blank" rel="noopener noreferrer">
+                  <Link href="https://www.facebook.com/bright4event" target="_blank" rel="noopener noreferrer">
                       <motion.span
                           key={social}
                           whileHover={{ scale: 1.1, color: '#FFD700' }}

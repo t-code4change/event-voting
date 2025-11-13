@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     description: 'Tất cả câu hỏi về Bright4Event được giải đáp chi tiết.',
   },
   alternates: {
-    canonical: 'https://quaysotrungthuong.vn/faq',
+    canonical: 'https://bright4event.com/faq',
   },
 }
 
