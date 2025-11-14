@@ -10,6 +10,10 @@ export default function NewsletterSubscription() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
 
+  const randomInRange = (min: number, max: number) => {
+    return Math.random() * (max - min) + min
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
@@ -50,10 +54,6 @@ export default function NewsletterSubscription() {
           ticks: 60,
           zIndex: 0,
           colors: ['#FFD700', '#FDB931', '#FFA500', '#FFDF00']
-        }
-
-        function randomInRange(min: number, max: number) {
-          return Math.random() * (max - min) + min
         }
 
         const interval: any = setInterval(function() {

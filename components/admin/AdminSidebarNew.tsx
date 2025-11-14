@@ -80,12 +80,12 @@ const navItems: NavItem[] = [
     href: "/admin/result-led",
     glow: "gold",
   },
-  {
-    label: "Lucky Draw",
-    icon: Gift,
-    href: "/admin/lucky-draw",
-    glow: "pink",
-  },
+  // {
+  //   label: "Lucky Draw",
+  //   icon: Gift,
+  //   href: "/admin/lucky-draw",
+  //   glow: "pink",
+  // },
   {
     label: "Mini Game",
     icon: Gamepad2,

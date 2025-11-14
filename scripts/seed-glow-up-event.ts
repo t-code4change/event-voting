@@ -168,7 +168,13 @@ async function seedData() {
     // 3. Create candidates
     console.log('👥 Creating candidates...')
 
-    const candidatesData = []
+    const candidatesData: Array<{
+      name: string
+      description: string
+      photo_url: string
+      display_order: number
+      category_id: string
+    }> = []
 
     // King candidates
     const kingCategory = createdCategories.find(c => c.name.includes('King'))!
@@ -208,8 +214,17 @@ async function seedData() {
     // 4. Generate realistic votes
     console.log('🗳️  Generating votes...')
 
-    const voters = []
-    const votes = []
+    const voters: Array<{
+      phone: string
+      event_id: string
+      is_verified: boolean
+    }> = []
+
+    const votes: Array<{
+      voter_id: string
+      category_id: string
+      candidate_id: string
+    }> = []
 
     // Create 50 voters with phone numbers
     for (let i = 1; i <= 50; i++) {

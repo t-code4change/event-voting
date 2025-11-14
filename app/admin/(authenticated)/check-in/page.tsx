@@ -263,8 +263,18 @@ export default function CheckInModule() {
 }
 
 // Sub-components
-function AnalyticsCard({ icon: Icon, label, value, color, highlight }: any) {
-  const colors = {
+type ColorType = "purple" | "green" | "blue" | "gold"
+
+interface AnalyticsCardProps {
+  icon: any
+  label: string
+  value: number | string
+  color: ColorType
+  highlight?: boolean
+}
+
+function AnalyticsCard({ icon: Icon, label, value, color, highlight }: AnalyticsCardProps) {
+  const colors: Record<ColorType, { bg: string; border: string; text: string; glow: string }> = {
     purple: { bg: "from-purple-500/20 to-purple-600/20", border: "border-purple-500/30", text: "text-purple-400", glow: "#A855F7" },
     green: { bg: "from-green-500/20 to-green-600/20", border: "border-green-500/30", text: "text-green-400", glow: "#10B981" },
     blue: { bg: "from-blue-500/20 to-blue-600/20", border: "border-blue-500/30", text: "text-blue-400", glow: "#3B82F6" },

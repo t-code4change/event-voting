@@ -1,14 +1,10 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Label } from "@/components/ui/label"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
-import { Switch } from "@/components/ui/switch"
-import { Badge } from "@/components/ui/badge"
-import { Settings, Save, Loader2, Calendar, Clock } from "lucide-react"
+import { motion } from "framer-motion"
+import { Settings, Save, Loader2, Calendar, Clock, Shield, Eye, Key, Link2, QrCode, AlertTriangle } from "lucide-react"
 import { toast } from "sonner"
+import { AdminCard, AdminPageHeader, AdminInput } from "@/components/admin"
 
 interface Event {
   id: string
@@ -104,140 +100,298 @@ export default function AdminSettingsPage() {
   }
 
   return (
-    <div className="space-y-6">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.15 }}
+      className="space-y-8"
+    >
       {/* Header */}
-      <div>
-        <h1 className="text-3xl font-bold mb-2">Cài đặt Sự kiện</h1>
-        <p className="text-muted-foreground">
-          Cấu hình thời gian và trạng thái sự kiện
-        </p>
-      </div>
+      <AdminPageHeader
+        title="Cài đặt Sự kiện"
+        description="Cấu hình thời gian, quyền truy cập và hệ thống"
+        icon={Settings}
+        actions={
+          event && (
+            <div
+              className="px-4 py-2 rounded-full border"
+              style={{
+                background: isActive ? 'rgba(255, 215, 0, 0.15)' : 'rgba(255, 255, 255, 0.05)',
+                borderColor: isActive ? 'rgba(255, 215, 0, 0.3)' : 'rgba(255,255,255,0.1)',
+              }}
+            >
+              <span
+                className="font-semibold text-sm"
+                style={{ color: isActive ? '#FFD700' : 'rgba(255,255,255,0.4)' }}
+              >
+                {isActive ? "Active" : "Inactive"}
+              </span>
+            </div>
+          )
+        }
+      />
 
       {loading ? (
-        <Card>
-          <CardContent className="p-12 text-center">
-            <Loader2 className="h-12 w-12 animate-spin text-muted-foreground mx-auto" />
-          </CardContent>
-        </Card>
+        <AdminCard className="p-12 text-center">
+          <Loader2 className="w-12 h-12 mx-auto mb-4 animate-spin text-[#FFD700]" strokeWidth={2} />
+          <p className="text-white/60">Đang tải cài đặt...</p>
+        </AdminCard>
       ) : !event ? (
-        <Card>
-          <CardContent className="p-12 text-center space-y-4">
-            <Settings className="h-12 w-12 text-muted-foreground mx-auto" />
-            <div>
-              <h3 className="font-semibold text-lg mb-2">
-                Không tìm thấy sự kiện active
-              </h3>
-              <p className="text-muted-foreground">
-                Vui lòng tạo và kích hoạt một sự kiện trước
-              </p>
-            </div>
-          </CardContent>
-        </Card>
+        <AdminCard className="p-12 text-center">
+          <Settings className="w-16 h-16 mx-auto mb-4 text-[#FFD700] opacity-50" strokeWidth={2} />
+          <h3 className="text-xl font-semibold text-white mb-2">Không tìm thấy sự kiện active</h3>
+          <p className="text-white/60">
+            Vui lòng tạo và kích hoạt một sự kiện trước
+          </p>
+        </AdminCard>
       ) : (
-        <div className="grid gap-6 max-w-3xl">
-          {/* Event Info */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center justify-between">
-                <span>{event.name}</span>
-                <Badge variant={isActive ? "default" : "secondary"}>
-                  {isActive ? "Active" : "Inactive"}
-                </Badge>
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-6">
-              {/* Voting Times */}
-              <div className="space-y-4">
-                <div className="space-y-2">
-                  <Label htmlFor="start-time" className="flex items-center gap-2">
-                    <Calendar className="h-4 w-4" />
-                    Thời gian bắt đầu
-                  </Label>
-                  <Input
-                    id="start-time"
-                    type="datetime-local"
-                    value={startTime}
-                    onChange={(e) => setStartTime(e.target.value)}
-                  />
-                </div>
+        <div className="space-y-6">
+          {/* Time Settings */}
+          <AdminCard>
+            <h2 className="text-lg font-bold text-white mb-5 flex items-center gap-2">
+              <Clock className="w-5 h-5 text-[#FFD700]" strokeWidth={2} />
+              Cài đặt thời gian
+            </h2>
 
-                <div className="space-y-2">
-                  <Label htmlFor="end-time" className="flex items-center gap-2">
-                    <Clock className="h-4 w-4" />
-                    Thời gian kết thúc
-                  </Label>
-                  <Input
-                    id="end-time"
-                    type="datetime-local"
-                    value={endTime}
-                    onChange={(e) => setEndTime(e.target.value)}
-                  />
-                </div>
-              </div>
-
-              {/* Active Status */}
-              <div className="flex items-center justify-between p-4 border rounded-lg">
-                <div>
-                  <Label htmlFor="is-active" className="text-base font-medium">
-                    Kích hoạt sự kiện
-                  </Label>
-                  <p className="text-sm text-muted-foreground mt-1">
-                    Cho phép người dùng bình chọn
-                  </p>
-                </div>
-                <Switch
-                  id="is-active"
-                  checked={isActive}
-                  onCheckedChange={setIsActive}
+            <div className="grid md:grid-cols-2 gap-6">
+              <div>
+                <label className="block text-sm font-medium text-white mb-2 flex items-center gap-2">
+                  <Calendar className="w-4 h-4 text-[#FFD700]" strokeWidth={2} />
+                  Thời gian bắt đầu
+                </label>
+                <AdminInput
+                  type="datetime-local"
+                  value={startTime}
+                  onChange={(e) => setStartTime(e.target.value)}
                 />
               </div>
 
-              {/* Save Button */}
-              <div className="pt-4">
-                <Button
-                  onClick={handleSave}
-                  disabled={saving}
-                  className="w-full md:w-auto"
-                >
-                  {saving ? (
-                    <>
-                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                      Đang lưu...
-                    </>
-                  ) : (
-                    <>
-                      <Save className="mr-2 h-4 w-4" />
-                      Lưu thay đổi
-                    </>
-                  )}
-                </Button>
+              <div>
+                <label className="block text-sm font-medium text-white mb-2 flex items-center gap-2">
+                  <Clock className="w-4 h-4 text-[#FFD700]" strokeWidth={2} />
+                  Thời gian kết thúc
+                </label>
+                <AdminInput
+                  type="datetime-local"
+                  value={endTime}
+                  onChange={(e) => setEndTime(e.target.value)}
+                />
               </div>
-            </CardContent>
-          </Card>
+            </div>
+
+            <div className="mt-6">
+              <p className="text-sm text-white/60">
+                Countdown preview: Còn lại 2 giờ 29 phút
+              </p>
+            </div>
+          </AdminCard>
+
+          {/* Access Control */}
+          <AdminCard>
+            <h2 className="text-lg font-bold text-white mb-5 flex items-center gap-2">
+              <Shield className="w-5 h-5 text-[#FFD700]" strokeWidth={2} />
+              Cài đặt truy cập (Access Control)
+            </h2>
+
+            <div className="space-y-4">
+              <ToggleOption
+                label="Cho phép bình chọn"
+                description="Người dùng có thể vote"
+                enabled={isActive}
+                onChange={setIsActive}
+              />
+              <ToggleOption
+                label="Cho phép xem kết quả"
+                description="Hiển thị results cho khách"
+                enabled={true}
+                onChange={() => {}}
+              />
+              <div className="p-4 rounded-xl bg-white/10 border border-white/20">
+                <p className="text-sm font-medium text-white mb-2">Chế độ xác thực</p>
+                <div className="flex gap-2">
+                  <span className="px-3 py-1 rounded-lg text-xs font-semibold bg-[#FFD700]/10 text-[#FFD700]">
+                    Phone
+                  </span>
+                  <span className="px-3 py-1 rounded-lg text-xs font-semibold bg-[#FFD700]/10 text-[#FFD700]">
+                    Email
+                  </span>
+                </div>
+              </div>
+            </div>
+          </AdminCard>
+
+          {/* Event Theme */}
+          <AdminCard>
+            <h2 className="text-lg font-bold text-white mb-5 flex items-center gap-2">
+              <Eye className="w-5 h-5 text-[#FFD700]" strokeWidth={2} />
+              Cài đặt giao diện (Event Theme)
+            </h2>
+
+            <div className="grid md:grid-cols-2 gap-6">
+              <div>
+                <p className="text-sm font-medium text-white mb-2">Upload logo</p>
+                <button className="w-full px-4 py-3 rounded-xl font-medium text-left bg-white/10 border border-white/20 text-white/60 hover:bg-white/20 transition-all">
+                  Choose file...
+                </button>
+              </div>
+
+              <div>
+                <p className="text-sm font-medium text-white mb-2">Upload banner</p>
+                <button className="w-full px-4 py-3 rounded-xl font-medium text-left bg-white/10 border border-white/20 text-white/60 hover:bg-white/20 transition-all">
+                  Choose file...
+                </button>
+              </div>
+            </div>
+
+            <div className="mt-4 grid md:grid-cols-2 gap-4">
+              <ToggleOption
+                label="Bật hiệu ứng Confetti"
+                description="Confetti cho client khi vote"
+                enabled={true}
+                onChange={() => {}}
+              />
+              <ToggleOption
+                label="Award Mode"
+                description="Hiệu ứng đặc biệt cho Top 1"
+                enabled={false}
+                onChange={() => {}}
+              />
+            </div>
+          </AdminCard>
 
           {/* System Info */}
-          <Card>
-            <CardHeader>
-              <CardTitle>Thông tin Hệ thống</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="space-y-2">
-                <Label>Event ID</Label>
-                <Input value={event.id} disabled className="font-mono text-xs" />
+          <AdminCard>
+            <h2 className="text-lg font-bold text-white mb-5 flex items-center gap-2">
+              <Key className="w-5 h-5 text-[#FFD700]" strokeWidth={2} />
+              Thông tin Hệ thống
+            </h2>
+
+            <div className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-white mb-2">Event ID</label>
+                <AdminInput
+                  type="text"
+                  value={event.id}
+                  disabled
+                  className="font-mono text-sm text-white/40"
+                />
               </div>
 
-              <div className="space-y-2">
-                <Label>Mật khẩu Admin</Label>
-                <Input
+              <div>
+                <label className="block text-sm font-medium text-white mb-2">Admin Password</label>
+                <AdminInput
                   type="password"
                   value="admin123"
                   disabled
+                  className="text-white/40"
                 />
               </div>
-            </CardContent>
-          </Card>
+
+              <div>
+                <label className="block text-sm font-medium text-white mb-2 flex items-center gap-2">
+                  <Link2 className="w-4 h-4 text-[#FFD700]" strokeWidth={2} />
+                  Link Event Page
+                </label>
+                <AdminInput
+                  type="text"
+                  value={`https://bright4event.com/event/${event.id}`}
+                  disabled
+                  className="font-mono text-sm text-white/40"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-white mb-2 flex items-center gap-2">
+                  <QrCode className="w-4 h-4 text-[#FFD700]" strokeWidth={2} />
+                  QR Code
+                </label>
+                <div className="w-48 h-48 rounded-xl flex items-center justify-center bg-white/10 border border-white/20">
+                  <QrCode className="w-24 h-24 text-[#FFD700] opacity-30" strokeWidth={2} />
+                </div>
+              </div>
+            </div>
+          </AdminCard>
+
+          {/* Save Button */}
+          <motion.button
+            onClick={handleSave}
+            disabled={saving}
+            whileHover={{ scale: saving ? 1 : 1.05 }}
+            whileTap={{ scale: saving ? 1 : 0.95 }}
+            className="w-full md:w-auto px-8 py-4 rounded-xl font-semibold flex items-center justify-center gap-2"
+            style={{
+              background: saving ? 'rgba(255,255,255,0.1)' : '#FFD700',
+              color: saving ? 'rgba(255,255,255,0.4)' : '#000',
+              cursor: saving ? 'not-allowed' : 'pointer',
+            }}
+          >
+            {saving ? (
+              <>
+                <Loader2 className="w-5 h-5 animate-spin" strokeWidth={2} />
+                Đang lưu...
+              </>
+            ) : (
+              <>
+                <Save className="w-5 h-5" strokeWidth={2} />
+                Lưu thay đổi
+              </>
+            )}
+          </motion.button>
+
+          {/* Danger Zone */}
+          <AdminCard className="border-red-500/30">
+            <h2 className="text-lg font-bold mb-5 flex items-center gap-2 text-red-500">
+              <AlertTriangle className="w-5 h-5" strokeWidth={2} />
+              Cài đặt nâng cao
+            </h2>
+
+            <div className="grid md:grid-cols-2 gap-4">
+              <DangerButton label="Reset dữ liệu vote" />
+              <DangerButton label="Reset dữ liệu check-in" />
+              <DangerButton label="Khóa sự kiện" />
+              <DangerButton label="Xóa sự kiện" />
+            </div>
+          </AdminCard>
         </div>
       )}
+    </motion.div>
+  )
+}
+
+function ToggleOption({ label, description, enabled, onChange }: any) {
+  return (
+    <div className="flex items-center justify-between p-4 rounded-xl bg-white/10 border border-white/20">
+      <div className="flex-1">
+        <p className="text-base font-semibold text-white/85">
+          {label}
+        </p>
+        <p className="text-sm text-white/60">
+          {description}
+        </p>
+      </div>
+      <div
+        onClick={() => onChange(!enabled)}
+        className="relative w-12 h-6 rounded-full cursor-pointer transition-all"
+        style={{
+          background: enabled ? '#FFD700' : 'rgba(255,255,255,0.1)',
+        }}
+      >
+        <motion.div
+          animate={{ x: enabled ? 24 : 0 }}
+          className="absolute top-1 left-1 w-4 h-4 rounded-full"
+          style={{
+            background: enabled ? '#000' : 'rgba(255,255,255,0.4)',
+          }}
+        />
+      </div>
     </div>
+  )
+}
+
+function DangerButton({ label }: { label: string }) {
+  return (
+    <button className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl font-medium bg-red-500/10 border border-red-500/30 text-red-500 hover:bg-red-500/20 transition-all">
+      {label}
+    </button>
   )
 }

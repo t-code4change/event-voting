@@ -4,18 +4,21 @@ import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import {
   BarChart3,
-  DollarSign,
-  Users,
-  CreditCard,
   TrendingUp,
-  AlertCircle,
-  Package,
+  Users,
+  Vote,
+  Clock,
+  Smartphone,
+  Monitor,
+  FileDown,
+  Calendar,
+  Activity,
+  ArrowUp,
 } from "lucide-react"
 import { SubscriptionStatsResponse } from "@/types/subscription"
 
 export default function AnalyticsDashboard() {
   const [stats, setStats] = useState<SubscriptionStatsResponse | null>(null)
-  const [expiringSoon, setExpiringSoon] = useState<any[]>([])
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
@@ -27,7 +30,6 @@ export default function AnalyticsDashboard() {
       const response = await fetch("/api/admin/stats")
       const data = await response.json()
       setStats(data)
-      setExpiringSoon(data.expiring_soon || [])
     } catch (error) {
       console.error("Error loading stats:", error)
     } finally {
@@ -35,224 +37,463 @@ export default function AnalyticsDashboard() {
     }
   }
 
-  const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat("vi-VN", {
-      style: "currency",
-      currency: "VND",
-    }).format(amount)
-  }
-
-  const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString("vi-VN", {
-      year: "numeric",
-      month: "short",
-      day: "numeric",
-    })
+  // Mock data for voting analytics
+  const mockVotingStats = {
+    totalVotes: 1699,
+    totalVoters: 246,
+    totalCheckIns: 300,
+    peakTime: "20:30",
+    deviceMobile: 82,
+    deviceDesktop: 18,
+    returningVoters: 15,
+    newVoters: 85,
+    votesByCategory: [
+      { name: "King of the Year", votes: 680 },
+      { name: "Queen of the Year", votes: 520 },
+      { name: "Best Performer", votes: 499 },
+    ],
+    voteTimeline: [
+      { time: "18:00", votes: 50 },
+      { time: "19:00", votes: 150 },
+      { time: "20:00", votes: 400 },
+      { time: "21:00", votes: 650 },
+      { time: "22:00", votes: 1100 },
+      { time: "23:00", votes: 1699 },
+    ],
   }
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-[#0B0B0B] flex items-center justify-center">
-        <div className="text-white text-xl">Đang tải...</div>
-      </div>
-    )
-  }
-
-  if (!stats) {
-    return (
-      <div className="min-h-screen bg-[#0B0B0B] flex items-center justify-center">
-        <div className="text-white text-xl">Không thể tải dữ liệu</div>
+      <div className="min-h-screen flex items-center justify-center" style={{ background: '#0C0F15' }}>
+        <div style={{ color: 'rgba(255,255,255,0.6)' }}>Đang tải...</div>
       </div>
     )
   }
 
   return (
-    <div className="min-h-screen bg-[#0B0B0B] p-8">
-      <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-4xl font-bold text-white mb-2 flex items-center gap-3">
-            <BarChart3 className="h-8 w-8 text-[#FFD700]" />
-            Analytics & Dashboard
-          </h1>
-          <p className="text-gray-400">Tổng quan về subscriptions và doanh thu</p>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.15 }}
+      className="space-y-8"
+      style={{ background: '#0C0F15' }}
+    >
+      {/* Header */}
+      <div>
+        <h1 className="text-3xl font-bold text-white flex items-center gap-3 mb-2">
+          <BarChart3 className="w-7 h-7" style={{ color: '#F2D276' }} strokeWidth={2} />
+          Analytics & Dashboard
+        </h1>
+        <p className="text-base" style={{ color: 'rgba(255,255,255,0.6)' }}>
+          Phân tích hành vi & dữ liệu từ bình chọn và check-in
+        </p>
+      </div>
+
+      {/* Metrics Cards */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <MetricCard
+          icon={Vote}
+          label="Tổng vote"
+          value={mockVotingStats.totalVotes}
+          change={124}
+          delay={0}
+        />
+        <MetricCard
+          icon={Users}
+          label="Người vote"
+          value={mockVotingStats.totalVoters}
+          change={15}
+          delay={0.05}
+        />
+        <MetricCard
+          icon={Users}
+          label="Check-in"
+          value={mockVotingStats.totalCheckIns}
+          change={8}
+          delay={0.1}
+        />
+        <MetricCard
+          icon={Clock}
+          label="Peak Time"
+          value={mockVotingStats.peakTime}
+          change={null}
+          delay={0.15}
+        />
+      </div>
+
+      {/* Charts Section */}
+      <div className="grid lg:grid-cols-3 gap-6">
+        {/* Vote Timeline - Takes 2 columns */}
+        <div
+          className="lg:col-span-2 rounded-2xl p-6"
+          style={{
+            background: '#161A23',
+            border: '1px solid rgba(255,255,255,0.05)',
+            boxShadow: '0 4px 12px rgba(0,0,0,0.25)',
+          }}
+        >
+          <div className="flex items-center gap-3 mb-6">
+            <Activity className="w-5 h-5" style={{ color: '#F2D276' }} strokeWidth={2} />
+            <h2 className="text-lg font-semibold text-white">Vote Timeline</h2>
+          </div>
+
+          <div className="space-y-4">
+            {mockVotingStats.voteTimeline.map((item, index) => {
+              const maxVotes = Math.max(...mockVotingStats.voteTimeline.map(v => v.votes))
+              const percentage = (item.votes / maxVotes) * 100
+              const isPeak = item.votes === maxVotes
+
+              return (
+                <div key={index} className="relative">
+                  <div className="flex justify-between mb-2">
+                    <span className="text-sm" style={{ color: 'rgba(255,255,255,0.7)' }}>
+                      {item.time}
+                    </span>
+                    <div className="flex items-center gap-2">
+                      <span className="text-sm font-semibold text-white">
+                        {item.votes}
+                      </span>
+                      {isPeak && (
+                        <span
+                          className="text-xs font-semibold px-2 py-0.5 rounded"
+                          style={{
+                            background: 'rgba(232, 201, 106, 0.15)',
+                            color: '#E8C96A',
+                          }}
+                        >
+                          Peak
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                  <div
+                    className="h-2.5 rounded-full overflow-hidden"
+                    style={{ background: '#2A2E38' }}
+                  >
+                    <motion.div
+                      initial={{ width: 0 }}
+                      animate={{ width: `${percentage}%` }}
+                      transition={{ duration: 0.6, delay: index * 0.08 }}
+                      className="h-full rounded-full relative"
+                      style={{
+                        background: isPeak ? '#E8C96A' : 'rgba(232, 201, 106, 0.7)',
+                      }}
+                    >
+                      {isPeak && (
+                        <div
+                          className="absolute right-0 top-1/2 -translate-y-1/2 w-3 h-3 rounded-full"
+                          style={{
+                            background: '#E8C96A',
+                            boxShadow: '0 0 8px rgba(232, 201, 106, 0.6)',
+                          }}
+                        />
+                      )}
+                    </motion.div>
+                  </div>
+                </div>
+              )
+            })}
+          </div>
         </div>
 
-        {/* Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="bg-gradient-to-br from-[#FFD700]/20 to-[#FF9E00]/10 border border-[#FFD700]/30 rounded-2xl p-6"
-          >
-            <div className="flex items-center justify-between mb-4">
-              <DollarSign className="h-8 w-8 text-[#FFD700]" />
-              <TrendingUp className="h-5 w-5 text-green-500" />
-            </div>
-            <div className="text-gray-400 text-sm mb-1">Tổng Doanh Thu</div>
-            <div className="text-white text-3xl font-bold">
-              {formatCurrency(stats.total_revenue)}
-            </div>
-          </motion.div>
+        {/* Top Categories - Takes 1 column */}
+        <div
+          className="rounded-2xl p-6"
+          style={{
+            background: '#161A23',
+            border: '1px solid rgba(255,255,255,0.05)',
+            boxShadow: '0 4px 12px rgba(0,0,0,0.25)',
+          }}
+        >
+          <div className="flex items-center gap-3 mb-6">
+            <BarChart3 className="w-5 h-5" style={{ color: '#F2D276' }} strokeWidth={2} />
+            <h2 className="text-lg font-semibold text-white">Top Categories</h2>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="bg-gradient-to-br from-green-500/20 to-green-600/10 border border-green-500/30 rounded-2xl p-6"
-          >
-            <div className="flex items-center justify-between mb-4">
-              <CreditCard className="h-8 w-8 text-green-500" />
-            </div>
-            <div className="text-gray-400 text-sm mb-1">Subscriptions Hoạt Động</div>
-            <div className="text-white text-3xl font-bold">
-              {stats.active_subscriptions}
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="bg-gradient-to-br from-blue-500/20 to-blue-600/10 border border-blue-500/30 rounded-2xl p-6"
-          >
-            <div className="flex items-center justify-between mb-4">
-              <Users className="h-8 w-8 text-blue-500" />
-            </div>
-            <div className="text-gray-400 text-sm mb-1">Tổng Users</div>
-            <div className="text-white text-3xl font-bold">
-              {stats.total_users}
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-            className="bg-gradient-to-br from-purple-500/20 to-purple-600/10 border border-purple-500/30 rounded-2xl p-6"
-          >
-            <div className="flex items-center justify-between mb-4">
-              <CreditCard className="h-8 w-8 text-purple-500" />
-            </div>
-            <div className="text-gray-400 text-sm mb-1">Hóa Đơn Chưa Thanh Toán</div>
-            <div className="text-white text-3xl font-bold">
-              {stats.unpaid_invoices}
-            </div>
-          </motion.div>
-        </div>
-
-        {/* Revenue by Package */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-          <div className="bg-[#1a1a1a] rounded-2xl border border-[#FFD700]/20 p-6">
-            <div className="flex items-center gap-3 mb-6">
-              <Package className="h-6 w-6 text-[#FFD700]" />
-              <h2 className="text-xl font-bold text-white">Doanh Thu Theo Gói</h2>
-            </div>
-            <div className="space-y-4">
-              {Object.entries(stats.revenue_by_package).map(([packageName, revenue]) => {
-                const maxRevenue = Math.max(...Object.values(stats.revenue_by_package))
-                const percentage = (revenue / maxRevenue) * 100
+          <div className="space-y-4">
+            {mockVotingStats.votesByCategory
+              .sort((a, b) => b.votes - a.votes)
+              .map((category, index) => {
+                const maxVotes = Math.max(...mockVotingStats.votesByCategory.map(c => c.votes))
+                const percentage = (category.votes / maxVotes) * 100
 
                 return (
-                  <div key={packageName}>
+                  <div key={index}>
                     <div className="flex justify-between mb-2">
-                      <span className="text-white font-medium">{packageName}</span>
-                      <span className="text-[#FFD700]">{formatCurrency(revenue)}</span>
+                      <span className="text-sm" style={{ color: 'rgba(255,255,255,0.85)' }}>
+                        {category.name}
+                      </span>
+                      <span className="text-sm font-semibold text-white">
+                        {category.votes}
+                      </span>
                     </div>
-                    <div className="h-3 bg-[#0B0B0B] rounded-full overflow-hidden">
+                    <div
+                      className="h-2.5 rounded-full overflow-hidden"
+                      style={{ background: '#2A2E38' }}
+                    >
                       <motion.div
                         initial={{ width: 0 }}
                         animate={{ width: `${percentage}%` }}
-                        transition={{ duration: 1, delay: 0.5 }}
-                        className="h-full bg-gradient-to-r from-[#FFD700] to-[#FF9E00]"
+                        transition={{ duration: 0.6, delay: index * 0.1 }}
+                        className="h-full rounded-full"
+                        style={{
+                          background: 'rgba(232, 201, 106, 0.8)',
+                        }}
                       />
                     </div>
                   </div>
                 )
               })}
-            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Device Type & Voter Type */}
+      <div className="grid md:grid-cols-2 gap-6">
+        {/* Device Type */}
+        <div
+          className="rounded-2xl p-6"
+          style={{
+            background: '#161A23',
+            border: '1px solid rgba(255,255,255,0.05)',
+            boxShadow: '0 4px 12px rgba(0,0,0,0.25)',
+          }}
+        >
+          <div className="flex items-center gap-3 mb-6">
+            <Smartphone className="w-5 h-5" style={{ color: '#F2D276' }} strokeWidth={2} />
+            <h2 className="text-lg font-semibold text-white">Device Type</h2>
           </div>
 
-          {/* Subscriptions by Status */}
-          <div className="bg-[#1a1a1a] rounded-2xl border border-[#FFD700]/20 p-6">
-            <div className="flex items-center gap-3 mb-6">
-              <BarChart3 className="h-6 w-6 text-[#FFD700]" />
-              <h2 className="text-xl font-bold text-white">Subscriptions Theo Trạng Thái</h2>
-            </div>
-            <div className="space-y-4">
-              {Object.entries(stats.subscriptions_by_status).map(([status, count]) => {
-                const statusColors: Record<string, string> = {
-                  active: "from-green-500 to-green-600",
-                  pending: "from-yellow-500 to-yellow-600",
-                  expired: "from-orange-500 to-orange-600",
-                  cancelled: "from-red-500 to-red-600",
-                }
-
-                return (
-                  <div key={status} className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <div
-                        className={`w-3 h-3 rounded-full bg-gradient-to-r ${statusColors[status] || "from-gray-500 to-gray-600"}`}
-                      />
-                      <span className="text-white capitalize">{status}</span>
-                    </div>
-                    <span className="text-gray-400 font-bold">{count}</span>
-                  </div>
-                )
-              })}
-            </div>
-
-            <div className="mt-6 pt-6 border-t border-[#FFD700]/20">
-              <div className="flex justify-between">
-                <span className="text-gray-400">Mới (30 ngày qua)</span>
-                <span className="text-[#FFD700] font-bold">
-                  {stats.recent_subscriptions}
-                </span>
-              </div>
-            </div>
+          <div className="space-y-4">
+            <DeviceItem
+              icon={Smartphone}
+              label="Mobile"
+              value={mockVotingStats.deviceMobile}
+              total={100}
+              color="#E8C96A"
+            />
+            <DeviceItem
+              icon={Monitor}
+              label="Desktop"
+              value={mockVotingStats.deviceDesktop}
+              total={100}
+              color="#505460"
+            />
           </div>
         </div>
 
-        {/* Expiring Soon Alert */}
-        {expiringSoon.length > 0 && (
-          <div className="bg-gradient-to-br from-orange-500/20 to-red-500/10 border-2 border-orange-500/30 rounded-2xl p-6">
-            <div className="flex items-center gap-3 mb-6">
-              <AlertCircle className="h-6 w-6 text-orange-500" />
-              <h2 className="text-xl font-bold text-white">
-                Subscriptions Sắp Hết Hạn (7 ngày tới)
-              </h2>
-            </div>
-            <div className="space-y-3">
-              {expiringSoon.map((sub) => (
-                <div
-                  key={sub.id}
-                  className="bg-[#1a1a1a] rounded-xl p-4 border border-orange-500/20 flex items-center justify-between"
-                >
-                  <div>
-                    <div className="text-white font-medium">
-                      {sub.user?.full_name || sub.user?.email}
-                    </div>
-                    <div className="text-gray-400 text-sm">{sub.package?.name}</div>
-                  </div>
-                  <div className="text-right">
-                    <div className="text-orange-400 font-medium">
-                      {formatDate(sub.end_date)}
-                    </div>
-                    <div className="text-gray-400 text-xs">
-                      {Math.ceil(
-                        (new Date(sub.end_date).getTime() - new Date().getTime()) /
-                          (1000 * 60 * 60 * 24)
-                      )}{" "}
-                      ngày
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+        {/* Voter Type */}
+        <div
+          className="rounded-2xl p-6"
+          style={{
+            background: '#161A23',
+            border: '1px solid rgba(255,255,255,0.05)',
+            boxShadow: '0 4px 12px rgba(0,0,0,0.25)',
+          }}
+        >
+          <div className="flex items-center gap-3 mb-6">
+            <Users className="w-5 h-5" style={{ color: '#F2D276' }} strokeWidth={2} />
+            <h2 className="text-lg font-semibold text-white">Voter Type</h2>
+          </div>
+
+          <div className="space-y-4">
+            <DeviceItem
+              icon={Users}
+              label="New Voters"
+              value={mockVotingStats.newVoters}
+              total={100}
+              color="#E8C96A"
+            />
+            <DeviceItem
+              icon={TrendingUp}
+              label="Returning"
+              value={mockVotingStats.returningVoters}
+              total={100}
+              color="#8A7F4A"
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* Event Performance */}
+      <div
+        className="rounded-2xl p-6"
+        style={{
+          background: '#161A23',
+          border: '1px solid rgba(255,255,255,0.05)',
+          boxShadow: '0 4px 12px rgba(0,0,0,0.25)',
+        }}
+      >
+        <div className="flex items-center gap-3 mb-6">
+          <Calendar className="w-5 h-5" style={{ color: '#F2D276' }} strokeWidth={2} />
+          <h2 className="text-lg font-semibold text-white">Event Performance</h2>
+        </div>
+
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          <PerformanceItem
+            label="Tốc độ tăng vote"
+            value="5.2"
+            unit="votes/phút"
+            icon={TrendingUp}
+          />
+          <PerformanceItem
+            label="Tỷ lệ tham gia"
+            value="82"
+            unit="%"
+            icon={Users}
+          />
+          <PerformanceItem
+            label="Avg votes/voter"
+            value="6.9"
+            unit="votes"
+            icon={Vote}
+          />
+          <PerformanceItem
+            label="Dự đoán hoàn tất"
+            value="23:45"
+            unit=""
+            icon={Clock}
+          />
+        </div>
+      </div>
+
+      {/* Export Section */}
+      <div
+        className="rounded-2xl p-6"
+        style={{
+          background: '#161A23',
+          border: '1px solid rgba(255,255,255,0.05)',
+          boxShadow: '0 4px 12px rgba(0,0,0,0.25)',
+        }}
+      >
+        <div className="flex items-center gap-3 mb-5">
+          <FileDown className="w-5 h-5" style={{ color: '#F2D276' }} strokeWidth={2} />
+          <h2 className="text-lg font-semibold text-white">Export Data</h2>
+        </div>
+
+        <div className="flex flex-wrap gap-3">
+          <ExportButton label="Export Excel" />
+          <ExportButton label="Export PDF" />
+          <ExportButton label="Export JSON" />
+        </div>
+      </div>
+    </motion.div>
+  )
+}
+
+function MetricCard({ icon: Icon, label, value, change, delay }: any) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay, duration: 0.2 }}
+      className="rounded-xl p-6 group cursor-pointer"
+      style={{
+        background: '#161A23',
+        border: '1px solid rgba(255,255,255,0.05)',
+        boxShadow: '0 4px 12px rgba(0,0,0,0.25)',
+        transition: 'all 0.2s ease',
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.borderColor = '#F5C242'
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.borderColor = 'rgba(255,255,255,0.05)'
+      }}
+    >
+      <Icon className="w-5 h-5 mb-4" style={{ color: '#F2D276' }} strokeWidth={2} />
+      <p className="text-3xl font-bold text-white tabular-nums mb-1">{value}</p>
+      <div className="flex items-center justify-between">
+        <p className="text-sm" style={{ color: 'rgba(255,255,255,0.7)' }}>
+          {label}
+        </p>
+        {change !== null && change > 0 && (
+          <div className="flex items-center gap-1">
+            <ArrowUp className="w-3 h-3" style={{ color: '#4AD97F' }} strokeWidth={2} />
+            <span className="text-xs font-semibold" style={{ color: '#4AD97F' }}>
+              +{change}
+            </span>
           </div>
         )}
       </div>
+    </motion.div>
+  )
+}
+
+function DeviceItem({ icon: Icon, label, value, total, color }: any) {
+  const percentage = (value / total) * 100
+
+  return (
+    <div>
+      <div className="flex items-center justify-between mb-2">
+        <div className="flex items-center gap-2">
+          <Icon className="w-4 h-4" style={{ color: 'rgba(255,255,255,0.5)' }} strokeWidth={2} />
+          <span className="text-sm" style={{ color: 'rgba(255,255,255,0.85)' }}>
+            {label}
+          </span>
+        </div>
+        <span className="text-sm font-semibold text-white">
+          {value}%
+        </span>
+      </div>
+      <div
+        className="h-2 rounded-full overflow-hidden"
+        style={{ background: '#2A2E38' }}
+      >
+        <motion.div
+          initial={{ width: 0 }}
+          animate={{ width: `${percentage}%` }}
+          transition={{ duration: 0.5 }}
+          className="h-full rounded-full"
+          style={{ background: color }}
+        />
+      </div>
     </div>
+  )
+}
+
+function PerformanceItem({ label, value, unit, icon: Icon }: any) {
+  return (
+    <div
+      className="rounded-xl p-4"
+      style={{
+        background: '#0C0F15',
+        border: '1px solid rgba(255,255,255,0.05)',
+      }}
+    >
+      <Icon className="w-4 h-4 mb-3" style={{ color: '#F2D276' }} strokeWidth={2} />
+      <p className="text-2xl font-bold text-white tabular-nums">
+        {value}
+        {unit && <span className="text-sm ml-1" style={{ color: 'rgba(255,255,255,0.5)' }}>{unit}</span>}
+      </p>
+      <p className="text-xs mt-1" style={{ color: 'rgba(255,255,255,0.6)' }}>
+        {label}
+      </p>
+    </div>
+  )
+}
+
+function ExportButton({ label }: { label: string }) {
+  return (
+    <motion.button
+      whileHover={{ scale: 1.02 }}
+      whileTap={{ scale: 0.98 }}
+      className="flex items-center gap-2 px-4 py-2.5 rounded-lg font-medium text-sm"
+      style={{
+        background: 'transparent',
+        border: '1px solid #F5C242',
+        color: 'rgba(255,255,255,0.9)',
+        transition: 'all 0.2s ease',
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.background = 'rgba(245, 194, 66, 0.15)'
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.background = 'transparent'
+      }}
+    >
+      <FileDown className="w-4 h-4" style={{ color: '#F2D276' }} strokeWidth={2} />
+      {label}
+    </motion.button>
   )
 }

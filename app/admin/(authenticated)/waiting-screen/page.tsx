@@ -4,7 +4,6 @@ import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import {
   Tv,
-  Upload,
   Play,
   Pause,
   Eye,
@@ -15,6 +14,16 @@ import {
   Plus,
   X,
 } from "lucide-react"
+import {
+  AdminCard,
+  AdminPageHeader,
+  AdminSectionHeader,
+  AdminButton,
+  AdminTextarea,
+  AdminUploadButton,
+  AdminLiveIndicator,
+  AdminRangeSlider,
+} from "@/components/admin"
 
 const defaultSlides = [
   { id: 1, url: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800", type: "image" },
@@ -51,45 +60,32 @@ export default function WaitingScreenModule() {
   return (
     <div className="space-y-8">
       {/* Header */}
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-3xl font-bold text-white flex items-center gap-3">
-            <Tv className="w-8 h-8 text-[#FFD700]" />
-            Waiting Screen
-          </h1>
-          <p className="text-white/60 mt-2">Màn hình chờ với slideshow và quote</p>
-        </div>
-
-        <div className="flex items-center gap-3">
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => setIsPlaying(!isPlaying)}
-            className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/10 text-white border border-white/20 hover:bg-white/20"
-          >
-            {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
-            {isPlaying ? "Pause" : "Play"}
-          </motion.button>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="flex items-center gap-2 px-4 py-2 rounded-xl bg-[#FFD700] text-black font-semibold hover:bg-[#FFC107]"
-          >
-            <ExternalLink className="w-4 h-4" />
-            Open Waiting Screen
-          </motion.button>
-        </div>
-      </div>
+      <AdminPageHeader
+        title="Waiting Screen"
+        description="Màn hình chờ với slideshow và quote"
+        icon={Tv}
+        actions={
+          <>
+            <AdminButton
+              variant="secondary"
+              icon={isPlaying ? Pause : Play}
+              onClick={() => setIsPlaying(!isPlaying)}
+            >
+              {isPlaying ? "Pause" : "Play"}
+            </AdminButton>
+            <AdminButton icon={ExternalLink}>
+              Open Waiting Screen
+            </AdminButton>
+          </>
+        }
+      />
 
       <div className="grid grid-cols-3 gap-8">
         {/* Left: Settings */}
         <div className="col-span-1 space-y-6">
           {/* Upload Images */}
-          <div className="rounded-2xl bg-gradient-to-br from-white/10 to-white/5 border border-white/20 p-6">
-            <h2 className="text-lg font-bold text-white flex items-center gap-2 mb-4">
-              <ImageIcon className="w-5 h-5 text-[#FFD700]" />
-              Slideshow Images
-            </h2>
+          <AdminCard>
+            <AdminSectionHeader title="Slideshow Images" icon={ImageIcon} />
 
             <div className="space-y-3">
               {slides.map((slide, index) => (
@@ -107,9 +103,7 @@ export default function WaitingScreenModule() {
                     className="w-full h-20 object-cover"
                   />
                   <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                    <button className="p-2 rounded-lg bg-red-500 text-white hover:bg-red-600">
-                      <X className="w-4 h-4" />
-                    </button>
+                    <AdminButton variant="icon" icon={X} children={undefined} />
                   </div>
                   {currentSlide === index && (
                     <div className="absolute top-2 right-2 px-2 py-1 bg-[#FFD700] text-black text-xs font-bold rounded">
@@ -119,23 +113,15 @@ export default function WaitingScreenModule() {
                 </div>
               ))}
 
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="w-full flex items-center justify-center gap-2 p-4 rounded-lg border-2 border-dashed border-white/20 text-white/60 hover:border-[#FFD700]/50 hover:text-white transition-all"
-              >
-                <Plus className="w-5 h-5" />
+              <AdminUploadButton icon={Plus}>
                 Upload Image
-              </motion.button>
+              </AdminUploadButton>
             </div>
-          </div>
+          </AdminCard>
 
           {/* Speed Control */}
-          <div className="rounded-2xl bg-gradient-to-br from-white/10 to-white/5 border border-white/20 p-6">
-            <h2 className="text-lg font-bold text-white flex items-center gap-2 mb-4">
-              <Clock className="w-5 h-5 text-[#FFD700]" />
-              Slide Speed
-            </h2>
+          <AdminCard>
+            <AdminSectionHeader title="Slide Speed" icon={Clock} />
 
             <div className="space-y-4">
               <div className="flex items-center justify-between">
@@ -143,13 +129,11 @@ export default function WaitingScreenModule() {
                 <span className="text-white font-bold">{speed}s</span>
               </div>
 
-              <input
-                type="range"
-                min="3"
-                max="15"
+              <AdminRangeSlider
+                min={3}
+                max={15}
                 value={speed}
                 onChange={(e) => setSpeed(Number(e.target.value))}
-                className="w-full h-2 bg-white/10 rounded-lg appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#FFD700]"
               />
 
               <div className="flex justify-between text-xs text-white/40">
@@ -157,21 +141,17 @@ export default function WaitingScreenModule() {
                 <span>Slow (15s)</span>
               </div>
             </div>
-          </div>
+          </AdminCard>
 
           {/* Quote Editor */}
-          <div className="rounded-2xl bg-gradient-to-br from-white/10 to-white/5 border border-white/20 p-6">
-            <h2 className="text-lg font-bold text-white flex items-center gap-2 mb-4">
-              <Quote className="w-5 h-5 text-[#FFD700]" />
-              Quote Display
-            </h2>
+          <AdminCard>
+            <AdminSectionHeader title="Quote Display" icon={Quote} />
 
             <div className="space-y-3">
-              <textarea
+              <AdminTextarea
                 value={customQuote || selectedQuote}
                 onChange={(e) => setCustomQuote(e.target.value)}
                 placeholder="Nhập quote của bạn..."
-                className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-white/40 focus:outline-none focus:border-[#FFD700]/50 resize-none"
                 rows={4}
               />
 
@@ -194,25 +174,17 @@ export default function WaitingScreenModule() {
                 </button>
               ))}
             </div>
-          </div>
+          </AdminCard>
         </div>
 
         {/* Right: Preview */}
         <div className="col-span-2">
-          <div className="rounded-2xl bg-gradient-to-br from-white/10 to-white/5 border border-white/20 p-6 h-full">
+          <AdminCard className="h-full">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-lg font-bold text-white flex items-center gap-2">
-                <Eye className="w-5 h-5 text-[#FFD700]" />
-                Preview Slideshow
-              </h2>
-              <div className="flex items-center gap-2">
-                <div className="flex items-center gap-2 px-3 py-1 rounded-lg bg-white/10">
-                  {isPlaying && <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />}
-                  <span className="text-xs text-white/60">
-                    {currentSlide + 1} / {slides.length}
-                  </span>
-                </div>
-              </div>
+              <AdminSectionHeader title="Preview Slideshow" icon={Eye} className="mb-0" />
+              <AdminLiveIndicator
+                text={`${currentSlide + 1} / ${slides.length}`}
+              />
             </div>
 
             {/* Slideshow Preview */}
@@ -296,7 +268,7 @@ export default function WaitingScreenModule() {
                 </button>
               ))}
             </div>
-          </div>
+          </AdminCard>
         </div>
       </div>
     </div>
