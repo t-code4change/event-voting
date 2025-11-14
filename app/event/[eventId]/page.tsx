@@ -941,7 +941,7 @@ export default function EventLandingPage() {
               transition={{ delay: 0.5 }}
               className="mt-12"
             >
-              <Link href="/">
+              <Link href="/" className="hidden md:block">
                 <motion.div
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.98 }}

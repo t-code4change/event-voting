@@ -16,6 +16,10 @@ type ToasterToast = ToastProps & {
   title?: React.ReactNode
   description?: React.ReactNode
   action?: ToastActionElement
+  meta?: {
+    triggerConfetti?: boolean
+    isVoteUpdate?: boolean
+  }
 }
 
 const actionTypes = {
@@ -191,4 +195,20 @@ function useToast() {
   }
 }
 
-export { useToast, toast }
+// Premium GLOW UP 2025 toast helper
+function voteSuccessToast(options?: { isUpdate?: boolean }) {
+  return toast({
+    variant: "success",
+    title: options?.isUpdate ? "Vote đã được cập nhật! ✨" : "Vote thành công! ✨",
+    description: options?.isUpdate
+      ? "Cảm ơn bạn đã cập nhật lựa chọn của mình"
+      : "Cảm ơn bạn đã tham gia bình chọn",
+    duration: 3000,
+    meta: {
+      triggerConfetti: !options?.isUpdate, // Only confetti on new votes, not updates
+      isVoteUpdate: options?.isUpdate,
+    },
+  })
+}
+
+export { useToast, toast, voteSuccessToast }

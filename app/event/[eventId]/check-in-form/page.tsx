@@ -3,8 +3,9 @@
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { useParams, useRouter } from "next/navigation"
-import { CheckCircle, Sparkles, Phone, Ticket } from "lucide-react"
+import { CheckCircle, Sparkles } from "lucide-react"
 import confetti from "canvas-confetti"
+import GuestAuthForm from "@/components/GuestAuthForm"
 
 // Success animation component
 interface SuccessAnimationProps {
@@ -65,37 +66,20 @@ export default function CheckInFormPage() {
   const eventId = params.eventId as string
   const router = useRouter()
 
-  const [inputType, setInputType] = useState<'phone' | 'code'>('phone')
-  const [phoneNumber, setPhoneNumber] = useState("")
-  const [invitationCode, setInvitationCode] = useState("")
   const [isLoading, setIsLoading] = useState(false)
   const [showSuccess, setShowSuccess] = useState(false)
   const [guestName, setGuestName] = useState("")
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
+  const handleSubmit = async (data: { type: 'phone' | 'code', value: string }) => {
     setIsLoading(true)
-
-    // Validation
-    if (inputType === 'phone' && phoneNumber.length < 10) {
-      alert("Vui lòng nhập số điện thoại hợp lệ")
-      setIsLoading(false)
-      return
-    }
-
-    if (inputType === 'code' && invitationCode.length < 4) {
-      alert("Vui lòng nhập mã mời hợp lệ")
-      setIsLoading(false)
-      return
-    }
 
     // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 1500))
 
     // Set guest name
-    const name = inputType === 'phone'
-      ? `Khách ${phoneNumber.slice(-4)}`
-      : `Khách ${invitationCode}`
+    const name = data.type === 'phone'
+      ? `Khách ${data.value.slice(-4)}`
+      : `Khách ${data.value}`
 
     setGuestName(name)
     setShowSuccess(true)
@@ -209,113 +193,14 @@ export default function CheckInFormPage() {
             <p className="text-[#FFD700] text-sm mt-1">Code4Change Media</p>
           </div>
 
-          {/* Toggle Input Type */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4 }}
-            className="flex gap-3 mb-6"
-          >
-            <button
-              onClick={() => setInputType('phone')}
-              className={`flex-1 py-3 rounded-xl font-semibold transition-all ${
-                inputType === 'phone'
-                  ? 'bg-gradient-to-r from-[#FFD700] to-[#FDB931] text-black'
-                  : 'bg-[#0D0D1A] text-gray-400 border border-[#FFD700]/30 hover:border-[#FFD700]/60'
-              }`}
-            >
-              <Phone className="w-5 h-5 inline mr-2" />
-              Số điện thoại
-            </button>
-            <button
-              onClick={() => setInputType('code')}
-              className={`flex-1 py-3 rounded-xl font-semibold transition-all ${
-                inputType === 'code'
-                  ? 'bg-gradient-to-r from-[#FFD700] to-[#FDB931] text-black'
-                  : 'bg-[#0D0D1A] text-gray-400 border border-[#FFD700]/30 hover:border-[#FFD700]/60'
-              }`}
-            >
-              <Ticket className="w-5 h-5 inline mr-2" />
-              Mã mời
-            </button>
-          </motion.div>
-
-          {/* Form */}
-          <motion.form
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
+          {/* Guest Auth Form Component */}
+          <GuestAuthForm
             onSubmit={handleSubmit}
-            className="space-y-6"
-          >
-            {/* Phone Number Input */}
-            {inputType === 'phone' && (
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: 20 }}
-              >
-                <label className="block text-white font-semibold mb-2 text-lg">
-                  Số điện thoại <span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="tel"
-                  value={phoneNumber}
-                  onChange={(e) => setPhoneNumber(e.target.value)}
-                  placeholder="Nhập số điện thoại của bạn"
-                  className="w-full px-5 py-4 bg-[#0D0D1A] border-2 border-[#FFD700]/40 rounded-xl text-white text-lg placeholder-gray-500 focus:border-[#FFD700] focus:ring-2 focus:ring-[#FFD700]/30 focus:outline-none transition-all"
-                  required
-                  disabled={isLoading}
-                  autoFocus
-                />
-              </motion.div>
-            )}
-
-            {/* Invitation Code Input */}
-            {inputType === 'code' && (
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: 20 }}
-              >
-                <label className="block text-white font-semibold mb-2 text-lg">
-                  Mã mời <span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="text"
-                  value={invitationCode}
-                  onChange={(e) => setInvitationCode(e.target.value.toUpperCase())}
-                  placeholder="Nhập mã mời từ email"
-                  className="w-full px-5 py-4 bg-[#0D0D1A] border-2 border-[#FFD700]/40 rounded-xl text-white text-lg placeholder-gray-500 focus:border-[#FFD700] focus:ring-2 focus:ring-[#FFD700]/30 focus:outline-none transition-all uppercase"
-                  required
-                  disabled={isLoading}
-                  autoFocus
-                />
-              </motion.div>
-            )}
-
-            {/* Submit Button */}
-            <motion.button
-              type="submit"
-              disabled={isLoading}
-              whileHover={!isLoading ? { scale: 1.02 } : {}}
-              whileTap={!isLoading ? { scale: 0.98 } : {}}
-              className="w-full py-5 bg-gradient-to-r from-[#FFD700] to-[#FDB931] text-black font-bold text-xl rounded-xl hover:shadow-2xl hover:shadow-[#FFD700]/50 transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              {isLoading ? (
-                <>
-                  <motion.div
-                    animate={{ rotate: 360 }}
-                    transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                    className="w-6 h-6 border-3 border-black border-t-transparent rounded-full"
-                  />
-                  <span>Đang xử lý...</span>
-                </>
-              ) : (
-                <span>✅ Check-in ngay</span>
-              )}
-            </motion.button>
-          </motion.form>
+            isLoading={isLoading}
+            showToggle={true}
+            defaultType="phone"
+            buttonText="Check-in ngay"
+          />
 
           {/* Help Text */}
           <motion.p

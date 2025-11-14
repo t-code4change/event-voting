@@ -1,0 +1,130 @@
+import { createClient } from '@supabase/supabase-js'
+import * as dotenv from 'dotenv'
+import * as path from 'path'
+
+dotenv.config({ path: path.resolve(__dirname, '../.env') })
+
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
+const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY!
+
+if (!supabaseUrl || !supabaseServiceKey) {
+  console.error('Missing Supabase credentials')
+  process.exit(1)
+}
+
+const supabase = createClient(supabaseUrl, supabaseServiceKey)
+
+async function createEventSettingsTable() {
+  console.log('📝 Creating event_settings table via Supabase...\n')
+
+  // Since we can't execute DDL directly, we need to use Supabase Dashboard
+  console.log('⚠️  Please execute the following SQL in your Supabase SQL Editor:\n')
+  console.log('Dashboard URL: https://supabase.com/dashboard/project/YOUR_PROJECT_ID/sql\n')
+  console.log('='.repeat(80))
+  console.log(`
+-- Create event_settings table
+CREATE TABLE IF NOT EXISTS event_settings (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  event_id UUID NOT NULL UNIQUE REFERENCES events(id) ON DELETE CASCADE,
+  is_require_otp BOOLEAN DEFAULT false,
+  allow_vote_before_start_date BOOLEAN DEFAULT true,
+  allow_vote_after_end_date BOOLEAN DEFAULT true,
+  created_at TIMESTAMPTZ DEFAULT now(),
+  updated_at TIMESTAMPTZ DEFAULT now()
+);
+
+-- Add index on event_id for faster lookups
+CREATE INDEX IF NOT EXISTS idx_event_settings_event_id ON event_settings(event_id);
+
+-- Add RLS policies
+ALTER TABLE event_settings ENABLE ROW LEVEL SECURITY;
+
+-- Policy: Anyone can read event settings
+CREATE POLICY "Anyone can view event settings"
+  ON event_settings
+  FOR SELECT
+  TO authenticated, anon
+  USING (true);
+
+-- Policy: Only event owners can update settings
+CREATE POLICY "Event owners can update settings"
+  ON event_settings
+  FOR UPDATE
+  TO authenticated
+  USING (
+    event_id IN (
+      SELECT id FROM events WHERE user_id = auth.uid()
+    )
+  );
+
+-- Policy: Only event owners can insert settings
+CREATE POLICY "Event owners can insert settings"
+  ON event_settings
+  FOR INSERT
+  TO authenticated
+  WITH CHECK (
+    event_id IN (
+      SELECT id FROM events WHERE user_id = auth.uid()
+    )
+  );
+
+-- Policy: Only event owners can delete settings
+CREATE POLICY "Event owners can delete settings"
+  ON event_settings
+  FOR DELETE
+  TO authenticated
+  USING (
+    event_id IN (
+      SELECT id FROM events WHERE user_id = auth.uid()
+    )
+  );
+
+-- Create trigger to auto-update updated_at timestamp
+CREATE OR REPLACE FUNCTION update_event_settings_updated_at()
+RETURNS TRIGGER AS $$
+BEGIN
+  NEW.updated_at = now();
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER event_settings_updated_at
+  BEFORE UPDATE ON event_settings
+  FOR EACH ROW
+  EXECUTE FUNCTION update_event_settings_updated_at();
+
+-- Insert default settings for existing events
+INSERT INTO event_settings (event_id, is_require_otp, allow_vote_before_start_date, allow_vote_after_end_date)
+SELECT
+  id,
+  false,
+  true,
+  true
+FROM events
+WHERE id NOT IN (SELECT event_id FROM event_settings);
+`)
+  console.log('='.repeat(80))
+  console.log('\n✅ After running the SQL, press Enter to verify the table was created...')
+
+  // Wait for user to run SQL manually
+  await new Promise(resolve => {
+    process.stdin.once('data', resolve)
+  })
+
+  // Verify table creation
+  console.log('\n🔍 Verifying table creation...')
+  const { data, error } = await supabase
+    .from('event_settings')
+    .select('*')
+    .limit(1)
+
+  if (error) {
+    console.error('❌ Error: Table not found or not accessible:', error.message)
+    console.log('\n💡 Please make sure you ran the SQL in Supabase Dashboard first.')
+  } else {
+    console.log('✅ Table created successfully!')
+    console.log('\n📊 Sample data:', data)
+  }
+}
+
+createEventSettingsTable()

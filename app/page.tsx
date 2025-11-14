@@ -479,7 +479,7 @@ export default function Bright4EventPage() {
               transition={{ delay: 0.25, duration: 0.6 }}
               whileHover={{ y: -10, scale: 1.02 }}
             >
-              <Card className="relative overflow-hidden border-2 border-[#9C27FF]/30 bg-gradient-to-br from-[#1a1a1a] to-[#0D0D1A] hover:border-[#9C27FF] transition-all duration-300 group">
+              <Card className="relative overflow-hidden border-2 !h-full border-[#9C27FF]/30 bg-gradient-to-br from-[#1a1a1a] to-[#0D0D1A] hover:border-[#9C27FF] transition-all duration-300 group">
                 <motion.div
                   className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity"
                   style={{
@@ -489,7 +489,7 @@ export default function Bright4EventPage() {
                   transition={{ duration: 1.5, repeat: Infinity }}
                 />
 
-                <CardContent className="p-8 text-center space-y-4 relative z-10">
+                <CardContent className="p-8 text-center space-y-4 relative z-10 ">
                   <div className="w-16 h-16 mx-auto rounded-full bg-gradient-to-br from-[#9C27FF] to-[#7B1FA2] flex items-center justify-center mb-4">
                     <Users className="h-8 w-8 text-white" />
                   </div>
@@ -512,7 +512,7 @@ export default function Bright4EventPage() {
               transition={{ delay: 0.4, duration: 0.6 }}
               whileHover={{ y: -10, scale: 1.02 }}
             >
-              <Card className="relative overflow-hidden border-2 border-[#FFD700]/30 bg-gradient-to-br from-[#1a1a1a] to-[#0D0D1A] hover:border-[#FFD700] transition-all duration-300 group">
+              <Card className="relative overflow-hidden border-2 !h-full border-[#FFD700]/30 bg-gradient-to-br from-[#1a1a1a] to-[#0D0D1A] hover:border-[#FFD700] transition-all duration-300 group">
                 <motion.div
                   className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity"
                   style={{

@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 import Header from "@/components/Header"
+import NewsletterSubscription from "@/components/NewsletterSubscription"
 import { Calendar, Clock, ArrowRight, Sparkles } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
@@ -110,31 +111,8 @@ export default function BlogPage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-24 bg-gradient-to-b from-[#0A0A0A] to-[#1a1a1a]">
-        <div className="container px-4 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-4xl font-bold text-white mb-4">
-              Muốn nhận thông tin sự kiện mới nhất?
-            </h2>
-            <p className="text-gray-400 mb-8">Đăng ký nhận bản tin từ Bright4Event</p>
-            <div className="flex gap-4 max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder="Email của bạn"
-                className="flex-1 px-6 py-4 bg-[#1a1a1a] border-2 border-[#FFD700]/30 focus:border-[#FFD700] rounded-xl text-white outline-none"
-              />
-              <button className="px-8 py-4 bg-gradient-to-r from-[#FFD700] to-[#FDB931] text-black font-bold rounded-xl hover:shadow-[0_0_30px_rgba(255,215,0,0.5)] transition-all">
-                Đăng ký
-              </button>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      {/* Newsletter Subscription */}
+      <NewsletterSubscription />
 
       <footer className="bg-[#0A0A0A] border-t border-[#FFD700]/20 py-12 text-center text-gray-500">
         <p>© 2025 Bright4Event by Code4Change Media</p>

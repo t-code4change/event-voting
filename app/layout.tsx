@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { Playfair_Display } from "next/font/google"
 import "./globals.css"
 import { Toaster } from "sonner"
+import { Toaster as RadixToaster } from "@/components/ui/toaster"
 import ReduxProvider from "@/components/ReduxProvider"
 import ModalManager from "@/components/modals/ModalManager"
 import AutoOpenModal from "@/components/AutoOpenModal"
@@ -118,6 +119,7 @@ export default function RootLayout({
           {children}
           <ModalManager />
           <Toaster position="top-center" richColors />
+          <RadixToaster />
         </ReduxProvider>
       </body>
     </html>

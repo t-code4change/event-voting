@@ -8,13 +8,14 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Progress } from "@/components/ui/progress"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { BarChart3, TrendingUp, Trophy, Users, Vote, Crown, Sparkles, Loader2 } from "lucide-react"
+import { BarChart3, TrendingUp, Trophy, Users, Vote, Crown, Sparkles, Loader2, Monitor } from "lucide-react"
 import AnimatedCounter from "@/components/AnimatedCounter"
+import Link from "next/link"
 import PhotoCarousel from "@/components/PhotoCarousel"
 import CountdownTimer from "@/components/CountdownTimer"
 import ConfettiEffect from "@/components/ConfettiEffect"
 import { useRealtimeResults } from "@/hooks/useRealtimeResults"
-import { toast } from "sonner"
+import { toast } from "@/hooks/use-toast"
 
 export default function ResultsPage() {
   const params = useParams()
@@ -42,8 +43,14 @@ export default function ResultsPage() {
   useEffect(() => {
     setOnNewVote(() => () => {
       setShowConfetti(true)
-      toast.success('Vote mới vừa được ghi nhận! 🎉', {
+      toast({
+        variant: "success",
+        title: "Vote mới! ✨",
+        description: "Vote mới vừa được ghi nhận!",
         duration: 3000,
+        meta: {
+          triggerConfetti: true,
+        }
       })
       setTimeout(() => setShowConfetti(false), 3000)
     })
@@ -90,7 +97,7 @@ export default function ResultsPage() {
 
       {/* Hero Section with Spotlight Effect */}
       <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(255,215,0,0.15),transparent_50%)]" />
+        <div className="absolute inset-[-1] bg-[radial-gradient(ellipse_at_top,rgba(255,215,0,0.15),transparent_50%)]" />
 
         <div className="container px-4 py-12 md:py-16">
           <motion.div
@@ -143,8 +150,9 @@ export default function ResultsPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              <p className="text-sm text-[#FFE68A] mb-3 font-medium">
-                ⏰ Thời gian còn lại để bình chọn
+              <p className="text-sm text-[#FFE68A] mb-3 font-medium flex items-center justify-center gap-2">
+                <Vote className="w-4 h-4" />
+                Thời gian còn lại để bình chọn
               </p>
                 <div className="w-full max-w-2xl mx-auto my-6">
 
@@ -155,11 +163,29 @@ export default function ResultsPage() {
                 </div>
             </motion.div>
 
-            {isLive && !votingEnded && (
-              <Badge className="animate-pulse px-6 py-2 border-[#FFD700] bg-[#FFD700]/10 text-[#FFD700] text-sm font-semibold">
-                🔴 LIVE UPDATE
-              </Badge>
-            )}
+            <div className="flex items-center justify-center gap-4 pt-4">
+              {isLive && !votingEnded && (
+                <Badge className="animate-pulse px-6 py-2 border-[#FFD700] bg-[#FFD700]/10 text-[#FFD700] text-sm font-semibold flex items-center gap-2">
+                  <motion.div
+                    className="w-2 h-2 rounded-full bg-[#FFD700]"
+                    animate={{ opacity: [1, 0.5, 1] }}
+                    transition={{ duration: 1.5, repeat: Infinity }}
+                  />
+                  LIVE UPDATE
+                </Badge>
+              )}
+
+              <Link href={`/event/${eventId}/live`} target="_blank">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-6 py-2 bg-gradient-to-r from-[#FFD700] to-[#FFC107] text-black font-semibold rounded-full flex items-center gap-2 shadow-lg shadow-[#FFD700]/30 hover:shadow-[#FFD700]/50 transition-all"
+                >
+                  <Monitor className="w-4 h-4" />
+                  Mở giao diện LED
+                </motion.button>
+              </Link>
+            </div>
           </motion.div>
         </div>
       </section>
@@ -268,7 +294,7 @@ export default function ResultsPage() {
                       <Card className={`border-2 ${colors.border} bg-gradient-to-br from-[#1a1a1a] to-[#0B0B0B] overflow-hidden shadow-2xl ${colors.shadow}`}>
                         <CardHeader className={`bg-gradient-to-r ${colors.gradient} border-b ${colors.border} relative overflow-hidden`}>
                           <CardTitle className="text-3xl font-playfair flex items-center gap-3 text-white relative z-10">
-                            <span className="text-3xl">{category.emoji}</span>
+                            <Crown className={`h-8 w-8 ${colors.iconColor}`} />
                             {category.name}
                             <TrendingUp className={`h-6 w-6 ${colors.iconColor} ml-auto`} />
                           </CardTitle>
@@ -284,12 +310,32 @@ export default function ResultsPage() {
                             <div className="space-y-6">
                               {category.candidates.map((candidate) => {
                                 const percentage = maxVotes > 0 ? (candidate.vote_count / maxVotes) * 100 : 0
-                                const getRankEmoji = (rank: number) => {
+                                const getRankBadge = (rank: number) => {
                                   switch (rank) {
-                                    case 1: return "🥇"
-                                    case 2: return "🥈"
-                                    case 3: return "🥉"
-                                    default: return ""
+                                    case 1:
+                                      return (
+                                        <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#FFD700] to-[#FDB931] flex items-center justify-center shadow-lg shadow-[#FFD700]/50">
+                                          <Trophy className="w-7 h-7 text-black" />
+                                        </div>
+                                      )
+                                    case 2:
+                                      return (
+                                        <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#C0C0C0] to-[#A8A8A8] flex items-center justify-center shadow-lg shadow-[#C0C0C0]/30">
+                                          <Trophy className="w-7 h-7 text-white" />
+                                        </div>
+                                      )
+                                    case 3:
+                                      return (
+                                        <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#CD7F32] to-[#B8733A] flex items-center justify-center shadow-lg shadow-[#CD7F32]/30">
+                                          <Trophy className="w-7 h-7 text-white" />
+                                        </div>
+                                      )
+                                    default:
+                                      return (
+                                        <div className="w-12 h-12 rounded-full bg-[#1a1a1a] border-2 border-[#FFD700]/30 flex items-center justify-center text-[#FFD700] font-bold text-lg">
+                                          {rank}
+                                        </div>
+                                      )
                                   }
                                 }
 
@@ -310,21 +356,13 @@ export default function ResultsPage() {
                                       ${getMedalGlowClass(candidate.rank)}
                                     `}
                                   >
-                                    <div className="flex-shrink-0">
-                                      {getRankEmoji(candidate.rank) ? (
-                                        <motion.div
-                                          className="text-5xl"
-                                          animate={candidate.rank === 1 ? { rotate: [0, -10, 10, -10, 0] } : {}}
-                                          transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
-                                        >
-                                          {getRankEmoji(candidate.rank)}
-                                        </motion.div>
-                                      ) : (
-                                        <div className="w-12 h-12 rounded-full bg-[#1a1a1a] border-2 border-[#FFD700]/30 flex items-center justify-center text-[#FFD700] font-bold text-lg">
-                                          {candidate.rank}
-                                        </div>
-                                      )}
-                                    </div>
+                                    <motion.div
+                                      className="flex-shrink-0"
+                                      animate={candidate.rank === 1 ? { scale: [1, 1.1, 1] } : {}}
+                                      transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
+                                    >
+                                      {getRankBadge(candidate.rank)}
+                                    </motion.div>
 
                                     <Avatar className="h-16 w-16 border-3 border-[#FFD700]/50 shadow-lg">
                                       <AvatarImage
@@ -388,12 +426,16 @@ export default function ResultsPage() {
               transition={{ duration: 0.8 }}
             >
               <div className="text-center mb-8">
-                <h2
-                  className="text-3xl md:text-4xl font-playfair font-bold text-white mb-3"
-                  style={{ textShadow: '0 0 20px rgba(255,215,0,0.3), 0 2px 6px rgba(0,0,0,0.8)' }}
-                >
-                  Khoảnh khắc đáng nhớ 🌟
-                </h2>
+                <div className="flex items-center justify-center gap-3 mb-3">
+                  <Sparkles className="w-8 h-8 text-[#FFD700]" style={{ filter: 'drop-shadow(0 0 10px rgba(255,215,0,0.6))' }} />
+                  <h2
+                    className="text-3xl md:text-4xl font-playfair font-bold text-white"
+                    style={{ textShadow: '0 0 20px rgba(255,215,0,0.3), 0 2px 6px rgba(0,0,0,0.8)' }}
+                  >
+                    Khoảnh khắc đáng nhớ
+                  </h2>
+                  <Sparkles className="w-8 h-8 text-[#FFD700]" style={{ filter: 'drop-shadow(0 0 10px rgba(255,215,0,0.6))' }} />
+                </div>
                 <p className="text-lg text-[#FFE68A]" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.8)' }}>
                   20 năm một hành trình rực rỡ
                 </p>

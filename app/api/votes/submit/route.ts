@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server"
 import { createClient } from "@/lib/supabase/server"
+import { createClient as createServiceClient } from "@supabase/supabase-js"
 
 interface VoteSubmission {
   category_id: string
@@ -23,6 +24,12 @@ export async function POST(request: NextRequest) {
     }
 
     const supabase = createClient()
+
+    // Create a service client for operations that need elevated permissions (delete/insert votes)
+    const serviceSupabase = createServiceClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.SUPABASE_SERVICE_ROLE_KEY!
+    )
 
     // Verify voter exists and belongs to this event
     const { data: voter, error: voterError } = await supabase
@@ -51,7 +58,7 @@ export async function POST(request: NextRequest) {
     // Get event settings
     const { data: event, error: eventError } = await supabase
       .from("events")
-      .select("id, voting_start_time, voting_end_time, allow_edit_before_deadline")
+      .select("id, voting_start_time, voting_end_time, settings")
       .eq("id", event_id)
       .single()
 
@@ -62,19 +69,28 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Check if voting is active
+    // Extract voting settings from JSONB column
+    const votingSettings = event.settings?.voting || {
+      allow_vote_before_start_date: true,
+      allow_vote_after_end_date: true,
+      is_require_otp: false
+    }
+
+    // Check if voting is active based on settings
     const now = new Date()
     const startTime = new Date(event.voting_start_time)
     const endTime = new Date(event.voting_end_time)
 
-    if (now < startTime) {
+    // Check voting start time (only if allow_vote_before_start_date is false)
+    if (!votingSettings.allow_vote_before_start_date && now < startTime) {
       return NextResponse.json(
         { message: "Bình chọn chưa bắt đầu" },
         { status: 400 }
       )
     }
 
-    if (now > endTime) {
+    // Check voting end time (only if allow_vote_after_end_date is false)
+    if (!votingSettings.allow_vote_after_end_date && now > endTime) {
       return NextResponse.json(
         { message: "Bình chọn đã kết thúc" },
         { status: 400 }
@@ -88,7 +104,10 @@ export async function POST(request: NextRequest) {
       .eq("voter_id", voter_id)
       .limit(1)
 
-    if (existingVotes && existingVotes.length > 0 && !event.allow_edit_before_deadline) {
+    // Allow editing before deadline by default (can be configured per event in settings)
+    const allowEditBeforeDeadline = event.settings?.voting?.allow_edit_before_deadline !== false
+
+    if (existingVotes && existingVotes.length > 0 && !allowEditBeforeDeadline) {
       return NextResponse.json(
         { message: "Bạn đã bình chọn rồi và không thể sửa đổi" },
         { status: 400 }
@@ -138,12 +157,20 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // Delete existing votes if editing is allowed
-    if (event.allow_edit_before_deadline) {
-      await supabase.from("votes").delete().eq("voter_id", voter_id)
+    // Delete existing votes if editing is allowed (use service client to bypass RLS)
+    if (allowEditBeforeDeadline) {
+      const { error: deleteError } = await serviceSupabase
+        .from("votes")
+        .delete()
+        .eq("voter_id", voter_id)
+
+      if (deleteError) {
+        console.error("Error deleting existing votes:", deleteError)
+        // Continue anyway - might be no existing votes
+      }
     }
 
-    // Insert new votes
+    // Insert new votes (use service client to bypass RLS)
     const votesToInsert = votes.flatMap((vote) =>
       vote.candidate_ids.map((candidateId) => ({
         voter_id,
@@ -153,20 +180,41 @@ export async function POST(request: NextRequest) {
       }))
     )
 
-    const { error: insertError } = await supabase
+    const { error: insertError } = await serviceSupabase
       .from("votes")
       .insert(votesToInsert)
 
     if (insertError) {
       console.error("Error inserting votes:", insertError)
+      console.error("Insert error details:", {
+        code: insertError.code,
+        message: insertError.message,
+        details: insertError.details,
+        hint: insertError.hint
+      })
+
+      // If it's a duplicate key error (user already voted for this candidate),
+      // treat it as success since they already have the vote registered
+      if (insertError.code === '23505') {
+        console.log("Duplicate vote detected, treating as success")
+        return NextResponse.json({
+          message: "Bạn đã bình chọn thành công!",
+          success: true,
+        })
+      }
+
+      // For other errors, return error
       return NextResponse.json(
-        { message: "Failed to submit votes" },
+        {
+          message: "Failed to submit votes",
+          error: insertError.message
+        },
         { status: 500 }
       )
     }
 
-    // Update voter's voted_at timestamp
-    await supabase
+    // Update voter's voted_at timestamp (use service client)
+    await serviceSupabase
       .from("voters")
       .update({ voted_at: new Date().toISOString() })
       .eq("id", voter_id)

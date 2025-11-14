@@ -137,76 +137,29 @@ export default function Header() {
             transition={{ duration: 0.6 }}
           />
 
-          {/* Logo icon with shine effect */}
-          <div className="relative">
-            <motion.div
-              animate={logoGlow ? {
-                rotate: [0, 10, -10, 0],
-                scale: [1, 1.15, 1]
-              } : {}}
-              transition={{ duration: 0.6 }}
-            >
-              <Sparkles className="h-7 w-7 text-[#FFD700] group-hover:text-[#FDB931] transition-colors relative z-10" />
-            </motion.div>
-
-            {/* Animated shine effect on hover */}
-            <motion.div
-              className="absolute inset-0 opacity-0 group-hover:opacity-100"
-              animate={{
-                x: ['-100%', '200%'],
-              }}
-              transition={{
-                duration: 1.5,
-                repeat: Infinity,
-                repeatDelay: 1,
-              }}
-              style={{
-                background: 'linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.6) 50%, transparent 100%)',
-                width: '50%',
-                height: '100%',
-              }}
-            />
-          </div>
-
-          {/* Logo text with gradient */}
-          <div className="relative">
-            <motion.span
-              className="text-xl font-bold bg-gradient-to-r from-[#FFD700] via-[#FDB931] to-[#FFD700] bg-clip-text text-transparent"
-              style={{
-                fontFamily: 'Outfit, Poppins, sans-serif',
-                textShadow: logoGlow ? '0 0 20px rgba(255,215,0,0.6)' : 'none',
-                letterSpacing: '-0.02em'
-              }}
-              animate={logoGlow ? {
-                textShadow: [
-                  '0 0 10px rgba(255,215,0,0.4)',
-                  '0 0 30px rgba(255,215,0,0.8)',
-                  '0 0 10px rgba(255,215,0,0.4)'
-                ]
-              } : {}}
-              transition={{ duration: 0.6 }}
-            >
-              Bright<span className="text-[#FDB931]">4</span>Event
-            </motion.span>
-
-            {/* Sparkle particles on logo text */}
-            {logoGlow && (
-              <>
+            <div className="flex items-center gap-4">
                 <motion.div
-                  className="absolute -top-1 left-1/4 w-1 h-1 bg-[#FFD700] rounded-full"
-                  initial={{ opacity: 0, scale: 0 }}
-                  animate={{ opacity: [0, 1, 0], y: [-5, -15], scale: [0, 1, 0] }}
-                  transition={{ duration: 0.6 }}
-                />
-                <motion.div
-                  className="absolute -top-1 right-1/4 w-1 h-1 bg-[#FDB931] rounded-full"
-                  initial={{ opacity: 0, scale: 0 }}
-                  animate={{ opacity: [0, 1, 0], y: [-5, -15], scale: [0, 1, 0] }}
-                  transition={{ duration: 0.6, delay: 0.1 }}
-                />
-              </>
-            )}
-          </div>
+                    animate={{
+                        rotate: [0, 5, -5, 0],
+                        scale: [1, 1.1, 1],
+                    }}
+                    transition={{ duration: 3, repeat: Infinity }}
+                >
+                    <Crown className="w-10 h-10 text-[#FFD700]" style={{ filter: 'drop-shadow(0 0 20px rgba(255,215,0,0.8))' }} />
+                </motion.div>
+                <div>
+                    <h1 className="text-2xl font-bold bg-gradient-to-r from-[#FFD700] via-[#FFC107] to-[#FFD700] bg-clip-text text-transparent"
+                        style={{
+                            fontFamily: 'Playfair Display, serif',
+                            textShadow: '0 0 30px rgba(255,215,0,0.5)',
+                            letterSpacing: '0.02em'
+                        }}>
+                        Bright4Event
+                    </h1>
+                    <p className="text-[#FFD700]/80 text-xs tracking-wider">All-in-One for Event</p>
+                </div>
+            </div>
+
         </motion.div>
 
         <nav className="flex items-center gap-2">
@@ -298,7 +251,7 @@ export default function Header() {
               </Link>
 
               {/* Results button - mobile */}
-              <Link href={`/admin/dashboard`}>
+              <Link href={`/event/${eventId}/results`}>
                 <MyButton
                   variant="ghost"
                   size="small"

@@ -1,22 +1,229 @@
 "use client"
 
 import { useState, useEffect, useMemo } from "react"
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 import { useParams } from "next/navigation"
 import Header from "@/components/Header"
 import AuthModal from "@/components/AuthModal"
-import CategoryVotingCard from "@/components/CategoryVotingCard"
-import ConfettiEffect from "@/components/ConfettiEffect"
-import CountdownTimer from "@/components/CountdownTimer"
-import MyButton from "@/components/MyButton"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { CheckCircle2, Loader2, Lock, Eye, EyeOff } from "lucide-react"
-import { toast } from "sonner"
-import { Category, VotesByCategory } from "@/types/voting"
+import { CheckCircle2, Loader2, Lock, Crown, Sparkles, Smile, Palette, Check, Eye } from "lucide-react"
+import { toast, voteSuccessToast } from "@/hooks/use-toast"
+import { Category, VotesByCategory, Candidate } from "@/types/voting"
 import { useRealtimeVotes } from "@/hooks/useRealtimeVotes"
-import Link from "next/link";
+import Link from "next/link"
 
+// Category icon mapping
+const categoryIcons: Record<string, any> = {
+  King: Crown,
+  Queen: Crown,
+  Smile: Smile,
+  Creative: Palette,
+}
+
+// Get icon for category
+const getCategoryIcon = (categoryName: string) => {
+  if (categoryName.toLowerCase().includes('king')) return Crown
+  if (categoryName.toLowerCase().includes('queen')) return Crown
+  if (categoryName.toLowerCase().includes('smile')) return Smile
+  if (categoryName.toLowerCase().includes('creative')) return Palette
+  return Sparkles
+}
+
+// Candidate Card Component
+interface CandidateCardProps {
+  candidate: Candidate
+  isSelected: boolean
+  onToggle: () => void
+  votingEnded: boolean
+}
+
+function CandidateCard({ candidate, isSelected, onToggle, votingEnded }: CandidateCardProps) {
+  return (
+    <motion.div
+      layout
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      whileHover={!votingEnded ? { scale: 1.05, y: -5 } : {}}
+      className="relative group"
+    >
+      <div
+        className={`
+          relative bg-gradient-to-b from-[#1a1a1a] to-[#0d0d0d] rounded-2xl overflow-hidden
+          transition-all duration-300 cursor-pointer
+          ${isSelected
+            ? 'ring-2 ring-[#FFD700] shadow-[0_0_30px_rgba(255,215,0,0.4)]'
+            : 'ring-1 ring-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.3)]'
+          }
+        `}
+        onClick={!votingEnded ? onToggle : undefined}
+      >
+        {/* Spotlight glow effect */}
+        <div className={`absolute inset-0 bg-gradient-to-b from-[#FFD700]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none ${isSelected ? 'opacity-20' : ''}`} />
+
+        {/* Selected indicator */}
+        <AnimatePresence>
+          {isSelected && (
+            <motion.div
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0, opacity: 0 }}
+              className="absolute top-3 right-3 z-10 w-8 h-8 bg-[#FFD700] rounded-full flex items-center justify-center shadow-lg"
+            >
+              <Check className="w-5 h-5 text-black" />
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* Photo */}
+        <div className="relative aspect-[3/4] overflow-hidden">
+          <img
+            src={candidate.photo_url || ""}
+            alt={candidate.name}
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+        </div>
+
+        {/* Info */}
+        <div className="p-4">
+          <h3 className="text-white font-semibold text-[17px] mb-1 truncate">
+            {candidate.name}
+          </h3>
+          <p className="text-white/70 text-[14px] truncate mb-3">
+            {candidate.description}
+          </p>
+
+          {/* Select Button */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation()
+              if (!votingEnded) onToggle()
+            }}
+            disabled={votingEnded}
+            className={`
+              w-full py-2 px-4 rounded-full text-sm font-semibold
+              transition-all duration-300 flex items-center justify-center gap-2
+              ${isSelected
+                ? 'bg-[#FFD700] text-black shadow-[0_0_20px_rgba(255,215,0,0.5)]'
+                : 'bg-white/10 text-white hover:bg-white/20'
+              }
+              disabled:opacity-50 disabled:cursor-not-allowed
+            `}
+          >
+            {isSelected ? (
+              <>
+                <Check className="w-4 h-4" />
+                Đã chọn
+              </>
+            ) : (
+              'Chọn'
+            )}
+          </button>
+        </div>
+      </div>
+    </motion.div>
+  )
+}
+
+// LED Countdown Timer Component
+interface CountdownDisplayProps {
+  endTime: Date
+  onTimeUp: () => void
+}
+
+function CountdownDisplay({ endTime, onTimeUp }: CountdownDisplayProps) {
+  const [timeLeft, setTimeLeft] = useState({ hours: 0, minutes: 0, seconds: 0 })
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      const now = new Date().getTime()
+      const distance = endTime.getTime() - now
+
+      if (distance < 0) {
+        clearInterval(timer)
+        onTimeUp()
+        setTimeLeft({ hours: 0, minutes: 0, seconds: 0 })
+      } else {
+        const hours = Math.floor(distance / (1000 * 60 * 60))
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000)
+        setTimeLeft({ hours, minutes, seconds })
+      }
+    }, 1000)
+
+    return () => clearInterval(timer)
+  }, [endTime, onTimeUp])
+
+  const pad = (num: number) => num.toString().padStart(2, '0')
+
+  return (
+    <div className="relative">
+      {/* Glow effect */}
+      <div className="absolute inset-0 bg-gradient-to-r from-purple-600/20 via-[#FFD700]/20 to-purple-600/20 blur-xl" />
+
+      <div className="relative bg-gradient-to-b from-[#1a1a1a] to-[#0d0d0d] rounded-2xl p-6 border border-white/10">
+        <p className="text-center text-[#FFD700] text-sm font-semibold mb-3 tracking-wide uppercase">
+          Thời gian còn lại
+        </p>
+
+        <div className="flex items-center justify-center gap-2">
+          {/* Hours */}
+          <div className="flex gap-1">
+            <div className="w-14 h-16 bg-black/50 rounded-lg border border-[#FFD700]/30 flex items-center justify-center">
+              <span className="text-[#FFD700] text-3xl font-bold font-mono tabular-nums" style={{ textShadow: '0 0 20px rgba(255,215,0,0.8)' }}>
+                {pad(timeLeft.hours)[0]}
+              </span>
+            </div>
+            <div className="w-14 h-16 bg-black/50 rounded-lg border border-[#FFD700]/30 flex items-center justify-center">
+              <span className="text-[#FFD700] text-3xl font-bold font-mono tabular-nums" style={{ textShadow: '0 0 20px rgba(255,215,0,0.8)' }}>
+                {pad(timeLeft.hours)[1]}
+              </span>
+            </div>
+          </div>
+
+          <span className="text-[#FFD700] text-2xl font-bold">:</span>
+
+          {/* Minutes */}
+          <div className="flex gap-1">
+            <div className="w-14 h-16 bg-black/50 rounded-lg border border-[#FFD700]/30 flex items-center justify-center">
+              <span className="text-[#FFD700] text-3xl font-bold font-mono tabular-nums" style={{ textShadow: '0 0 20px rgba(255,215,0,0.8)' }}>
+                {pad(timeLeft.minutes)[0]}
+              </span>
+            </div>
+            <div className="w-14 h-16 bg-black/50 rounded-lg border border-[#FFD700]/30 flex items-center justify-center">
+              <span className="text-[#FFD700] text-3xl font-bold font-mono tabular-nums" style={{ textShadow: '0 0 20px rgba(255,215,0,0.8)' }}>
+                {pad(timeLeft.minutes)[1]}
+              </span>
+            </div>
+          </div>
+
+          <span className="text-[#FFD700] text-2xl font-bold">:</span>
+
+          {/* Seconds */}
+          <div className="flex gap-1">
+            <div className="w-14 h-16 bg-black/50 rounded-lg border border-[#FFD700]/30 flex items-center justify-center">
+              <span className="text-[#FFD700] text-3xl font-bold font-mono tabular-nums" style={{ textShadow: '0 0 20px rgba(255,215,0,0.8)' }}>
+                {pad(timeLeft.seconds)[0]}
+              </span>
+            </div>
+            <div className="w-14 h-16 bg-black/50 rounded-lg border border-[#FFD700]/30 flex items-center justify-center">
+              <span className="text-[#FFD700] text-3xl font-bold font-mono tabular-nums" style={{ textShadow: '0 0 20px rgba(255,215,0,0.8)' }}>
+                {pad(timeLeft.seconds)[1]}
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div className="flex justify-center gap-8 mt-2">
+          <span className="text-white/40 text-xs uppercase tracking-wider">Giờ</span>
+          <span className="text-white/40 text-xs uppercase tracking-wider">Phút</span>
+          <span className="text-white/40 text-xs uppercase tracking-wider">Giây</span>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// Main Voting Page
 export default function VotingPage() {
   const params = useParams()
   const eventId = params.eventId as string
@@ -29,9 +236,8 @@ export default function VotingPage() {
   const [submitting, setSubmitting] = useState(false)
   const [selectedVotes, setSelectedVotes] = useState<VotesByCategory>({})
   const [eventName, setEventName] = useState<string>("")
-  const [showConfetti, setShowConfetti] = useState(false)
   const [votingEnded, setVotingEnded] = useState(false)
-  const [showVoteCounts, setShowVoteCounts] = useState(false) // Toggle to show/hide vote counts
+  const [hasVotedBefore, setHasVotedBefore] = useState(false)
 
   // Realtime vote counts
   const { voteCounts } = useRealtimeVotes(eventId)
@@ -40,7 +246,6 @@ export default function VotingPage() {
   const votingEndTime = useMemo(() => {
     const end = new Date()
     end.setHours(21, 0, 0, 0)
-    // If it's already past 21:00 today, set to 21:00 tomorrow
     if (end.getTime() < Date.now()) {
       end.setDate(end.getDate() + 1)
     }
@@ -64,7 +269,6 @@ export default function VotingPage() {
       }
       const categoriesData = await categoriesResponse.json()
 
-      // Thêm random avatar nếu không có ảnh
       const categoriesWithAvatars = (categoriesData.categories || []).map((cat: any) => ({
         ...cat,
         candidates: cat.candidates.map((candidate: any) => ({
@@ -77,7 +281,11 @@ export default function VotingPage() {
       setEventName(categoriesData.eventName || "")
     } catch (error) {
       console.error("Error loading categories:", error)
-      toast.error("Không thể tải dữ liệu sự kiện")
+      toast({
+        variant: "destructive",
+        title: "Lỗi",
+        description: "Không thể tải dữ liệu sự kiện",
+      })
     } finally {
       setLoading(false)
     }
@@ -88,11 +296,12 @@ export default function VotingPage() {
     setIsAuthenticated(true)
     setShowAuthModal(false)
 
-    // Load existing votes if any
     try {
       const votesResponse = await fetch(`/api/votes/voter/${id}`)
       if (votesResponse.ok) {
         const votesData = await votesResponse.json()
+        const hasExistingVotes = votesData.votes && Object.keys(votesData.votes).length > 0
+        setHasVotedBefore(hasExistingVotes)
         setSelectedVotes((prev) => ({
           ...votesData.votes,
           ...prev,
@@ -107,7 +316,11 @@ export default function VotingPage() {
 
   const toggleCandidate = (categoryId: string, candidateId: string) => {
     if (votingEnded) {
-      toast.error("Thời gian bình chọn đã kết thúc")
+      toast({
+        variant: "destructive",
+        title: "Đã kết thúc",
+        description: "Thời gian bình chọn đã kết thúc",
+      })
       return
     }
 
@@ -131,7 +344,11 @@ export default function VotingPage() {
 
   const handleSubmit = async () => {
     if (votingEnded) {
-      toast.error("Thời gian bình chọn đã kết thúc")
+      toast({
+        variant: "destructive",
+        title: "Đã kết thúc",
+        description: "Thời gian bình chọn đã kết thúc",
+      })
       return
     }
 
@@ -140,7 +357,11 @@ export default function VotingPage() {
     )
 
     if (!hasVotes) {
-      toast.error("Vui lòng chọn ít nhất một ứng viên")
+      toast({
+        variant: "destructive",
+        title: "Chưa chọn ứng viên",
+        description: "Vui lòng chọn ít nhất một ứng viên",
+      })
       return
     }
 
@@ -178,12 +399,21 @@ export default function VotingPage() {
         throw new Error(error.message || "Gửi bình chọn thất bại")
       }
 
-      toast.success("Bình chọn của bạn đã được ghi nhận!")
-      setShowConfetti(true)
+      // Use premium GLOW UP 2025 toast with confetti control
+      // Only trigger confetti for NEW votes, not updates
+      const isUpdate = hasVotedBefore
+      voteSuccessToast({ isUpdate })
+
+      // Mark as voted for future submissions
+      setHasVotedBefore(true)
     } catch (error) {
       console.error("Error submitting votes:", error)
-      toast.error(error instanceof Error ? error.message : "Có lỗi xảy ra")
-    } finally {
+      toast({
+        variant: "destructive",
+        title: "Lỗi",
+        description: error instanceof Error ? error.message : "Có lỗi xảy ra",
+      })
+    } finally{
       setSubmitting(false)
     }
   }
@@ -196,80 +426,103 @@ export default function VotingPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#0B0B0B] via-[#1a1a1a] to-[#0B0B0B] relative overflow-hidden">
-      {/* Animated Spotlight Background */}
-      <div className="fixed inset-0 pointer-events-none overflow-hidden">
+    <div className="min-h-screen bg-[#0a0a0a] relative overflow-hidden">
+      {/* Animated Background */}
+      <div className="fixed inset-0 pointer-events-none">
+        {/* Purple spotlight left */}
         <motion.div
-          className="absolute top-0 left-1/4 w-96 h-96 bg-[#FFD700]/10 rounded-full blur-3xl"
+          className="absolute top-0 left-0 w-[600px] h-[600px] bg-purple-600/20 rounded-full blur-[120px]"
           animate={{
-            x: [0, 100, 0],
+            x: [0, 50, 0],
+            y: [0, 30, 0],
+            scale: [1, 1.1, 1],
+          }}
+          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+        />
+
+        {/* Gold spotlight right */}
+        <motion.div
+          className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-[#FFD700]/15 rounded-full blur-[100px]"
+          animate={{
+            x: [0, -40, 0],
             y: [0, 50, 0],
-            scale: [1, 1.2, 1],
-          }}
-          transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-        />
-        <motion.div
-          className="absolute top-1/2 right-1/4 w-64 h-64 bg-purple-600/10 rounded-full blur-3xl"
-          animate={{
-            x: [0, -80, 0],
-            y: [0, 80, 0],
-            scale: [1, 1.3, 1],
-          }}
-          transition={{ duration: 12, repeat: Infinity, ease: "linear", delay: 1 }}
-        />
-        <motion.div
-          className="absolute bottom-1/4 left-1/2 w-80 h-80 bg-[#FDB931]/8 rounded-full blur-3xl"
-          animate={{
-            x: [0, -60, 0],
-            y: [0, -40, 0],
             scale: [1, 1.15, 1],
           }}
-          transition={{ duration: 15, repeat: Infinity, ease: "linear", delay: 2 }}
+          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+        />
+
+        {/* Purple spotlight bottom */}
+        <motion.div
+          className="absolute bottom-0 left-1/3 w-[550px] h-[550px] bg-purple-600/15 rounded-full blur-[110px]"
+          animate={{
+            x: [0, 60, 0],
+            y: [0, -40, 0],
+            scale: [1, 1.12, 1],
+          }}
+          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut", delay: 4 }}
         />
       </div>
 
       <Header />
 
-      <ConfettiEffect show={showConfetti} duration={5000} />
+      {/* Main Content */}
+      <div className="relative z-10 max-w-[1200px] mx-auto px-6 py-12">
+        {/* Hero Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-center mb-12"
+        >
+          <motion.div
+            animate={{
+              rotate: [0, 5, -5, 0],
+            }}
+            transition={{ duration: 3, repeat: Infinity, repeatDelay: 2 }}
+            className="inline-block mb-4"
+          >
+            <Sparkles className="w-16 h-16 text-[#FFD700]" style={{ filter: 'drop-shadow(0 0 20px rgba(255,215,0,0.6))' }} />
+          </motion.div>
 
-      <div className="container px-4 py-8 max-w-6xl relative z-10">
-        {/* Header with Countdown */}
-        <div className="mb-8">
-          <div className="flex flex-col items-center gap-6">
-            <div className="text-center">
-              <h1 className="text-3xl md:text-4xl font-bold mb-2 text-white">
-                Bình chọn
-              </h1>
-              <p className="text-[#FAF3E0]/70">
-                Chọn ứng viên yêu thích của bạn
-              </p>
-            </div>
+          <h1 className="text-5xl md:text-6xl font-bold mb-4">
+            <span className="bg-gradient-to-r from-purple-400 via-[#FFD700] to-purple-400 bg-clip-text text-transparent">
+              GLOW UP 2025
+            </span>
+          </h1>
+          <p className="text-xl text-white/70 mb-2">Year End Party Voting</p>
+          <p className="text-white/50">Chọn ứng viên yêu thích của bạn</p>
+        </motion.div>
 
-            {/* Countdown Timer */}
-            <div className="w-full max-w-2xl">
-              <CountdownTimer
-                endTime={votingEndTime}
-                onTimeUp={() => {
-                  setVotingEnded(true)
-                  toast.error("Thời gian bình chọn đã kết thúc!")
-                }}
-              />
-            </div>
+        {/* Countdown Timer */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="mb-12"
+        >
+          <CountdownDisplay
+            endTime={votingEndTime}
+            onTimeUp={() => {
+              setVotingEnded(true)
+              toast({
+                variant: "destructive",
+                title: "Hết giờ!",
+                description: "Thời gian bình chọn đã kết thúc!",
+              })
+            }}
+          />
+        </motion.div>
 
-            {/* Toggle Vote Counts Button */}
-              <Link href={`/event/${eventId}/results`}>
-
-              <MyButton
-              variant="outline"
-              size="small"
-              className="border-[#FFD700]/30 bg-[#1a1a1a] text-[#FFD700] hover:bg-[#FFD700]/10 hover:text-[#FFD700] hover:border-[#FFD700]"
-              icon={showVoteCounts ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
-              iconPosition="left"
+        {/* Results Link */}
+        <div className="flex justify-center mb-12">
+          <Link href={`/event/${eventId}/results`}>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-6 py-3 bg-white/5 border border-[#FFD700]/30 rounded-full text-[#FFD700] hover:bg-[#FFD700]/10 hover:border-[#FFD700] transition-all font-semibold flex items-center gap-2"
             >
+              <Eye className="w-4 h-4" />
               Xem kết quả
-            </MyButton>
-              </Link>
-          </div>
+            </motion.button>
+          </Link>
         </div>
 
         {/* Auth Modal */}
@@ -284,83 +537,164 @@ export default function VotingPage() {
 
         {/* Loading State */}
         {loading ? (
-          <div className="flex items-center justify-center py-16">
+          <div className="flex items-center justify-center py-20">
             <Loader2 className="h-12 w-12 animate-spin text-[#FFD700]" />
           </div>
         ) : categories.length === 0 ? (
-          <Card className="max-w-2xl mx-auto border-2 border-[#FFD700]/20 bg-[#1a1a1a]">
-            <CardContent className="p-12 text-center space-y-4">
-              <h2 className="text-2xl font-bold mb-2 text-white">
-                Chưa có danh mục nào
-              </h2>
-              <p className="text-[#FAF3E0]/70">
-                Sự kiện này chưa có danh mục bình chọn
-              </p>
-            </CardContent>
-          </Card>
+          <div className="max-w-md mx-auto bg-[#1a1a1a] border border-white/10 rounded-2xl p-12 text-center">
+            <h2 className="text-2xl font-bold text-white mb-2">
+              Chưa có danh mục nào
+            </h2>
+            <p className="text-white/60">
+              Sự kiện này chưa có danh mục bình chọn
+            </p>
+          </div>
         ) : (
-          <div className="space-y-8">
+          <div className="space-y-16">
+            {/* Voting Ended Banner */}
             {votingEnded && (
-              <Badge variant="destructive" className="w-full justify-center py-3 text-base">
-                <Lock className="mr-2 h-5 w-5" />
-                Đã hết thời gian bình chọn
-              </Badge>
+              <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="bg-gradient-to-r from-red-500/20 to-orange-500/20 border border-red-500/30 rounded-2xl p-4 text-center"
+              >
+                <div className="flex items-center justify-center gap-2 text-red-400 font-semibold">
+                  <Lock className="w-5 h-5" />
+                  Đã hết thời gian bình chọn
+                </div>
+              </motion.div>
             )}
 
-            {categories.map((category) => (
-              <CategoryVotingCard
-                key={category.id}
-                category={category}
-                selectedCandidates={selectedVotes[category.id] || []}
-                onToggleCandidate={(candidateId) =>
-                  toggleCandidate(category.id, candidateId)
-                }
-                showVoteCounts={showVoteCounts}
-                voteCounts={voteCounts}
-              />
-            ))}
+            {/* Categories */}
+            {categories.map((category, categoryIndex) => {
+              const Icon = getCategoryIcon(category.name)
+
+              return (
+                <motion.div
+                  key={category.id}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: categoryIndex * 0.1 }}
+                  className="relative"
+                >
+                  {/* Category Header */}
+                  <div className="mb-8 text-center">
+                    <div className="flex items-center justify-center gap-3 mb-3">
+                      <motion.div
+                        animate={{
+                          scale: [1, 1.1, 1],
+                          rotate: [0, 5, -5, 0],
+                        }}
+                        transition={{ duration: 3, repeat: Infinity }}
+                      >
+                        <Icon className="w-10 h-10 text-[#FFD700]" style={{ filter: 'drop-shadow(0 0 15px rgba(255,215,0,0.6))' }} />
+                      </motion.div>
+                      <h2 className="text-3xl md:text-4xl font-bold text-white">
+                        {category.name}
+                      </h2>
+                    </div>
+
+                    {category.description && (
+                      <p className="text-white/60 text-lg">{category.description}</p>
+                    )}
+
+                    {category.max_votes_per_voter && (
+                      <p className="text-[#FFD700] text-sm mt-2">
+                        Chọn tối đa {category.max_votes_per_voter} ứng viên
+                      </p>
+                    )}
+
+                    {/* Glow line */}
+                    <div className="mt-6 h-px bg-gradient-to-r from-transparent via-[#FFD700]/50 to-transparent" />
+                  </div>
+
+                  {/* Candidates Grid */}
+                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    {category.candidates.map((candidate) => (
+                      <CandidateCard
+                        key={candidate.id}
+                        candidate={candidate}
+                        isSelected={(selectedVotes[category.id] || []).includes(candidate.id)}
+                        onToggle={() => toggleCandidate(category.id, candidate.id)}
+                        votingEnded={votingEnded}
+                      />
+                    ))}
+                  </div>
+                </motion.div>
+              )
+            })}
 
             {/* Submit Button */}
-            <div className="flex flex-col items-center gap-4">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="flex flex-col items-center gap-6 py-12"
+            >
               <div className="text-center">
-                <p className="text-sm text-[#FAF3E0]/70 mb-2">
-                  Tổng số phiếu đã chọn: {getTotalSelectedVotes()}
+                <p className="text-white/60 mb-2">
+                  Tổng số phiếu đã chọn: <span className="text-[#FFD700] font-bold text-xl">{getTotalSelectedVotes()}</span>
                 </p>
                 {!isAuthenticated && getTotalSelectedVotes() > 0 && !votingEnded && (
-                  <p className="text-xs text-[#FFE68A] mt-1">
-                    💡 Bạn sẽ cần đăng nhập để gửi bình chọn
+                  <p className="text-purple-400 text-sm flex items-center gap-1 justify-center">
+                    <Sparkles className="w-4 h-4" />
+                    Bạn sẽ cần xác thực để gửi bình chọn
                   </p>
                 )}
               </div>
-              <motion.div
-                whileHover={!votingEnded && getTotalSelectedVotes() > 0 ? { scale: 1.05 } : {}}
-                whileTap={!votingEnded && getTotalSelectedVotes() > 0 ? { scale: 0.95 } : {}}
-                className="relative group"
+
+              <motion.button
+                onClick={handleSubmit}
+                disabled={submitting || getTotalSelectedVotes() === 0 || votingEnded}
+                whileHover={!submitting && getTotalSelectedVotes() > 0 && !votingEnded ? { scale: 1.05 } : {}}
+                whileTap={!submitting && getTotalSelectedVotes() > 0 && !votingEnded ? { scale: 0.95 } : {}}
+                className={`
+                  relative px-16 py-5 rounded-full font-bold text-lg
+                  transition-all duration-300 flex items-center gap-3
+                  ${votingEnded
+                    ? 'bg-gray-600 text-gray-300 cursor-not-allowed'
+                    : getTotalSelectedVotes() === 0
+                    ? 'bg-white/10 text-white/40 cursor-not-allowed'
+                    : 'bg-gradient-to-r from-[#FFD700] to-[#FDB931] text-black shadow-[0_0_40px_rgba(255,215,0,0.4)] hover:shadow-[0_0_60px_rgba(255,215,0,0.6)]'
+                  }
+                `}
               >
-                {/* Animated glow effect */}
+                {/* Glow effect */}
                 {!votingEnded && getTotalSelectedVotes() > 0 && (
-                  <div className="absolute -inset-1 bg-gradient-to-r from-[#FFD700] via-[#FDB931] to-[#FFD700] rounded-full blur-lg opacity-75 group-hover:opacity-100 transition duration-500 animate-glow" />
+                  <motion.div
+                    className="absolute inset-0 rounded-full bg-gradient-to-r from-[#FFD700] to-[#FDB931] blur-xl opacity-50"
+                    animate={{
+                      scale: [1, 1.1, 1],
+                      opacity: [0.5, 0.7, 0.5],
+                    }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                  />
                 )}
-                <MyButton
-                  variant="primary"
-                  size="large"
-                  className="relative px-16 py-6 rounded-full bg-gradient-to-r from-[#FFD700] via-[#FDB931] to-[#FFD700] text-black font-bold text-lg shadow-2xl"
-                  disabled={submitting || getTotalSelectedVotes() === 0 || votingEnded}
-                  onClick={handleSubmit}
-                  loading={submitting}
-                  icon={votingEnded ? <Lock className="h-5 w-5" /> : submitting ? undefined : <CheckCircle2 className="h-5 w-5" />}
-                  iconPosition="left"
-                >
-                  {votingEnded
-                    ? "Đã hết thời gian"
-                    : submitting
-                    ? "Đang gửi..."
-                    : !isAuthenticated
-                    ? "Đăng nhập & Gửi bình chọn"
-                    : "Xác nhận bình chọn"}
-                </MyButton>
-              </motion.div>
-            </div>
+
+                <span className="relative z-10 flex items-center gap-3">
+                  {votingEnded ? (
+                    <>
+                      <Lock className="w-5 h-5" />
+                      Đã hết thời gian
+                    </>
+                  ) : submitting ? (
+                    <>
+                      <Loader2 className="w-5 h-5 animate-spin" />
+                      Đang gửi...
+                    </>
+                  ) : !isAuthenticated ? (
+                    <>
+                      <CheckCircle2 className="w-5 h-5" />
+                      Xác thực & Gửi bình chọn
+                    </>
+                  ) : (
+                    <>
+                      <CheckCircle2 className="w-5 h-5" />
+                      Xác nhận bình chọn
+                    </>
+                  )}
+                </span>
+              </motion.button>
+            </motion.div>
           </div>
         )}
       </div>

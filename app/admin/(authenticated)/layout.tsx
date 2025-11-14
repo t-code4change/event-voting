@@ -3,8 +3,8 @@
 import { useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { useAppSelector, useAppDispatch } from "@/store/hooks"
-import { openLoginModal } from "@/store/slices/modalSlice"
-import AdminSidebar from "@/components/AdminSidebar"
+import AdminSidebarNew from "@/components/admin/AdminSidebarNew"
+import AdminHeader from "@/components/admin/AdminHeader"
 
 export default function AdminLayout({
   children,
@@ -15,7 +15,6 @@ export default function AdminLayout({
   const dispatch = useAppDispatch()
   const { isAuthenticated, loading } = useAppSelector((state) => state.auth)
 
-    console.log('isAuthenticated', isAuthenticated)
   useEffect(() => {
     // Wait for auth state to load
     if (loading) return
@@ -33,10 +32,10 @@ export default function AdminLayout({
   // Show loading state while checking auth
   if (loading) {
     return (
-      <div className="flex h-screen items-center justify-center bg-background">
+      <div className="flex h-screen items-center justify-center bg-[#0A0A0A]">
         <div className="text-center">
           <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-[#FFD700] border-r-transparent"></div>
-          <p className="mt-4 text-muted-foreground">Đang tải...</p>
+          <p className="mt-4 text-white/60">Đang tải...</p>
         </div>
       </div>
     )
@@ -48,16 +47,20 @@ export default function AdminLayout({
   }
 
   return (
-    <div className="flex h-screen overflow-hidden bg-background">
+    <div className="flex h-screen overflow-hidden bg-[#0A0A0A]">
       {/* Sidebar */}
-      <aside className="w-64 flex-shrink-0 hidden md:block">
-        <AdminSidebar />
-      </aside>
+      <AdminSidebarNew />
 
       {/* Main Content */}
-      <main className="flex-1 overflow-y-auto">
-        <div className="container p-6 max-w-7xl">{children}</div>
-      </main>
+      <div className="flex-1 flex flex-col overflow-hidden">
+        {/* Header */}
+        <AdminHeader />
+
+        {/* Page Content */}
+        <main className="flex-1 overflow-y-auto">
+          <div className="p-6">{children}</div>
+        </main>
+      </div>
     </div>
   )
 }
