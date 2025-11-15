@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import { useEffect, useState } from "react"
 import Header from "@/components/Header"
+import Footer from "@/components/Footer"
 import {
   Sparkles, Target, Heart, Users, Zap,
   Award, Rocket, Shield, TrendingUp, Code
@@ -82,7 +83,7 @@ export default function AboutPage() {
     {
       icon: Code,
       title: "Đội ngũ Công nghệ",
-      description: "10+ kỹ sư giàu kinh nghiệm với React, Node.js, và Cloud Infrastructure",
+      description: "Hơn 10+ kỹ sư chuyên môn cao, am hiểu sâu về công nghệ sự kiện.",
       color: "from-blue-500 to-cyan-500"
     },
     {
@@ -100,10 +101,10 @@ export default function AboutPage() {
   ]
 
   const milestones = [
-    { year: "2023", event: "Thành lập Code4Change Media", highlight: true },
-    { year: "2024", event: "Ra mắt Bright4Event Beta với 50+ sự kiện pilot" },
-    { year: "2025 Q1", event: "Đạt 200+ sự kiện thành công, 150K+ người tham gia" },
-    { year: "2025 Q4", event: "Mở rộng sang khu vực Đông Nam Á", highlight: true },
+    { year: "2022", event: "Thành lập Code4Change Technology Solution", highlight: true },
+    { year: "2023", event: "Ra mắt Bright4Event Beta với 50+ sự kiện pilot" },
+    { year: "2024 Q1", event: "Đạt 200+ sự kiện thành công, 150K+ người tham gia" },
+    { year: "2025 Q1", event: "Mở rộng sang khu vực Đông Nam Á", highlight: true },
   ]
 
   return (
@@ -145,11 +146,11 @@ export default function AboutPage() {
             </motion.div>
 
             <motion.h1
-              className="text-5xl md:text-7xl font-bold"
+              className="text-5xl md:text-7xl font-bold "
               style={{ textShadow: '0 0 40px rgba(255,215,0,0.4)' }}
             >
               <span className="block text-white mb-4">Về</span>
-              <span className="block bg-gradient-to-r from-[#FFD700] via-[#FDB931] to-[#FFD700] bg-clip-text text-transparent">
+              <span className="block bg-gradient-to-r !leading-[1.2] from-[#FFD700] via-[#FDB931] to-[#FFD700] bg-clip-text text-transparent">
                 Bright4Event
               </span>
             </motion.h1>
@@ -212,10 +213,10 @@ export default function AboutPage() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="relative group"
+              className="relative group "
             >
               <div className="absolute inset-0 bg-gradient-to-br from-[#FFD700]/10 to-transparent rounded-3xl blur-xl group-hover:blur-2xl transition-all" />
-              <div className="relative bg-gradient-to-br from-[#1a1a1a] to-[#0A0A0A] border-2 border-[#FFD700]/20 hover:border-[#FFD700]/50 rounded-3xl p-8 transition-all">
+              <div className="relative h-full bg-gradient-to-br from-[#1a1a1a] to-[#0A0A0A] border-2 border-[#FFD700]/20 hover:border-[#FFD700]/50 rounded-3xl p-8 transition-all">
                 <TrendingUp className="w-16 h-16 text-[#FFD700] mb-6" />
                 <h2 className="text-3xl font-bold text-white mb-4">Tầm nhìn</h2>
                 <p className="text-gray-300 leading-relaxed text-lg">
@@ -401,12 +402,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* FOOTER */}
-      <footer className="relative bg-[#0A0A0A] border-t border-[#FFD700]/20 py-12">
-        <div className="container px-4 text-center text-gray-500">
-          <p>© 2025 Bright4Event by Code4Change.tech. All rights reserved.</p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   )
 }

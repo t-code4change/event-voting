@@ -8,6 +8,7 @@ import MyButton from "@/components/MyButton"
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import Header from "@/components/Header"
+import Footer from "@/components/Footer"
 import {
   Sparkles, QrCode, Vote, Gift, BarChart3,
   Users, Star, Trophy, ArrowRight, Search,
@@ -312,7 +313,7 @@ export default function Bright4EventPage() {
 
         {/* Scroll Indicator */}
         <motion.div
-          className="absolute bottom-10 left-1/2 -translate-x-1/2"
+          className="absolute bottom-10 -translate-x-1/2"
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
         >
@@ -1066,83 +1067,7 @@ export default function Bright4EventPage() {
         </div>
       </section>
 
-      {/* FOOTER */}
-      <footer className="relative bg-[#0D0D1A] border-t border-[#FFD700]/20 py-12">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="container px-4"
-        >
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {/* Logo & Slogan */}
-            <div className="space-y-4">
-              <div className="flex items-center gap-2">
-                <Crown className="h-8 w-8 text-[#FFD700]" />
-                <span className="text-2xl font-bold text-white">Bright4Event</span>
-              </div>
-              <p className="text-gray-400 italic">Powering every great event.</p>
-            </div>
-
-            {/* Quick Links */}
-            <div>
-              <h3 className="text-white font-semibold mb-4">Quick Links</h3>
-              <div className="space-y-2">
-                {[
-                  { label: "Tham gia", onClick: () => setShowEventSearch(true) },
-                  { label: "Giới thiệu", href: "/hello" },
-                  { label: "Đăng nhập", onClick: () => {
-                    localStorage.setItem('auth_redirect', '/admin/dashboard')
-                    window.location.href = '/pricing#create-event'
-                  }},
-                ].map((link, idx) => (
-                  <div key={idx}>
-                    {link.href ? (
-                      <Link href={link.href}>
-                        <span className="text-gray-400 hover:text-[#FFD700] transition-colors cursor-pointer">
-                          {link.label}
-                        </span>
-                      </Link>
-                    ) : (
-                      <button
-                        onClick={link.onClick}
-                        className="text-gray-400 hover:text-[#FFD700] transition-colors"
-                      >
-                        {link.label}
-                      </button>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Contact */}
-            <div>
-              <h3 className="text-white font-semibold mb-4">Contact</h3>
-              <div className="space-y-2 text-gray-400">
-                <p>code4change.co@gmail.com</p>
-                <p>bright4event.com</p>
-                <div className="flex gap-4 pt-2">
-                  {['Facebook', 'Twitter', 'LinkedIn'].map((social) => (
-                    <span
-                      key={social}
-                      className="hover:text-[#FFD700] transition-colors cursor-pointer text-sm"
-                    >
-                      {social}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="border-t border-[#FFD700]/20 mt-8 pt-8 text-center">
-            <p className="text-gray-500 text-sm">
-              © 2025 Bright4Event by Code4Change.tech. All rights reserved.
-            </p>
-          </div>
-        </motion.div>
-      </footer>
+      <Footer />
     </div>
   )
 }

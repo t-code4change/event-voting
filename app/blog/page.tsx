@@ -115,7 +115,7 @@ export default function BlogPage() {
       <NewsletterSubscription />
 
       <footer className="bg-[#0A0A0A] border-t border-[#FFD700]/20 py-12 text-center text-gray-500">
-        <p>© 2025 Bright4Event by Code4Change Media</p>
+        <p>© 2025 Bright4Event by Code4Change Technology Solution</p>
       </footer>
     </div>
   )

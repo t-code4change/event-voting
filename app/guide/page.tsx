@@ -4,6 +4,7 @@ import { useState, useEffect, useRef, useCallback } from "react"
 import { motion, useInView, AnimatePresence } from "framer-motion"
 import Link from "next/link"
 import Header from "@/components/Header"
+import Footer from "@/components/Footer"
 import { Card, CardContent } from "@/components/ui/card"
 import MyButton from "@/components/MyButton"
 import confetti from "canvas-confetti"
@@ -290,7 +291,7 @@ function StepCard({
 
         {/* Step Number Badge - Gradient Purple to Gold */}
         <div
-          className="absolute -top-4 -right-4 w-14 h-14 rounded-full flex items-center justify-center z-20"
+          className="absolute top-4 right-4 w-14 h-14 rounded-full flex items-center justify-center z-20"
           style={{
             background: `linear-gradient(135deg, ${COLORS.primary}, ${COLORS.secondary})`,
             boxShadow: `0 4px 15px ${COLORS.primary}60, 0 0 20px ${COLORS.primary}40`,
@@ -909,7 +910,7 @@ export default function GuidePage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.8 }}
-              className="text-5xl md:text-7xl font-bold mb-6"
+              className="text-5xl md:text-7xl font-bold !lead-[1.2] mb-6"
             >
               <span className="block mb-3" style={{ color: COLORS.textHeading }}>
                 Khởi đầu cùng
@@ -944,50 +945,54 @@ export default function GuidePage() {
               transition={{ delay: 0.8, duration: 0.8 }}
               className="flex flex-col sm:flex-row gap-4 justify-center pt-6"
             >
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
-                <MyButton
-                  onClick={() => {
-                    document.getElementById('organizer-guide')?.scrollIntoView({ behavior: 'smooth' })
-                  }}
-                  variant="primary"
-                  size="large"
-                  className="text-lg px-10 py-7 rounded-full font-bold shadow-2xl transition-all duration-300"
-                  style={{
-                    background: `linear-gradient(135deg, ${COLORS.primary}, ${COLORS.secondary})`,
-                    boxShadow: `0 10px 30px ${COLORS.primary}40`,
-                  }}
-                  icon={<ArrowRight className="h-6 w-6" />}
-                  iconPosition="right"
-                >
-                  Bắt đầu ngay
-                </MyButton>
-              </motion.div>
+              <div className="flex-1 flex justify-end">
+                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
+                      <MyButton
+                          onClick={() => {
+                              document.getElementById('organizer-guide')?.scrollIntoView({ behavior: 'smooth' })
+                          }}
+                          variant="primary"
+                          size="large"
+                          className="text-lg px-10 py-7 rounded-full font-bold shadow-2xl transition-all duration-300"
+                          style={{
+                              background: `linear-gradient(135deg, ${COLORS.primary}, ${COLORS.secondary})`,
+                              boxShadow: `0 10px 30px ${COLORS.primary}40`,
+                          }}
+                          icon={<ArrowRight className="h-6 w-6" />}
+                          iconPosition="right"
+                      >
+                          Bắt đầu ngay
+                      </MyButton>
+                  </motion.div>
+              </div>
 
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
-                <MyButton
-                  onClick={() => {
-                    document.getElementById('advanced-features')?.scrollIntoView({ behavior: 'smooth' })
-                  }}
-                  variant="outline"
-                  size="large"
-                  className="text-lg px-10 py-7 rounded-full font-semibold shadow-lg transition-all duration-300"
-                  style={{
-                    border: `2px solid ${COLORS.primary}`,
-                    color: COLORS.primary,
-                  }}
-                  icon={<Zap className="h-6 w-6" />}
-                  iconPosition="left"
-                >
-                  Tìm hiểu nâng cao
-                </MyButton>
-              </motion.div>
+              <div className="flex-1 flex justify-start">
+                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
+                      <MyButton
+                          onClick={() => {
+                              document.getElementById('advanced-features')?.scrollIntoView({ behavior: 'smooth' })
+                          }}
+                          variant="outline"
+                          size="large"
+                          className="text-lg px-10 py-7 rounded-full font-semibold shadow-lg transition-all duration-300"
+                          style={{
+                              border: `2px solid ${COLORS.primary}`,
+                              color: COLORS.primary,
+                          }}
+                          icon={<Zap className="h-6 w-6" />}
+                          iconPosition="left"
+                      >
+                          Tìm hiểu nâng cao
+                      </MyButton>
+                  </motion.div>
+              </div>
             </motion.div>
           </motion.div>
         </div>
 
         {/* Scroll Indicator */}
         <motion.div
-          className="absolute bottom-10 left-1/2 -translate-x-1/2"
+          className="absolute bottom-10 -translate-x-1/2"
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
         >
@@ -1442,14 +1447,7 @@ export default function GuidePage() {
         </div>
       </section>
 
-      {/* FOOTER */}
-      <footer className="relative bg-[#0D0D1A] border-t border-[#FFD700]/20 py-12">
-        <div className="container px-4">
-          <div className="text-center text-gray-500 text-sm">
-            © 2025 Bright4Event by Code4Change.tech. All rights reserved.
-          </div>
-        </div>
-      </footer>
+      <Footer />
 
       {/* Modal */}
       <AnimatePresence>

@@ -321,25 +321,6 @@ export default function AdminSidebarNew() {
             })}
           </div>
         </nav>
-
-        {/* Footer */}
-        <div className="p-6 border-t border-white/5">
-          {!isCollapsed ? (
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#FFD700] to-[#FFC107] flex items-center justify-center text-black font-bold">
-                AD
-              </div>
-              <div className="flex-1">
-                <p className="text-sm font-medium text-white">Admin</p>
-                <p className="text-xs text-white/40">admin@bright4event.com</p>
-              </div>
-            </div>
-          ) : (
-            <div className="w-10 h-10 mx-auto rounded-full bg-gradient-to-br from-[#FFD700] to-[#FFC107] flex items-center justify-center text-black font-bold">
-              AD
-            </div>
-          )}
-        </div>
       </div>
     </motion.aside>
   )
