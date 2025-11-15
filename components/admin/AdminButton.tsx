@@ -11,6 +11,7 @@ interface AdminButtonProps {
   className?: string
   disabled?: boolean
   type?: "button" | "submit" | "reset"
+  loading?: boolean
 }
 
 export function AdminButton({
@@ -21,6 +22,7 @@ export function AdminButton({
   className,
   disabled = false,
   type = "button",
+  loading = false,
 }: AdminButtonProps) {
   const baseClasses = "flex items-center gap-2 rounded-xl font-semibold transition-all"
 
@@ -30,15 +32,21 @@ export function AdminButton({
     icon: "p-2 bg-red-500 text-white hover:bg-red-600 rounded-lg",
   }
 
+  const isDisabled = disabled || loading
+
   if (variant === "icon") {
     return (
       <button
         type={type}
         onClick={onClick}
-        disabled={disabled}
-        className={cn(baseClasses, variantClasses.icon, disabled && "opacity-50 cursor-not-allowed", className)}
+        disabled={isDisabled}
+        className={cn(baseClasses, variantClasses.icon, isDisabled && "opacity-50 cursor-not-allowed", className)}
       >
-        {Icon && <Icon className="w-4 h-4" />}
+        {loading ? (
+          <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+        ) : (
+          Icon && <Icon className="w-4 h-4" />
+        )}
         {children}
       </button>
     )
@@ -47,18 +55,22 @@ export function AdminButton({
   return (
     <motion.button
       type={type}
-      whileHover={{ scale: disabled ? 1 : 1.05 }}
-      whileTap={{ scale: disabled ? 1 : 0.95 }}
+      whileHover={{ scale: isDisabled ? 1 : 1.05 }}
+      whileTap={{ scale: isDisabled ? 1 : 0.95 }}
       onClick={onClick}
-      disabled={disabled}
+      disabled={isDisabled}
       className={cn(
         baseClasses,
         variantClasses[variant],
-        disabled && "opacity-50 cursor-not-allowed",
+        isDisabled && "opacity-50 cursor-not-allowed",
         className
       )}
     >
-      {Icon && <Icon className="w-4 h-4" />}
+      {loading ? (
+        <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
+      ) : (
+        Icon && <Icon className="w-4 h-4" />
+      )}
       {children}
     </motion.button>
   )
