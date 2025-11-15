@@ -216,7 +216,7 @@ export default function EventLandingPage() {
       title: "Mini Games tương tác",
       description: "Tham gia trò chơi vui nhộn cùng đồng nghiệp và giành phần thưởng hấp dẫn",
       color: "from-purple-500 to-violet-600",
-      link: `https://bright4event.com/app`,
+      link: `https://quaysotrungthuong.vn/app`,
       badge: "Fun",
       preview: "Chơi ngay"
     },
@@ -860,7 +860,7 @@ export default function EventLandingPage() {
               whileHover={{ scale: 1.1 }}
               className="inline-block"
             >
-              <Link href={"https://bright4event.com/app"} target={"_blank"} rel="noopener noreferrer">
+              <Link href={"https://quaysotrungthuong.vn/app"} target={"_blank"} rel="noopener noreferrer">
                   <MyButton
                       variant="primary"
                       size="large"

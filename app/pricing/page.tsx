@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
+import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -15,6 +16,7 @@ import {
 import MyButton from "@/components/MyButton"
 import { useAppDispatch, useAppSelector } from "@/store/hooks"
 import { openLoginModal, openPaymentModal } from "@/store/slices/modalSlice"
+import { DEMO_EVENT_ID } from "@/lib/constants"
 
 interface PricingPlan {
   name: string
@@ -367,18 +369,19 @@ export default function PricingPage() {
                 </MyButton>
               </motion.div>
 
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
-                <MyButton
-                  onClick={handleDemoClick}
-                  variant="outline"
-                  size="large"
-                  className="px-10 py-6 border-2 border-[#FDB931] text-white hover:bg-[#FDB931]/10 text-lg font-semibold rounded-full"
-                  icon={<Play className="h-5 w-5" />}
-                  iconPosition="left"
-                >
-                  Xem demo trực tiếp
-                </MyButton>
-              </motion.div>
+              <Link href={`/event/${DEMO_EVENT_ID}`}>
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
+                  <MyButton
+                    variant="outline"
+                    size="large"
+                    className="px-10 py-6 border-2 border-[#FDB931] text-white hover:bg-[#FDB931]/10 text-lg font-semibold rounded-full"
+                    icon={<Play className="h-5 w-5" />}
+                    iconPosition="left"
+                  >
+                    Xem demo trực tiếp
+                  </MyButton>
+                </motion.div>
+              </Link>
             </div>
           </motion.div>
         </div>
@@ -679,21 +682,22 @@ export default function PricingPage() {
                 </MyButton>
               </motion.div>
 
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <MyButton
-                  onClick={handleDemoClick}
-                  variant="outline"
-                  size="large"
-                  className="text-lg px-10 py-7 rounded-full border-2 border-white text-white hover:bg-white hover:text-[#0A0A0A] font-semibold"
-                  icon={<Play className="h-5 w-5" />}
-                  iconPosition="left"
+              <Link href={`/event/${DEMO_EVENT_ID}`}>
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.98 }}
                 >
-                  Xem demo trực tiếp
-                </MyButton>
-              </motion.div>
+                  <MyButton
+                    variant="outline"
+                    size="large"
+                    className="text-lg px-10 py-7 rounded-full border-2 border-white text-white hover:bg-white hover:text-[#0A0A0A] font-semibold"
+                    icon={<Play className="h-5 w-5" />}
+                    iconPosition="left"
+                  >
+                    Xem demo trực tiếp
+                  </MyButton>
+                </motion.div>
+              </Link>
             </div>
           </motion.div>
         </div>

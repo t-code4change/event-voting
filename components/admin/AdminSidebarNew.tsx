@@ -2,8 +2,9 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { usePathname } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 import { motion, AnimatePresence } from "framer-motion"
+import { NavigateHomeConfirmPopup } from "./NavigateHomeConfirmPopup"
 import {
   Home,
   Calendar,
@@ -115,9 +116,20 @@ const glowColors = {
 
 export default function AdminSidebarNew() {
   const pathname = usePathname()
+  const router = useRouter()
   const [isCollapsed, setIsCollapsed] = useState(false)
+  const [showHomePopup, setShowHomePopup] = useState(false)
 
   const isActive = (href: string) => pathname === href
+
+  const handleLogoClick = () => {
+    setShowHomePopup(true)
+  }
+
+  const handleNavigateHome = () => {
+    setShowHomePopup(false)
+    router.push('/')
+  }
 
   return (
     <motion.aside
@@ -156,10 +168,13 @@ export default function AdminSidebarNew() {
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -10 }}
-                className="flex items-center gap-3"
+                className="flex items-center gap-3 cursor-pointer group"
+                onClick={handleLogoClick}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
               >
                 <div className="relative">
-                  <Crown className="w-8 h-8 text-[#FFD700]" />
+                  <Crown className="w-8 h-8 text-[#FFD700] group-hover:text-[#FFC107] transition-colors" />
                   <motion.div
                     className="absolute inset-0"
                     animate={{
@@ -175,10 +190,10 @@ export default function AdminSidebarNew() {
                   </motion.div>
                 </div>
                 <div>
-                  <h1 className="text-lg font-bold bg-gradient-to-r from-[#FFD700] via-[#FFC107] to-[#FFD700] bg-clip-text text-transparent">
+                  <h1 className="text-lg font-bold bg-gradient-to-r from-[#FFD700] via-[#FFC107] to-[#FFD700] bg-clip-text text-transparent group-hover:from-[#FFC107] group-hover:via-[#FFD700] group-hover:to-[#FFC107] transition-all">
                     Bright4Event
                   </h1>
-                  <p className="text-[10px] text-[#FFD700]/60 tracking-wider uppercase">
+                  <p className="text-[10px] text-[#FFD700]/60 tracking-wider uppercase group-hover:text-[#FFD700]/80 transition-colors">
                     Event Control
                   </p>
                 </div>
@@ -189,9 +204,12 @@ export default function AdminSidebarNew() {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.8 }}
-                className="mx-auto"
+                className="mx-auto cursor-pointer group"
+                onClick={handleLogoClick}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
               >
-                <Crown className="w-8 h-8 text-[#FFD700]" />
+                <Crown className="w-8 h-8 text-[#FFD700] group-hover:text-[#FFC107] transition-colors" />
               </motion.div>
             )}
           </AnimatePresence>
@@ -322,6 +340,13 @@ export default function AdminSidebarNew() {
           </div>
         </nav>
       </div>
+
+      {/* Navigate Home Confirmation Popup */}
+      <NavigateHomeConfirmPopup
+        isOpen={showHomePopup}
+        onConfirm={handleNavigateHome}
+        onCancel={() => setShowHomePopup(false)}
+      />
     </motion.aside>
   )
 }

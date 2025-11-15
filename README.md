@@ -85,35 +85,69 @@ npm run dev
 
 ```
 event-voting/
-├── app/                          # Next.js App Router
-│   ├── page.tsx                  # Landing page
-│   ├── vote/page.tsx             # Voting interface
-│   ├── results/page.tsx          # Results view
-│   ├── admin/                    # Admin panel
-│   │   ├── login/page.tsx
-│   │   └── (authenticated)/      # Protected routes
-│   └── api/                      # API routes
-│       ├── auth/                 # Authentication
-│       ├── events/               # Events management
-│       ├── votes/                # Voting
-│       ├── stats/                # Statistics
-│       └── admin/                # Admin auth
-├── components/                   # React components
-│   ├── AuthModal.tsx             # Auth modal
-│   ├── OTPInput.tsx              # OTP entry
-│   ├── CategoryVotingCard.tsx    # Voting card
-│   ├── AdminSidebar.tsx          # Admin nav
-│   └── Header.tsx                # Main header
-├── lib/                          # Utilities
-│   ├── auth.ts                   # Admin session
-│   ├── supabase/                 # Supabase clients
-│   └── validations.ts            # Form validation
-├── types/                        # TypeScript types
-├── docs/                         # Documentation
-├── scripts/                      # Helper scripts
-├── supabase-schema.sql           # Database schema
-├── supabase-seed.sql             # Demo data
-└── .env.local                    # Environment vars
+├── app/                                    # Next.js App Router
+│   ├── page.tsx                            # Landing page
+│   ├── about/page.tsx                      # About page
+│   ├── auth/verify/page.tsx                # OTP verification
+│   ├── blog/page.tsx                       # Blog listing
+│   ├── blog/[slug]/page.tsx                # Blog post detail
+│   ├── case-studies/page.tsx               # Case studies
+│   ├── contact/page.tsx                    # Contact page
+│   ├── dashboard/subscription/page.tsx     # Subscription dashboard
+│   ├── faq/page.tsx                        # FAQ page
+│   ├── guide/page.tsx                      # Guide page
+│   ├── hello/page.tsx                      # Demo page
+│   ├── pricing/page.tsx                    # Pricing page
+│   │
+│   ├── event/[eventId]/                    # Event pages
+│   │   ├── page.tsx                        # Event detail
+│   │   ├── check-in/page.tsx               # Guest check-in
+│   │   ├── check-in-form/page.tsx          # Check-in form
+│   │   ├── live/page.tsx                   # Live results
+│   │   ├── minigame/page.tsx               # Mini game
+│   │   ├── results/page.tsx                # Results view
+│   │   ├── vote/page.tsx                   # Voting interface
+│   │   ├── waiting/page.tsx                # Waiting screen
+│   │   └── welcome/page.tsx                # Welcome screen
+│   │
+│   ├── admin/(authenticated)/              # Admin panel (protected)
+│   │   ├── analytics/page.tsx              # Analytics
+│   │   ├── candidates/page.tsx             # Candidates management
+│   │   ├── categories/page.tsx             # Categories management
+│   │   ├── check-in/page.tsx               # Check-in management
+│   │   ├── dashboard/page.tsx              # Dashboard
+│   │   ├── events/page.tsx                 # Events management
+│   │   ├── guests/page.tsx                 # Guests management
+│   │   ├── invoices-list/page.tsx          # Invoices list
+│   │   ├── mini-game/page.tsx              # Mini game management
+│   │   ├── packages/page.tsx               # Packages management
+│   │   ├── result-led/page.tsx             # Result LED display
+│   │   ├── results/page.tsx                # Results management
+│   │   ├── settings/page.tsx               # Settings
+│   │   ├── subscriptions-list/page.tsx     # Subscriptions list
+│   │   ├── voting/page.tsx                 # Voting management
+│   │   ├── waiting-screen/page.tsx         # Waiting screen management
+│   │   └── welcome-led/page.tsx            # Welcome LED display
+│   │
+│   └── api/                                # API routes
+│       ├── auth/                           # Authentication
+│       ├── admin/                          # Admin endpoints
+│       ├── events/                         # Events management
+│       ├── votes/                          # Voting endpoints
+│       ├── stats/                          # Statistics
+│       ├── packages/                       # Packages endpoints
+│       ├── subscriptions/                  # Subscriptions endpoints
+│       ├── invoices/                       # Invoices endpoints
+│       └── transactions/                   # Transactions endpoints
+│
+├── components/                             # React components
+├── lib/                                    # Utilities
+├── types/                                  # TypeScript types
+├── docs/                                   # Documentation
+├── scripts/                                # Helper scripts
+├── supabase-schema.sql                     # Database schema
+├── supabase-seed.sql                       # Demo data
+└── .env.local                              # Environment vars
 ```
 
 ---

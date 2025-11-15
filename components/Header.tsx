@@ -5,11 +5,14 @@ import { usePathname, useRouter } from "next/navigation"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import confetti from "canvas-confetti"
+import { toast } from "sonner"
 import MyButton from "@/components/MyButton"
-import { Crown, BarChart3, Settings, BadgeDollarSign, Vote, Gift, LogOut, Sparkles, Zap } from "lucide-react"
+import { Crown, BarChart3, Settings, BadgeDollarSign, Vote, Gift, LogOut } from "lucide-react"
 import { useAppDispatch, useAppSelector } from "@/store/hooks"
 import { openLoginModal } from "@/store/slices/modalSlice"
 import { logout } from "@/store/slices/authSlice"
+import { LogoutConfirmPopup } from "@/components/admin"
+import { logoutUser } from "@/lib/auth-utils"
 
 export default function Header() {
   const dispatch = useAppDispatch()
@@ -18,6 +21,8 @@ export default function Header() {
   const [isAdmin, setIsAdmin] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const [logoGlow, setLogoGlow] = useState(false)
+  const [showLogoutPopup, setShowLogoutPopup] = useState(false)
+  const [isLoggingOut, setIsLoggingOut] = useState(false)
   const pathname = usePathname()
 
   // Check if current path is in event pages
@@ -57,9 +62,40 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const handleLogout = () => {
-    dispatch(logout())
-    router.push('/')
+  const handleLogoutClick = () => {
+    setShowLogoutPopup(true)
+  }
+
+  const handleLogoutConfirm = async () => {
+    setIsLoggingOut(true)
+
+    try {
+      // Logout from Supabase and clear all auth data
+      const { success, error } = await logoutUser()
+
+      if (!success) {
+        toast.error(error || "Đăng xuất thất bại")
+        setIsLoggingOut(false)
+        return
+      }
+
+      // Dispatch Redux logout action to clear state
+      dispatch(logout())
+
+      // Show success message
+      toast.success("Đã đăng xuất thành công")
+
+      // Close popup
+      setShowLogoutPopup(false)
+
+      // Redirect to home page
+      router.push('/')
+    } catch (error: any) {
+      console.error("Logout error:", error)
+      toast.error("Có lỗi xảy ra khi đăng xuất")
+    } finally {
+      setIsLoggingOut(false)
+    }
   }
 
   // Confetti effect when clicking logo
@@ -262,7 +298,7 @@ export default function Header() {
               </Link>
 
               {/* Lucky Draw button - desktop */}
-              <a href="https://bright4event.com/app" target="_blank" rel="noopener noreferrer">
+              <a href="https://quaysotrungthuong.vn/app" target="_blank" rel="noopener noreferrer">
                 <MyButton
                   variant="ghost"
                   size="medium"
@@ -275,7 +311,7 @@ export default function Header() {
               </a>
 
               {/* Lucky Draw button - mobile */}
-              <a href="https://bright4event.com/app" target="_blank" rel="noopener noreferrer">
+              <a href="https://quaysotrungthuong.vn/app" target="_blank" rel="noopener noreferrer">
                 <MyButton
                   variant="ghost"
                   size="small"
@@ -299,7 +335,7 @@ export default function Header() {
                 </button>
               </Link>
               <button
-                onClick={handleLogout}
+                onClick={handleLogoutClick}
                 className="inline-flex items-center justify-center h-9 px-2 text-[#FAF3E0] hover:text-red-500 hover:bg-red-500/10 rounded-lg transition-all duration-200"
                 title="Đăng xuất"
               >
@@ -323,6 +359,14 @@ export default function Header() {
           )}
         </nav>
       </div>
+
+      {/* Logout Confirmation Popup */}
+      <LogoutConfirmPopup
+        isOpen={showLogoutPopup}
+        onConfirm={handleLogoutConfirm}
+        onCancel={() => setShowLogoutPopup(false)}
+        isLoading={isLoggingOut}
+      />
     </header>
   )
 }

@@ -1,43 +1,46 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Plus, Calendar, Clock, Settings as SettingsIcon, Shield, Trash2, Edit2, Power } from "lucide-react"
+import { Plus, Calendar, Clock, Settings as SettingsIcon, Trash2, Power } from "lucide-react"
 import { toast } from "sonner"
 import Link from "next/link"
 import { adminEvents } from "@/lib/supabase/admin"
 import type { Tables } from "@/types/database.types"
+import { AdminLoading, AdminEmptyState } from "@/components/admin"
+import { useAdminCache } from "@/hooks/useAdminCache"
 
 type Event = Tables<'events'>['Row']
 
 export default function AdminEventsPage() {
-  const [events, setEvents] = useState<Event[]>([])
-  const [loading, setLoading] = useState(true)
-  const [showCreateModal, setShowCreateModal] = useState(false)
-
-  useEffect(() => {
-    loadEvents()
-  }, [])
-
-  const loadEvents = async () => {
-    try {
+  const {
+    data: events,
+    isLoading: loading,
+    isRevalidating,
+    error,
+    refetch: loadEvents
+  } = useAdminCache<Event[]>({
+    key: 'admin-events',
+    fetcher: async () => {
       const { data, error } = await adminEvents.getAll()
-      if (error) throw error
-      setEvents(data || [])
-    } catch (error) {
-      console.error("Error loading events:", error)
-      toast.error("Không thể tải danh sách sự kiện")
-    } finally {
-      setLoading(false)
+      if (error) {
+        if (error.message?.includes('401') || error.message?.includes('Unauthorized')) {
+          throw new Error("Phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại.")
+        }
+        throw new Error(error.message || "Không thể tải danh sách sự kiện")
+      }
+      return data || []
     }
-  }
+  })
+
+  const [showCreateModal, setShowCreateModal] = useState(false)
 
   const handleToggleActive = async (eventId: string) => {
     try {
       const { error } = await adminEvents.toggleActive(eventId)
       if (error) throw error
       toast.success("Cập nhật trạng thái thành công")
-      loadEvents()
+      await loadEvents()
     } catch (error) {
       console.error("Error toggling event:", error)
       toast.error("Không thể cập nhật trạng thái")
@@ -51,7 +54,7 @@ export default function AdminEventsPage() {
       const { error } = await adminEvents.delete(eventId)
       if (error) throw error
       toast.success("Xóa sự kiện thành công")
-      loadEvents()
+      await loadEvents()
     } catch (error) {
       console.error("Error deleting event:", error)
       toast.error("Không thể xóa sự kiện")
@@ -83,6 +86,15 @@ export default function AdminEventsPage() {
           <h1 className="text-3xl font-bold text-white flex items-center gap-3">
             <Calendar className="w-8 h-8 text-[#FFD700]" />
             Quản lý Sự kiện
+            {isRevalidating && (
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                className="text-white/40"
+              >
+                <Calendar className="w-5 h-5" />
+              </motion.div>
+            )}
           </h1>
           <p className="text-white/60 mt-2">
             Tạo và quản lý các sự kiện bình chọn
@@ -101,30 +113,39 @@ export default function AdminEventsPage() {
 
       {/* Events List */}
       {loading ? (
-        <div className="rounded-2xl bg-gradient-to-br from-white/10 to-white/5 border border-white/20 p-12 text-center">
-          <p className="text-white/60">Đang tải...</p>
-        </div>
-      ) : events.length === 0 ? (
-        <div className="rounded-2xl bg-gradient-to-br from-white/10 to-white/5 border border-white/20 p-12 text-center space-y-6">
-          <Calendar className="w-12 h-12 text-[#FFD700] mx-auto" />
-          <div>
-            <h3 className="text-lg font-bold text-white mb-2">
-              Chưa có sự kiện nào
-            </h3>
-            <p className="text-white/60 mb-6">
-              Bắt đầu bằng cách tạo sự kiện bình chọn đầu tiên
-            </p>
+        <AdminLoading message="Đang tải danh sách sự kiện..." />
+      ) : error ? (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="flex items-center justify-center min-h-[40vh]"
+        >
+          <div className="text-center space-y-4 max-w-md">
+            <div className="w-16 h-16 mx-auto rounded-full bg-red-500/10 border border-red-500/20 flex items-center justify-center">
+              <Calendar className="w-8 h-8 text-red-500" />
+            </div>
+            <h2 className="text-xl font-bold text-white">Không thể tải sự kiện</h2>
+            <p className="text-white/60 text-sm">{error.message}</p>
+            <motion.button
+              onClick={() => loadEvents()}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-6 py-2 rounded-lg bg-[#FFD700] text-black font-semibold hover:bg-[#FFC107] transition-all"
+            >
+              Thử lại
+            </motion.button>
           </div>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => setShowCreateModal(true)}
-            className="flex items-center gap-2 px-4 py-2 rounded-xl bg-[#FFD700] text-black font-semibold hover:bg-[#FFC107] transition-all mx-auto"
-          >
-            <Plus className="w-4 h-4" />
-            Tạo sự kiện đầu tiên
-          </motion.button>
-        </div>
+        </motion.div>
+      ) : !events || events.length === 0 ? (
+        <AdminEmptyState
+          icon={Calendar}
+          title="Chưa có sự kiện nào"
+          description="Bắt đầu bằng cách tạo sự kiện bình chọn đầu tiên"
+          action={{
+            label: "Tạo sự kiện đầu tiên",
+            onClick: () => setShowCreateModal(true)
+          }}
+        />
       ) : (
         <div className="space-y-6">
           {events.map((event, index) => (
@@ -283,9 +304,9 @@ function CreateEventForm({ onSuccess, onCancel }: { onSuccess: () => void; onCan
       if (error) throw error
       toast.success("Tạo sự kiện thành công")
       onSuccess()
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error creating event:", error)
-      toast.error("Không thể tạo sự kiện")
+      toast.error(error?.message || "Không thể tạo sự kiện")
     } finally {
       setCreating(false)
     }

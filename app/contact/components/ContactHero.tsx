@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { Sparkles, Send, Play } from 'lucide-react'
 import Link from 'next/link'
 import MyButton from '@/components/MyButton'
+import { DEMO_EVENT_ID } from '@/lib/constants'
 
 export default function ContactHero() {
   return (
@@ -97,7 +98,7 @@ export default function ContactHero() {
             </motion.div>
 
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
-              <Link href="/pricing">
+              <Link href={`/event/${DEMO_EVENT_ID}`}>
                 <MyButton
                   variant="outline"
                   size="large"

@@ -1,7 +1,9 @@
 "use client"
 
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 import { motion } from "framer-motion"
+import { toast } from "sonner"
 import {
   Search,
   Bell,
@@ -23,6 +25,12 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { LogoutConfirmPopup } from "@/components/admin"
+import { SearchPanel } from "@/components/admin/SearchPanel"
+import { NotificationPanel } from "@/components/admin/NotificationPanel"
+import { logoutUser } from "@/lib/auth-utils"
+import { useAppDispatch } from "@/store/hooks"
+import { logout as logoutAction } from "@/store/slices/authSlice"
 
 interface Event {
   id: string
@@ -63,8 +71,15 @@ const mockEvents: Event[] = [
 ]
 
 export default function AdminHeader() {
+  const router = useRouter()
+  const dispatch = useAppDispatch()
   const [selectedEvent, setSelectedEvent] = useState<Event>(mockEvents[0])
   const [isDark, setIsDark] = useState(true)
+  const [showLogoutPopup, setShowLogoutPopup] = useState(false)
+  const [isLoggingOut, setIsLoggingOut] = useState(false)
+  const [showSearchPanel, setShowSearchPanel] = useState(false)
+  const [showNotificationPanel, setShowNotificationPanel] = useState(false)
+  const [unreadCount, setUnreadCount] = useState(3) // Mock initial count
 
   const getStatusColor = (status: Event["status"]) => {
     switch (status) {
@@ -85,6 +100,42 @@ export default function AdminHeader() {
         return "SẮP DIỄN RA"
       case "ended":
         return "ĐÃ KẾT THÚC"
+    }
+  }
+
+  const handleLogoutClick = () => {
+    setShowLogoutPopup(true)
+  }
+
+  const handleLogoutConfirm = async () => {
+    setIsLoggingOut(true)
+
+    try {
+      // Logout from Supabase and clear all auth data
+      const { success, error } = await logoutUser()
+
+      if (!success) {
+        toast.error(error || "Đăng xuất thất bại")
+        setIsLoggingOut(false)
+        return
+      }
+
+      // Dispatch Redux logout action to clear state
+      dispatch(logoutAction())
+
+      // Show success message
+      toast.success("Đã đăng xuất thành công")
+
+      // Close popup
+      setShowLogoutPopup(false)
+
+      // Redirect to home page
+      router.push('/')
+    } catch (error: any) {
+      console.error("Logout error:", error)
+      toast.error("Có lỗi xảy ra khi đăng xuất")
+    } finally {
+      setIsLoggingOut(false)
     }
   }
 
@@ -214,43 +265,49 @@ export default function AdminHeader() {
         {/* Right: Actions */}
         <div className="flex items-center gap-2">
           {/* Search */}
-          <div className="relative group">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white/40 group-hover:text-white/60 transition-colors" />
-            <input
-              type="text"
-              placeholder="Search..."
-              className="w-64 pl-10 pr-4 py-2 rounded-xl bg-white/5 border border-white/10 text-sm text-white placeholder:text-white/40 focus:outline-none focus:bg-white/10 focus:border-[#FFD700]/40 transition-all"
-            />
-          </div>
-
-          {/* Notifications */}
-          <button className="relative p-2 rounded-xl hover:bg-white/5 transition-all group">
-            <Bell className="w-5 h-5 text-white/60 group-hover:text-white transition-colors" />
-            <motion.span
-              className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"
-              animate={{
-                scale: [1, 1.2, 1],
-              }}
-              transition={{ duration: 1.5, repeat: Infinity }}
-            />
+          <button
+            onClick={() => setShowSearchPanel(true)}
+            className="relative group flex items-center gap-2"
+          >
+            <Search className="w-4 h-4 text-white/40 group-hover:text-white/60 transition-colors" />
+            <div className="w-64 pl-2 pr-4 py-2 rounded-xl bg-white/5 border border-white/10 text-sm text-left text-white/40 group-hover:bg-white/10 group-hover:border-[#FFD700]/40 transition-all cursor-pointer">
+              Tìm kiếm...
+            </div>
           </button>
 
-          {/* Theme Toggle */}
+          {/* Notifications */}
           <button
-            onClick={() => setIsDark(!isDark)}
-            className="p-2 rounded-xl hover:bg-white/5 transition-all group"
+            onClick={() => setShowNotificationPanel(true)}
+            className="relative p-2 rounded-xl hover:bg-white/5 transition-all group"
           >
-            {isDark ? (
-              <Sun className="w-5 h-5 text-white/60 group-hover:text-white transition-colors" />
-            ) : (
-              <Moon className="w-5 h-5 text-white/60 group-hover:text-white transition-colors" />
+            <Bell className="w-5 h-5 text-white/60 group-hover:text-white transition-colors" />
+            {unreadCount > 0 && (
+              <>
+                <motion.span
+                  className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"
+                  animate={{
+                    scale: [1, 1.2, 1],
+                  }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                />
+                <span className="absolute -top-1 -right-1 min-w-[18px] h-[18px] flex items-center justify-center bg-red-500 text-white text-[10px] font-bold rounded-full px-1">
+                  {unreadCount > 9 ? "9+" : unreadCount}
+                </span>
+              </>
             )}
           </button>
 
-          {/* Settings */}
-          <button className="p-2 rounded-xl hover:bg-white/5 transition-all group">
-            <Settings className="w-5 h-5 text-white/60 group-hover:text-white transition-colors" />
-          </button>
+          {/* Theme Toggle */}
+          {/*<button*/}
+          {/*  onClick={() => setIsDark(!isDark)}*/}
+          {/*  className="p-2 rounded-xl hover:bg-white/5 transition-all group"*/}
+          {/*>*/}
+          {/*  {isDark ? (*/}
+          {/*    <Sun className="w-5 h-5 text-white/60 group-hover:text-white transition-colors" />*/}
+          {/*  ) : (*/}
+          {/*    <Moon className="w-5 h-5 text-white/60 group-hover:text-white transition-colors" />*/}
+          {/*  )}*/}
+          {/*</button>*/}
 
           {/* Divider */}
           <div className="w-px h-6 bg-white/10" />
@@ -270,20 +327,51 @@ export default function AdminHeader() {
                 admin@bright4event.com
               </DropdownMenuLabel>
               <DropdownMenuSeparator className="bg-white/5" />
-              <DropdownMenuItem className="text-white hover:bg-white/5">
+              <DropdownMenuItem
+                className="text-white hover:bg-white/5 cursor-pointer"
+                onClick={() => router.push('/admin/profile')}
+              >
                 Profile
               </DropdownMenuItem>
-              <DropdownMenuItem className="text-white hover:bg-white/5">
+              <DropdownMenuItem
+                className="text-white hover:bg-white/5 cursor-pointer"
+                onClick={() => router.push('/admin/account')}
+              >
                 Settings
               </DropdownMenuItem>
               <DropdownMenuSeparator className="bg-white/5" />
-              <DropdownMenuItem className="text-red-400 hover:bg-red-500/10">
+              <DropdownMenuItem
+                className="text-red-400 hover:bg-red-500/10 cursor-pointer"
+                onClick={handleLogoutClick}
+              >
                 Logout
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
       </div>
+
+      {/* Logout Confirmation Popup */}
+      <LogoutConfirmPopup
+        isOpen={showLogoutPopup}
+        onConfirm={handleLogoutConfirm}
+        onCancel={() => setShowLogoutPopup(false)}
+        isLoading={isLoggingOut}
+      />
+
+      {/* Search Panel */}
+      <SearchPanel
+        isOpen={showSearchPanel}
+        onClose={() => setShowSearchPanel(false)}
+      />
+
+      {/* Notification Panel */}
+      <NotificationPanel
+        isOpen={showNotificationPanel}
+        onClose={() => setShowNotificationPanel(false)}
+        unreadCount={unreadCount}
+        onUnreadCountChange={setUnreadCount}
+      />
     </header>
   )
 }

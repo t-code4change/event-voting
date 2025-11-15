@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { Sparkles, Play } from 'lucide-react'
 import Link from 'next/link'
 import MyButton from '@/components/MyButton'
+import { DEMO_EVENT_ID } from '@/lib/constants'
 
 export default function ClosingCTA() {
   return (
@@ -94,21 +95,22 @@ export default function ClosingCTA() {
               </Link>
             </motion.div>
 
-            <motion.div
-              whileHover={{ scale: 1.05, boxShadow: '0 0 50px rgba(255, 255, 255, 0.5)' }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <MyButton
-                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                variant="primary"
-                size="large"
-                className="text-lg px-10 py-7 rounded-full bg-white text-[#1e1b4b] hover:bg-white/90 font-bold shadow-2xl"
-                icon={<Play className="h-5 w-5" />}
-                iconPosition="left"
+            <Link href={`/event/${DEMO_EVENT_ID}`}>
+              <motion.div
+                whileHover={{ scale: 1.05, boxShadow: '0 0 50px rgba(255, 255, 255, 0.5)' }}
+                whileTap={{ scale: 0.98 }}
               >
-                Xem demo trực tiếp
-              </MyButton>
-            </motion.div>
+                <MyButton
+                  variant="primary"
+                  size="large"
+                  className="text-lg px-10 py-7 rounded-full bg-white text-[#1e1b4b] hover:bg-white/90 font-bold shadow-2xl"
+                  icon={<Play className="h-5 w-5" />}
+                  iconPosition="left"
+                >
+                  Xem demo trực tiếp
+                </MyButton>
+              </motion.div>
+            </Link>
           </div>
         </motion.div>
       </div>

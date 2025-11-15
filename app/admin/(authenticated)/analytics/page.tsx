@@ -1,6 +1,5 @@
 "use client"
 
-import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import {
   BarChart3,
@@ -16,28 +15,11 @@ import {
   ArrowUp,
 } from "lucide-react"
 import { SubscriptionStatsResponse } from "@/types/subscription"
+import { AdminLoading } from "@/components/admin"
+import { useAdminCache } from "@/hooks/useAdminCache"
 
 export default function AnalyticsDashboard() {
-  const [stats, setStats] = useState<SubscriptionStatsResponse | null>(null)
-  const [isLoading, setIsLoading] = useState(true)
-
-  useEffect(() => {
-    loadStats()
-  }, [])
-
-  const loadStats = async () => {
-    try {
-      const response = await fetch("/api/admin/stats")
-      const data = await response.json()
-      setStats(data)
-    } catch (error) {
-      console.error("Error loading stats:", error)
-    } finally {
-      setIsLoading(false)
-    }
-  }
-
-  // Mock data for voting analytics
+  // Mock data for voting analytics - use this as fallback when API fails
   const mockVotingStats = {
     totalVotes: 1699,
     totalVoters: 246,
@@ -62,13 +44,31 @@ export default function AnalyticsDashboard() {
     ],
   }
 
-  if (isLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-[#0C0F15]">
-        <div className="text-white/60">Đang tải...</div>
-      </div>
-    )
+  const {
+    data: stats,
+    isLoading,
+    isRevalidating,
+    error,
+  } = useAdminCache<SubscriptionStatsResponse>({
+    key: 'admin-stats',
+    fetcher: async () => {
+      const response = await fetch("/api/admin/stats")
+      if (!response.ok) {
+        // Don't throw error - just return null and use mock data
+        console.warn("Failed to fetch stats:", response.status)
+        return null
+      }
+      return response.json()
+    }
+  })
+
+  // Only show loading on initial load, not on error
+  if (isLoading && !error) {
+    return <AdminLoading message="Đang tải analytics..." />
   }
+
+  // Show UI with mock data even if there's an error
+  const hasError = error || !stats
 
   return (
     <motion.div
@@ -78,15 +78,49 @@ export default function AnalyticsDashboard() {
       className="space-y-8"
     >
       {/* Header */}
-      <div>
-        <h1 className="text-3xl font-bold text-white flex items-center gap-3">
-          <BarChart3 className="w-8 h-8 text-[#FFD700]" />
-          Analytics & Dashboard
-        </h1>
-        <p className="text-white/60 mt-2">
-          Phân tích hành vi & dữ liệu từ bình chọn và check-in
-        </p>
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-3xl font-bold text-white flex items-center gap-3">
+            <BarChart3 className="w-8 h-8 text-[#FFD700]" />
+            Analytics & Dashboard
+          </h1>
+          <p className="text-white/60 mt-2">
+            Phân tích hành vi & dữ liệu từ bình chọn và check-in
+          </p>
+        </div>
+        {isRevalidating && (
+          <div className="flex items-center gap-2 text-sm text-white/60">
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+            >
+              <Activity className="w-4 h-4" />
+            </motion.div>
+            Đang cập nhật...
+          </div>
+        )}
       </div>
+
+      {/* Warning banner when using mock data */}
+      {hasError && (
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="rounded-xl bg-yellow-500/10 border border-yellow-500/20 p-4"
+        >
+          <div className="flex items-start gap-3">
+            <Activity className="w-5 h-5 text-yellow-500 flex-shrink-0 mt-0.5" />
+            <div className="flex-1">
+              <h3 className="text-sm font-semibold text-yellow-500 mb-1">
+                Đang hiển thị dữ liệu mẫu
+              </h3>
+              <p className="text-xs text-yellow-500/80">
+                Không thể kết nối đến server để lấy dữ liệu thực. Dữ liệu hiển thị bên dưới là dữ liệu demo.
+              </p>
+            </div>
+          </div>
+        </motion.div>
+      )}
 
       {/* Metrics Cards */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
