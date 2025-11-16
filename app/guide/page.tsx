@@ -13,7 +13,7 @@ import {
   Sparkles, Play, ChevronDown, X,
   ChevronLeft, ChevronRight,
   Zap, Globe, HelpCircle, Crown, Star,
-  ArrowRight, Settings, Eye
+  ArrowRight, Settings, Eye, QrCode, Vote, Trophy
 } from "lucide-react"
 
 // Bright4Event Brand Colors - Following DESIGN_SYSTEM.md
