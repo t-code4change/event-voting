@@ -31,7 +31,7 @@ export default function ImpactStats() {
               transition={{ delay: stat.delay, duration: 0.6 }}
               whileHover={{ y: -10, scale: 1.02 }}
             >
-              <Card className={`relative overflow-hidden border-2 ${stat.borderColor} bg-gradient-to-br from-[#1a1a1a] to-[#0D0D1A] ${stat.hoverBorderColor} transition-all duration-300 group`}>
+              <Card className={`relative overflow-hidden border-2 h-full ${stat.borderColor} bg-gradient-to-br from-[#1a1a1a] to-[#0D0D1A] ${stat.hoverBorderColor} transition-all duration-300 group`}>
                 {/* Shimmer on hover */}
                 <motion.div
                   className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity"

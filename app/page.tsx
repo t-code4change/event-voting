@@ -75,16 +75,24 @@ const FinalCTA = dynamic(() => import('./components/FinalCTA'), {
 // METADATA (SEO OPTIMIZATION)
 // ============================================
 
-export const metadata: Metadata = {
-  title: "Bright4Event - Nền tảng tổ chức sự kiện thông minh All-in-One",
-  description: "Check-in, Màn hình chào mừng, Bình chọn, Quay số, Livestream & Báo cáo realtime — tất cả trong một nền tảng duy nhất. Được tin tưởng bởi hàng trăm sự kiện chuyên nghiệp.",
-  keywords: ["sự kiện", "event management", "check-in", "voting", "lucky draw", "livestream", "analytics", "Bright4Event"],
-  openGraph: {
-    title: "Bright4Event - Nền tảng tổ chức sự kiện thông minh",
-    description: "Giải pháp toàn diện cho mọi sự kiện - từ check-in đến analytics",
-    type: "website",
-  },
-}
+import { getMetadata } from "@/lib/seo"
+
+export const metadata: Metadata = getMetadata({
+  title: "Bright4Event - Nền tảng Tổ Chức Sự Kiện Thông Minh All-in-One",
+  description: "Check-in QR Code thông minh, Bình chọn realtime, Màn hình LED 3D, Quay số may mắn, Livestream & Báo cáo analytics — Giải pháp toàn diện cho Year-end Party, Gala Dinner, Team Building. Được tin tưởng bởi 200+ sự kiện chuyên nghiệp.",
+  keywords: [
+    "Year-end Party",
+    "Gala Dinner",
+    "Team Building",
+    "check-in QR code",
+    "màn hình LED sự kiện",
+    "bình chọn realtime",
+    "mini game sự kiện",
+    "lucky draw online",
+    "quay số trúng thưởng",
+  ],
+  canonicalUrl: "https://bright4event.com",
+})
 
 // ============================================
 // HOMEPAGE WRAPPER (Client Component for state management)

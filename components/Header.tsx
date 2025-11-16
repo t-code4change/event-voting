@@ -7,7 +7,8 @@ import { motion } from "framer-motion"
 import confetti from "canvas-confetti"
 import { toast } from "sonner"
 import MyButton from "@/components/MyButton"
-import { Crown, BarChart3, Settings, BadgeDollarSign, Vote, Gift, LogOut } from "lucide-react"
+import BrandLogo from "@/components/BrandLogo"
+import { BarChart3, Settings, BadgeDollarSign, Vote, Gift, LogOut } from "lucide-react"
 import { useAppDispatch, useAppSelector } from "@/store/hooks"
 import { openLoginModal } from "@/store/slices/modalSlice"
 import { logout } from "@/store/slices/authSlice"
@@ -30,6 +31,14 @@ export default function Header() {
 
   // Extract eventId from pathname (e.g., /event/123 or /event/123/results)
   const eventId = isEventPage ? pathname.split('/')[2] : null
+
+  // Helper function to check if a path is active
+  const isActivePath = (path: string) => {
+    if (path === '/') {
+      return pathname === '/'
+    }
+    return pathname?.startsWith(path)
+  }
 
   useEffect(() => {
     // Check if admin is logged in by checking for admin token in cookies
@@ -153,13 +162,7 @@ export default function Header() {
     >
       <div className="container flex h-16 items-center justify-between">
         {/* Logo with enhanced design and confetti effect */}
-        <motion.div
-          onClick={handleLogoClick}
-          className="flex items-center space-x-2 cursor-pointer group relative"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          title="Bright4Event – Tỏa sáng cho sự kiện của bạn ✨"
-        >
+        <div className="relative group">
           {/* Glow effect behind logo */}
           <motion.div
             className="absolute inset-0 rounded-full blur-xl opacity-0 group-hover:opacity-50 transition-opacity duration-300"
@@ -173,30 +176,13 @@ export default function Header() {
             transition={{ duration: 0.6 }}
           />
 
-            <div className="flex items-center gap-4">
-                <motion.div
-                    animate={{
-                        rotate: [0, 5, -5, 0],
-                        scale: [1, 1.1, 1],
-                    }}
-                    transition={{ duration: 3, repeat: Infinity }}
-                >
-                    <Crown className="w-10 h-10 text-[#FFD700]" style={{ filter: 'drop-shadow(0 0 20px rgba(255,215,0,0.8))' }} />
-                </motion.div>
-                <div>
-                    <h1 className="text-2xl font-bold bg-gradient-to-r from-[#FFD700] via-[#FFC107] to-[#FFD700] bg-clip-text text-transparent"
-                        style={{
-                            fontFamily: 'Playfair Display, serif',
-                            textShadow: '0 0 30px rgba(255,215,0,0.5)',
-                            letterSpacing: '0.02em'
-                        }}>
-                        Bright4Event
-                    </h1>
-                    <p className="text-[#FFD700]/80 text-xs tracking-wider">All-in-One for Event</p>
-                </div>
-            </div>
-
-        </motion.div>
+          <BrandLogo
+            size="large"
+            animated={true}
+            onClick={handleLogoClick}
+            className="relative z-10"
+          />
+        </div>
 
         <nav className="flex items-center gap-2">
           {/* Main navigation links - show on all pages except event pages */}
@@ -206,7 +192,11 @@ export default function Header() {
                 <MyButton
                   variant="ghost"
                   size="small"
-                  className="text-[#FAF3E0] hover:text-[#FFD700] hover:bg-[#FFD700]/10 font-medium"
+                  className={`font-medium transition-all ${
+                    isActivePath('/about')
+                      ? 'text-[#FFD700] bg-[#FFD700]/20 border border-[#FFD700]/30 shadow-lg shadow-[#FFD700]/20'
+                      : 'text-[#FAF3E0] hover:text-[#FFD700] hover:bg-[#FFD700]/10'
+                  }`}
                 >
                   Giới thiệu
                 </MyButton>
@@ -216,7 +206,11 @@ export default function Header() {
                 <MyButton
                   variant="ghost"
                   size="small"
-                  className="text-[#FAF3E0] hover:text-[#FFD700] hover:bg-[#FFD700]/10 font-medium"
+                  className={`font-medium transition-all ${
+                    isActivePath('/blog')
+                      ? 'text-[#FFD700] bg-[#FFD700]/20 border border-[#FFD700]/30 shadow-lg shadow-[#FFD700]/20'
+                      : 'text-[#FAF3E0] hover:text-[#FFD700] hover:bg-[#FFD700]/10'
+                  }`}
                 >
                   Blog
                 </MyButton>
@@ -226,7 +220,11 @@ export default function Header() {
                 <MyButton
                   variant="ghost"
                   size="small"
-                  className="text-[#FAF3E0] hover:text-[#FFD700] hover:bg-[#FFD700]/10 font-medium"
+                  className={`font-medium transition-all ${
+                    isActivePath('/pricing')
+                      ? 'text-[#FFD700] bg-[#FFD700]/20 border border-[#FFD700]/30 shadow-lg shadow-[#FFD700]/20'
+                      : 'text-[#FAF3E0] hover:text-[#FFD700] hover:bg-[#FFD700]/10'
+                  }`}
                   icon={<BadgeDollarSign className="h-4 w-4" />}
                   iconPosition="left"
                 >
@@ -238,7 +236,11 @@ export default function Header() {
                 <MyButton
                   variant="ghost"
                   size="small"
-                  className="text-[#FAF3E0] hover:text-[#FFD700] hover:bg-[#FFD700]/10 font-medium"
+                  className={`font-medium transition-all ${
+                    isActivePath('/contact')
+                      ? 'text-[#FFD700] bg-[#FFD700]/20 border border-[#FFD700]/30 shadow-lg shadow-[#FFD700]/20'
+                      : 'text-[#FAF3E0] hover:text-[#FFD700] hover:bg-[#FFD700]/10'
+                  }`}
                 >
                   Liên hệ
                 </MyButton>
@@ -254,7 +256,11 @@ export default function Header() {
                 <MyButton
                   variant="ghost"
                   size="medium"
-                  className="hidden sm:flex text-[#FAF3E0] hover:text-[#FFD700] hover:bg-[#FFD700]/10"
+                  className={`hidden sm:flex transition-all ${
+                    pathname === `/event/${eventId}` || pathname === `/event/${eventId}/vote`
+                      ? 'text-[#FFD700] bg-[#FFD700]/20 border border-[#FFD700]/30 shadow-lg shadow-[#FFD700]/20'
+                      : 'text-[#FAF3E0] hover:text-[#FFD700] hover:bg-[#FFD700]/10'
+                  }`}
                   icon={<Vote className="h-4 w-4" />}
                   iconPosition="left"
                 >
@@ -267,7 +273,11 @@ export default function Header() {
                 <MyButton
                   variant="ghost"
                   size="small"
-                  className="sm:hidden text-[#FAF3E0] hover:text-[#FFD700] hover:bg-[#FFD700]/10 px-2"
+                  className={`sm:hidden px-2 transition-all ${
+                    pathname === `/event/${eventId}` || pathname === `/event/${eventId}/vote`
+                      ? 'text-[#FFD700] bg-[#FFD700]/20 border border-[#FFD700]/30'
+                      : 'text-[#FAF3E0] hover:text-[#FFD700] hover:bg-[#FFD700]/10'
+                  }`}
                 >
                   <Vote className="h-4 w-4" />
                 </MyButton>
@@ -278,7 +288,11 @@ export default function Header() {
                 <MyButton
                   variant="ghost"
                   size="medium"
-                  className="hidden sm:flex text-[#FAF3E0] hover:text-[#FFD700] hover:bg-[#FFD700]/10"
+                  className={`hidden sm:flex transition-all ${
+                    pathname === `/event/${eventId}/results`
+                      ? 'text-[#FFD700] bg-[#FFD700]/20 border border-[#FFD700]/30 shadow-lg shadow-[#FFD700]/20'
+                      : 'text-[#FAF3E0] hover:text-[#FFD700] hover:bg-[#FFD700]/10'
+                  }`}
                   icon={<BarChart3 className="h-4 w-4" />}
                   iconPosition="left"
                 >
@@ -291,7 +305,11 @@ export default function Header() {
                 <MyButton
                   variant="ghost"
                   size="small"
-                  className="sm:hidden text-[#FAF3E0] hover:text-[#FFD700] hover:bg-[#FFD700]/10 px-2"
+                  className={`sm:hidden px-2 transition-all ${
+                    pathname === `/event/${eventId}/results`
+                      ? 'text-[#FFD700] bg-[#FFD700]/20 border border-[#FFD700]/30'
+                      : 'text-[#FAF3E0] hover:text-[#FFD700] hover:bg-[#FFD700]/10'
+                  }`}
                 >
                   <BarChart3 className="h-4 w-4" />
                 </MyButton>

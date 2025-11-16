@@ -122,20 +122,6 @@ export const pageMetadata = {
     ],
   }),
 
-  hello: generateSEO({
-    title: 'Giới Thiệu - Về Bright4Event',
-    description:
-      'Tìm hiểu về Bright4Event - nền tảng bình chọn sự kiện chuyên nghiệp. Công nghệ hiện đại, dễ sử dụng, được tin tưởng bởi các doanh nghiệp hàng đầu Việt Nam.',
-    path: '/hello',
-    keywords: [
-      'giới thiệu Bright4Event',
-      'về chúng tôi',
-      'about us',
-      'event technology',
-      'voting platform',
-    ],
-  }),
-
   about: generateSEO({
     title: 'Về Bright4Event - Sứ Mệnh & Đội Ngũ',
     description:

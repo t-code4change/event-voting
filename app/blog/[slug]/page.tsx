@@ -4,6 +4,7 @@ import { useEffect, useState, useRef } from "react"
 import { useParams, useRouter } from "next/navigation"
 import { motion, useScroll, useTransform } from "framer-motion"
 import Header from "@/components/Header"
+import Footer from "@/components/Footer"
 import Image from "next/image"
 import Link from "next/link"
 import confetti from "canvas-confetti"
@@ -632,10 +633,7 @@ export default function BlogDetailPage() {
         </section>
       )}
 
-      {/* FOOTER */}
-      <footer className="bg-[#0A0A0A] border-t border-[#FFD700]/20 py-12 text-center text-gray-500">
-        <p>© 2025 Bright4Event by Code4Change Media</p>
-      </footer>
+      <Footer />
     </div>
   )
 }

@@ -4,7 +4,7 @@ import { ImageResponse } from 'next/og'
 export const runtime = 'edge'
 
 // Image metadata
-export const alt = 'Bright4Event - Nền tảng tổ chức sự kiện All-in-One'
+export const alt = 'Bright4Event Blog - Kiến thức & Kinh nghiệm tổ chức sự kiện'
 export const size = {
   width: 1200,
   height: 630,
@@ -42,113 +42,126 @@ export default async function Image() {
           }}
         />
 
-        {/* Radial light effect - top left */}
+        {/* Radial light effect - center */}
         <div
           style={{
             position: 'absolute',
-            top: -100,
-            left: -100,
-            width: 500,
-            height: 500,
+            top: -50,
+            left: '50%',
+            transform: 'translateX(-50%)',
+            width: 600,
+            height: 600,
             background: 'radial-gradient(circle, rgba(255,215,0,0.15) 0%, transparent 70%)',
           }}
         />
 
-        {/* Radial light effect - bottom right */}
+        {/* Watermark Crown - top right */}
         <div
           style={{
             position: 'absolute',
-            bottom: -100,
-            right: -100,
-            width: 450,
-            height: 450,
-            background: 'radial-gradient(circle, rgba(253,188,49,0.12) 0%, transparent 70%)',
-          }}
-        />
-
-        {/* Crown Icon */}
-        <div
-          style={{
-            fontSize: 100,
-            marginBottom: 10,
+            top: 40,
+            right: 60,
+            fontSize: 60,
+            opacity: 0.15,
             display: 'flex',
-            filter: 'drop-shadow(0 0 20px rgba(255, 215, 0, 0.6))',
           }}
         >
           👑
         </div>
 
-        {/* Main Title */}
+        {/* Blog Icon */}
         <div
           style={{
             fontSize: 90,
+            marginBottom: 15,
+            display: 'flex',
+            filter: 'drop-shadow(0 0 15px rgba(255, 215, 0, 0.5))',
+          }}
+        >
+          📰
+        </div>
+
+        {/* Main Title */}
+        <div
+          style={{
+            fontSize: 85,
             fontWeight: 900,
             background: 'linear-gradient(90deg, #FFD700 0%, #FDBC31 50%, #FFD700 100%)',
             backgroundClip: 'text',
             WebkitBackgroundClip: 'text',
             color: 'transparent',
-            marginBottom: 15,
+            marginBottom: 20,
             letterSpacing: '-0.02em',
             display: 'flex',
           }}
         >
-          Bright4Event
+          Bright4Event Blog
         </div>
 
         {/* Subtitle */}
         <div
           style={{
-            fontSize: 32,
+            fontSize: 30,
             color: '#E5E5E5',
             textAlign: 'center',
-            marginBottom: 50,
+            marginBottom: 10,
             fontWeight: 500,
             letterSpacing: '-0.01em',
             display: 'flex',
           }}
         >
-          Nền tảng tổ chức sự kiện All-in-One
+          Kiến thức – Kinh nghiệm – Xu hướng
         </div>
 
-        {/* Features - 3 columns */}
+        <div
+          style={{
+            fontSize: 28,
+            color: '#AAAAAA',
+            textAlign: 'center',
+            fontWeight: 400,
+            display: 'flex',
+          }}
+        >
+          tổ chức sự kiện chuyên nghiệp
+        </div>
+
+        {/* Blog topics */}
         <div
           style={{
             display: 'flex',
-            gap: 50,
-            fontSize: 26,
+            gap: 30,
+            marginTop: 50,
+            fontSize: 22,
             color: '#FFD700',
             fontWeight: 600,
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-            <div style={{
-              width: 8,
-              height: 8,
-              background: '#FFD700',
-              borderRadius: '50%',
-              boxShadow: '0 0 10px rgba(255,215,0,0.8)',
-            }} />
-            QR Check-in
+          <div style={{
+            padding: '10px 20px',
+            background: 'rgba(255,215,0,0.1)',
+            borderRadius: 20,
+            border: '1px solid rgba(255,215,0,0.3)',
+            display: 'flex',
+          }}>
+            💡 Hướng dẫn
           </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-            <div style={{
-              width: 8,
-              height: 8,
-              background: '#FFD700',
-              borderRadius: '50%',
-              boxShadow: '0 0 10px rgba(255,215,0,0.8)',
-            }} />
-            Vote Realtime
+          <div style={{
+            padding: '10px 20px',
+            background: 'rgba(255,215,0,0.1)',
+            borderRadius: 20,
+            border: '1px solid rgba(255,215,0,0.3)',
+            display: 'flex',
+          }}>
+            🎯 Case Study
           </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-            <div style={{
-              width: 8,
-              height: 8,
-              background: '#FFD700',
-              borderRadius: '50%',
-              boxShadow: '0 0 10px rgba(255,215,0,0.8)',
-            }} />
-            Lucky Draw
+          <div style={{
+            padding: '10px 20px',
+            background: 'rgba(255,215,0,0.1)',
+            borderRadius: 20,
+            border: '1px solid rgba(255,215,0,0.3)',
+            display: 'flex',
+          }}>
+            📊 Xu hướng
           </div>
         </div>
 
@@ -177,7 +190,7 @@ export default async function Image() {
             display: 'flex',
           }}
         >
-          bright4event.com
+          bright4event.com/blog
         </div>
       </div>
     ),

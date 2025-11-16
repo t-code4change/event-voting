@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 import Header from "@/components/Header"
+import Footer from "@/components/Footer"
 import NewsletterSubscription from "@/components/NewsletterSubscription"
 import { Calendar, Clock, ArrowRight, Sparkles } from "lucide-react"
 import Image from "next/image"
@@ -114,9 +115,7 @@ export default function BlogPage() {
       {/* Newsletter Subscription */}
       <NewsletterSubscription />
 
-      <footer className="bg-[#0A0A0A] border-t border-[#FFD700]/20 py-12 text-center text-gray-500">
-        <p>© 2025 Bright4Event by Code4Change Technology Solution</p>
-      </footer>
+      <Footer />
     </div>
   )
 }

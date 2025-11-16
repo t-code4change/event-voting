@@ -61,7 +61,6 @@ Tạo helper functions để generate metadata động cho các trang:
 **⚠️ Quan trọng:** Vì các page.tsx là "use client", cần tạo `layout.tsx` trong mỗi folder:
 - `app/pricing/layout.tsx` - Metadata cho pricing page
 - `app/results/layout.tsx` - Metadata cho results page
-- `app/hello/layout.tsx` - Metadata cho hello page
 - `app/vote/layout.tsx` - Metadata cho vote page
 - `app/event/[eventId]/layout.tsx` - Dynamic metadata cho event pages
 
