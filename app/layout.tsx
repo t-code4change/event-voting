@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { Playfair_Display } from "next/font/google"
+import Script from "next/script"
 import "./globals.css"
 import { Toaster } from "sonner"
 import { Toaster as RadixToaster } from "@/components/ui/toaster"
@@ -114,6 +115,20 @@ export default function RootLayout({
         <WebsiteSchema />
       </head>
       <body className={`${playfair.variable} font-sans`}>
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-2MCXBSRCXY"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-2MCXBSRCXY');
+          `}
+        </Script>
+
         <ReduxProvider>
           <AutoOpenModal />
           {children}
