@@ -60,7 +60,7 @@ interface BasePopupProps {
 
 ```tsx
 import { useState } from "react"
-import { BasePopup } from "@/components/admin"
+import { BasePopup } from "@/home/admin"
 
 function MyComponent() {
   const [showPopup, setShowPopup] = useState(false)
@@ -200,7 +200,7 @@ interface LogoutConfirmPopupProps {
 
 ```tsx
 import { useState } from "react"
-import { LogoutConfirmPopup } from "@/components/admin"
+import { LogoutConfirmPopup } from "@/home/admin"
 import { logoutUser } from "@/lib/auth-utils"
 import { toast } from "sonner"
 
@@ -335,7 +335,7 @@ All components follow **THEME_ADMIN.md** design system:
 To create your own popup variant:
 
 ```tsx
-import { BasePopup } from "@/components/admin"
+import { BasePopup } from "@/home/admin"
 
 interface MyCustomPopupProps {
   isOpen: boolean

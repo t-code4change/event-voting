@@ -564,7 +564,7 @@ export const RankChangeAnimation: React.FC<RankChangeAnimationProps> = ({
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Progress } from '@/components/ui/progress';
+import { Progress } from '@/home/ui/progress';
 
 interface VoteBarProps {
   voteCount: number;
@@ -837,9 +837,9 @@ export function useRankChange(
 
 ```tsx
 // app/event/[eventId]/results/page.tsx
-import { RankBadge } from '@/components/RankBadge';
-import { VoteBar } from '@/components/VoteBar';
-import { NewTop1Animation } from '@/components/NewTop1Animation';
+import { RankBadge } from '@/home/RankBadge';
+import { VoteBar } from '@/home/VoteBar';
+import { NewTop1Animation } from '@/home/NewTop1Animation';
 import { triggerCelebration } from '@/lib/celebration';
 import { useRankChange } from '@/hooks/useRankChange';
 

@@ -606,8 +606,8 @@ supabase
 ### Code Splitting
 
 ```typescript
-// Lazy load heavy components
-const AnalyticsChart = lazy(() => import('@/components/AnalyticsChart'))
+// Lazy load heavy home
+const AnalyticsChart = lazy(() => import('@/home/AnalyticsChart'))
 
 <Suspense fallback={<Skeleton />}>
   <AnalyticsChart />

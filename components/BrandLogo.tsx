@@ -38,9 +38,9 @@ export default function BrandLogo({
     },
     large: {
       crown: "w-10 h-10",
-      text: "text-2xl", // 24px
-      tagline: "text-xs",
-      gap: "gap-4",
+      text: "text-[22px]", // 22px for header
+      tagline: "text-[13px]", // 13px for tagline
+      gap: "gap-2",
     },
   }
 
@@ -85,7 +85,7 @@ export default function BrandLogo({
           Bright4Event
         </h1>
         {showTagline && (
-          <p className={`${config.tagline} text-[#FFD700]/80 tracking-wider uppercase leading-tight`}>
+          <p className={`${config.tagline} text-[#FFD700]/60 tracking-wider uppercase leading-tight`}>
             All-in-One for Event
           </p>
         )}

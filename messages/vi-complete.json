@@ -1,0 +1,502 @@
+{
+  "Contact": {
+    "hero": {
+      "title": "Liên hệ với chúng tôi",
+      "subtitle": "Đội ngũ Bright4Event luôn sẵn sàng hỗ trợ bạn tạo nên sự kiện đáng nhớ"
+    },
+    "info": {
+      "address": {
+        "title": "Địa chỉ",
+        "value": "424 Lê Duẫn, Hải Châu, Đà Nẵng"
+      },
+      "email": {
+        "title": "Email",
+        "value": "code4change.co@gmail.com"
+      },
+      "phone": {
+        "title": "Hotline",
+        "value": "(+84) 901 333 434"
+      }
+    },
+    "features": [
+      {
+        "title": "Trải nghiệm tương tác",
+        "description": "Nền tảng check-in, bình chọn và mini-game tạo không khí sôi động"
+      },
+      {
+        "title": "Triển khai nhanh chóng",
+        "description": "Thiết lập sự kiện chỉ trong vài phút với giao diện trực quan"
+      },
+      {
+        "title": "Báo cáo chi tiết",
+        "description": "Theo dõi và phân tích dữ liệu sự kiện theo thời gian thực"
+      },
+      {
+        "title": "Hỗ trợ tận tâm",
+        "description": "Đội ngũ chuyên nghiệp luôn đồng hành từ lúc lên ý tưởng đến kết thúc"
+      }
+    ],
+    "form": {
+      "title": "Gửi tin nhắn cho chúng tôi",
+      "fields": {
+        "name": "Họ và tên",
+        "email": "Email",
+        "phone": "Số điện thoại",
+        "requestType": "Loại yêu cầu",
+        "message": "Nội dung tin nhắn"
+      },
+      "requestTypes": {
+        "support": "Hỗ trợ kỹ thuật",
+        "consultation": "Tư vấn gói dịch vụ",
+        "other": "Khác"
+      },
+      "button": "Gửi tin nhắn",
+      "sending": "Đang gửi...",
+      "success": {
+        "title": "Gửi thành công!",
+        "message": "Cảm ơn bạn đã liên hệ. Chúng tôi sẽ phản hồi sớm nhất có thể.",
+        "button": "Gửi tin nhắn khác"
+      }
+    },
+    "cta": {
+      "title": "Sẵn sàng tạo sự kiện ấn tượng?",
+      "subtitle": "Hãy để Bright4Event đồng hành cùng bạn",
+      "button": "Tạo sự kiện ngay"
+    }
+  },
+  "FAQ": {
+    "hero": {
+      "title": "Giải đáp mọi thắc mắc",
+      "subtitle": "của bạn 🧐",
+      "description": "Từ việc tạo sự kiện, cài đặt bình chọn đến hiển thị kết quả realtime – tất cả đều có trong mục Hỏi & Đáp."
+    },
+    "categories": {
+      "overview": {
+        "title": "A. Tổng quan về Bright4Event",
+        "icon": "🎯"
+      },
+      "management": {
+        "title": "B. Tạo & Quản lý Sự kiện",
+        "icon": "⚙️"
+      },
+      "payment": {
+        "title": "C. Thanh toán & Gói dịch vụ",
+        "icon": "💳"
+      },
+      "technical": {
+        "title": "D. Kỹ thuật & Hỗ trợ",
+        "icon": "🛠️"
+      }
+    },
+    "support": {
+      "title": "Không tìm thấy câu trả lời bạn cần?",
+      "description": "Đội ngũ hỗ trợ của chúng tôi luôn sẵn sàng giúp đỡ bạn 24/7",
+      "hotline": "(+84) 901 333 434",
+      "email": "code4change.co@gmail.com",
+      "liveChat": "Trò chuyện ngay",
+      "button": "Liên hệ với đội hỗ trợ"
+    },
+    "cta": {
+      "title": "Sẵn sàng tạo sự kiện của bạn",
+      "subtitle": "cùng Bright4Event? 🚀",
+      "description": "Bắt đầu ngay hôm nay với gói Free Trial 14 ngày",
+      "button": "Bắt đầu ngay"
+    }
+  },
+  "Guide": {
+    "hero": {
+      "title": {
+        "line1": "Khởi đầu cùng",
+        "line2": "Bright4Event"
+      },
+      "subtitle": "Từ khâu setup đến khi công bố giải thưởng – hướng dẫn chi tiết giúp bạn làm chủ mọi sự kiện.",
+      "cta": {
+        "primary": "Bắt đầu ngay",
+        "secondary": "Tìm hiểu nâng cao"
+      }
+    },
+    "organizer": {
+      "badge": "Dành cho Ban Tổ Chức",
+      "title": "Hướng dẫn Organizer",
+      "subtitle": "10 bước đơn giản để tạo và quản lý sự kiện chuyên nghiệp với Bright4Event",
+      "viewDetails": "Xem chi tiết",
+      "cta": {
+        "description": "Sẵn sàng bắt đầu tạo sự kiện của bạn?",
+        "button": "Mở Dashboard"
+      }
+    },
+    "guest": {
+      "badge": "Dành cho Khách Mời",
+      "title": "Hướng dẫn Khách Tham Gia",
+      "subtitle": "Ba bước để tham gia và tương tác với sự kiện",
+      "steps": {
+        "checkin": {
+          "title": "Check-in bằng QR code",
+          "description": "Quét mã QR tại cổng vào hoặc từ email mời. Hệ thống tự động xác nhận danh tính và cấp quyền truy cập vào các tính năng bình chọn và quay số."
+        },
+        "voting": {
+          "title": "Tham gia bình chọn",
+          "description": "Xem danh sách ứng viên, chọn mục yêu thích và nhấn Vote. Kết quả được cập nhật realtime, bạn có thể theo dõi số vote tăng lên ngay lập tức trên màn hình chính."
+        },
+        "results": {
+          "title": "Xem kết quả trực tiếp",
+          "description": "Kết quả bình chọn và quay số được hiển thị trực tiếp trên màn hình LED với hiệu ứng confetti và âm thanh sống động. Một trải nghiệm đáng nhớ cho mọi người tham dự!"
+        }
+      }
+    },
+    "advanced": {
+      "badge": "Nâng cao",
+      "title": "Tính Năng Nâng Cao",
+      "subtitle": "Dành cho Doanh Nghiệp & Tổ Chức Chuyên Nghiệp"
+    },
+    "video": {
+      "title": "Trải nghiệm Bright4Event trong 60 giây",
+      "subtitle": "Xem demo ngay để hiểu rõ cách Bright4Event hoạt động"
+    },
+    "faq": {
+      "badge": "FAQ",
+      "title": "Câu Hỏi Thường Gặp",
+      "subtitle": "Giải đáp những thắc mắc phổ biến về Bright4Event"
+    },
+    "finalCta": {
+      "title": {
+        "line1": "Sẵn sàng tổ chức sự kiện",
+        "line2": "đáng nhớ cùng Bright4Event?"
+      },
+      "subtitle": "Hãy bắt đầu ngay hôm nay và tạo những trải nghiệm tuyệt vời cho khán giả của bạn",
+      "buttons": {
+        "primary": "Tạo sự kiện ngay",
+        "secondary": "Liên hệ tư vấn"
+      }
+    },
+    "modal": {
+      "step": "Bước",
+      "actions": "Các bước thực hiện:",
+      "tip": "Mẹo hay:",
+      "buttons": {
+        "previous": "Trước",
+        "next": "Tiếp",
+        "close": "Đóng",
+        "dashboard": "Mở Dashboard"
+      }
+    }
+  },
+  "Blog": {
+    "hero": {
+      "title": {
+        "line1": "Blog &",
+        "line2": "Tin Tức"
+      },
+      "subtitle": "Kinh nghiệm tổ chức Gala, Year-end Party, Team Building và xu hướng sự kiện mới nhất"
+    },
+    "readMore": "Đọc thêm",
+    "readTime": "phút đọc"
+  },
+  "CaseStudies": {
+    "hero": {
+      "title": "Câu chuyện thành công",
+      "subtitle": "từ hơn 500+ sự kiện thực tế ✨",
+      "description": "Khám phá cách các doanh nghiệp hàng đầu Việt Nam đã biến sự kiện của họ thành trải nghiệm đáng nhớ, chuyên nghiệp và ấn tượng với Bright4Event",
+      "cta": {
+        "primary": "Xem case study nổi bật",
+        "secondary": "Đăng ký tư vấn miễn phí"
+      }
+    },
+    "featured": {
+      "badge": "Nổi bật",
+      "readFull": "Đọc case study đầy đủ"
+    },
+    "list": {
+      "title": "Các Case Study Khác",
+      "subtitle": "Khám phá thêm những câu chuyện thành công từ khách hàng của chúng tôi",
+      "viewDetails": "Xem chi tiết"
+    },
+    "benefits": {
+      "title": "Lợi Ích Khi Chọn Bright4Event",
+      "subtitle": "Tạo sự khác biệt và giá trị thực cho sự kiện của bạn",
+      "items": {
+        "timeSaving": {
+          "title": "Tiết kiệm thời gian",
+          "description": "Giảm 70% thời gian vận hành so với phương pháp truyền thống"
+        },
+        "engagement": {
+          "title": "Tăng tương tác",
+          "description": "Tỷ lệ tham gia trung bình tăng 95% với bình chọn realtime"
+        },
+        "analytics": {
+          "title": "Báo cáo chi tiết",
+          "description": "Analytics realtime và báo cáo sau sự kiện đầy đủ"
+        },
+        "experience": {
+          "title": "Trải nghiệm ấn tượng",
+          "description": "Khách mời đánh giá 4.9/5 về trải nghiệm sự kiện"
+        }
+      }
+    },
+    "finalCta": {
+      "title": {
+        "line1": "Sẵn sàng tạo nên",
+        "line2": "câu chuyện thành công của riêng bạn? 🚀"
+      },
+      "subtitle": "Hãy để Bright4Event đồng hành cùng bạn tạo nên những sự kiện ấn tượng, chuyên nghiệp và đáng nhớ nhất",
+      "buttons": {
+        "primary": "Bắt đầu ngay hôm nay",
+        "secondary": "Xem bảng giá"
+      }
+    }
+  },
+  "Policy": {
+    "hero": {
+      "title": "Chính sách bảo mật",
+      "lastUpdated": "Cập nhật lần cuối:"
+    },
+    "sections": {
+      "collection": {
+        "title": "1. Thu thập thông tin",
+        "intro": "Bright4Event thu thập các thông tin sau để cung cấp dịch vụ tốt nhất cho bạn:",
+        "items": {
+          "personal": {
+            "title": "Thông tin cá nhân:",
+            "description": "Họ tên, email, số điện thoại, công ty khi bạn đăng ký tài khoản hoặc tham gia sự kiện."
+          },
+          "event": {
+            "title": "Thông tin sự kiện:",
+            "description": "Dữ liệu về sự kiện bạn tạo, danh sách khách mời, kết quả bình chọn, ảnh/video tải lên."
+          },
+          "technical": {
+            "title": "Thông tin kỹ thuật:",
+            "description": "Địa chỉ IP, loại trình duyệt, thiết bị, thời gian truy cập để tối ưu trải nghiệm."
+          },
+          "cookie": {
+            "title": "Cookie:",
+            "description": "Sử dụng cookie để duy trì phiên đăng nhập và cải thiện hiệu suất website."
+          }
+        }
+      },
+      "usage": {
+        "title": "2. Sử dụng thông tin",
+        "intro": "Chúng tôi sử dụng thông tin của bạn để:",
+        "items": [
+          "Cung cấp và vận hành các tính năng của nền tảng Bright4Event",
+          "Gửi thông báo về sự kiện, cập nhật hệ thống và hỗ trợ kỹ thuật",
+          "Phân tích và cải thiện chất lượng dịch vụ",
+          "Ngăn chặn gian lận và đảm bảo an toàn hệ thống",
+          "Tuân thủ các quy định pháp luật hiện hành"
+        ],
+        "commitment": "Cam kết: Chúng tôi không bán thông tin cá nhân của bạn cho bên thứ ba."
+      },
+      "security": {
+        "title": "3. Bảo mật dữ liệu",
+        "intro": "Bright4Event áp dụng các biện pháp bảo mật tiên tiến để bảo vệ thông tin của bạn:",
+        "items": {
+          "encryption": {
+            "title": "Mã hóa SSL/TLS:",
+            "description": "Tất cả dữ liệu truyền tải được mã hóa."
+          },
+          "password": {
+            "title": "Mã hóa mật khẩu:",
+            "description": "Sử dụng bcrypt để băm mật khẩu."
+          },
+          "firewall": {
+            "title": "Firewall & Monitoring:",
+            "description": "Giám sát 24/7 để phát hiện và ngăn chặn truy cập trái phép."
+          },
+          "backup": {
+            "title": "Sao lưu định kỳ:",
+            "description": "Backup dữ liệu thường xuyên để phòng tránh mất mát."
+          },
+          "access": {
+            "title": "Phân quyền truy cập:",
+            "description": "Chỉ nhân viên có thẩm quyền mới được tiếp cận dữ liệu nhạy cảm."
+          }
+        }
+      },
+      "sharing": {
+        "title": "4. Chia sẻ thông tin",
+        "intro": "Chúng tôi chỉ chia sẻ thông tin của bạn trong các trường hợp sau:",
+        "items": {
+          "consent": {
+            "title": "Với sự đồng ý của bạn:",
+            "description": "Khi bạn cho phép chia sẻ với đối tác hoặc nhà tổ chức sự kiện."
+          },
+          "providers": {
+            "title": "Với nhà cung cấp dịch vụ:",
+            "description": "Email, lưu trữ cloud, thanh toán (tuân thủ GDPR)."
+          },
+          "legal": {
+            "title": "Yêu cầu pháp lý:",
+            "description": "Khi có lệnh từ cơ quan nhà nước có thẩm quyền."
+          }
+        }
+      },
+      "rights": {
+        "title": "5. Quyền của người dùng",
+        "intro": "Bạn có các quyền sau đối với dữ liệu cá nhân của mình:",
+        "items": {
+          "access": {
+            "title": "Quyền truy cập:",
+            "description": "Xem thông tin cá nhân đã cung cấp."
+          },
+          "edit": {
+            "title": "Quyền chỉnh sửa:",
+            "description": "Cập nhật hoặc sửa đổi thông tin không chính xác."
+          },
+          "delete": {
+            "title": "Quyền xóa:",
+            "description": "Yêu cầu xóa tài khoản và dữ liệu liên quan (trừ dữ liệu cần lưu trữ theo pháp luật)."
+          },
+          "withdraw": {
+            "title": "Quyền rút lại sự đồng ý:",
+            "description": "Ngừng nhận email marketing bất kỳ lúc nào."
+          },
+          "complain": {
+            "title": "Quyền khiếu nại:",
+            "description": "Liên hệ với chúng tôi nếu có lo ngại về quyền riêng tư."
+          }
+        }
+      },
+      "contact": {
+        "title": "6. Liên hệ",
+        "intro": "Nếu bạn có bất kỳ câu hỏi hoặc thắc mắc về chính sách bảo mật này, vui lòng liên hệ:",
+        "company": "Bright4Event by Code4Change Technology Solution",
+        "email": "code4change.co@gmail.com",
+        "phone": "+84 901 333 434",
+        "website": "bright4event.com"
+      },
+      "changes": {
+        "title": "7. Thay đổi chính sách",
+        "description": "Chúng tôi có thể cập nhật chính sách bảo mật này theo thời gian. Mọi thay đổi sẽ được thông báo qua email hoặc trên website. Việc bạn tiếp tục sử dụng dịch vụ sau khi thay đổi có nghĩa là bạn chấp nhận chính sách mới."
+      }
+    }
+  },
+  "Terms": {
+    "hero": {
+      "title": "Điều khoản sử dụng",
+      "lastUpdated": "Cập nhật lần cuối:"
+    },
+    "sections": {
+      "acceptance": {
+        "title": "1. Chấp nhận điều khoản",
+        "description": "Bằng việc truy cập và sử dụng nền tảng Bright4Event, bạn đồng ý tuân thủ các điều khoản và điều kiện sau đây. Nếu bạn không đồng ý với bất kỳ phần nào của điều khoản này, vui lòng không sử dụng dịch vụ của chúng tôi.",
+        "note": "Lưu ý: Điều khoản này có hiệu lực kể từ ngày bạn đăng ký tài khoản hoặc sử dụng bất kỳ dịch vụ nào của Bright4Event."
+      },
+      "userRights": {
+        "title": "2. Quyền của người dùng",
+        "intro": "Khi sử dụng Bright4Event, bạn được quyền:",
+        "items": [
+          "Tạo và quản lý sự kiện của riêng bạn",
+          "Sử dụng các tính năng check-in, bình chọn, quay số may mắn, livestream",
+          "Quản lý danh sách khách mời và theo dõi thống kê realtime",
+          "Xuất dữ liệu sự kiện dưới dạng Excel/PDF",
+          "Tùy chỉnh giao diện màn hình LED và các tính năng hiển thị",
+          "Nhận hỗ trợ kỹ thuật từ đội ngũ Bright4Event"
+        ]
+      },
+      "responsibilities": {
+        "title": "3. Trách nhiệm của người dùng",
+        "intro": "Bạn cam kết:",
+        "items": {
+          "accurate": {
+            "title": "Cung cấp thông tin chính xác:",
+            "description": "Đảm bảo thông tin đăng ký và dữ liệu sự kiện là đúng sự thật."
+          },
+          "security": {
+            "title": "Bảo mật tài khoản:",
+            "description": "Giữ bí mật mật khẩu và thông báo ngay nếu phát hiện truy cập trái phép."
+          },
+          "legal": {
+            "title": "Tuân thủ pháp luật:",
+            "description": "Không sử dụng dịch vụ cho các mục đích bất hợp pháp hoặc vi phạm quyền lợi của bên thứ ba."
+          },
+          "content": {
+            "title": "Nội dung phù hợp:",
+            "description": "Không đăng tải nội dung phản cảm, bạo lực, khiêu dâm hoặc xúc phạm."
+          },
+          "payment": {
+            "title": "Thanh toán đúng hạn:",
+            "description": "Nếu sử dụng gói trả phí, đảm bảo thanh toán theo đúng thời hạn."
+          }
+        }
+      },
+      "prohibited": {
+        "title": "4. Hành vi bị cấm",
+        "intro": "Các hành vi sau đây bị nghiêm cấm khi sử dụng Bright4Event:",
+        "items": [
+          "Sao chép, sửa đổi, phân phối hoặc khai thác mã nguồn của nền tảng",
+          "Tấn công hệ thống, gửi virus hoặc phần mềm độc hại",
+          "Sử dụng bot, script hoặc công cụ tự động để thao tác kết quả bình chọn",
+          "Thu thập dữ liệu người dùng khác mà không có sự đồng ý",
+          "Mạo danh tổ chức hoặc cá nhân khác",
+          "Spam, quảng cáo trái phép hoặc gửi nội dung không mong muốn"
+        ],
+        "consequence": "Hậu quả: Vi phạm các điều khoản trên có thể dẫn đến việc tài khoản bị đình chỉ hoặc xóa vĩnh viễn mà không được hoàn lại phí."
+      },
+      "intellectual": {
+        "title": "5. Sở hữu trí tuệ",
+        "intro": "Tất cả quyền sở hữu trí tuệ liên quan đến nền tảng Bright4Event (giao diện, logo, tính năng, mã nguồn, nội dung) thuộc về Code4Change Technology Solution.",
+        "userContent": {
+          "title": "Nội dung của người dùng:",
+          "items": [
+            "Bạn vẫn sở hữu nội dung (ảnh, video, text) mà bạn tải lên",
+            "Bạn cấp cho Bright4Event quyền sử dụng nội dung để vận hành dịch vụ",
+            "Chúng tôi có thể sử dụng dữ liệu ẩn danh để cải thiện sản phẩm"
+          ]
+        }
+      },
+      "payment": {
+        "title": "6. Thanh toán và hoàn tiền",
+        "plans": {
+          "title": "Gói dịch vụ:",
+          "free": "Miễn phí: Tính năng cơ bản, giới hạn số lượng khách",
+          "standard": "Standard: Phù hợp cho sự kiện trung bình (100-500 khách)",
+          "enterprise": "Enterprise: Không giới hạn, hỗ trợ ưu tiên 24/7"
+        },
+        "refund": {
+          "title": "Chính sách hoàn tiền:",
+          "items": [
+            "Hoàn 100% nếu hủy trước 7 ngày so với ngày sự kiện",
+            "Hoàn 50% nếu hủy từ 3-7 ngày trước sự kiện",
+            "Không hoàn tiền nếu hủy trong vòng 3 ngày hoặc sau khi sự kiện bắt đầu",
+            "Trường hợp lỗi kỹ thuật do Bright4Event, hoàn 100% hoặc gia hạn miễn phí"
+          ]
+        }
+      },
+      "liability": {
+        "title": "7. Giới hạn trách nhiệm",
+        "intro": "Bright4Event cung cấp dịch vụ \"nguyên trạng\" và không đảm bảo 100% không có lỗi hoặc gián đoạn. Chúng tôi không chịu trách nhiệm cho:",
+        "items": [
+          "Thiệt hại gián tiếp do lỗi hệ thống (mất dữ liệu, mất doanh thu)",
+          "Lỗi do nhà cung cấp bên thứ ba (hosting, email, thanh toán)",
+          "Nội dung hoặc hành vi của người dùng khác",
+          "Trường hợp bất khả kháng (thiên tai, chiến tranh, dịch bệnh)"
+        ],
+        "commitment": "Cam kết: Chúng tôi nỗ lực tối đa để đảm bảo hệ thống hoạt động ổn định với uptime 99.9% và hỗ trợ kỹ thuật nhanh chóng."
+      },
+      "termination": {
+        "title": "8. Chấm dứt dịch vụ",
+        "intro": "Bright4Event có quyền:",
+        "items": [
+          "Đình chỉ hoặc xóa tài khoản nếu phát hiện vi phạm điều khoản",
+          "Ngừng cung cấp dịch vụ với thông báo trước 30 ngày",
+          "Thay đổi hoặc nâng cấp tính năng mà không cần thông báo trước"
+        ],
+        "userRight": "Quyền của bạn: Bạn có thể hủy tài khoản bất kỳ lúc nào thông qua trang Cài đặt hoặc liên hệ với chúng tôi."
+      },
+      "law": {
+        "title": "9. Luật áp dụng và giải quyết tranh chấp",
+        "description": "Điều khoản này được điều chỉnh bởi pháp luật Việt Nam. Mọi tranh chấp phát sinh sẽ được giải quyết thông qua thương lượng. Nếu không đạt được thỏa thuận, tranh chấp sẽ được giải quyết tại Tòa án có thẩm quyền tại Hà Nội, Việt Nam."
+      },
+      "contact": {
+        "title": "10. Liên hệ",
+        "intro": "Nếu bạn có bất kỳ câu hỏi nào về điều khoản sử dụng, vui lòng liên hệ:",
+        "company": "Bright4Event by Code4Change Technology Solution",
+        "email": "code4change.co@gmail.com",
+        "phone": "+84 901 333 434",
+        "website": "bright4event.com"
+      }
+    },
+    "acceptance": {
+      "message": "Bằng việc sử dụng Bright4Event, bạn xác nhận đã đọc, hiểu và đồng ý với tất cả các điều khoản trên."
+    }
+  }
+}

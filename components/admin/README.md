@@ -15,7 +15,7 @@ import {
   AdminUploadButton,
   AdminLiveIndicator,
   AdminRangeSlider,
-} from "@/components/admin"
+} from "@/home/admin"
 ```
 
 ---
@@ -299,7 +299,7 @@ import {
   AdminUploadButton,
   AdminLiveIndicator,
   AdminRangeSlider,
-} from "@/components/admin"
+} from "@/home/admin"
 
 export default function MyPage() {
   const [speed, setSpeed] = useState(5)

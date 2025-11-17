@@ -293,10 +293,10 @@ Created comprehensive docs:
 **Quick Commands:**
 ```bash
 # Search all remaining sonner imports
-grep -r "import.*toast.*from.*sonner" app components
+grep -r "import.*toast.*from.*sonner" app home
 
 # Search all toast.success/error calls
-grep -r "toast\.\(success\|error\|info\|warning\)" app components
+grep -r "toast\.\(success\|error\|info\|warning\)" app home
 ```
 
 **Replace pattern:**
@@ -336,7 +336,7 @@ toast({
 
 ```bash
 # Check if still needed
-grep -r "sonner" app components
+grep -r "sonner" app home
 
 # If no results, uninstall
 npm uninstall sonner

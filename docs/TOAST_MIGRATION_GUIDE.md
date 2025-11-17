@@ -253,7 +253,7 @@ useEffect(() => {
 **1. Kiểm tra `app/layout.tsx` đã có `<Toaster />` chưa:**
 
 ```tsx
-import { Toaster } from "@/components/ui/toaster"
+import { Toaster } from "@/home/ui/toaster"
 
 export default function RootLayout({ children }) {
   return (
@@ -632,7 +632,7 @@ Sau khi migration, test các scenarios sau:
 **Giải pháp:**
 ```tsx
 // app/layout.tsx
-import { Toaster } from "@/components/ui/toaster"
+import { Toaster } from "@/home/ui/toaster"
 
 export default function RootLayout({ children }) {
   return (

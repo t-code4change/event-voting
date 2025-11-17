@@ -109,7 +109,7 @@ export async function generateMetadata({ params }): Promise<Metadata> {
 
 ```tsx
 // app/your-page/page.tsx
-import { EventSchema, FAQSchema } from '@/components/StructuredData'
+import { EventSchema, FAQSchema } from '@/home/StructuredData'
 
 export default function YourPage() {
   return (

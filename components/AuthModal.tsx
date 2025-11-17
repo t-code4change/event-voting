@@ -100,7 +100,7 @@ export default function AuthModal({ isOpen, onClose, onSuccess, eventId }: AuthM
     <>
       <ConfettiEffect show={showConfetti} duration={3000} />
       <Dialog open={isOpen} onOpenChange={handleClose}>
-        <DialogContent className="sm:max-w-md bg-gradient-to-br from-[#1a1a1a] to-[#0d0d0d] border-2 border-[#FFD700]/40">
+        <DialogContent className="sm:max-w-md bg-gradient-to-br p-8 from-[#1a1a1a] to-[#0d0d0d] border-2 border-[#FFD700]/40">
           <DialogHeader>
             <DialogTitle className="text-2xl text-center">
               <span className="bg-gradient-to-r from-[#FFD700] via-[#FDB931] to-[#FFD700] bg-clip-text text-transparent">

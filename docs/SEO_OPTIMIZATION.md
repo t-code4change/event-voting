@@ -179,7 +179,7 @@ Các component có sẵn:
 
 **Cách sử dụng:**
 ```tsx
-import { OrganizationSchema, WebsiteSchema } from '@/components/StructuredData'
+import { OrganizationSchema, WebsiteSchema } from '@/home/StructuredData'
 
 export default function HomePage() {
   return (

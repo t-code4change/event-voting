@@ -446,7 +446,7 @@ export async function POST(request: NextRequest) {
 ### 5.1. AuthModal Component
 
 ```typescript
-// components/auth/AuthModal.tsx
+// home/auth/AuthModal.tsx
 'use client'
 
 import { useState, useEffect } from 'react'
@@ -456,10 +456,10 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from '@/components/ui/dialog'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
+} from '@/home/ui/dialog'
+import { Button } from '@/home/ui/button'
+import { Input } from '@/home/ui/input'
+import { Label } from '@/home/ui/label'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { createAuthSchema } from '@/lib/validations'
@@ -675,8 +675,8 @@ export default function AuthModal({
 
 import { useState, useEffect } from 'react'
 import { createClient } from '@/lib/supabase/client'
-import AuthModal from '@/components/auth/AuthModal'
-import { Button } from '@/components/ui/button'
+import AuthModal from '@/home/auth/AuthModal'
+import { Button } from '@/home/ui/button'
 
 export default function VotingPage() {
   const [event, setEvent] = useState<any>(null)

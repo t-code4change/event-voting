@@ -1,0 +1,195 @@
+{
+  "Header": {
+    "nav": {
+      "about": "About",
+      "blog": "Blog",
+      "pricing": "Pricing",
+      "contact": "Contact",
+      "vote": "Vote",
+      "results": "Results",
+      "luckyDraw": "Lucky Draw",
+      "dashboard": "Dashboard",
+      "logout": "Logout"
+    }
+  },
+  "Footer": {
+    "product": {
+      "title": "Product",
+      "about": "About",
+      "pricing": "Pricing",
+      "guide": "Guide",
+      "caseStudies": "Case Studies"
+    },
+    "support": {
+      "title": "Support",
+      "faq": "FAQ",
+      "contact": "Contact"
+    },
+    "legal": {
+      "title": "Legal & Account",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service",
+      "register": "Sign Up",
+      "login": "Sign In"
+    },
+    "copyright": "© 2025 Bright4Event by Code4Change Technology Solution. All rights reserved."
+  },
+  "Home": {
+    "hero": {
+      "headline": {
+        "line1": "All-in-One Smart",
+        "line2": "Event Management Platform"
+      },
+      "subtext": "Check-in, Welcome Screen, Voting, Lucky Draw, Livestream & Real-time Analytics — all in one unified platform.",
+      "cta": {
+        "primary": "🎉 Create Event Now",
+        "secondary": "🔍 View Live Demo"
+      }
+    },
+    "stats": {
+      "title": "Trusted by <highlight>hundreds</highlight> of professional events",
+      "events": {
+        "label": "Successful Events",
+        "description": "From galas, conferences to appreciation parties – we've been there."
+      },
+      "participants": {
+        "label": "Participants",
+        "description": "Excited audiences, instant interaction."
+      },
+      "satisfaction": {
+        "label": "Satisfaction",
+        "description": "Trusted by leading brands."
+      }
+    },
+    "features": {
+      "title": "Key Features",
+      "subtitle": "From check-in to analytics – all essential features in one unified platform.",
+      "checkin": {
+        "title": "Smart Check-in",
+        "description": "Scan QR codes in seconds, manage guests in real-time, automatically compile attendance lists."
+      },
+      "welcomeScreen": {
+        "title": "Welcome Screen & Countdown",
+        "description": "Display event name, countdown, intro video with stage lighting effects."
+      },
+      "slideshow": {
+        "title": "Slideshow & Video Background",
+        "description": "Auto-play promotional videos/images while the event is waiting to start."
+      },
+      "voting": {
+        "title": "Live Voting Realtime",
+        "description": "Vote directly on phones, results displayed instantly on LED screens."
+      },
+      "luckyDraw": {
+        "title": "Lucky Draw",
+        "description": "Smooth animations, confetti, vibrant sounds, 100% fair."
+      },
+      "analytics": {
+        "title": "Analytics & Dashboard",
+        "description": "Track check-ins, participation rates, voting results – all in real-time."
+      },
+      "livestream": {
+        "title": "Livestream Integration",
+        "description": "Embed YouTube/Facebook livestreams into your event screen."
+      },
+      "miniGame": {
+        "title": "Mini Games & Interaction",
+        "description": "Quick quizzes, trivia, real-time reactions to boost audience engagement."
+      }
+    },
+    "timeline": {
+      "title": "How It Works",
+      "subtitle": "Perfect event journey from start to finish",
+      "checkin": {
+        "title": "Check-in",
+        "description": "Guests scan QR code, system automatically records attendance"
+      },
+      "welcome": {
+        "title": "Welcome Screen",
+        "description": "Welcome screen with countdown & intro video"
+      },
+      "voting": {
+        "title": "Live Voting",
+        "description": "Audience votes in real-time on their phones"
+      },
+      "luckyDraw": {
+        "title": "Lucky Draw",
+        "description": "Lucky draw with confetti & sound effects"
+      },
+      "analytics": {
+        "title": "Analytics",
+        "description": "Detailed reports & insights after the event"
+      }
+    },
+    "testimonials": {
+      "title": "What Our Clients Say",
+      "subtitle": "Trusted by leading brands",
+      "items": {
+        "vinamilk": {
+          "name": "Minh Tuan",
+          "role": "Event Manager",
+          "company": "Vinamilk",
+          "quote": "Bright4Event helped us organize our Year End Party 2024 with over 500 guests seamlessly. Fast check-in, real-time voting was extremely impressive!"
+        },
+        "fpt": {
+          "name": "Thanh Huong",
+          "role": "Marketing Director",
+          "company": "FPT Software",
+          "quote": "Amazing all-in-one platform! We don't need to use multiple different tools anymore. Post-event analytics are very detailed and useful."
+        },
+        "base": {
+          "name": "Duc Anh",
+          "role": "CEO",
+          "company": "Base.vn",
+          "quote": "Lucky Draw with confetti effects and sounds made our guests extremely delighted. Our event became much more vibrant!"
+        }
+      }
+    },
+    "slogan": {
+      "line1": "From Check-in to Awards —",
+      "line2": "Every moment shines bright",
+      "suffix": "with",
+      "brand": "Bright4Event"
+    },
+    "finalCTA": {
+      "headline": "Ready to elevate your event?",
+      "subtext": "Create your first event with",
+      "brand": "Bright4Event",
+      "description": "and experience professional event technology.",
+      "buttons": {
+        "primary": "🚀 Create Free Event",
+        "secondary": "👁 View Detailed Guide"
+      }
+    },
+    "eventSearch": {
+      "title": "Join Event",
+      "subtitle": "Enter event code or name to begin",
+      "placeholder": "Enter event code (e.g., ABC123)",
+      "searching": "Searching...",
+      "button": "Join Event",
+      "cancel": "Cancel",
+      "alert": "Please enter event code or name",
+      "demo": {
+        "text": "Or try now with demo event:",
+        "eventName": "Year End Party 2025"
+      }
+    }
+  },
+  "SEO": {
+    "home": {
+      "title": "Bright4Event - All-in-One Smart Event Management Platform",
+      "description": "Smart QR Check-in, Real-time Voting, 3D LED Screens, Lucky Draw, Livestream & Analytics — Comprehensive solution for Year-end Parties, Gala Dinners, Team Building. Trusted by 200+ professional events.",
+      "ogTitle": "Bright4Event - All-in-One Smart Event Management Platform",
+      "ogDescription": "From Check-in, Voting to Lucky Draw and Analytics. Bright4Event helps businesses organize modern, efficient and impressive events."
+    },
+    "layout": {
+      "title": "Bright4Event - All-in-One Smart Event Management Platform",
+      "description": "Comprehensive, professional event management platform. From QR Check-in, Welcome Screen, Live Voting, Lucky Draw to real-time Analytics — all in one unified platform. Helping businesses organize modern, efficient and impressive events."
+    }
+  },
+  "LanguageSwitcher": {
+    "label": "Language",
+    "vi": "Tiếng Việt",
+    "en": "English"
+  }
+}

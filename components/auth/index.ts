@@ -1,4 +1,4 @@
-// Export all auth components
+// Export all auth home
 export { default as LoginStep } from './LoginStep'
 export { default as AuthInput } from './AuthInput'
 export { default as GoogleButton } from './GoogleButton'

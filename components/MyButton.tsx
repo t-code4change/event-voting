@@ -64,7 +64,7 @@ const MyButton = React.forwardRef<HTMLButtonElement, MyButtonProps>(
     ref
   ) => {
     // Base styles
-    const baseStyles = "inline-flex flex-row items-center justify-center gap-2 font-semibold rounded-xl transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-[#FFD166] focus:ring-offset-2 focus:ring-offset-[#0B0B0B] disabled:opacity-40 disabled:pointer-events-none relative overflow-hidden group"
+    const baseStyles = "inline-flex flex-row items-center justify-center gap-2 font-semibold rounded-xl transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-[#FFD166] focus:ring-offset-2 focus:ring-offset-[#0B0B0B] disabled:opacity-40 disabled:pointer-events-none relative overflow-hidden group px-3 py-3"
 
     // Variant styles
     const variantStyles = {

@@ -107,7 +107,7 @@ npm install -D @types/node
 ```bash
 npx shadcn-ui@latest init
 
-# Add required components
+# Add required home
 npx shadcn-ui@latest add button
 npx shadcn-ui@latest add card
 npx shadcn-ui@latest add input
@@ -391,8 +391,8 @@ import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { loginSchema, LoginInput } from '@/lib/validations'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
+import { Button } from '@/home/ui/button'
+import { Input } from '@/home/ui/input'
 import { toast } from 'sonner'
 
 export default function LoginPage() {
@@ -465,7 +465,7 @@ export default function LoginPage() {
 import { createClient } from '@/lib/supabase/server'
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
-import VotingForm from '@/components/voting/VotingForm'
+import VotingForm from '@/home/voting/VotingForm'
 
 export default async function VotePage() {
   const supabase = createClient()
@@ -525,7 +525,7 @@ export default async function VotePage() {
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { Button } from '@/components/ui/button'
+import { Button } from '@/home/ui/button'
 import CategoryCard from './CategoryCard'
 import { toast } from 'sonner'
 
@@ -603,10 +603,10 @@ export default function VotingForm({ categories, existingVotes, voterId }: Votin
 #### 3.3. Category & Candidate Cards
 **File: `components/voting/CategoryCard.tsx`**
 ```typescript
-import { Card } from '@/components/ui/card'
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
-import { Label } from '@/components/ui/label'
-import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
+import { Card } from '@/home/ui/card'
+import { RadioGroup, RadioGroupItem } from '@/home/ui/radio-group'
+import { Label } from '@/home/ui/label'
+import { Avatar, AvatarImage, AvatarFallback } from '@/home/ui/avatar'
 
 // Implementation with candidate selection
 ```
@@ -662,9 +662,9 @@ export async function POST(request: NextRequest) {
 
 import { useEffect, useState } from 'react'
 import { createClient } from '@/lib/supabase/client'
-import { Card } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
-import { Avatar, AvatarImage } from '@/components/ui/avatar'
+import { Card } from '@/home/ui/card'
+import { Badge } from '@/home/ui/badge'
+import { Avatar, AvatarImage } from '@/home/ui/avatar'
 
 export default function ResultsPage() {
   const [results, setResults] = useState<any[]>([])

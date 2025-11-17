@@ -617,7 +617,7 @@ confetti({
 ### Confetti Component (Custom Particles)
 ```typescript
 // 50 confetti particles với random colors
-// Tham khảo: app/components/Confetti.tsx
+// Tham khảo: app/home/Confetti.tsx
 
 const CONFETTI_COLORS = ['#FFD700', '#9C27FF', '#FFFFFF']
 const PARTICLE_COUNT = 50
@@ -1230,12 +1230,12 @@ app/
 
 import { Metadata } from "next"
 import dynamic from "next/dynamic"
-import Header from "@/components/Header"
-import Footer from "@/components/Footer"
+import Header from "@/home/Header"
+import Footer from "@/home/Footer"
 import { getMetadata } from "@/lib/seo"
 
-// Dynamic imports for client components
-const PageWrapper = dynamic(() => import('./components/PageWrapper'), {
+// Dynamic imports for client home
+const PageWrapper = dynamic(() => import('./home/PageWrapper'), {
   ssr: false,
   loading: () => <div className="h-screen" />
 })
@@ -1261,7 +1261,7 @@ export default function PageName() {
 
 #### 💻 Client Components (When Needed)
 ```tsx
-// app/[page]/components/Section.tsx
+// app/[page]/home/Section.tsx
 "use client"  // ⚠️ Only when necessary
 
 import { motion } from "framer-motion"
@@ -1308,7 +1308,7 @@ export default function Section() {
 import dynamic from "next/dynamic"
 
 // Component with loading state
-const HeavyComponent = dynamic(() => import('./components/HeavyComponent'), {
+const HeavyComponent = dynamic(() => import('./home/HeavyComponent'), {
   loading: () => (
     <div className="py-24">
       <div className="h-96" />  {/* Skeleton */}
@@ -1317,7 +1317,7 @@ const HeavyComponent = dynamic(() => import('./components/HeavyComponent'), {
 })
 
 // Component without SSR
-const ClientOnlyComponent = dynamic(() => import('./components/ClientOnly'), {
+const ClientOnlyComponent = dynamic(() => import('./home/ClientOnly'), {
   ssr: false,  // Disable server-side rendering
   loading: () => null
 })
@@ -1452,7 +1452,7 @@ export function getStaggerDelay(index: number, base = 0.1): number {
 
 #### Step 2: Tạo folder structure
 ```bash
-mkdir app/[page]/components
+mkdir app/[page]/home
 mkdir app/[page]/constants
 mkdir app/[page]/utils
 ```
@@ -1485,7 +1485,7 @@ export default function Page() {
   )
 }
 
-// ✅ After: Modular components
+// ✅ After: Modular home
 export default function Page() {
   return (
     <div>
@@ -1503,7 +1503,7 @@ export default function Page() {
 // page.tsx - Server Component
 import dynamic from "next/dynamic"
 
-const ClientWrapper = dynamic(() => import('./components/Wrapper'), {
+const ClientWrapper = dynamic(() => import('./home/Wrapper'), {
   ssr: false
 })
 
@@ -1624,7 +1624,7 @@ import { Metadata } from "next"
 import dynamic from "next/dynamic"
 import { getMetadata } from "@/lib/seo"
 
-const PageWrapper = dynamic(() => import('./components/PageWrapper'), {
+const PageWrapper = dynamic(() => import('./home/PageWrapper'), {
   ssr: false
 })
 

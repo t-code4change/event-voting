@@ -262,7 +262,7 @@ export default function CheckInModule() {
   )
 }
 
-// Sub-components
+// Sub-home
 type ColorType = "purple" | "green" | "blue" | "gold"
 
 interface AnalyticsCardProps {

@@ -1,43 +1,45 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { usePathname, useRouter } from "next/navigation"
-import Link from "next/link"
+import { usePathname as useNextPathname } from "next/navigation"
+import { usePathname, useRouter, Link } from "@/i18n/routing"
+import { useTranslations } from 'next-intl'
 import { motion } from "framer-motion"
 import confetti from "canvas-confetti"
-import { toast } from "sonner"
+import { showSuccessToast, showErrorToast } from "@/lib/toast-utils"
 import MyButton from "@/components/MyButton"
 import BrandLogo from "@/components/BrandLogo"
+import LanguageSwitcher from "@/components/LanguageSwitcher"
 import { BarChart3, Settings, BadgeDollarSign, Vote, Gift, LogOut } from "lucide-react"
 import { useAppDispatch, useAppSelector } from "@/store/hooks"
 import { openLoginModal } from "@/store/slices/modalSlice"
 import { logout } from "@/store/slices/authSlice"
 import { LogoutConfirmPopup } from "@/components/admin"
 import { logoutUser } from "@/lib/auth-utils"
+import { ROUTES, EXTERNAL_ROUTES, isRouteActive } from "@/constants/routes"
 
 export default function Header() {
+  const t = useTranslations('Header.nav')
   const dispatch = useAppDispatch()
   const router = useRouter()
+  const nextPathname = useNextPathname()
+  const pathname = usePathname()
   const { user, loading } = useAppSelector((state) => state.auth)
   const [isAdmin, setIsAdmin] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const [logoGlow, setLogoGlow] = useState(false)
   const [showLogoutPopup, setShowLogoutPopup] = useState(false)
   const [isLoggingOut, setIsLoggingOut] = useState(false)
-  const pathname = usePathname()
 
   // Check if current path is in event pages
-  const isEventPage = pathname?.startsWith('/event/')
+  const isEventPage = nextPathname?.startsWith('/event/')
 
   // Extract eventId from pathname (e.g., /event/123 or /event/123/results)
-  const eventId = isEventPage ? pathname.split('/')[2] : null
+  const eventId = isEventPage ? nextPathname.split('/')[2] : null
 
-  // Helper function to check if a path is active
+  // Helper function to check if a path is active using route constants
   const isActivePath = (path: string) => {
-    if (path === '/') {
-      return pathname === '/'
-    }
-    return pathname?.startsWith(path)
+    return isRouteActive(pathname, path)
   }
 
   useEffect(() => {
@@ -83,7 +85,7 @@ export default function Header() {
       const { success, error } = await logoutUser()
 
       if (!success) {
-        toast.error(error || "Đăng xuất thất bại")
+        showErrorToast(error || "Đăng xuất thất bại")
         setIsLoggingOut(false)
         return
       }
@@ -92,16 +94,16 @@ export default function Header() {
       dispatch(logout())
 
       // Show success message
-      toast.success("Đã đăng xuất thành công")
+      showSuccessToast("Đã đăng xuất thành công")
 
       // Close popup
       setShowLogoutPopup(false)
 
       // Redirect to home page
-      router.push('/')
+      router.push(ROUTES.HOME)
     } catch (error: any) {
       console.error("Logout error:", error)
-      toast.error("Có lỗi xảy ra khi đăng xuất")
+      showErrorToast("Có lỗi xảy ra khi đăng xuất")
     } finally {
       setIsLoggingOut(false)
     }
@@ -148,17 +150,18 @@ export default function Header() {
 
     // Navigate to home after animation
     setTimeout(() => {
-      router.push('/')
+      router.push(ROUTES.HOME)
     }, 500)
   }
 
   return (
     <header
-      className={`sticky top-0 z-50 w-full border-b border-[#FFD700]/20 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-[#0A0A0A]/95 backdrop-blur-lg shadow-lg shadow-[#FFD700]/5'
-          : 'bg-[#0A0A0A]/80 backdrop-blur'
-      }`}
+      className="sticky top-0 z-50 w-full border-b border-[#FFD700]/20 transition-all duration-300"
+      style={{
+        background: 'rgba(13, 13, 26, 0.95)',
+        backdropFilter: 'blur(10px)',
+        boxShadow: isScrolled ? '0 4px 20px rgba(0, 0, 0, 0.25)' : 'none'
+      }}
     >
       <div className="container flex h-16 items-center justify-between">
         {/* Logo with enhanced design and confetti effect */}
@@ -188,61 +191,60 @@ export default function Header() {
           {/* Main navigation links - show on all pages except event pages */}
           {!isEventPage && (
             <>
-              <Link href="/about" className="hidden md:block">
+              <Link href={ROUTES.ABOUT} className="hidden md:block">
                 <MyButton
                   variant="ghost"
                   size="small"
                   className={`font-medium transition-all ${
-                    isActivePath('/about')
+                    isActivePath(ROUTES.ABOUT)
                       ? 'text-[#FFD700] bg-[#FFD700]/20 border border-[#FFD700]/30 shadow-lg shadow-[#FFD700]/20'
                       : 'text-[#FAF3E0] hover:text-[#FFD700] hover:bg-[#FFD700]/10'
                   }`}
                 >
-                  Giới thiệu
+                  {t('about')}
                 </MyButton>
               </Link>
 
-              <Link href="/blog" className="hidden md:block">
+              <Link href={ROUTES.BLOG} className="hidden md:block">
                 <MyButton
                   variant="ghost"
                   size="small"
                   className={`font-medium transition-all ${
-                    isActivePath('/blog')
+                    isActivePath(ROUTES.BLOG)
                       ? 'text-[#FFD700] bg-[#FFD700]/20 border border-[#FFD700]/30 shadow-lg shadow-[#FFD700]/20'
                       : 'text-[#FAF3E0] hover:text-[#FFD700] hover:bg-[#FFD700]/10'
                   }`}
                 >
-                  Blog
+                  {t('blog')}
                 </MyButton>
               </Link>
 
-              <Link href="/pricing" className="hidden md:block">
+              <Link href={ROUTES.PRICING} className="hidden md:block">
                 <MyButton
                   variant="ghost"
-                  size="small"
                   className={`font-medium transition-all ${
-                    isActivePath('/pricing')
+                    isActivePath(ROUTES.PRICING)
                       ? 'text-[#FFD700] bg-[#FFD700]/20 border border-[#FFD700]/30 shadow-lg shadow-[#FFD700]/20'
                       : 'text-[#FAF3E0] hover:text-[#FFD700] hover:bg-[#FFD700]/10'
                   }`}
                   icon={<BadgeDollarSign className="h-4 w-4" />}
                   iconPosition="left"
                 >
-                  Bảng giá
+                  {t('pricing')}
                 </MyButton>
               </Link>
 
-              <Link href="/contact" className="hidden lg:block">
+              <Link href={ROUTES.CONTACT} className="hidden lg:block">
                 <MyButton
                   variant="ghost"
                   size="small"
                   className={`font-medium transition-all ${
-                    isActivePath('/contact')
+                    isActivePath(ROUTES.CONTACT)
                       ? 'text-[#FFD700] bg-[#FFD700]/20 border border-[#FFD700]/30 shadow-lg shadow-[#FFD700]/20'
                       : 'text-[#FAF3E0] hover:text-[#FFD700] hover:bg-[#FFD700]/10'
                   }`}
                 >
-                  Liên hệ
+                  {t('contact')}
                 </MyButton>
               </Link>
             </>
@@ -264,7 +266,7 @@ export default function Header() {
                   icon={<Vote className="h-4 w-4" />}
                   iconPosition="left"
                 >
-                  Bình chọn
+                  {t('vote')}
                 </MyButton>
               </Link>
 
@@ -296,7 +298,7 @@ export default function Header() {
                   icon={<BarChart3 className="h-4 w-4" />}
                   iconPosition="left"
                 >
-                  Kết quả
+                  {t('results')}
                 </MyButton>
               </Link>
 
@@ -316,7 +318,7 @@ export default function Header() {
               </Link>
 
               {/* Lucky Draw button - desktop */}
-              <a href="https://quaysotrungthuong.vn/app" target="_blank" rel="noopener noreferrer">
+              <a href={EXTERNAL_ROUTES.LUCKY_DRAW} target="_blank" rel="noopener noreferrer">
                 <MyButton
                   variant="ghost"
                   size="medium"
@@ -324,12 +326,12 @@ export default function Header() {
                   icon={<Gift className="h-4 w-4" />}
                   iconPosition="left"
                 >
-                  Quay số
+                  {t('luckyDraw')}
                 </MyButton>
               </a>
 
               {/* Lucky Draw button - mobile */}
-              <a href="https://quaysotrungthuong.vn/app" target="_blank" rel="noopener noreferrer">
+              <a href={EXTERNAL_ROUTES.LUCKY_DRAW} target="_blank" rel="noopener noreferrer">
                 <MyButton
                   variant="ghost"
                   size="small"
@@ -341,10 +343,13 @@ export default function Header() {
             </>
           )}
 
+          {/* Language Switcher */}
+          {!isEventPage && <LanguageSwitcher />}
+
           {/* Admin Settings - show when logged in (go to dashboard) or not logged in (open login modal) */}
           {(user || isAdmin) ? (
             <>
-              <Link href="/admin/dashboard" className="inline-block">
+              <Link href={ROUTES.ADMIN.DASHBOARD} className="inline-block">
                 <button
                   className="inline-flex items-center justify-center h-9 px-2 text-[#FAF3E0] hover:text-[#FFD700] hover:bg-[#FFD700]/10 rounded-lg transition-all duration-200"
                   title="Dashboard"
@@ -367,7 +372,7 @@ export default function Header() {
               onClick={() => {
                 dispatch(openLoginModal({
                   postLoginAction: 'dashboard',
-                  redirectPath: '/admin/dashboard'
+                  redirectPath: ROUTES.ADMIN.DASHBOARD
                 }))
               }}
               className="text-[#FAF3E0] hover:text-[#FFD700] hover:bg-[#FFD700]/10 px-2"

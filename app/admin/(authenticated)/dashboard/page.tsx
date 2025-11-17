@@ -232,7 +232,7 @@ export default function AdminDashboard() {
   )
 }
 
-// Sub-components
+// Sub-home
 function TimeBox({ value, label, animate = false }: { value: number; label: string; animate?: boolean }) {
   const BoxContent = (
     <div className="text-center">

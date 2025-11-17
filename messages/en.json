@@ -1,0 +1,1254 @@
+{
+  "Header": {
+    "nav": {
+      "about": "About",
+      "blog": "Blog",
+      "pricing": "Pricing",
+      "contact": "Contact",
+      "vote": "Vote",
+      "results": "Results",
+      "luckyDraw": "Lucky Draw",
+      "dashboard": "Dashboard",
+      "logout": "Logout"
+    }
+  },
+  "Footer": {
+    "product": {
+      "title": "Product",
+      "about": "About",
+      "pricing": "Pricing",
+      "guide": "Guide",
+      "caseStudies": "Case Studies"
+    },
+    "support": {
+      "title": "Support",
+      "faq": "FAQ",
+      "contact": "Contact"
+    },
+    "legal": {
+      "title": "Legal & Account",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service",
+      "register": "Sign Up",
+      "login": "Sign In"
+    },
+    "copyright": "© 2025 Bright4Event by Code4Change Technology Solution. All rights reserved."
+  },
+  "Home": {
+    "hero": {
+      "headline": {
+        "line1": "All-in-One Smart",
+        "line2": "Event Management Platform"
+      },
+      "subtext": "Check-in, Welcome Screen, Voting, Lucky Draw, Livestream & Real-time Analytics — all in one unified platform.",
+      "cta": {
+        "primary": "🎉 Create Event Now",
+        "secondary": "🔍 View Live Demo"
+      }
+    },
+    "stats": {
+      "title": {
+        "line1": "Trusted by",
+        "highlight": "hundreds",
+        "line2": "of professional events"
+      },
+      "events": {
+        "label": "Successful Events",
+        "description": "From galas, conferences to appreciation parties – we've been there."
+      },
+      "participants": {
+        "label": "Participants",
+        "description": "Excited audiences, instant interaction."
+      },
+      "satisfaction": {
+        "label": "Satisfaction",
+        "description": "Trusted by leading brands."
+      }
+    },
+    "features": {
+      "title": "Key Features",
+      "subtitle": "From check-in to analytics – all essential features in one unified platform.",
+      "checkin": {
+        "title": "Smart Check-in",
+        "description": "Scan QR codes in seconds, manage guests in real-time, automatically compile attendance lists."
+      },
+      "welcomeScreen": {
+        "title": "Welcome Screen & Countdown",
+        "description": "Display event name, countdown, intro video with stage lighting effects."
+      },
+      "slideshow": {
+        "title": "Slideshow & Video Background",
+        "description": "Auto-play promotional videos/images while the event is waiting to start."
+      },
+      "voting": {
+        "title": "Live Voting Realtime",
+        "description": "Vote directly on phones, results displayed instantly on LED screens."
+      },
+      "luckyDraw": {
+        "title": "Lucky Draw",
+        "description": "Smooth animations, confetti, vibrant sounds, 100% fair."
+      },
+      "analytics": {
+        "title": "Analytics & Dashboard",
+        "description": "Track check-ins, participation rates, voting results – all in real-time."
+      },
+      "livestream": {
+        "title": "Livestream Integration",
+        "description": "Embed YouTube/Facebook livestreams into your event screen."
+      },
+      "miniGame": {
+        "title": "Mini Games & Interaction",
+        "description": "Quick quizzes, trivia, real-time reactions to boost audience engagement."
+      }
+    },
+    "timeline": {
+      "title": "How It Works",
+      "subtitle": "Perfect event journey from start to finish",
+      "checkin": {
+        "title": "Check-in",
+        "description": "Guests scan QR code, system automatically records attendance"
+      },
+      "welcomeScreen": {
+        "title": "Welcome Screen",
+        "description": "Welcome screen with countdown & intro video"
+      },
+      "voting": {
+        "title": "Live Voting",
+        "description": "Audience votes in real-time on their phones"
+      },
+      "luckyDraw": {
+        "title": "Lucky Draw",
+        "description": "Lucky draw with confetti & sound effects"
+      },
+      "analytics": {
+        "title": "Analytics",
+        "description": "Detailed reports & insights after the event"
+      }
+    },
+    "testimonials": {
+      "title": "What Our Clients Say",
+      "subtitle": "Trusted by leading brands",
+      "first": {
+        "name": "Minh Tuan",
+        "role": "Event Manager",
+        "company": "Vinamilk",
+        "quote": "Bright4Event helped us organize our Year End Party 2024 with over 500 guests seamlessly. Fast check-in, real-time voting was extremely impressive!"
+      },
+      "second": {
+        "name": "Thanh Huong",
+        "role": "Marketing Director",
+        "company": "FPT Software",
+        "quote": "Amazing all-in-one platform! We don't need to use multiple different tools anymore. Post-event analytics are very detailed and useful."
+      },
+      "third": {
+        "name": "Duc Anh",
+        "role": "CEO",
+        "company": "Base.vn",
+        "quote": "Lucky Draw with confetti effects and sounds made our guests extremely delighted. Our event became much more vibrant!"
+      }
+    },
+    "slogan": {
+      "line1": "From Check-in to Awards —",
+      "line2": "Every moment shines bright",
+      "suffix": "with",
+      "brand": "Bright4Event"
+    },
+    "finalCta": {
+      "headline": "Ready to elevate your event?",
+      "subtext": "Create your first event with",
+      "brand": "Bright4Event",
+      "description": "and experience professional event technology.",
+      "buttons": {
+        "primary": "🚀 Create Free Event",
+        "secondary": "👁 View Detailed Guide"
+      }
+    },
+    "eventSearch": {
+      "title": "Join Event",
+      "subtitle": "Enter event code or name to begin",
+      "placeholder": "Enter event code (e.g., ABC123)",
+      "searchingText": "Searching...",
+      "buttonText": "Join Event",
+      "cancelText": "Cancel",
+      "emptyError": "Please enter event code or name",
+      "demoSuggestion": {
+        "text": "Or try now with demo event:",
+        "eventName": "Year End Party 2025"
+      }
+    }
+  },
+  "SEO": {
+    "home": {
+      "title": "Bright4Event - All-in-One Smart Event Management Platform",
+      "description": "Smart QR Check-in, Real-time Voting, 3D LED Screens, Lucky Draw, Livestream & Analytics — Comprehensive solution for Year-end Parties, Gala Dinners, Team Building. Trusted by 200+ professional events.",
+      "ogTitle": "Bright4Event - All-in-One Smart Event Management Platform",
+      "ogDescription": "From Check-in, Voting to Lucky Draw and Analytics. Bright4Event helps businesses organize modern, efficient and impressive events."
+    },
+    "layout": {
+      "title": "Bright4Event - All-in-One Smart Event Management Platform",
+      "description": "Comprehensive, professional event management platform. From QR Check-in, Welcome Screen, Live Voting, Lucky Draw to real-time Analytics — all in one unified platform. Helping businesses organize modern, efficient and impressive events."
+    }
+  },
+  "LanguageSwitcher": {
+    "label": "Language",
+    "vi": "Tiếng Việt",
+    "en": "English"
+  },
+  "About": {
+    "hero": {
+      "title": {
+        "line1": "About",
+        "line2": "Bright4Event"
+      },
+      "subtitle": "Event technology solution built by Code4Change – Team specializing in digital event solutions"
+    },
+    "mission": {
+      "title": "Our Mission",
+      "description": "Help every business transform their events into memorable experiences where technology and emotions intersect. From smart check-in, real-time voting to professional LED screens – we bring comprehensive solutions for all events.",
+      "achievements": [
+        "Successfully deployed <strong>200+ events</strong> nationwide",
+        "Committed to stable technology, user-friendly interface, dedicated support",
+        "Established by <strong>Code4Change.tech</strong>"
+      ]
+    },
+    "vision": {
+      "title": "Vision",
+      "description": "Become the #1 platform in Vietnam and Southeast Asia for event technology solutions. By 2026, we aim to reach 1,000+ events and 1 million+ trusted users."
+    },
+    "coreValues": {
+      "title": "Core Values",
+      "subtitle": "Principles guiding all our actions",
+      "values": {
+        "creativity": {
+          "title": "Creativity 🎨",
+          "description": "Innovate technology, deliver unique and impressive event experiences"
+        },
+        "accuracy": {
+          "title": "Accuracy ⚙️",
+          "description": "Committed to stable system, 100% accurate data in all situations"
+        },
+        "experience": {
+          "title": "Experience ✨",
+          "description": "Focus on user experience, beautiful and easy-to-use interface"
+        },
+        "transparency": {
+          "title": "Transparency 🔐",
+          "description": "High security, transparency in pricing and operation methods"
+        }
+      }
+    },
+    "milestones": {
+      "title": "Development Journey",
+      "subtitle": "From idea to reality",
+      "items": [
+        {
+          "year": "2022",
+          "event": "Founded Code4Change Technology Solution"
+        },
+        {
+          "year": "2023",
+          "event": "Launched Bright4Event Beta with 50+ pilot events"
+        },
+        {
+          "year": "2024 Q1",
+          "event": "Reached 200+ successful events, 150K+ participants"
+        },
+        {
+          "year": "2025 Q1",
+          "event": "Expanding to Southeast Asia region"
+        }
+      ]
+    },
+    "team": {
+      "title": "Team <highlight>Code4Change</highlight>",
+      "subtitle": "People behind the technology",
+      "members": {
+        "tech": {
+          "title": "Technology Team",
+          "description": "Over 10+ highly skilled engineers with deep expertise in event technology."
+        },
+        "event": {
+          "title": "Event Experts",
+          "description": "Consulting and support from professionals with 5+ years of Gala organization experience"
+        },
+        "design": {
+          "title": "Product & Design",
+          "description": "Creative team designing optimal and modern user experiences"
+        }
+      }
+    },
+    "cta": {
+      "title": "Ready to create<br />your own event?",
+      "subtitle": "Let Bright4Event accompany you in every memorable event",
+      "button": "Get Started"
+    },
+    "seo": {
+      "title": "About Bright4Event – Event Technology Solution by Code4Change",
+      "description": "Bright4Event is developed by Code4Change, bringing smart, real-time, and highly interactive event management solutions for businesses."
+    }
+  },
+  "Pricing": {
+    "hero": {
+      "title": {
+        "line1": "Flexible pricing",
+        "line2": "for every event"
+      },
+      "subtitle": "Choose the right plan — from free trial to enterprise solution",
+      "cta": {
+        "primary": "Start for Free",
+        "secondary": "View Live Demo"
+      }
+    },
+    "plans": {
+      "free": {
+        "name": "Free",
+        "price": "$0",
+        "priceDetail": "/ event",
+        "description": "Trial for small events",
+        "maxParticipants": "Suitable for 50-person events",
+        "cta": "Start for Free",
+        "badge": "Free",
+        "features": [
+          "Up to 50 participants",
+          "2 voting categories",
+          "1 event / account",
+          "Basic voting via link/QR",
+          "Basic check-in",
+          "Basic real-time results",
+          "Default interface (no customization)",
+          "Bright4Event watermark",
+          "Email support",
+          "View reports but cannot export"
+        ]
+      },
+      "basic": {
+        "name": "Basic",
+        "price": "$16",
+        "priceDetail": "/ event",
+        "description": "Small & medium events",
+        "maxParticipants": "Up to 200 people",
+        "cta": "Choose Basic",
+        "features": [
+          "Up to 200 participants",
+          "5 voting categories",
+          "Unlimited events",
+          "Basic voting + check-in",
+          "PDF export",
+          "Basic image slideshow",
+          "Light color customization",
+          "No watermark",
+          "Full real-time results",
+          "Post-event reports",
+          "Email support"
+        ]
+      },
+      "pro": {
+        "name": "Pro",
+        "price": "$32",
+        "priceDetail": "/ event",
+        "description": "Most popular",
+        "maxParticipants": "Up to 1,000 people",
+        "cta": "Register Pro",
+        "badge": "Most Popular",
+        "features": [
+          "Up to 1,000 participants",
+          "Unlimited voting categories",
+          "Advanced check-in (smart QR)",
+          "LED Output + 3D Motion",
+          "Interactive mini games",
+          "Basic Lucky Draw",
+          "Excel + PDF reports",
+          "Brand customization (logo + colors)",
+          "Create multiple events per year",
+          "24/7 support"
+        ]
+      },
+      "enterprise": {
+        "name": "Enterprise",
+        "price": "$80",
+        "priceDetail": "/ event or by contract",
+        "description": "Comprehensive solution",
+        "maxParticipants": "Unlimited participants",
+        "cta": "Contact",
+        "features": [
+          "Unlimited participants",
+          "Unlimited categories",
+          "White-label (custom interface)",
+          "API Integration",
+          "Advanced analytics",
+          "Livestream integration",
+          "Lucky Draw Pro",
+          "Advanced custom mini games",
+          "Dedicated Account Manager",
+          "99.9% uptime SLA",
+          "Team training"
+        ]
+      }
+    },
+    "comparison": {
+      "title": "Detailed comparison of 4 plans",
+      "subtitle": "Choose the plan that fits your needs",
+      "features": {
+        "participants": "Number of participants",
+        "awards": "Number of voting categories",
+        "events": "Events / account",
+        "checkin": "QR Code Check-in",
+        "realtime": "Real-time results",
+        "led": "LED Output 3D Motion",
+        "customization": "Interface customization",
+        "minigame": "Mini games",
+        "luckyDraw": "Lucky Draw",
+        "export": "Export reports",
+        "livestream": "Livestream integration",
+        "api": "API Integration",
+        "watermark": "Watermark",
+        "support": "Support"
+      },
+      "values": {
+        "free": {
+          "participants": "50",
+          "awards": "2",
+          "events": "1",
+          "checkin": "Basic",
+          "realtime": "Basic",
+          "customization": false,
+          "watermark": "Yes"
+        },
+        "basic": {
+          "participants": "200",
+          "awards": "5",
+          "events": "Unlimited",
+          "checkin": "Basic",
+          "realtime": "Full",
+          "customization": "Colors",
+          "export": "PDF",
+          "watermark": "No",
+          "support": "Email"
+        },
+        "pro": {
+          "participants": "1,000",
+          "awards": "Unlimited",
+          "events": "Unlimited",
+          "checkin": "Advanced",
+          "realtime": "Full",
+          "customization": "Logo & colors",
+          "minigame": true,
+          "luckyDraw": "Basic",
+          "export": "Excel/PDF",
+          "watermark": "No",
+          "support": "24/7"
+        },
+        "enterprise": {
+          "participants": "Unlimited",
+          "awards": "Unlimited",
+          "events": "Unlimited",
+          "checkin": "Advanced",
+          "realtime": "Advanced Analytics",
+          "customization": "White-label",
+          "minigame": "Advanced",
+          "luckyDraw": "Pro version",
+          "export": "API Export",
+          "watermark": "No",
+          "support": "Account Manager"
+        }
+      }
+    },
+    "allIncluded": {
+      "title": "All plans include",
+      "subtitle": "Ensuring the best experience for all events",
+      "features": [
+        "🔐 SSL 256-bit encryption",
+        "🛡️ Anti-fraud & vote authentication",
+        "📱 Compatible with all devices (PC, Mobile, Tablet)",
+        "📊 Detailed statistical reports",
+        "🔄 Automatic feature updates",
+        "🇻🇳 Vietnamese support & free consultation"
+      ]
+    },
+    "demo": {
+      "title": "Live Demo",
+      "description": "Contact us for a live demo and detailed consultation on the best solution for your event.",
+      "email": "code4change.co@gmail.com",
+      "hotline": "0123-456-789",
+      "emailButton": "📧 Email: code4change.co@gmail.com",
+      "hotlineText": "Or call hotline:"
+    },
+    "cta": {
+      "headline": {
+        "line1": "Events are not just programs",
+        "line2": "— they are memorable experiences"
+      },
+      "subtext": {
+        "line1": "Let",
+        "brand": "Bright4Event",
+        "line2": "help you create impressive moments"
+      },
+      "description": "for your business",
+      "buttons": {
+        "primary": "Start for Free",
+        "secondary": "View Live Demo"
+      }
+    }
+  },
+  "Contact": {
+    "hero": {
+      "title": "Let Bright4Event\nCreate Memorable Events",
+      "subtitle": "We are always ready to accompany you in every special moment",
+      "cta": {
+        "schedule": "Schedule Consultation",
+        "demo": "View Live Demo"
+      }
+    },
+    "info": {
+      "title": "Contact Us",
+      "subtitle": "The Bright4Event team is always ready to listen and provide the most suitable solutions",
+      "address": {
+        "title": "Address",
+        "content": "424 Le Duan, Hai Chau, Da Nang"
+      },
+      "email": {
+        "title": "Email",
+        "content": "code4change.co@gmail.com"
+      },
+      "phone": {
+        "title": "Hotline",
+        "content": "(+84) 901 333 434"
+      }
+    },
+    "features": {
+      "title": "Why Choose Bright4Event?",
+      "subtitle": "We combine modern technology with human experience to create perfect events",
+      "interactive": {
+        "title": "Interactive Experience",
+        "description": "Check-in, voting, and mini-game platform creates a vibrant atmosphere"
+      },
+      "fast": {
+        "title": "Quick Deployment",
+        "description": "Set up your event in just a few minutes with an intuitive interface"
+      },
+      "analytics": {
+        "title": "Detailed Reports",
+        "description": "Track and analyze event data in real-time"
+      },
+      "support": {
+        "title": "Dedicated Support",
+        "description": "Professional team accompanies you from ideation to completion"
+      }
+    },
+    "form": {
+      "title": "Send us a message",
+      "response": "We will respond within 24 hours",
+      "name": {
+        "label": "Full Name",
+        "placeholder": "John Doe"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "email@example.com"
+      },
+      "phone": {
+        "label": "Phone Number",
+        "placeholder": "+84 xxx xxx xxx"
+      },
+      "requestType": {
+        "label": "Request Type",
+        "placeholder": "Select request type",
+        "options": {
+          "support": "Technical Support",
+          "consultation": "Service Package Consultation",
+          "other": "Other"
+        }
+      },
+      "message": {
+        "label": "Message",
+        "placeholder": "Enter your message..."
+      },
+      "submit": "Send Message",
+      "sending": "Sending...",
+      "success": {
+        "title": "Successfully Sent!",
+        "message": "Thank you for contacting us. We will respond within 24 hours."
+      },
+      "error": "An error occurred. Please try again."
+    },
+    "cta": {
+      "title": "Ready to turn your event into reality?",
+      "subtitle": "Let Bright4Event accompany you in every memorable event",
+      "description": "with modern technology and dedicated service",
+      "explore": "Explore Service Packages",
+      "demo": "View Live Demo",
+      "button": "Get Started"
+    },
+    "seo": {
+      "title": "Contact - Bright4Event | Interactive Event Management Platform",
+      "description": "Contact Bright4Event for consultation on event management solutions with modern check-in, voting and mini-game technology. Dedicated support 24/7.",
+      "keywords": "contact bright4event, event consultation, technical support, schedule consultation",
+      "ogTitle": "Contact - Bright4Event",
+      "ogDescription": "The Bright4Event team is always ready to help you create memorable events"
+    }
+  },
+  "FAQ": {
+    "hero": {
+      "title": "Frequently Asked Questions",
+      "subtitle": "Everything you need to know about Bright4Event"
+    },
+    "categories": {
+      "overview": {
+        "title": "A. Overview of Bright4Event",
+        "questions": {
+          "whatIs": {
+            "q": "What is Bright4Event?",
+            "a": "Bright4Event is Vietnam's leading professional event voting and interaction platform. We provide comprehensive solutions for Galas, Company Parties, Year-end Parties with features including: QR Code Check-in, Real-time Voting, Lucky Draw, and live results display on LED screens."
+          },
+          "eventTypes": {
+            "q": "What types of events can be organized with Bright4Event?",
+            "a": "Bright4Event is suitable for all types of corporate events: Gala Dinners, Company Parties, Year-end Parties, Award Ceremonies, Team Building, Product Launches, Conferences, and other internal events. The system flexibly handles from 50 to 5000+ guests."
+          },
+          "difference": {
+            "q": "How is Bright4Event different from other platforms?",
+            "a": "Bright4Event focuses 100% on corporate events with: (1) Elegant interface with custom branding capability, (2) Fast QR code check-in, (3) Real-time voting displayed directly on LED, (4) Fair and transparent Lucky Draw, (5) 24/7 technical support at events."
+          }
+        }
+      },
+      "management": {
+        "title": "B. Creating & Managing Events",
+        "questions": {
+          "createEvent": {
+            "q": "How do I create my first event?",
+            "a": "It's very simple! (1) Register an account at Bright4Event.vn, (2) Choose a suitable service package, (3) Fill in event information, upload logo and theme colors, (4) Add voting categories and candidates, (5) Activate and share link/QR code with guests. The whole process takes only 15 minutes!"
+          },
+          "editEvent": {
+            "q": "Can I edit event information after it's published?",
+            "a": "Yes! You can edit most event information at any time: event name, description, banner image, voting categories, time. However, for Enterprise packages, you should contact the support team for the most optimal advice."
+          },
+          "addAwards": {
+            "q": "How do I add voting categories?",
+            "a": "Access Dashboard → Select event → \"Categories\" tab → Click \"Add new category\" → Enter category name, description, upload candidate photos → Save. You can add unlimited categories and candidates depending on your service package."
+          },
+          "voteLimit": {
+            "q": "Can I limit the number of votes per person?",
+            "a": "Yes! Bright4Event allows you to set: (1) Maximum votes per person (e.g., 3 votes), (2) Vote once for each category, (3) Only allow voting after check-in. This helps ensure fairness and transparency."
+          }
+        }
+      },
+      "payment": {
+        "title": "C. Payment & Service Packages",
+        "questions": {
+          "plans": {
+            "q": "What packages are available? How to pay?",
+            "a": "Bright4Event has 3 packages: (1) Basic (50-200 guests) - $120, (2) Pro (200-500 guests) - $200, (3) Enterprise (500+ guests) - Contact us. Payment via Bank Transfer, VNPay, or Momo. Full VAT invoice provided."
+          },
+          "invoice": {
+            "q": "Do you provide VAT invoices?",
+            "a": "Yes! We issue full VAT invoices for all service packages. After payment, just provide company information (name, tax ID, address), and we'll send the electronic invoice within 24 hours."
+          },
+          "refund": {
+            "q": "Are refunds available if the event is cancelled?",
+            "a": "Yes, with the following policy: (1) Cancel 7+ days before: 100% refund, (2) Cancel 3-7 days before: 70% refund, (3) Cancel within 3 days: 50% refund. If the event is postponed, you can change the date for free."
+          },
+          "trial": {
+            "q": "Is there a trial package?",
+            "a": "Yes! We have a 14-day Free Trial for up to 50 guests. You can test all features: QR check-in, voting, lucky draw, analytics. No credit card required to register."
+          }
+        }
+      },
+      "technical": {
+        "title": "D. Technical & Support",
+        "questions": {
+          "ledDisplay": {
+            "q": "How do I display results on LED?",
+            "a": "Very simple! (1) Open Dashboard on laptop, (2) Select \"LED Mode\", (3) Connect laptop to LED screen/projector via HDMI, (4) Press F11 for fullscreen. Results will automatically update in real-time. We also provide on-site technical support for Enterprise packages."
+          },
+          "connectionError": {
+            "q": "How does the system handle connection errors?",
+            "a": "Bright4Event has an automatic backup mechanism: (1) Vote data is stored on AWS cloud servers, (2) If connection is lost, votes are still saved offline on the device, (3) When reconnected, data automatically syncs. We guarantee 99.9% uptime."
+          },
+          "support247": {
+            "q": "Is 24/7 support available?",
+            "a": "Yes! We have 24/7 support via: (1) Hotline: (+84) 901 333 434, (2) Email: code4change.co@gmail.com, (3) Live chat on website, (4) On-site technical support for Enterprise packages. Average response time < 5 minutes."
+          },
+          "api": {
+            "q": "Does Bright4Event have API integration?",
+            "a": "Yes! Enterprise packages support API for integration with your internal systems: (1) Sync guest lists, (2) Export vote data, (3) Real-time webhooks. Full API documentation at docs.Bright4Event.vn"
+          },
+          "security": {
+            "q": "Is data secure?",
+            "a": "Absolutely! Bright4Event strictly complies with: (1) SSL/TLS 256-bit encryption, (2) Storage on AWS Singapore, (3) Daily automatic backups, (4) No data sharing with third parties, (5) GDPR and PDPA compliance. Your data is always safe."
+          }
+        }
+      }
+    },
+    "support": {
+      "title": "Can't find the answer you need?",
+      "subtitle": "Our support team is always ready to help you 24/7",
+      "cta": "Contact Support Team",
+      "liveChat": "Chat Now"
+    },
+    "final": {
+      "title": "Ready to create your event with Bright4Event?",
+      "subtitle": "Start today with a 14-day Free Trial",
+      "button": "Get Started"
+    }
+  },
+  "Guide": {
+    "hero": {
+      "title": {
+        "line1": "Guide",
+        "line2": "to using Bright4Event"
+      },
+      "subtitle": "Detailed documentation to help you master all features of Bright4Event",
+      "cta": {
+        "primary": "Start Guide",
+        "secondary": "Advanced Features"
+      }
+    },
+    "organizer": {
+      "badge": "For Organizers",
+      "title": {
+        "part1": "Professional event",
+        "part2": "organization process"
+      },
+      "subtitle": "From creating events to analyzing results - detailed step-by-step guide"
+    },
+    "guest": {
+      "badge": "For Guests",
+      "title": "Guide to <highlight>joining events</highlight>",
+      "subtitle": "3 simple steps to join and interact with the event",
+      "steps": {
+        "checkin": {
+          "title": "Step 1: Check-in",
+          "description": "Scan QR code from invitation email or at the event gate. The system automatically records and welcomes you."
+        },
+        "vote": {
+          "title": "Step 2: Vote",
+          "description": "Open the event link on your phone, select your favorite candidate and submit your vote. Results displayed in real-time on LED screens."
+        },
+        "results": {
+          "title": "Step 3: View Results",
+          "description": "Follow real-time voting results and participate in lucky draws right on your phone."
+        }
+      }
+    },
+    "advanced": {
+      "badge": "Pro Features",
+      "title": "<highlight>Advanced</highlight> features",
+      "subtitle": "Discover professional features for large-scale events"
+    },
+    "video": {
+      "title": "Watch <highlight>live demo</highlight>",
+      "subtitle": "Detailed video tutorials on how to use Bright4Event"
+    },
+    "faq": {
+      "badge": "Frequently Asked Questions",
+      "title": "<highlight>Frequently</highlight> Asked Questions",
+      "subtitle": "Quick answers to common questions"
+    },
+    "cta": {
+      "title": "Ready to <highlight>create your event</highlight><br />of your own?",
+      "subtitle": "Let Bright4Event accompany you in every memorable event",
+      "button": {
+        "primary": "View Pricing",
+        "secondary": "Contact for Consultation"
+      }
+    },
+    "organizerSteps": {
+      "title": "Event Organization Process",
+      "steps": {
+        "createEvent": {
+          "title": "Create Event",
+          "description": "Choose a suitable package, create event ID, enter detailed information, upload logo and select color theme matching your brand style.",
+          "intro": "Create new event: set name, choose date-time, location and upload logo.",
+          "actions": [
+            "Choose suitable package (Free/Pro/Enterprise)",
+            "Fill in event name, short description",
+            "Upload logo (transparent PNG) and cover image (16:9)",
+            "Select primary color and live preview"
+          ],
+          "tip": "Use 1920×1080 cover for beautiful LED display"
+        },
+        "manageGuests": {
+          "title": "Manage Guests",
+          "description": "Import guest list from Excel, send automatic invitation emails, create personalized check-in QR codes for each guest.",
+          "intro": "Import guest list from Excel, send automatic invitation emails.",
+          "actions": [
+            "Download Excel template and fill in guest information",
+            "Import Excel file into system",
+            "Send automatic invitation emails with personal QR codes",
+            "Track confirm/decline status in real-time"
+          ],
+          "tip": "Use 'Tag' field to categorize VIP guests, media, partners"
+        },
+        "setupCheckin": {
+          "title": "Setup Check-in",
+          "description": "Configure QR check-in gate, customize welcome messages, connect scanners and print guest badges automatically.",
+          "intro": "Configure check-in flow: QR / Phone / Invitation Code.",
+          "actions": [
+            "Enable/disable check-in methods (QR, Phone, Invitation Code)",
+            "Customize check-in form (Phone, Email, Notes)",
+            "Create personal QR or general gate QR",
+            "Test preview on mobile mockup",
+            "Connect QR scanner or check-in tablet"
+          ],
+          "tip": "Set redirect after check-in to voting interface to optimize experience"
+        },
+        "welcomeScreen": {
+          "title": "Welcome LED Screen",
+          "description": "Design professional welcome interface, display company logo, run slideshow of photos and introduction videos.",
+          "intro": "Design professional welcome interface with logo and slideshow.",
+          "actions": [
+            "Upload company logo (transparent SVG/PNG)",
+            "Add background image or loop video",
+            "Create introduction slideshow (max 10 images)",
+            "Set slide transition time (3-8 seconds)",
+            "Preview fullscreen on LED"
+          ],
+          "tip": "Use MP4 H.264 video format to optimize LED screen performance"
+        },
+        "waitingScreen": {
+          "title": "Waiting Screen",
+          "description": "Create attractive waiting atmosphere with countdown timer, dynamic slideshow, background music and event announcements.",
+          "intro": "Create attractive waiting atmosphere with countdown timer and dynamic slideshow.",
+          "actions": [
+            "Set countdown timer to start time",
+            "Upload waiting slideshow photos/videos (loop)",
+            "Add background music (MP3/AAC)",
+            "Display event announcements (ticker text)",
+            "Schedule automatic transition to next interface"
+          ],
+          "tip": "Prepare 30-60 minute background music playlist to avoid repetition"
+        },
+        "voting": {
+          "title": "Online Voting",
+          "description": "Configure voting categories, upload high-quality candidate photos, set vote limits and fair voting rules.",
+          "intro": "Configure voting categories, upload high-quality candidate photos.",
+          "actions": [
+            "Create voting categories (King, Queen, Best Smile...)",
+            "Upload candidate photos (recommended 1:1, 800×800px)",
+            "Set vote limit per person (1-3 choices)",
+            "Set voting open/close time",
+            "Enable/disable real-time results display"
+          ],
+          "tip": "Hide results temporarily to create suspense, announce when event reaches peak"
+        },
+        "results": {
+          "title": "Announce Results",
+          "description": "Display real-time results on LED with podium effects, brilliant confetti and vibrant congratulations sounds.",
+          "intro": "Display real-time results on LED with podium effects, brilliant confetti.",
+          "actions": [
+            "Choose display layout (3D Podium, Leaderboard, Chart)",
+            "Set confetti effects (color, density)",
+            "Add congratulations sounds (applause, fanfare)",
+            "Schedule automatic announcement of each award",
+            "Connect to LED screen via fullscreen link"
+          ],
+          "tip": "Test sound and effects before event to ensure smooth operation"
+        },
+        "luckyDraw": {
+          "title": "Lucky Draw",
+          "description": "Create professional lucky wheel with 3D effects, dramatic sound, multiple rounds and various prizes.",
+          "intro": "Setup wheel: upload list, choose tiers, number of spins.",
+          "actions": [
+            "Select participant list (only checked-in people)",
+            "Set number of spins for each prize",
+            "Customize wheel/slot machine interface",
+            "Add drum/dramatic background music",
+            "Test preview and save spin results"
+          ],
+          "tip": "Prepare drum/background music in assets folder to enhance atmosphere"
+        },
+        "miniGame": {
+          "title": "Interactive Mini Games",
+          "description": "Integrate mini games: Real-time Quiz, Trivia, Spin Wheel, Bingo to increase engagement and create vibrant atmosphere.",
+          "intro": "Integrate mini games: Real-time Quiz, Trivia, Spin Wheel.",
+          "actions": [
+            "Choose game type (Quiz, Trivia, Bingo, Spin Wheel)",
+            "Create questions and answers (Quiz/Trivia)",
+            "Set answer time and reward points",
+            "Display real-time leaderboard on LED",
+            "Export results and automatic prize distribution"
+          ],
+          "tip": "10-15 question quiz is optimal, avoid too long making guests bored"
+        },
+        "analytics": {
+          "title": "Analysis & Reports",
+          "description": "View detailed analytics, export Excel/CSV data, analyze engagement over time and create summary reports.",
+          "intro": "View detailed analytics, export Excel/CSV data, analyze engagement.",
+          "actions": [
+            "View overview dashboard (votes, check-ins, engagement)",
+            "Analyze timeline charts",
+            "Export complete Excel/CSV data",
+            "Create event summary PDF report",
+            "Share report link with stakeholders"
+          ],
+          "tip": "Export data right after event for storage and deeper analysis"
+        }
+      }
+    },
+    "advancedFeatures": {
+      "title": "Advanced Features",
+      "multiEvent": {
+        "title": "Multi-event Management",
+        "description": "Organize and coordinate multiple parallel events with a central control panel. Easily switch between events, manage every detail professionally and efficiently."
+      },
+      "branding": {
+        "title": "Custom Branding (Logo, Primary Colors)",
+        "description": "Fully customize the interface according to your brand. Upload logo, choose primary colors, fonts and backgrounds to create a unique experience consistent with your business identity."
+      },
+      "api": {
+        "title": "API Integration & Data Export",
+        "description": "Connect Bright4Event with your CRM, ERP systems through API. Export vote, check-in and analytics data in various formats (JSON, CSV, Excel) for deeper analysis."
+      },
+      "luckyDraw": {
+        "title": "Lucky Draw",
+        "description": "Create a vibrant atmosphere with professional lucky draw feature. Beautiful effects, vivid sounds, and support for multiple rounds with different prizes."
+      },
+      "ledConnection": {
+        "title": "Real-time LED Connection",
+        "description": "Display voting and lucky draw results directly on LED screens with minimal delay. Support multiple resolutions and customize display layout according to stage requirements."
+      }
+    },
+    "faqs": {
+      "title": "Frequently Asked Questions",
+      "createFirst": {
+        "q": "How do I create my first event?",
+        "a": "Log into your account, choose a suitable package from the Pricing page, then access Dashboard and click 'Create new event'. Fill in basic information, upload logo and you're ready!"
+      },
+      "customizeColor": {
+        "q": "Can I change event interface colors?",
+        "a": "Yes, you can fully customize colors, logo and theme in the event Settings section. Premium and Enterprise packages also support deeper custom branding."
+      },
+      "realtimeResults": {
+        "q": "How do I display real-time results?",
+        "a": "Access the 'Results' section in event Dashboard, select 'Live Display' mode and copy the link. Open this link in a browser connected to LED screen or projector."
+      },
+      "exportData": {
+        "q": "Can I export vote data to Excel?",
+        "a": "Yes, in the Analytics section of each event, you can export vote, check-in and statistics data to Excel (.xlsx), CSV or JSON formats with just one click."
+      },
+      "support": {
+        "q": "Where is 24/7 technical support?",
+        "a": "We provide support via email (code4change.co@gmail.com), live chat in the app and hotline for Premium/Enterprise customers. Average response time under 2 hours."
+      }
+    }
+  },
+  "Blog": {
+    "hero": {
+      "title": "Blog & News",
+      "subtitle": "Experience organizing Galas, Year-end Parties, Team Building and latest event trends"
+    },
+    "category": "Category",
+    "readTime": "min read",
+    "readMore": "Read More",
+    "newsletter": {
+      "title": "Subscribe to Newsletter",
+      "description": "Receive the latest tips and event trends"
+    }
+  },
+  "CaseStudies": {
+    "hero": {
+      "title": "Case Studies",
+      "subtitle": "Real success stories from Bright4Event customers",
+      "description": "Discover how Bright4Event has helped hundreds of businesses organize successful, impressive and memorable events",
+      "cta": {
+        "featured": "🌟 View featured case study",
+        "contact": "Contac"
+      }
+    },
+    "grid": {
+      "title": "Featured Projects",
+      "subtitle": "From gala dinners, year-end parties to conferences - we are proud to accompany leading brands"
+    },
+    "stats": {
+      "guests": "Guests",
+      "voteRate": "Vote Rate",
+      "timeSaved": "Time Saved",
+      "satisfaction": "Satisfaction",
+      "awards": "Awards",
+      "checkInTime": "Check-in",
+      "voters": "Voters",
+      "projects": "Projects",
+      "transparency": "Transparency",
+      "prizes": "Prizes",
+      "engagement": "Engagement",
+      "categories": "Categories",
+      "branding": "Branding"
+    },
+    "benefits": {
+      "title": "Benefits of Using Bright4Event",
+      "subtitle": "Practical values that customers have achieved",
+      "timeSaving": {
+        "title": "Time Savings",
+        "description": "Reduce 70% operational time compared to traditional methods"
+      },
+      "engagement": {
+        "title": "Increased Engagement",
+        "description": "Average participation rate increases 95% with real-time voting"
+      },
+      "analytics": {
+        "title": "Detailed Reports",
+        "description": "Real-time analytics and comprehensive post-event reports"
+      },
+      "experience": {
+        "title": "Impressive Experience",
+        "description": "Guests rate 4.9/5 for event experience"
+      }
+    },
+    "cta": {
+      "title": "The next success story could be yours",
+      "subtitle": "Ready to create a memorable event?",
+      "description": "Let Bright4Event accompany you in creating impressive moments for your business",
+      "button": {
+        "primary": "Free consultation",
+        "secondary": "View pricing"
+      }
+    },
+    "viewDetails": "View Details"
+  },
+  "Policy": {
+    "hero": {
+      "title": "Privacy Policy",
+      "lastUpdated": "Last Updated"
+    },
+    "sections": {
+      "collection": {
+        "title": "1. Information Collection",
+        "intro": "Bright4Event collects the following information to provide the best service for you:",
+        "personal": {
+          "title": "Personal Information:",
+          "description": "Name, email, phone number, company when you register an account or participate in events."
+        },
+        "event": {
+          "title": "Event Information:",
+          "description": "Data about events you create, guest lists, voting results, uploaded photos/videos."
+        },
+        "technical": {
+          "title": "Technical Information:",
+          "description": "IP address, browser type, device, access time to optimize experience."
+        },
+        "cookie": {
+          "title": "Cookies:",
+          "description": "Use cookies to maintain login sessions and improve website performance."
+        }
+      },
+      "usage": {
+        "title": "2. Information Usage",
+        "intro": "We use your information to:",
+        "items": [
+          "Provide and operate Bright4Event platform features",
+          "Send notifications about events, system updates and technical support",
+          "Analyze and improve service quality",
+          "Prevent fraud and ensure system security",
+          "Comply with current legal regulations"
+        ],
+        "commitment": "Commitment:",
+        "noSell": "We do not sell your personal information to third parties."
+      },
+      "security": {
+        "title": "3. Data Security",
+        "intro": "Bright4Event applies advanced security measures to protect your information:",
+        "measures": {
+          "ssl": {
+            "title": "SSL/TLS Encryption",
+            "description": "All transmitted data is encrypted."
+          },
+          "password": {
+            "title": "Password Encryption",
+            "description": "Use bcrypt to hash passwords."
+          },
+          "firewall": {
+            "title": "Firewall & Monitoring",
+            "description": "24/7 monitoring to detect and prevent unauthorized access."
+          },
+          "backup": {
+            "title": "Regular Backups",
+            "description": "Frequent data backups to prevent loss."
+          },
+          "access": {
+            "title": "Access Control",
+            "description": "Only authorized staff can access sensitive data."
+          }
+        }
+      },
+      "sharing": {
+        "title": "4. Information Sharing",
+        "intro": "We only share your information in the following cases:",
+        "consent": {
+          "title": "With Your Consent:",
+          "description": "When you allow sharing with partners or event organizers."
+        },
+        "providers": {
+          "title": "With Service Providers:",
+          "description": "Email, cloud storage, payment (GDPR compliant)."
+        },
+        "legal": {
+          "title": "Legal Requirements:",
+          "description": "When ordered by competent state authorities."
+        }
+      },
+      "rights": {
+        "title": "5. User Rights",
+        "intro": "You have the following rights regarding your personal data:",
+        "access": {
+          "title": "Access Rights:",
+          "description": "View personal information provided."
+        },
+        "edit": {
+          "title": "Edit Rights:",
+          "description": "Update or modify incorrect information."
+        },
+        "delete": {
+          "title": "Delete Rights:",
+          "description": "Request deletion of account and related data (except data required by law)."
+        },
+        "withdraw": {
+          "title": "Withdrawal Rights:",
+          "description": "Stop receiving marketing emails at any time."
+        },
+        "complaint": {
+          "title": "Complaint Rights:",
+          "description": "Contact us if you have privacy concerns."
+        }
+      },
+      "contact": {
+        "title": "6. Contact",
+        "intro": "If you have any questions about this privacy policy, please contact:",
+        "company": "Bright4Event by Code4Change Technology Solution",
+        "email": "Email: code4change.co@gmail.com",
+        "phone": "Phone: +84 901 333 434",
+        "website": "Website: bright4event.com"
+      },
+      "changes": {
+        "title": "7. Policy Changes",
+        "description": "We may update this privacy policy over time. All changes will be notified via email or on the website. Your continued use of the service after changes means you accept the new policy."
+      }
+    }
+  },
+  "Terms": {
+    "hero": {
+      "title": "Terms of Service",
+      "lastUpdated": "Last Updated"
+    },
+    "sections": {
+      "acceptance": {
+        "title": "1. Acceptance of Terms",
+        "description": "By accessing and using the Bright4Event platform, you agree to comply with the following terms and conditions. If you do not agree with any part of these terms, please do not use our services.",
+        "note": "Note:",
+        "effective": "These terms are effective from the date you register an account or use any Bright4Event services."
+      },
+      "userRights": {
+        "title": "2. User Rights",
+        "intro": "When using Bright4Event, you have the right to:",
+        "items": [
+          "Create and manage your own events",
+          "Use check-in, voting, lucky draw, livestream features",
+          "Manage guest lists and track real-time statistics",
+          "Export event data in Excel/PDF format",
+          "Customize LED screen interface and display features",
+          "Receive technical support from the Bright4Event team"
+        ]
+      },
+      "userResponsibilities": {
+        "title": "3. User Responsibilities",
+        "intro": "You commit to:",
+        "accuracy": {
+          "title": "Provide Accurate Information:",
+          "description": "Ensure registration information and event data is truthful."
+        },
+        "security": {
+          "title": "Account Security:",
+          "description": "Keep password confidential and notify immediately if unauthorized access is detected."
+        },
+        "compliance": {
+          "title": "Legal Compliance:",
+          "description": "Not use the service for illegal purposes or violating third party rights."
+        },
+        "content": {
+          "title": "Appropriate Content:",
+          "description": "Not upload offensive, violent, pornographic or insulting content."
+        },
+        "payment": {
+          "title": "Timely Payment:",
+          "description": "If using paid packages, ensure payment is made on time."
+        }
+      },
+      "prohibited": {
+        "title": "4. Prohibited Conduct",
+        "intro": "The following actions are strictly prohibited when using Bright4Event:",
+        "items": [
+          "Copy, modify, distribute or exploit the platform's source code",
+          "Attack the system, send viruses or malware",
+          "Use bots, scripts or automated tools to manipulate voting results",
+          "Collect other user data without consent",
+          "Impersonate organizations or individuals",
+          "Spam, unauthorized advertising or sending unwanted content"
+        ],
+        "consequence": "Consequences:",
+        "warning": "Violation of the above terms may result in account suspension or permanent deletion without refund."
+      },
+      "intellectual": {
+        "title": "5. Intellectual Property",
+        "description": "All intellectual property rights related to the Bright4Event platform (interface, logo, features, source code, content) belong to Code4Change Technology Solution.",
+        "userContent": "User Content:",
+        "items": [
+          "You still own the content (photos, videos, text) that you upload",
+          "You grant Bright4Event the right to use content to operate the service",
+          "We may use anonymous data to improve the product"
+        ]
+      },
+      "payment": {
+        "title": "6. Payment and Refunds",
+        "plans": {
+          "title": "Service Packages:",
+          "free": "Free: Basic features, limited guests",
+          "standard": "Standard: Suitable for medium events (100-500 guests)",
+          "enterprise": "Enterprise: Unlimited, 24/7 priority support"
+        },
+        "refund": {
+          "title": "Refund Policy:",
+          "items": [
+            "100% refund if cancelled 7 days before event date",
+            "50% refund if cancelled 3-7 days before event",
+            "No refund if cancelled within 3 days or after event starts",
+            "In case of technical error by Bright4Event, 100% refund or free extension"
+          ]
+        }
+      },
+      "liability": {
+        "title": "7. Limitation of Liability",
+        "intro": "Bright4Event provides service \"as is\" and does not guarantee 100% error-free or uninterrupted. We are not liable for:",
+        "items": [
+          "Indirect damages from system errors (data loss, revenue loss)",
+          "Errors from third-party providers (hosting, email, payment)",
+          "Content or behavior of other users",
+          "Force majeure (natural disasters, war, epidemics)"
+        ],
+        "commitment": "Commitment:",
+        "uptime": "We strive to ensure the system operates stably with 99.9% uptime and quick technical support."
+      },
+      "termination": {
+        "title": "8. Service Termination",
+        "intro": "Bright4Event has the right to:",
+        "items": [
+          "Suspend or delete accounts if violations are detected",
+          "Stop providing service with 30 days notice",
+          "Change or upgrade features without prior notice"
+        ],
+        "userRight": "Your Rights:",
+        "cancel": "You can cancel your account at any time through Settings page or contact us."
+      },
+      "law": {
+        "title": "9. Applicable Law and Dispute Resolution",
+        "description": "These terms are governed by Vietnamese law. Any arising disputes will be resolved through negotiation. If no agreement is reached, disputes will be resolved at competent courts in Hanoi, Vietnam."
+      },
+      "contact": {
+        "title": "10. Contact",
+        "intro": "If you have any questions about the terms of service, please contact:",
+        "company": "Bright4Event by Code4Change Technology Solution",
+        "email": "Email: code4change.co@gmail.com",
+        "phone": "Phone: +84 901 333 434",
+        "website": "Website: bright4event.com"
+      },
+      "acceptance_notice": "By using Bright4Event, you confirm that you have read, understood and agree to all the above terms."
+    }
+  }
+}

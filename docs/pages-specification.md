@@ -96,10 +96,10 @@ event-voting/
 ```typescript
 // app/page.tsx
 import { createClient } from '@/lib/supabase/server'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent } from '@/components/ui/card'
-import EventCountdown from '@/components/EventCountdown'
-import VoteStats from '@/components/VoteStats'
+import { Button } from '@/home/ui/button'
+import { Card, CardContent } from '@/home/ui/card'
+import EventCountdown from '@/home/EventCountdown'
+import VoteStats from '@/home/VoteStats'
 import Link from 'next/link'
 
 export default async function LandingPage() {
@@ -285,10 +285,10 @@ function handleToggleCandidate(categoryId: string, candidateId: string) {
 
 import { useState, useEffect } from 'react'
 import { createClient } from '@/lib/supabase/client'
-import AuthModal from '@/components/auth/AuthModal'
-import CategoryVotingCard from '@/components/voting/CategoryVotingCard'
-import { Button } from '@/components/ui/button'
-import { Badge } from '@/components/ui/badge'
+import AuthModal from '@/home/auth/AuthModal'
+import CategoryVotingCard from '@/home/voting/CategoryVotingCard'
+import { Button } from '@/home/ui/button'
+import { Badge } from '@/home/ui/badge'
 import { toast } from 'sonner'
 
 export default function VotingPage() {
@@ -540,10 +540,10 @@ export default function VotingPage() {
 
 import { useEffect, useState } from 'react'
 import { createClient } from '@/lib/supabase/client'
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
-import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
-import { Badge } from '@/components/ui/badge'
-import { Progress } from '@/components/ui/progress'
+import { Card, CardHeader, CardTitle, CardContent } from '@/home/ui/card'
+import { Avatar, AvatarImage, AvatarFallback } from '@/home/ui/avatar'
+import { Badge } from '@/home/ui/badge'
+import { Progress } from '@/home/ui/progress'
 
 export default function ResultsPage() {
   const [results, setResults] = useState<any[]>([])
@@ -723,8 +723,8 @@ function getCategoryIcon(name: string) {
 ```typescript
 // app/admin/page.tsx
 import { createClient } from '@/lib/supabase/server'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardHeader, CardTitle } from '@/home/ui/card'
+import { Button } from '@/home/ui/button'
 import Link from 'next/link'
 
 export default async function AdminDashboard() {
@@ -854,12 +854,12 @@ export default async function AdminDashboard() {
 
 import { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
-import { Switch } from '@/components/ui/switch'
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
+import { Card, CardContent, CardHeader, CardTitle } from '@/home/ui/card'
+import { Button } from '@/home/ui/button'
+import { Input } from '@/home/ui/input'
+import { Label } from '@/home/ui/label'
+import { Switch } from '@/home/ui/switch'
+import { RadioGroup, RadioGroupItem } from '@/home/ui/radio-group'
 import { toast } from 'sonner'
 
 interface EventSettings {

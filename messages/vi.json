@@ -1,0 +1,1254 @@
+{
+  "Header": {
+    "nav": {
+      "about": "Giới thiệu",
+      "blog": "Blog",
+      "pricing": "Bảng giá",
+      "contact": "Liên hệ",
+      "vote": "Bình chọn",
+      "results": "Kết quả",
+      "luckyDraw": "Quay số",
+      "dashboard": "Dashboard",
+      "logout": "Đăng xuất"
+    }
+  },
+  "Footer": {
+    "product": {
+      "title": "Sản phẩm",
+      "about": "Giới thiệu",
+      "pricing": "Bảng giá",
+      "guide": "Hướng dẫn",
+      "caseStudies": "Case studies"
+    },
+    "support": {
+      "title": "Hỗ trợ",
+      "faq": "Câu hỏi thường gặp",
+      "contact": "Liên hệ"
+    },
+    "legal": {
+      "title": "Pháp lý & Tài khoản",
+      "privacy": "Chính sách bảo mật",
+      "terms": "Điều khoản sử dụng",
+      "register": "Đăng ký",
+      "login": "Đăng nhập"
+    },
+    "copyright": "© 2025 Bright4Event by Code4Change Technology Solution. All rights reserved."
+  },
+  "Home": {
+    "hero": {
+      "headline": {
+        "line1": "Nền tảng tổ chức sự kiện",
+        "line2": "thông minh All-in-One"
+      },
+      "subtext": "Check-in, Màn hình chào mừng, Bình chọn, Quay số, Livestream & Báo cáo realtime — tất cả trong một nền tảng duy nhất.",
+      "cta": {
+        "primary": "🎉 Tạo sự kiện ngay",
+        "secondary": "🔍 Xem demo trực tiếp"
+      }
+    },
+    "stats": {
+      "title": {
+        "line1": "Được tin tưởng bởi",
+        "highlight": "hàng trăm",
+        "line2": "sự kiện chuyên nghiệp"
+      },
+      "events": {
+        "label": "Sự kiện thành công",
+        "description": "Từ gala, hội nghị, đến tiệc tri ân – chúng tôi đều có mặt."
+      },
+      "participants": {
+        "label": "Người tham gia",
+        "description": "Khán giả hào hứng, tương tác tức thì."
+      },
+      "satisfaction": {
+        "label": "Hài lòng",
+        "description": "Được tin tưởng bởi các thương hiệu hàng đầu."
+      }
+    },
+    "features": {
+      "title": "Tính năng nổi bật",
+      "subtitle": "Từ check-in đến analytics – mọi tính năng cần thiết trong một nền tảng duy nhất.",
+      "checkin": {
+        "title": "Check-in thông minh",
+        "description": "Quét QR trong vài giây, quản lý khách mời realtime, tự động thống kê danh sách."
+      },
+      "welcomeScreen": {
+        "title": "Màn hình chào mừng & Countdown",
+        "description": "Hiển thị tên sự kiện, countdown, video intro với hiệu ứng ánh sáng sân khấu."
+      },
+      "slideshow": {
+        "title": "Slide show & Video Background",
+        "description": "Tự động phát video/hình ảnh quảng bá khi sự kiện đang chờ bắt đầu."
+      },
+      "voting": {
+        "title": "Live Voting Realtime",
+        "description": "Bình chọn trực tiếp trên điện thoại, kết quả hiển thị tức thì trên màn hình LED."
+      },
+      "luckyDraw": {
+        "title": "Quay số trúng thưởng",
+        "description": "Animation mượt, confetti, âm thanh sôi động, công bằng 100%."
+      },
+      "analytics": {
+        "title": "Analytics & Dashboard",
+        "description": "Thống kê lượt check-in, tỷ lệ tham gia, kết quả vote – tất cả realtime."
+      },
+      "livestream": {
+        "title": "Livestream Integration",
+        "description": "Hỗ trợ nhúng livestream YouTube/Facebook vào màn hình sự kiện."
+      },
+      "miniGame": {
+        "title": "Mini Game & Interaction",
+        "description": "Quiz nhanh, đố vui, reaction realtime để tăng tương tác khán giả."
+      }
+    },
+    "timeline": {
+      "title": "Quy trình sử dụng",
+      "subtitle": "Hành trình sự kiện hoàn hảo từ đầu đến cuối",
+      "checkin": {
+        "title": "Check-in",
+        "description": "Khách mời quét QR, hệ thống tự động ghi nhận"
+      },
+      "welcomeScreen": {
+        "title": "Welcome Screen",
+        "description": "Màn hình chào mừng với countdown & video intro"
+      },
+      "voting": {
+        "title": "Live Voting",
+        "description": "Khán giả bình chọn realtime trên điện thoại"
+      },
+      "luckyDraw": {
+        "title": "Lucky Draw",
+        "description": "Quay số trúng thưởng với confetti & âm thanh"
+      },
+      "analytics": {
+        "title": "Analytics",
+        "description": "Báo cáo chi tiết & insights sau sự kiện"
+      }
+    },
+    "testimonials": {
+      "title": "Khách hàng nói gì về chúng tôi",
+      "subtitle": "Được tin tưởng bởi các thương hiệu hàng đầu",
+      "first": {
+        "name": "Minh Tuấn",
+        "role": "Event Manager",
+        "company": "Vinamilk",
+        "quote": "Bright4Event đã giúp chúng tôi tổ chức Year End Party 2024 với hơn 500 khách mời một cách mượt mà. Check-in nhanh, voting realtime cực kỳ ấn tượng!"
+      },
+      "second": {
+        "name": "Thanh Hương",
+        "role": "Marketing Director",
+        "company": "FPT Software",
+        "quote": "Nền tảng all-in-one tuyệt vời! Chúng tôi không cần phải dùng nhiều tool khác nhau nữa. Analytics sau sự kiện rất chi tiết và hữu ích."
+      },
+      "third": {
+        "name": "Đức Anh",
+        "role": "CEO",
+        "company": "Base.vn",
+        "quote": "Lucky Draw với hiệu ứng confetti và âm thanh khiến khách mời vô cùng thích thú. Sự kiện của chúng tôi trở nên sống động hơn rất nhiều!"
+      }
+    },
+    "slogan": {
+      "line1": "Từ Check-in đến Giải thưởng —",
+      "line2": "Mọi khoảnh khắc đều tỏa sáng",
+      "suffix": "cùng",
+      "brand": "Bright4Event"
+    },
+    "finalCta": {
+      "headline": "Sẵn sàng nâng tầm sự kiện của bạn?",
+      "subtext": "Tạo ngay sự kiện đầu tiên với",
+      "brand": "Bright4Event",
+      "description": "và trải nghiệm công nghệ tổ chức chuyên nghiệp.",
+      "buttons": {
+        "primary": "🚀 Tạo sự kiện miễn phí",
+        "secondary": "👁 Xem hướng dẫn chi tiết"
+      }
+    },
+    "eventSearch": {
+      "title": "Tham gia sự kiện",
+      "subtitle": "Nhập mã hoặc tên sự kiện để bắt đầu",
+      "placeholder": "Nhập mã sự kiện (VD: ABC123)",
+      "searchingText": "Đang tìm kiếm...",
+      "buttonText": "Vào sự kiện",
+      "cancelText": "Hủy",
+      "emptyError": "Vui lòng nhập mã hoặc tên sự kiện",
+      "demoSuggestion": {
+        "text": "Hoặc thử ngay với sự kiện demo:",
+        "eventName": "Year End Party 2025"
+      }
+    }
+  },
+  "SEO": {
+    "home": {
+      "title": "Bright4Event - Nền tảng Tổ Chức Sự Kiện Thông Minh All-in-One",
+      "description": "Check-in QR Code thông minh, Bình chọn realtime, Màn hình LED 3D, Quay số may mắn, Livestream & Báo cáo analytics — Giải pháp toàn diện cho Year-end Party, Gala Dinner, Team Building. Được tin tưởng bởi 200+ sự kiện chuyên nghiệp.",
+      "ogTitle": "Bright4Event - Nền tảng tổ chức sự kiện thông minh All-in-One",
+      "ogDescription": "Từ Check-in, Voting đến Quay số trúng thưởng và Analytics. Bright4Event giúp doanh nghiệp tổ chức sự kiện hiện đại, hiệu quả và ấn tượng."
+    },
+    "layout": {
+      "title": "Bright4Event - Nền tảng tổ chức sự kiện thông minh All-in-One",
+      "description": "Nền tảng tổ chức sự kiện toàn diện, chuyên nghiệp. Từ Check-in QR, Màn hình chào mừng, Live Voting, Quay số trúng thưởng đến Analytics realtime — tất cả trong một nền tảng duy nhất. Giúp doanh nghiệp tổ chức sự kiện hiện đại, hiệu quả và ấn tượng."
+    }
+  },
+  "LanguageSwitcher": {
+    "label": "Ngôn ngữ",
+    "vi": "Tiếng Việt",
+    "en": "English"
+  },
+  "About": {
+    "hero": {
+      "title": {
+        "line1": "Về",
+        "line2": "Bright4Event"
+      },
+      "subtitle": "Giải pháp công nghệ sự kiện được xây dựng bởi Code4Change – Đội ngũ chuyên về giải pháp sự kiện số"
+    },
+    "mission": {
+      "title": "Sứ mệnh của chúng tôi",
+      "description": "Giúp mỗi doanh nghiệp biến sự kiện của họ thành một trải nghiệm đáng nhớ, nơi công nghệ và cảm xúc giao thoa. Từ check-in thông minh, bình chọn realtime, đến màn hình LED chuyên nghiệp – chúng tôi mang đến giải pháp toàn diện cho mọi sự kiện.",
+      "achievements": [
+        "Đã triển khai thành công <strong>200+ sự kiện</strong> trên toàn quốc",
+        "Cam kết công nghệ ổn định, giao diện thân thiện, hỗ trợ tận tâm",
+        "Được thành lập bởi <strong>Code4Change.tech</strong>"
+      ]
+    },
+    "vision": {
+      "title": "Tầm nhìn",
+      "description": "Trở thành nền tảng số 1 Việt Nam và Đông Nam Á về giải pháp công nghệ cho sự kiện. Đến năm 2026, chúng tôi hướng tới con số 1,000+ sự kiện và 1 triệu+ người dùng tin tưởng."
+    },
+    "coreValues": {
+      "title": "Giá trị cốt lõi",
+      "subtitle": "Những nguyên tắc định hướng mọi hành động của chúng tôi",
+      "values": {
+        "creativity": {
+          "title": "Sáng tạo 🎨",
+          "description": "Đổi mới công nghệ, mang đến trải nghiệm sự kiện độc đáo và ấn tượng"
+        },
+        "accuracy": {
+          "title": "Chính xác ⚙️",
+          "description": "Cam kết hệ thống ổn định, dữ liệu chính xác 100% trong mọi tình huống"
+        },
+        "experience": {
+          "title": "Trải nghiệm ✨",
+          "description": "Tập trung vào trải nghiệm người dùng, giao diện đẹp và dễ sử dụng"
+        },
+        "transparency": {
+          "title": "Minh bạch 🔐",
+          "description": "Bảo mật cao, minh bạch về giá cả và cách thức hoạt động"
+        }
+      }
+    },
+    "milestones": {
+      "title": "Hành trình phát triển",
+      "subtitle": "Từ ý tưởng đến thực tế",
+      "items": [
+        {
+          "year": "2022",
+          "event": "Thành lập Code4Change Technology Solution"
+        },
+        {
+          "year": "2023",
+          "event": "Ra mắt Bright4Event Beta với 50+ sự kiện pilot"
+        },
+        {
+          "year": "2024 Q1",
+          "event": "Đạt 200+ sự kiện thành công, 150K+ người tham gia"
+        },
+        {
+          "year": "2025 Q1",
+          "event": "Mở rộng sang khu vực Đông Nam Á"
+        }
+      ]
+    },
+    "team": {
+      "title": "Đội ngũ <highlight>Code4Change</highlight>",
+      "subtitle": "Những con người đằng sau công nghệ",
+      "members": {
+        "tech": {
+          "title": "Đội ngũ Công nghệ",
+          "description": "Hơn 10+ kỹ sư chuyên môn cao, am hiểu sâu về công nghệ sự kiện."
+        },
+        "event": {
+          "title": "Chuyên gia Sự kiện",
+          "description": "Tư vấn và hỗ trợ từ những người có 5+ năm kinh nghiệm tổ chức Gala"
+        },
+        "design": {
+          "title": "Product & Design",
+          "description": "Đội ngũ sáng tạo thiết kế trải nghiệm người dùng tối ưu và hiện đại"
+        }
+      }
+    },
+    "cta": {
+      "title": "Sẵn sàng tạo sự kiện<br />của riêng bạn?",
+      "subtitle": "Hãy để Bright4Event đồng hành cùng bạn trong mọi sự kiện đáng nhớ",
+      "button": "Bắt đầu ngay"
+    },
+    "seo": {
+      "title": "Về Bright4Event – Giải pháp công nghệ sự kiện bởi Code4Change",
+      "description": "Bright4Event được phát triển bởi Code4Change, mang đến giải pháp tổ chức sự kiện thông minh, realtime và tương tác cao cho doanh nghiệp."
+    }
+  },
+  "Pricing": {
+    "hero": {
+      "title": {
+        "line1": "Bảng giá linh hoạt",
+        "line2": "cho mọi sự kiện"
+      },
+      "subtitle": "Lựa chọn gói phù hợp — từ dùng thử miễn phí đến giải pháp doanh nghiệp",
+      "cta": {
+        "primary": "Bắt đầu miễn phí",
+        "secondary": "Xem demo trực tiếp"
+      }
+    },
+    "plans": {
+      "free": {
+        "name": "Free",
+        "price": "0đ",
+        "priceDetail": "/ sự kiện",
+        "description": "Dùng thử cho sự kiện nhỏ",
+        "maxParticipants": "Phù hợp sự kiện 50 người",
+        "cta": "Bắt đầu miễn phí",
+        "badge": "Miễn phí",
+        "features": [
+          "Tối đa 50 người tham dự",
+          "2 danh hiệu bình chọn",
+          "1 sự kiện / tài khoản",
+          "Voting cơ bản qua link/QR",
+          "Check-in cơ bản",
+          "Kết quả realtime cơ bản",
+          "Giao diện mặc định (không tuỳ chỉnh)",
+          "Có watermark Bright4Event",
+          "Hỗ trợ qua email",
+          "Xem báo cáo nhưng không export"
+        ]
+      },
+      "basic": {
+        "name": "Basic",
+        "price": "400.000đ",
+        "priceDetail": "/ sự kiện",
+        "description": "Sự kiện nhỏ & vừa",
+        "maxParticipants": "Tối đa 200 người",
+        "cta": "Chọn gói Basic",
+        "features": [
+          "Tối đa 200 người tham dự",
+          "5 danh hiệu bình chọn",
+          "Số lượng sự kiện: không giới hạn",
+          "Voting + check-in cơ bản",
+          "Export PDF",
+          "Slideshow ảnh cơ bản",
+          "Tuỳ chỉnh màu sắc nhẹ",
+          "Không watermark",
+          "Kết quả realtime đầy đủ",
+          "Báo cáo sau sự kiện",
+          "Hỗ trợ qua email"
+        ]
+      },
+      "pro": {
+        "name": "Pro",
+        "price": "800.000đ",
+        "priceDetail": "/ sự kiện",
+        "description": "Phổ biến nhất",
+        "maxParticipants": "Tối đa 1.000 người",
+        "cta": "Đăng ký gói Pro",
+        "badge": "Phổ biến nhất",
+        "features": [
+          "Tối đa 1.000 người tham dự",
+          "Không giới hạn danh hiệu bình chọn",
+          "Check-in nâng cao (QR thông minh)",
+          "LED Output + 3D Motion",
+          "Mini game tương tác",
+          "Lucky Draw cơ bản",
+          "Báo cáo Excel + PDF",
+          "Tuỳ chỉnh giao diện theo thương hiệu (logo + màu sắc)",
+          "Tạo nhiều sự kiện trong năm",
+          "Hỗ trợ 24/7"
+        ]
+      },
+      "enterprise": {
+        "name": "Enterprise",
+        "price": "2.000.000đ",
+        "priceDetail": "/ sự kiện hoặc theo hợp đồng",
+        "description": "Giải pháp toàn diện",
+        "maxParticipants": "Không giới hạn người tham dự",
+        "cta": "Liên hệ tư vấn",
+        "features": [
+          "Không giới hạn người tham dự",
+          "Không giới hạn danh hiệu",
+          "White-label (giao diện riêng)",
+          "API Integration",
+          "Analytics nâng cao",
+          "Livestream integration",
+          "Lucky Draw Pro",
+          "Mini game tuỳ chỉnh nâng cao",
+          "Account Manager riêng",
+          "SLA 99.9% uptime",
+          "Đào tạo đội ngũ"
+        ]
+      }
+    },
+    "comparison": {
+      "title": "So sánh chi tiết 4 gói",
+      "subtitle": "Lựa chọn gói phù hợp với nhu cầu của bạn",
+      "features": {
+        "participants": "Số lượng người tham dự",
+        "awards": "Số danh hiệu bình chọn",
+        "events": "Số sự kiện / tài khoản",
+        "checkin": "Check-in QR Code",
+        "realtime": "Kết quả realtime",
+        "led": "LED Output 3D Motion",
+        "customization": "Tùy chỉnh giao diện",
+        "minigame": "Mini game",
+        "luckyDraw": "Lucky Draw",
+        "export": "Export báo cáo",
+        "livestream": "Livestream tích hợp",
+        "api": "API Integration",
+        "watermark": "Watermark",
+        "support": "Hỗ trợ"
+      },
+      "values": {
+        "free": {
+          "participants": "50",
+          "awards": "2",
+          "events": "1",
+          "checkin": "Cơ bản",
+          "realtime": "Cơ bản",
+          "customization": false,
+          "watermark": "Có"
+        },
+        "basic": {
+          "participants": "200",
+          "awards": "5",
+          "events": "Không giới hạn",
+          "checkin": "Cơ bản",
+          "realtime": "Đầy đủ",
+          "customization": "Màu sắc",
+          "export": "PDF",
+          "watermark": "Không",
+          "support": "Email"
+        },
+        "pro": {
+          "participants": "1,000",
+          "awards": "Không giới hạn",
+          "events": "Không giới hạn",
+          "checkin": "Nâng cao",
+          "realtime": "Đầy đủ",
+          "customization": "Logo & màu sắc",
+          "minigame": true,
+          "luckyDraw": "Cơ bản",
+          "export": "Excel/PDF",
+          "watermark": "Không",
+          "support": "24/7"
+        },
+        "enterprise": {
+          "participants": "Không giới hạn",
+          "awards": "Không giới hạn",
+          "events": "Không giới hạn",
+          "checkin": "Nâng cao",
+          "realtime": "Advanced Analytics",
+          "customization": "White-label",
+          "minigame": "Nâng cao",
+          "luckyDraw": "Pro version",
+          "export": "API Export",
+          "watermark": "Không",
+          "support": "Account Manager"
+        }
+      }
+    },
+    "allIncluded": {
+      "title": "Tất cả gói đều có",
+      "subtitle": "Đảm bảo trải nghiệm tốt nhất cho mọi sự kiện",
+      "features": [
+        "🔐 SSL 256-bit encryption",
+        "🛡️ Chống gian lận & xác thực phiếu bầu",
+        "📱 Tương thích mọi thiết bị (PC, Mobile, Tablet)",
+        "📊 Báo cáo thống kê chi tiết",
+        "🔄 Cập nhật tính năng tự động",
+        "🇻🇳 Hỗ trợ tiếng Việt & tư vấn miễn phí"
+      ]
+    },
+    "demo": {
+      "title": "Demo trực tiếp",
+      "description": "Liên hệ với chúng tôi để được xem demo trực tiếp và tư vấn chi tiết về giải pháp phù hợp nhất cho sự kiện của bạn.",
+      "email": "code4change.co@gmail.com",
+      "hotline": "0123-456-789",
+      "emailButton": "📧 Email: code4change.co@gmail.com",
+      "hotlineText": "Hoặc gọi hotline:"
+    },
+    "cta": {
+      "headline": {
+        "line1": "Sự kiện không chỉ là chương trình",
+        "line2": "— đó là trải nghiệm đáng nhớ"
+      },
+      "subtext": {
+        "line1": "Hãy để",
+        "brand": "Bright4Event",
+        "line2": "giúp bạn tạo nên khoảnh khắc ấn tượng"
+      },
+      "description": "cho doanh nghiệp của bạn",
+      "buttons": {
+        "primary": "Bắt đầu miễn phí",
+        "secondary": "Xem demo trực tiếp"
+      }
+    }
+  },
+  "Contact": {
+    "hero": {
+      "title": "Hãy để Bright4Event\ntạo nên sự kiện đáng nhớ",
+      "subtitle": "Chúng tôi luôn sẵn sàng đồng hành cùng bạn trong từng khoảnh khắc đặc biệt",
+      "cta": {
+        "schedule": "Đặt lịch tư vấn",
+        "demo": "Xem demo trực tiếp"
+      }
+    },
+    "info": {
+      "title": "Liên hệ với chúng tôi",
+      "subtitle": "Đội ngũ Bright4Event luôn sẵn sàng lắng nghe và tư vấn giải pháp phù hợp nhất",
+      "address": {
+        "title": "Địa chỉ",
+        "content": "424 Lê Duẫn, Hải Châu, Đà Nẵng"
+      },
+      "email": {
+        "title": "Email",
+        "content": "code4change.co@gmail.com"
+      },
+      "phone": {
+        "title": "Hotline",
+        "content": "(+84) 901 333 434"
+      }
+    },
+    "features": {
+      "title": "Tại sao chọn Bright4Event?",
+      "subtitle": "Chúng tôi kết hợp công nghệ hiện đại với trải nghiệm con người để tạo nên sự kiện hoàn hảo",
+      "interactive": {
+        "title": "Trải nghiệm tương tác",
+        "description": "Nền tảng check-in, bình chọn và mini-game tạo không khí sôi động"
+      },
+      "fast": {
+        "title": "Triển khai nhanh chóng",
+        "description": "Thiết lập sự kiện chỉ trong vài phút với giao diện trực quan"
+      },
+      "analytics": {
+        "title": "Báo cáo chi tiết",
+        "description": "Theo dõi và phân tích dữ liệu sự kiện theo thời gian thực"
+      },
+      "support": {
+        "title": "Hỗ trợ tận tâm",
+        "description": "Đội ngũ chuyên nghiệp luôn đồng hành từ lúc lên ý tưởng đến kết thúc"
+      }
+    },
+    "form": {
+      "title": "Gửi tin nhắn cho chúng tôi",
+      "response": "Chúng tôi sẽ phản hồi trong vòng 24 giờ",
+      "name": {
+        "label": "Họ và tên",
+        "placeholder": "Nguyễn Văn A"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "email@example.com"
+      },
+      "phone": {
+        "label": "Số điện thoại",
+        "placeholder": "+84 xxx xxx xxx"
+      },
+      "requestType": {
+        "label": "Loại yêu cầu",
+        "placeholder": "Chọn loại yêu cầu",
+        "options": {
+          "support": "Hỗ trợ kỹ thuật",
+          "consultation": "Tư vấn gói dịch vụ",
+          "other": "Khác"
+        }
+      },
+      "message": {
+        "label": "Nội dung",
+        "placeholder": "Nhập nội dung tin nhắn của bạn..."
+      },
+      "submit": "Gửi tin nhắn",
+      "sending": "Đang gửi...",
+      "success": {
+        "title": "Gửi thành công!",
+        "message": "Cảm ơn bạn đã liên hệ. Chúng tôi sẽ phản hồi trong vòng 24h."
+      },
+      "error": "Có lỗi xảy ra. Vui lòng thử lại."
+    },
+    "cta": {
+      "title": "Sẵn sàng biến sự kiện của bạn thành hiện thực?",
+      "subtitle": "Hãy để Bright4Event đồng hành cùng bạn trong mọi sự kiện đáng nhớ",
+      "description": "với công nghệ hiện đại và dịch vụ tận tâm",
+      "explore": "Khám phá gói dịch vụ",
+      "demo": "Xem demo trực tiếp",
+      "button": "Bắt đầu ngay"
+    },
+    "seo": {
+      "title": "Liên hệ - Bright4Event | Nền tảng tổ chức sự kiện tương tác",
+      "description": "Liên hệ với Bright4Event để nhận tư vấn giải pháp tổ chức sự kiện với công nghệ check-in, bình chọn và mini-game hiện đại. Hỗ trợ tận tâm 24/7.",
+      "keywords": "liên hệ bright4event, tư vấn sự kiện, hỗ trợ kỹ thuật, đặt lịch tư vấn",
+      "ogTitle": "Liên hệ - Bright4Event",
+      "ogDescription": "Đội ngũ Bright4Event luôn sẵn sàng đồng hành cùng bạn tạo nên sự kiện đáng nhớ"
+    }
+  },
+  "FAQ": {
+    "hero": {
+      "title": "Câu hỏi thường gặp",
+      "subtitle": "Tất cả những gì bạn cần biết về Bright4Event"
+    },
+    "categories": {
+      "overview": {
+        "title": "A. Tổng quan về Bright4Event",
+        "questions": {
+          "whatIs": {
+            "q": "Bright4Event là gì?",
+            "a": "Bright4Event là nền tảng bình chọn và tương tác sự kiện chuyên nghiệp hàng đầu Việt Nam. Chúng tôi cung cấp giải pháp toàn diện cho Gala, Company Party, Year-end Party với các tính năng: Check-in QR Code, Vote realtime, Lucky Draw, và hiển thị kết quả trực tiếp lên màn hình LED."
+          },
+          "eventTypes": {
+            "q": "Có thể tổ chức sự kiện gì bằng Bright4Event?",
+            "a": "Bright4Event phù hợp với mọi loại sự kiện doanh nghiệp: Gala Dinner, Company Party, Year-end Party, Award Ceremony, Team Building, Product Launch, Conference, và các sự kiện nội bộ khác. Hệ thống linh hoạt từ 50 đến 5000+ khách mời."
+          },
+          "difference": {
+            "q": "Bright4Event khác gì so với các nền tảng khác?",
+            "a": "Bright4Event tập trung 100% vào sự kiện doanh nghiệp với: (1) Giao diện sang trọng, có thể custom branding, (2) Check-in QR code nhanh chóng, (3) Vote realtime hiển thị trực tiếp lên LED, (4) Lucky Draw công bằng minh bạch, (5) Hỗ trợ kỹ thuật 24/7 tại sự kiện."
+          }
+        }
+      },
+      "management": {
+        "title": "B. Tạo & Quản lý Sự kiện",
+        "questions": {
+          "createEvent": {
+            "q": "Làm sao để tạo sự kiện đầu tiên?",
+            "a": "Rất đơn giản! (1) Đăng ký tài khoản tại Bright4Event.vn, (2) Chọn gói dịch vụ phù hợp, (3) Điền thông tin sự kiện, upload logo và theme màu, (4) Thêm danh hiệu bình chọn và ứng viên, (5) Kích hoạt và chia sẻ link/QR code cho khách mời. Toàn bộ chỉ mất 15 phút!"
+          },
+          "editEvent": {
+            "q": "Có thể chỉnh sửa thông tin sự kiện sau khi public không?",
+            "a": "Có! Bạn có thể chỉnh sửa hầu hết thông tin sự kiện bất cứ lúc nào: tên sự kiện, mô tả, ảnh banner, danh hiệu bình chọn, thời gian. Tuy nhiên, với gói Enterprise, bạn nên liên hệ team support để được tư vấn cách tối ưu nhất."
+          },
+          "addAwards": {
+            "q": "Làm thế nào để thêm danh hiệu bình chọn?",
+            "a": "Truy cập Dashboard → Chọn sự kiện → Tab \"Danh hiệu\" → Nhấn \"Thêm danh hiệu mới\" → Nhập tên danh hiệu, mô tả, upload ảnh ứng viên → Lưu lại. Bạn có thể thêm không giới hạn danh hiệu và ứng viên tùy theo gói dịch vụ."
+          },
+          "voteLimit": {
+            "q": "Có thể giới hạn số lượt vote cho mỗi người không?",
+            "a": "Có! Bright4Event cho phép bạn cài đặt: (1) Số lượt vote tối đa mỗi người (ví dụ: 3 lượt), (2) Vote 1 lần cho mỗi danh hiệu, (3) Chỉ cho phép vote sau khi check-in. Điều này giúp đảm bảo tính công bằng và minh bạch."
+          }
+        }
+      },
+      "payment": {
+        "title": "C. Thanh toán & Gói dịch vụ",
+        "questions": {
+          "plans": {
+            "q": "Có những gói nào? Thanh toán như thế nào?",
+            "a": "Bright4Event có 3 gói: (1) Basic (50-200 khách) - 2.990.000đ, (2) Pro (200-500 khách) - 4.990.000đ, (3) Enterprise (500+ khách) - Liên hệ. Thanh toán qua Chuyển khoản ngân hàng, VNPay, hoặc Momo. Xuất hóa đơn VAT đầy đủ."
+          },
+          "invoice": {
+            "q": "Có hỗ trợ xuất hóa đơn VAT không?",
+            "a": "Có! Chúng tôi xuất hóa đơn VAT đầy đủ cho mọi gói dịch vụ. Sau khi thanh toán, bạn chỉ cần cung cấp thông tin công ty (tên, MST, địa chỉ), chúng tôi sẽ gửi hóa đơn điện tử trong vòng 24h."
+          },
+          "refund": {
+            "q": "Có được hoàn tiền nếu sự kiện bị hủy không?",
+            "a": "Có, với chính sách: (1) Hủy trước 7 ngày: hoàn 100%, (2) Hủy trước 3-7 ngày: hoàn 70%, (3) Hủy trong vòng 3 ngày: hoàn 50%. Nếu sự kiện bị hoãn, bạn có thể đổi ngày miễn phí."
+          },
+          "trial": {
+            "q": "Có gói dùng thử (trial) không?",
+            "a": "Có! Chúng tôi có gói Free Trial 14 ngày cho tối đa 50 khách. Bạn có thể test đầy đủ tính năng: check-in QR, vote, lucky draw, analytics. Không cần thẻ tín dụng để đăng ký."
+          }
+        }
+      },
+      "technical": {
+        "title": "D. Kỹ thuật & Hỗ trợ",
+        "questions": {
+          "ledDisplay": {
+            "q": "Làm sao hiển thị kết quả lên LED?",
+            "a": "Rất đơn giản! (1) Mở Dashboard trên laptop, (2) Chọn \"Chế độ LED\", (3) Kết nối laptop với màn hình LED/máy chiếu qua HDMI, (4) Nhấn F11 để fullscreen. Kết quả sẽ tự động cập nhật realtime. Chúng tôi cũng hỗ trợ kỹ thuật tại chỗ cho gói Enterprise."
+          },
+          "connectionError": {
+            "q": "Nếu bị lỗi kết nối, hệ thống xử lý thế nào?",
+            "a": "Bright4Event có cơ chế backup tự động: (1) Dữ liệu vote được lưu trên server cloud AWS, (2) Nếu mất kết nối, vote vẫn được lưu offline trên thiết bị, (3) Khi kết nối lại, dữ liệu tự động đồng bộ. Chúng tôi đảm bảo 99.9% uptime."
+          },
+          "support247": {
+            "q": "Có hỗ trợ 24/7 không?",
+            "a": "Có! Chúng tôi có đội ngũ hỗ trợ 24/7 qua: (1) Hotline: (+84) 901 333 434, (2) Email: code4change.co@gmail.com, (3) Live chat trên website, (4) Hỗ trợ kỹ thuật tại chỗ cho gói Enterprise. Thời gian phản hồi trung bình < 5 phút."
+          },
+          "api": {
+            "q": "Bright4Event có tích hợp API không?",
+            "a": "Có! Gói Enterprise hỗ trợ API để tích hợp với hệ thống nội bộ của bạn: (1) Đồng bộ danh sách khách mời, (2) Xuất dữ liệu vote, (3) Webhook realtime. Tài liệu API đầy đủ tại docs.Bright4Event.vn"
+          },
+          "security": {
+            "q": "Dữ liệu có được bảo mật không?",
+            "a": "Tất nhiên! Bright4Event tuân thủ nghiêm ngặt: (1) Mã hóa SSL/TLS 256-bit, (2) Lưu trữ trên AWS Singapore, (3) Backup tự động hàng ngày, (4) Không chia sẻ dữ liệu với bên thứ ba, (5) Tuân thủ GDPR và PDPA. Dữ liệu của bạn luôn an toàn."
+          }
+        }
+      }
+    },
+    "support": {
+      "title": "Không tìm thấy câu trả lời bạn cần?",
+      "subtitle": "Đội ngũ hỗ trợ của chúng tôi luôn sẵn sàng giúp đỡ bạn 24/7",
+      "cta": "Liên hệ với đội hỗ trợ",
+      "liveChat": "Trò chuyện ngay"
+    },
+    "final": {
+      "title": "Sẵn sàng tạo sự kiện của bạn cùng Bright4Event?",
+      "subtitle": "Bắt đầu ngay hôm nay với gói Free Trial 14 ngày",
+      "button": "Bắt đầu ngay"
+    }
+  },
+  "Guide": {
+    "hero": {
+      "title": {
+        "line1": "Hướng dẫn",
+        "line2": "sử dụng Bright4Event"
+      },
+      "subtitle": "Tài liệu chi tiết giúp bạn làm chủ mọi tính năng của Bright4Event",
+      "cta": {
+        "primary": "Bắt đầu hướng dẫn",
+        "secondary": "Tính năng nâng cao"
+      }
+    },
+    "organizer": {
+      "badge": "Dành cho ban tổ chức",
+      "title": {
+        "part1": "Quy trình tổ chức",
+        "part2": "sự kiện chuyên nghiệp"
+      },
+      "subtitle": "Từ tạo sự kiện đến phân tích kết quả - hướng dẫn chi tiết từng bước"
+    },
+    "guest": {
+      "badge": "Dành cho khách mời",
+      "title": "Hướng dẫn <highlight>tham gia sự kiện</highlight>",
+      "subtitle": "3 bước đơn giản để tham gia và tương tác với sự kiện",
+      "steps": {
+        "checkin": {
+          "title": "Bước 1: Check-in",
+          "description": "Quét QR code từ email mời hoặc tại cổng sự kiện. Hệ thống tự động ghi nhận và chào mừng bạn."
+        },
+        "vote": {
+          "title": "Bước 2: Bình chọn",
+          "description": "Mở link sự kiện trên điện thoại, chọn ứng viên yêu thích và gửi vote. Kết quả hiển thị realtime trên màn hình LED."
+        },
+        "results": {
+          "title": "Bước 3: Xem kết quả",
+          "description": "Theo dõi kết quả bình chọn realtime và tham gia quay số may mắn ngay trên điện thoại của bạn."
+        }
+      }
+    },
+    "advanced": {
+      "badge": "Tính năng Pro",
+      "title": "Tính năng <highlight>nâng cao</highlight>",
+      "subtitle": "Khám phá các tính năng chuyên nghiệp cho sự kiện quy mô lớn"
+    },
+    "video": {
+      "title": "Xem <highlight>demo trực tiếp</highlight>",
+      "subtitle": "Video hướng dẫn chi tiết về cách sử dụng Bright4Event"
+    },
+    "faq": {
+      "badge": "Câu hỏi thường gặp",
+      "title": "<highlight>Câu hỏi</highlight> thường gặp",
+      "subtitle": "Giải đáp nhanh các thắc mắc phổ biến"
+    },
+    "cta": {
+      "title": "Sẵn sàng <highlight>tạo sự kiện</highlight><br />của riêng bạn?",
+      "subtitle": "Hãy để Bright4Event đồng hành cùng bạn trong mọi sự kiện đáng nhớ",
+      "button": {
+        "primary": "Xem bảng giá",
+        "secondary": "Liên hệ tư vấn"
+      }
+    },
+    "organizerSteps": {
+      "title": "Quy trình tổ chức sự kiện",
+      "steps": {
+        "createEvent": {
+          "title": "Tạo sự kiện",
+          "description": "Chọn gói phù hợp, tạo event ID, nhập thông tin chi tiết, upload logo và chọn theme màu sắc theo phong cách thương hiệu của bạn.",
+          "intro": "Tạo event mới: đặt tên, chọn ngày-giờ, địa điểm và upload logo.",
+          "actions": [
+            "Chọn gói phù hợp (Free/Pro/Enterprise)",
+            "Điền tên sự kiện, mô tả ngắn",
+            "Upload logo (PNG nền trong) và cover image (16:9)",
+            "Chọn màu chủ đạo và preview live"
+          ],
+          "tip": "Nên dùng cover 1920×1080 để hiển thị đẹp trên LED"
+        },
+        "manageGuests": {
+          "title": "Quản lý khách mời",
+          "description": "Import danh sách khách mời từ Excel, gửi email mời tự động, tạo QR code check-in cá nhân hóa cho từng khách.",
+          "intro": "Import danh sách khách mời từ Excel, gửi email mời tự động.",
+          "actions": [
+            "Tải template Excel và điền thông tin khách mời",
+            "Import file Excel vào hệ thống",
+            "Gửi email mời tự động với QR code cá nhân",
+            "Theo dõi trạng thái confirm/decline realtime"
+          ],
+          "tip": "Sử dụng trường 'Tag' để phân loại khách VIP, media, đối tác"
+        },
+        "setupCheckin": {
+          "title": "Thiết lập Check-in",
+          "description": "Cấu hình cổng check-in QR, tùy chỉnh thông điệp chào mừng, kết nối máy quét và in thẻ khách tự động.",
+          "intro": "Cấu hình luồng check-in: QR / SĐT / Mã mời.",
+          "actions": [
+            "Bật/tắt phương thức check-in (QR, SĐT, Mã mời)",
+            "Tùy chỉnh form check-in (SĐT, Email, Ghi chú)",
+            "Tạo QR cá nhân hoặc QR chung cho cổng",
+            "Test preview trên mockup mobile",
+            "Kết nối máy quét QR hoặc tablet check-in"
+          ],
+          "tip": "Đặt chuyển hướng sau check-in sang giao diện voting để tối ưu trải nghiệm"
+        },
+        "welcomeScreen": {
+          "title": "Màn hình Welcome LED",
+          "description": "Thiết kế giao diện chào mừng chuyên nghiệp, hiển thị logo doanh nghiệp, chạy slideshow ảnh và video giới thiệu.",
+          "intro": "Thiết kế giao diện chào mừng chuyên nghiệp với logo và slideshow.",
+          "actions": [
+            "Upload logo doanh nghiệp (SVG/PNG trong suốt)",
+            "Thêm background image hoặc video loop",
+            "Tạo slideshow ảnh giới thiệu (tối đa 10 ảnh)",
+            "Cài đặt thời gian chuyển slide (3-8 giây)",
+            "Preview fullscreen trên LED"
+          ],
+          "tip": "Dùng video format MP4 H.264 để tối ưu hiệu năng trên màn LED"
+        },
+        "waitingScreen": {
+          "title": "Waiting Screen",
+          "description": "Tạo không khí chờ đợi hấp dẫn với countdown timer, slideshow động, music background và thông báo sự kiện.",
+          "intro": "Tạo không khí chờ đợi hấp dẫn với countdown timer và slideshow động.",
+          "actions": [
+            "Cài đặt countdown timer đến thời điểm bắt đầu",
+            "Upload slideshow ảnh/video waiting (loop)",
+            "Thêm background music (MP3/AAC)",
+            "Hiển thị thông báo sự kiện (ticker text)",
+            "Schedule tự động chuyển sang giao diện tiếp theo"
+          ],
+          "tip": "Nên chuẩn bị playlist nhạc nền 30-60 phút để tránh lặp lại"
+        },
+        "voting": {
+          "title": "Bình chọn trực tuyến",
+          "description": "Cấu hình danh hiệu vote, upload ảnh ứng viên chất lượng cao, set giới hạn vote và quy tắc bình chọn công bằng.",
+          "intro": "Cấu hình danh hiệu vote, upload ảnh ứng viên chất lượng cao.",
+          "actions": [
+            "Tạo danh mục bình chọn (King, Queen, Best Smile...)",
+            "Upload ảnh ứng viên (khuyến nghị 1:1, 800×800px)",
+            "Set giới hạn vote mỗi người (1-3 lựa chọn)",
+            "Cài đặt thời gian mở/đóng bình chọn",
+            "Bật/tắt hiển thị kết quả realtime"
+          ],
+          "tip": "Ẩn kết quả tạm thời để tạo hồi hộp, công bố khi sự kiện đạt đỉnh cao"
+        },
+        "results": {
+          "title": "Công bố kết quả",
+          "description": "Hiển thị kết quả realtime trên LED với hiệu ứng podium, confetti rực rỡ và âm thanh chúc mừng sống động.",
+          "intro": "Hiển thị kết quả realtime trên LED với hiệu ứng podium, confetti rực rỡ.",
+          "actions": [
+            "Chọn layout hiển thị (Podium 3D, Leaderboard, Chart)",
+            "Cài đặt hiệu ứng confetti (màu, mật độ)",
+            "Thêm âm thanh chúc mừng (applause, fanfare)",
+            "Schedule tự động công bố từng giải thưởng",
+            "Kết nối với màn hình LED qua link fullscreen"
+          ],
+          "tip": "Test âm thanh và hiệu ứng trước sự kiện để đảm bảo mượt mà"
+        },
+        "luckyDraw": {
+          "title": "Quay số Lucky Draw",
+          "description": "Tạo vòng quay may mắn chuyên nghiệp với hiệu ứng 3D, âm thanh kịch tính, nhiều vòng quay và giải thưởng phong phú.",
+          "intro": "Thiết lập vòng quay: upload danh sách, chọn hạng, số lượt quay.",
+          "actions": [
+            "Chọn danh sách người tham gia (chỉ người đã check-in)",
+            "Cài đặt số vòng quay cho từng giải thưởng",
+            "Tùy chỉnh giao diện wheel/slot machine",
+            "Thêm âm thanh trống/nhạc nền kịch tính",
+            "Test preview và save kết quả quay số"
+          ],
+          "tip": "Chuẩn bị âm thanh trống/nhạc nền trong thư mục assets để tăng không khí"
+        },
+        "miniGame": {
+          "title": "Mini Game tương tác",
+          "description": "Tích hợp các mini game: Quiz realtime, Trivia, Spin Wheel, Bingo để tăng engagement và tạo không khí sôi động.",
+          "intro": "Tích hợp các mini game: Quiz realtime, Trivia, Spin Wheel.",
+          "actions": [
+            "Chọn loại game (Quiz, Trivia, Bingo, Spin Wheel)",
+            "Tạo câu hỏi và đáp án (Quiz/Trivia)",
+            "Cài đặt thời gian trả lời và điểm thưởng",
+            "Hiển thị leaderboard realtime trên LED",
+            "Xuất kết quả và trao giải tự động"
+          ],
+          "tip": "Quiz 10-15 câu là tối ưu, tránh quá dài làm khách chán"
+        },
+        "analytics": {
+          "title": "Phân tích & Báo cáo",
+          "description": "Xem analytics chi tiết, export dữ liệu Excel/CSV, phân tích engagement theo thời gian và tạo báo cáo tổng kết.",
+          "intro": "Xem analytics chi tiết, export dữ liệu Excel/CSV, phân tích engagement.",
+          "actions": [
+            "Xem dashboard tổng quan (votes, check-ins, engagement)",
+            "Phân tích biểu đồ theo thời gian (timeline chart)",
+            "Export dữ liệu Excel/CSV đầy đủ",
+            "Tạo báo cáo PDF tổng kết sự kiện",
+            "Share report link với stakeholders"
+          ],
+          "tip": "Export data ngay sau sự kiện để lưu trữ và phân tích sâu hơn"
+        }
+      }
+    },
+    "advancedFeatures": {
+      "title": "Tính năng nâng cao",
+      "multiEvent": {
+        "title": "Quản lý nhiều sự kiện cùng lúc (Multi-event)",
+        "description": "Tổ chức và điều phối nhiều sự kiện song song với bảng điều khiển trung tâm. Chuyển đổi giữa các sự kiện dễ dàng, quản lý từng chi tiết một cách chuyên nghiệp và hiệu quả."
+      },
+      "branding": {
+        "title": "Custom branding (Logo, màu chủ đạo)",
+        "description": "Tùy chỉnh hoàn toàn giao diện theo thương hiệu của bạn. Upload logo, chọn màu chủ đạo, font chữ và background để tạo trải nghiệm độc đáo và nhất quán với identity của doanh nghiệp."
+      },
+      "api": {
+        "title": "Tích hợp API & xuất dữ liệu",
+        "description": "Kết nối Bright4Event với hệ thống CRM, ERP của bạn thông qua API. Xuất dữ liệu vote, check-in và analytics ra nhiều định dạng (JSON, CSV, Excel) để phân tích sâu hơn."
+      },
+      "luckyDraw": {
+        "title": "Quay số trúng thưởng (Lucky Draw)",
+        "description": "Tạo không khí sôi động với tính năng quay số may mắn chuyên nghiệp. Hiệu ứng đẹp mắt, âm thanh sống động, và hỗ trợ nhiều vòng quay với các giải thưởng khác nhau."
+      },
+      "ledConnection": {
+        "title": "Kết nối LED Realtime",
+        "description": "Hiển thị kết quả bình chọn và quay số trực tiếp lên màn hình LED với độ trễ tối thiểu. Hỗ trợ nhiều độ phân giải và tùy chỉnh layout hiển thị theo yêu cầu sân khấu."
+      }
+    },
+    "faqs": {
+      "title": "Câu hỏi thường gặp",
+      "createFirst": {
+        "q": "Làm sao để tạo sự kiện đầu tiên?",
+        "a": "Đăng nhập vào tài khoản, chọn gói phù hợp từ trang Pricing, sau đó truy cập Dashboard và nhấn 'Tạo sự kiện mới'. Điền thông tin cơ bản, upload logo và bạn đã sẵn sàng!"
+      },
+      "customizeColor": {
+        "q": "Có thể thay đổi màu giao diện sự kiện không?",
+        "a": "Có, bạn có thể tùy chỉnh hoàn toàn màu sắc, logo và theme trong phần Settings của sự kiện. Gói Premium và Enterprise còn hỗ trợ custom branding sâu hơn."
+      },
+      "realtimeResults": {
+        "q": "Làm sao hiển thị kết quả realtime?",
+        "a": "Truy cập phần 'Kết quả' trong Dashboard sự kiện, chọn chế độ 'Hiển thị trực tiếp' và copy link. Mở link này trên trình duyệt kết nối với màn hình LED hoặc máy chiếu."
+      },
+      "exportData": {
+        "q": "Có thể xuất dữ liệu vote ra Excel không?",
+        "a": "Có, trong phần Analytics của mỗi sự kiện, bạn có thể xuất dữ liệu vote, check-in và thống kê ra các định dạng Excel (.xlsx), CSV hoặc JSON chỉ với một cú click."
+      },
+      "support": {
+        "q": "Hỗ trợ kỹ thuật 24/7 ở đâu?",
+        "a": "Chúng tôi cung cấp hỗ trợ qua email (code4change.co@gmail.com), live chat trong ứng dụng và hotline dành cho khách hàng Premium/Enterprise. Thời gian phản hồi trung bình dưới 2 giờ."
+      }
+    }
+  },
+  "Blog": {
+    "hero": {
+      "title": "Blog & Tin Tức",
+      "subtitle": "Kinh nghiệm tổ chức Gala, Year-end Party, Team Building và xu hướng sự kiện mới nhất"
+    },
+    "category": "Thể loại",
+    "readTime": "phút đọc",
+    "readMore": "Đọc thêm",
+    "newsletter": {
+      "title": "Đăng ký nhận tin",
+      "description": "Nhận những mẹo hay và xu hướng sự kiện mới nhất"
+    }
+  },
+  "CaseStudies": {
+    "hero": {
+      "title": "Case Studies",
+      "subtitle": "Những câu chuyện thành công thực tế từ khách hàng của Bright4Event",
+      "description": "Khám phá cách Bright4Event đã giúp hàng trăm doanh nghiệp tổ chức sự kiện thành công, ấn tượng và đáng nhớ",
+      "cta": {
+        "featured": "🌟 Xem case study nổi bật",
+        "contact": "Liên hệ tư vấn"
+      }
+    },
+    "grid": {
+      "title": "Các dự án tiêu biểu",
+      "subtitle": "Từ gala dinner, year-end party đến conference - chúng tôi tự hào đồng hành cùng những thương hiệu hàng đầu"
+    },
+    "stats": {
+      "guests": "Khách mời",
+      "voteRate": "Tỷ lệ vote",
+      "timeSaved": "Tiết kiệm thời gian",
+      "satisfaction": "Hài lòng",
+      "awards": "Danh hiệu",
+      "checkInTime": "Check-in",
+      "voters": "Người vote",
+      "projects": "Dự án",
+      "transparency": "Minh bạch",
+      "prizes": "Giải thưởng",
+      "engagement": "Tương tác",
+      "categories": "Hạng mục",
+      "branding": "Branding"
+    },
+    "benefits": {
+      "title": "Lợi ích khi sử dụng Bright4Event",
+      "subtitle": "Những giá trị thiết thực mà khách hàng đã đạt được",
+      "timeSaving": {
+        "title": "Tiết kiệm thời gian",
+        "description": "Giảm 70% thời gian vận hành so với phương pháp truyền thống"
+      },
+      "engagement": {
+        "title": "Tăng tương tác",
+        "description": "Tỷ lệ tham gia trung bình tăng 95% với bình chọn realtime"
+      },
+      "analytics": {
+        "title": "Báo cáo chi tiết",
+        "description": "Analytics realtime và báo cáo sau sự kiện đầy đủ"
+      },
+      "experience": {
+        "title": "Trải nghiệm ấn tượng",
+        "description": "Khách mời đánh giá 4.9/5 về trải nghiệm sự kiện"
+      }
+    },
+    "cta": {
+      "title": "Câu chuyện thành công tiếp theo có thể là của bạn",
+      "subtitle": "Sẵn sàng tạo một sự kiện đáng nhớ?",
+      "description": "Hãy để Bright4Event đồng hành cùng bạn tạo nên khoảnh khắc ấn tượng cho doanh nghiệp",
+      "button": {
+        "primary": "Tư vấn miễn phí",
+        "secondary": "Xem bảng giá"
+      }
+    },
+    "viewDetails": "Xem chi tiết"
+  },
+  "Policy": {
+    "hero": {
+      "title": "Chính sách bảo mật",
+      "lastUpdated": "Cập nhật lần cuối"
+    },
+    "sections": {
+      "collection": {
+        "title": "1. Thu thập thông tin",
+        "intro": "Bright4Event thu thập các thông tin sau để cung cấp dịch vụ tốt nhất cho bạn:",
+        "personal": {
+          "title": "Thông tin cá nhân:",
+          "description": "Họ tên, email, số điện thoại, công ty khi bạn đăng ký tài khoản hoặc tham gia sự kiện."
+        },
+        "event": {
+          "title": "Thông tin sự kiện:",
+          "description": "Dữ liệu về sự kiện bạn tạo, danh sách khách mời, kết quả bình chọn, ảnh/video tải lên."
+        },
+        "technical": {
+          "title": "Thông tin kỹ thuật:",
+          "description": "Địa chỉ IP, loại trình duyệt, thiết bị, thời gian truy cập để tối ưu trải nghiệm."
+        },
+        "cookie": {
+          "title": "Cookie:",
+          "description": "Sử dụng cookie để duy trì phiên đăng nhập và cải thiện hiệu suất website."
+        }
+      },
+      "usage": {
+        "title": "2. Sử dụng thông tin",
+        "intro": "Chúng tôi sử dụng thông tin của bạn để:",
+        "items": [
+          "Cung cấp và vận hành các tính năng của nền tảng Bright4Event",
+          "Gửi thông báo về sự kiện, cập nhật hệ thống và hỗ trợ kỹ thuật",
+          "Phân tích và cải thiện chất lượng dịch vụ",
+          "Ngăn chặn gian lận và đảm bảo an toàn hệ thống",
+          "Tuân thủ các quy định pháp luật hiện hành"
+        ],
+        "commitment": "Cam kết:",
+        "noSell": "Chúng tôi không bán thông tin cá nhân của bạn cho bên thứ ba."
+      },
+      "security": {
+        "title": "3. Bảo mật dữ liệu",
+        "intro": "Bright4Event áp dụng các biện pháp bảo mật tiên tiến để bảo vệ thông tin của bạn:",
+        "measures": {
+          "ssl": {
+            "title": "Mã hóa SSL/TLS",
+            "description": "Tất cả dữ liệu truyền tải được mã hóa."
+          },
+          "password": {
+            "title": "Mã hóa mật khẩu",
+            "description": "Sử dụng bcrypt để băm mật khẩu."
+          },
+          "firewall": {
+            "title": "Firewall & Monitoring",
+            "description": "Giám sát 24/7 để phát hiện và ngăn chặn truy cập trái phép."
+          },
+          "backup": {
+            "title": "Sao lưu định kỳ",
+            "description": "Backup dữ liệu thường xuyên để phòng tránh mất mát."
+          },
+          "access": {
+            "title": "Phân quyền truy cập",
+            "description": "Chỉ nhân viên có thẩm quyền mới được tiếp cận dữ liệu nhạy cảm."
+          }
+        }
+      },
+      "sharing": {
+        "title": "4. Chia sẻ thông tin",
+        "intro": "Chúng tôi chỉ chia sẻ thông tin của bạn trong các trường hợp sau:",
+        "consent": {
+          "title": "Với sự đồng ý của bạn:",
+          "description": "Khi bạn cho phép chia sẻ với đối tác hoặc nhà tổ chức sự kiện."
+        },
+        "providers": {
+          "title": "Với nhà cung cấp dịch vụ:",
+          "description": "Email, lưu trữ cloud, thanh toán (tuân thủ GDPR)."
+        },
+        "legal": {
+          "title": "Yêu cầu pháp lý:",
+          "description": "Khi có lệnh từ cơ quan nhà nước có thẩm quyền."
+        }
+      },
+      "rights": {
+        "title": "5. Quyền của người dùng",
+        "intro": "Bạn có các quyền sau đối với dữ liệu cá nhân của mình:",
+        "access": {
+          "title": "Quyền truy cập:",
+          "description": "Xem thông tin cá nhân đã cung cấp."
+        },
+        "edit": {
+          "title": "Quyền chỉnh sửa:",
+          "description": "Cập nhật hoặc sửa đổi thông tin không chính xác."
+        },
+        "delete": {
+          "title": "Quyền xóa:",
+          "description": "Yêu cầu xóa tài khoản và dữ liệu liên quan (trừ dữ liệu cần lưu trữ theo pháp luật)."
+        },
+        "withdraw": {
+          "title": "Quyền rút lại sự đồng ý:",
+          "description": "Ngừng nhận email marketing bất kỳ lúc nào."
+        },
+        "complaint": {
+          "title": "Quyền khiếu nại:",
+          "description": "Liên hệ với chúng tôi nếu có lo ngại về quyền riêng tư."
+        }
+      },
+      "contact": {
+        "title": "6. Liên hệ",
+        "intro": "Nếu bạn có bất kỳ câu hỏi hoặc thắc mắc về chính sách bảo mật này, vui lòng liên hệ:",
+        "company": "Bright4Event by Code4Change Technology Solution",
+        "email": "Email: code4change.co@gmail.com",
+        "phone": "Điện thoại: +84 901 333 434",
+        "website": "Website: bright4event.com"
+      },
+      "changes": {
+        "title": "7. Thay đổi chính sách",
+        "description": "Chúng tôi có thể cập nhật chính sách bảo mật này theo thời gian. Mọi thay đổi sẽ được thông báo qua email hoặc trên website. Việc bạn tiếp tục sử dụng dịch vụ sau khi thay đổi có nghĩa là bạn chấp nhận chính sách mới."
+      }
+    }
+  },
+  "Terms": {
+    "hero": {
+      "title": "Điều khoản sử dụng",
+      "lastUpdated": "Cập nhật lần cuối"
+    },
+    "sections": {
+      "acceptance": {
+        "title": "1. Chấp nhận điều khoản",
+        "description": "Bằng việc truy cập và sử dụng nền tảng Bright4Event, bạn đồng ý tuân thủ các điều khoản và điều kiện sau đây. Nếu bạn không đồng ý với bất kỳ phần nào của điều khoản này, vui lòng không sử dụng dịch vụ của chúng tôi.",
+        "note": "Lưu ý:",
+        "effective": "Điều khoản này có hiệu lực kể từ ngày bạn đăng ký tài khoản hoặc sử dụng bất kỳ dịch vụ nào của Bright4Event."
+      },
+      "userRights": {
+        "title": "2. Quyền của người dùng",
+        "intro": "Khi sử dụng Bright4Event, bạn được quyền:",
+        "items": [
+          "Tạo và quản lý sự kiện của riêng bạn",
+          "Sử dụng các tính năng check-in, bình chọn, quay số may mắn, livestream",
+          "Quản lý danh sách khách mời và theo dõi thống kê realtime",
+          "Xuất dữ liệu sự kiện dưới dạng Excel/PDF",
+          "Tùy chỉnh giao diện màn hình LED và các tính năng hiển thị",
+          "Nhận hỗ trợ kỹ thuật từ đội ngũ Bright4Event"
+        ]
+      },
+      "userResponsibilities": {
+        "title": "3. Trách nhiệm của người dùng",
+        "intro": "Bạn cam kết:",
+        "accuracy": {
+          "title": "Cung cấp thông tin chính xác:",
+          "description": "Đảm bảo thông tin đăng ký và dữ liệu sự kiện là đúng sự thật."
+        },
+        "security": {
+          "title": "Bảo mật tài khoản:",
+          "description": "Giữ bí mật mật khẩu và thông báo ngay nếu phát hiện truy cập trái phép."
+        },
+        "compliance": {
+          "title": "Tuân thủ pháp luật:",
+          "description": "Không sử dụng dịch vụ cho các mục đích bất hợp pháp hoặc vi phạm quyền lợi của bên thứ ba."
+        },
+        "content": {
+          "title": "Nội dung phù hợp:",
+          "description": "Không đăng tải nội dung phản cảm, bạo lực, khiêu dâm hoặc xúc phạm."
+        },
+        "payment": {
+          "title": "Thanh toán đúng hạn:",
+          "description": "Nếu sử dụng gói trả phí, đảm bảo thanh toán theo đúng thời hạn."
+        }
+      },
+      "prohibited": {
+        "title": "4. Hành vi bị cấm",
+        "intro": "Các hành vi sau đây bị nghiêm cấm khi sử dụng Bright4Event:",
+        "items": [
+          "Sao chép, sửa đổi, phân phối hoặc khai thác mã nguồn của nền tảng",
+          "Tấn công hệ thống, gửi virus hoặc phần mềm độc hại",
+          "Sử dụng bot, script hoặc công cụ tự động để thao tác kết quả bình chọn",
+          "Thu thập dữ liệu người dùng khác mà không có sự đồng ý",
+          "Mạo danh tổ chức hoặc cá nhân khác",
+          "Spam, quảng cáo trái phép hoặc gửi nội dung không mong muốn"
+        ],
+        "consequence": "Hậu quả:",
+        "warning": "Vi phạm các điều khoản trên có thể dẫn đến việc tài khoản bị đình chỉ hoặc xóa vĩnh viễn mà không được hoàn lại phí."
+      },
+      "intellectual": {
+        "title": "5. Sở hữu trí tuệ",
+        "description": "Tất cả quyền sở hữu trí tuệ liên quan đến nền tảng Bright4Event (giao diện, logo, tính năng, mã nguồn, nội dung) thuộc về Code4Change Technology Solution.",
+        "userContent": "Nội dung của người dùng:",
+        "items": [
+          "Bạn vẫn sở hữu nội dung (ảnh, video, text) mà bạn tải lên",
+          "Bạn cấp cho Bright4Event quyền sử dụng nội dung để vận hành dịch vụ",
+          "Chúng tôi có thể sử dụng dữ liệu ẩn danh để cải thiện sản phẩm"
+        ]
+      },
+      "payment": {
+        "title": "6. Thanh toán và hoàn tiền",
+        "plans": {
+          "title": "Gói dịch vụ:",
+          "free": "Miễn phí: Tính năng cơ bản, giới hạn số lượng khách",
+          "standard": "Standard: Phù hợp cho sự kiện trung bình (100-500 khách)",
+          "enterprise": "Enterprise: Không giới hạn, hỗ trợ ưu tiên 24/7"
+        },
+        "refund": {
+          "title": "Chính sách hoàn tiền:",
+          "items": [
+            "Hoàn 100% nếu hủy trước 7 ngày so với ngày sự kiện",
+            "Hoàn 50% nếu hủy từ 3-7 ngày trước sự kiện",
+            "Không hoàn tiền nếu hủy trong vòng 3 ngày hoặc sau khi sự kiện bắt đầu",
+            "Trường hợp lỗi kỹ thuật do Bright4Event, hoàn 100% hoặc gia hạn miễn phí"
+          ]
+        }
+      },
+      "liability": {
+        "title": "7. Giới hạn trách nhiệm",
+        "intro": "Bright4Event cung cấp dịch vụ \"nguyên trạng\" và không đảm bảo 100% không có lỗi hoặc gián đoạn. Chúng tôi không chịu trách nhiệm cho:",
+        "items": [
+          "Thiệt hại gián tiếp do lỗi hệ thống (mất dữ liệu, mất doanh thu)",
+          "Lỗi do nhà cung cấp bên thứ ba (hosting, email, thanh toán)",
+          "Nội dung hoặc hành vi của người dùng khác",
+          "Trường hợp bất khả kháng (thiên tai, chiến tranh, dịch bệnh)"
+        ],
+        "commitment": "Cam kết:",
+        "uptime": "Chúng tôi nỗ lực tối đa để đảm bảo hệ thống hoạt động ổn định với uptime 99.9% và hỗ trợ kỹ thuật nhanh chóng."
+      },
+      "termination": {
+        "title": "8. Chấm dứt dịch vụ",
+        "intro": "Bright4Event có quyền:",
+        "items": [
+          "Đình chỉ hoặc xóa tài khoản nếu phát hiện vi phạm điều khoản",
+          "Ngừng cung cấp dịch vụ với thông báo trước 30 ngày",
+          "Thay đổi hoặc nâng cấp tính năng mà không cần thông báo trước"
+        ],
+        "userRight": "Quyền của bạn:",
+        "cancel": "Bạn có thể hủy tài khoản bất kỳ lúc nào thông qua trang Cài đặt hoặc liên hệ với chúng tôi."
+      },
+      "law": {
+        "title": "9. Luật áp dụng và giải quyết tranh chấp",
+        "description": "Điều khoản này được điều chỉnh bởi pháp luật Việt Nam. Mọi tranh chấp phát sinh sẽ được giải quyết thông qua thương lượng. Nếu không đạt được thỏa thuận, tranh chấp sẽ được giải quyết tại Tòa án có thẩm quyền tại Hà Nội, Việt Nam."
+      },
+      "contact": {
+        "title": "10. Liên hệ",
+        "intro": "Nếu bạn có bất kỳ câu hỏi nào về điều khoản sử dụng, vui lòng liên hệ:",
+        "company": "Bright4Event by Code4Change Technology Solution",
+        "email": "Email: code4change.co@gmail.com",
+        "phone": "Điện thoại: +84 901 333 434",
+        "website": "Website: bright4event.com"
+      },
+      "acceptance_notice": "Bằng việc sử dụng Bright4Event, bạn xác nhận đã đọc, hiểu và đồng ý với tất cả các điều khoản trên."
+    }
+  }
+}

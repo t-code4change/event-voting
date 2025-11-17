@@ -42,7 +42,7 @@ Refactoring này tập trung vào:
 
 **Usage:**
 ```tsx
-import { AdminLoading } from "@/components/admin"
+import { AdminLoading } from "@/home/admin"
 
 // Full page loading
 if (isLoading) {
@@ -62,7 +62,7 @@ if (isLoading) {
 
 **Usage:**
 ```tsx
-import { AdminEmptyState } from "@/components/admin"
+import { AdminEmptyState } from "@/home/admin"
 
 <AdminEmptyState
   icon={Calendar}
@@ -93,7 +93,7 @@ import {
   TimeSettings,
   AccessControl,
   SystemInfo
-} from "./components"
+} from "./home"
 
 <TimeSettings
   startTime={startTime}
@@ -254,7 +254,7 @@ export default function SettingsPage() {
   )
 }
 
-// components/TimeSettings.tsx (Separate component)
+// home/TimeSettings.tsx (Separate component)
 export function TimeSettings({ startTime, onStartTimeChange }) {
   return <AdminCard>...</AdminCard>
 }

@@ -143,9 +143,9 @@ xl: '1280px'
 ```typescript
 // app/page.tsx
 import { createClient } from '@/lib/supabase/server'
-import { Button } from '@/components/ui/button'
-import { Card } from '@/components/ui/card'
-import EventCountdown from '@/components/EventCountdown'
+import { Button } from '@/home/ui/button'
+import { Card } from '@/home/ui/card'
+import EventCountdown from '@/home/EventCountdown'
 import Link from 'next/link'
 
 export default async function LandingPage() {
@@ -247,11 +247,11 @@ type AuthModalState = 'input' | 'otp' | 'loading' | 'success'
 
 **Component**:
 ```typescript
-// components/auth/OTPInput.tsx
+// home/auth/OTPInput.tsx
 'use client'
 
 import { useState, useRef } from 'react'
-import { Input } from '@/components/ui/input'
+import { Input } from '@/home/ui/input'
 import { cn } from '@/lib/utils'
 
 interface OTPInputProps {
@@ -355,10 +355,10 @@ export default function OTPInput({
 
 #### CategoryCard Component
 ```typescript
-// components/voting/CategoryCard.tsx
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
-import { Label } from '@/components/ui/label'
+// home/voting/CategoryCard.tsx
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/home/ui/card'
+import { RadioGroup, RadioGroupItem } from '@/home/ui/radio-group'
+import { Label } from '@/home/ui/label'
 import CandidateCard from './CandidateCard'
 
 interface CategoryCardProps {
@@ -416,10 +416,10 @@ export default function CategoryCard({
 
 #### CandidateCard Component
 ```typescript
-// components/voting/CandidateCard.tsx
-import { Card, CardContent } from '@/components/ui/card'
-import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
-import { Badge } from '@/components/ui/badge'
+// home/voting/CandidateCard.tsx
+import { Card, CardContent } from '@/home/ui/card'
+import { Avatar, AvatarImage, AvatarFallback } from '@/home/ui/avatar'
+import { Badge } from '@/home/ui/badge'
 import { Check } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
@@ -517,10 +517,10 @@ export default function CandidateCard({
 
 import { useEffect, useState } from 'react'
 import { createClient } from '@/lib/supabase/client'
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
-import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
-import { Badge } from '@/components/ui/badge'
-import { Progress } from '@/components/ui/progress'
+import { Card, CardHeader, CardTitle, CardContent } from '@/home/ui/card'
+import { Avatar, AvatarImage, AvatarFallback } from '@/home/ui/avatar'
+import { Badge } from '@/home/ui/badge'
+import { Progress } from '@/home/ui/progress'
 
 export default function ResultsPage() {
   const [results, setResults] = useState<any[]>([])
@@ -625,7 +625,7 @@ export default function ResultsPage() {
 ### 3.1. EventCountdown
 
 ```typescript
-// components/EventCountdown.tsx
+// home/EventCountdown.tsx
 'use client'
 
 import { useEffect, useState } from 'react'
@@ -674,7 +674,7 @@ export default function EventCountdown({ deadline }: EventCountdownProps) {
 ### 4.1. LoadingSpinner
 
 ```typescript
-// components/LoadingSpinner.tsx
+// home/LoadingSpinner.tsx
 import { Loader2 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
@@ -704,9 +704,9 @@ export default function LoadingSpinner({
 ### 4.2. EmptyState
 
 ```typescript
-// components/EmptyState.tsx
+// home/EmptyState.tsx
 import { FileQuestion } from 'lucide-react'
-import { Button } from '@/components/ui/button'
+import { Button } from '@/home/ui/button'
 
 interface EmptyStateProps {
   title: string
@@ -770,9 +770,9 @@ export default function RootLayout({
 ### 5.2. Header Component
 
 ```typescript
-// components/Header.tsx
+// home/Header.tsx
 import Link from 'next/link'
-import { Button } from '@/components/ui/button'
+import { Button } from '@/home/ui/button'
 import { LogOut } from 'lucide-react'
 
 export default function Header() {

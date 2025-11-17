@@ -6,6 +6,10 @@ import { useAppSelector, useAppDispatch } from "@/store/hooks"
 import AdminSidebarNew from "@/components/admin/AdminSidebarNew"
 import AdminHeader from "@/components/admin/AdminHeader"
 
+// Force dynamic rendering for all admin pages
+export const dynamic = 'force-dynamic'
+export const dynamicParams = true
+
 export default function AdminLayout({
   children,
 }: {
