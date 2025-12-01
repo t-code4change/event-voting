@@ -59,7 +59,7 @@ export default function CheckInPage() {
   }, [])
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-[#0A0A0A] via-[#1B0131] to-[#0A0A0A] overflow-hidden flex items-center justify-center">
+    <div className="relative min-h-screen bg-gradient-to-br from-[#0A0A0A] py-6 md:py-10 via-[#1B0131] to-[#0A0A0A] overflow-hidden flex items-center justify-center">
       {/* Background effects */}
       <FloatingParticles />
 
@@ -76,30 +76,30 @@ export default function CheckInPage() {
         transition={{ duration: 8, repeat: Infinity }}
       />
 
-      {/* Logo */}
-      <div className="absolute top-8 left-8">
+      {/* Logo - Responsive positioning */}
+      <div className="absolute top-4 left-4 md:top-8 md:left-8">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          className="flex items-center gap-2"
+          className="flex items-center gap-1.5 md:gap-2"
         >
-          <Sparkles className="w-7 h-7 text-[#FFD700]" />
-          <span className="text-white font-bold text-xl">Bright4Event</span>
+          <Sparkles className="w-5 h-5 md:w-7 md:h-7 text-[#FFD700]" />
+          <span className="text-white font-bold text-base md:text-xl">Bright4Event</span>
         </motion.div>
       </div>
 
       {/* Main Content */}
       <div className="relative z-10 text-center px-4">
 
-        {/* Event Title */}
+        {/* Event Title - Responsive */}
         <motion.div
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="mb-12"
+          className="mb-8 md:mb-12"
         >
           <motion.h1
-            className="text-5xl md:text-7xl font-bold mb-4"
+            className="text-4xl md:text-5xl lg:text-7xl font-bold mb-3 md:mb-4"
             animate={{
               textShadow: [
                 '0 0 20px rgba(255, 215, 0, 0.5)',
@@ -113,18 +113,18 @@ export default function CheckInPage() {
               GLOW UP 2025
             </span>
           </motion.h1>
-          <p className="text-2xl md:text-3xl text-white font-semibold">Year End Party</p>
+          <p className="text-xl md:text-2xl lg:text-3xl text-white font-semibold">Year End Party</p>
         </motion.div>
 
-        {/* QR Code Container */}
+        {/* QR Code Container - Responsive */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="mb-10"
+          className="mb-8 md:mb-10"
         >
           <div className="relative inline-block">
-            {/* QR Code with pulsing glow */}
+            {/* QR Code with pulsing glow - Responsive size */}
             <motion.div
               animate={{
                 boxShadow: [
@@ -134,44 +134,44 @@ export default function CheckInPage() {
                 ],
               }}
               transition={{ duration: 3, repeat: Infinity }}
-              className="bg-white p-8 rounded-3xl inline-block"
+              className="bg-white p-4 md:p-5 rounded-2xl md:rounded-3xl inline-block"
             >
               {checkInFormUrl && (
                 <QRCodeSVG
                   value={checkInFormUrl}
-                  size={320}
+                  size={window.innerWidth < 768 ? 220 : 280}
                   level="H"
                   includeMargin={false}
                   imageSettings={{
                     src: "/logo.png",
-                    height: 40,
-                    width: 40,
+                    height: window.innerWidth < 768 ? 32 : 40,
+                    width: window.innerWidth < 768 ? 32 : 40,
                     excavate: true,
                   }}
                 />
               )}
             </motion.div>
 
-            {/* Animated border */}
+            {/* Animated border - Responsive */}
             <motion.div
               animate={{
                 opacity: [0.4, 1, 0.4],
                 scale: [1, 1.03, 1],
               }}
               transition={{ duration: 3, repeat: Infinity }}
-              className="absolute inset-0 border-4 border-[#FFD700] rounded-3xl pointer-events-none"
+              className="absolute inset-0 border-3 md:border-4 border-[#FFD700] rounded-2xl md:rounded-3xl pointer-events-none"
             />
 
-            {/* Corner sparkles */}
+            {/* Corner sparkles - Responsive */}
             {[
-              { top: -12, left: -12 },
-              { top: -12, right: -12 },
-              { bottom: -12, left: -12 },
-              { bottom: -12, right: -12 },
+              { top: -8, left: -8 },
+              { top: -8, right: -8 },
+              { bottom: -8, left: -8 },
+              { bottom: -8, right: -8 },
             ].map((position, index) => (
               <motion.div
                 key={index}
-                className="absolute w-6 h-6 text-[#FFD700]"
+                className="absolute w-5 h-5 md:w-6 md:h-6 text-[#FFD700] text-sm md:text-base"
                 style={position}
                 animate={{
                   scale: [1, 1.5, 1],
@@ -190,29 +190,29 @@ export default function CheckInPage() {
           </div>
         </motion.div>
 
-        {/* Instructions */}
+        {/* Instructions - Responsive */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
         >
-          <p className="text-3xl md:text-4xl text-white font-bold mb-4">
+          <p className="text-2xl md:text-3xl lg:text-4xl text-white font-bold mb-3 md:mb-4 px-2">
             Quét mã để check-in sự kiện ✨
           </p>
-          <p className="text-xl text-gray-300">
+          <p className="text-lg md:text-xl text-gray-300 px-2">
             Chào mừng bạn đến với đêm tiệc Glow Up 2025!
           </p>
         </motion.div>
 
-        {/* Event Info */}
+        {/* Event Info - Responsive */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.9 }}
-          className="mt-12 text-gray-400"
+          className="mt-8 md:mt-12 text-gray-400"
         >
-          <p className="text-lg">Code4Change Media</p>
-          <p>28/12/2025 | GEM Center, TP.HCM</p>
+          <p className="text-base md:text-lg">Code4Change Media</p>
+          <p className="text-sm md:text-base">28/12/2025 | GEM Center, TP.HCM</p>
         </motion.div>
       </div>
     </div>
