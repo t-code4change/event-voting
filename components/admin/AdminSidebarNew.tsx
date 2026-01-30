@@ -1,10 +1,16 @@
 "use client"
 
-import { useState } from "react"
+import { useMemo } from "react"
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
 import { motion, AnimatePresence } from "framer-motion"
 import { NavigateHomeConfirmPopup } from "./NavigateHomeConfirmPopup"
+import { useAppSelector, useAppDispatch } from "@/store/hooks"
+import {
+  selectEnabledFeatures,
+  selectSidebarCollapsed,
+  setSidebarCollapsed,
+} from "@/store/slices/adminSettingsSlice"
 import {
   Home,
   Calendar,
@@ -19,92 +25,43 @@ import {
   TrendingUp,
   Settings,
   Crown,
-  Sparkles,
   ChevronLeft,
   ChevronRight,
+  Mail,
+  ScanLine,
+  type LucideIcon,
 } from "lucide-react"
+import { useState } from "react"
 
-interface NavItem {
-  label: string
-  icon: React.ElementType
-  href: string
-  badge?: string
-  glow?: "gold" | "purple" | "blue" | "cyan" | "pink"
+// Icon mapping from string to component
+const iconMap: Record<string, LucideIcon> = {
+  Home,
+  Calendar,
+  Users,
+  UserCheck,
+  MonitorPlay,
+  Tv,
+  Vote,
+  BarChart3,
+  Gift,
+  Gamepad2,
+  TrendingUp,
+  Settings,
+  Mail,
+  ScanLine,
 }
 
-const navItems: NavItem[] = [
-  {
-    label: "Dashboard",
-    icon: Home,
-    href: "/admin/dashboard",
-    glow: "gold",
-  },
-  {
-    label: "Sự kiện",
-    icon: Calendar,
-    href: "/admin/events",
-    glow: "purple",
-  },
-  {
-    label: "Khách mời",
-    icon: Users,
-    href: "/admin/guests",
-    glow: "cyan",
-  },
-  {
-    label: "Check-in",
-    icon: UserCheck,
-    href: "/admin/check-in",
-    glow: "blue",
-  },
-  {
-    label: "Welcome LED",
-    icon: MonitorPlay,
-    href: "/admin/welcome-led",
-    glow: "pink",
-  },
-  {
-    label: "Waiting Screen",
-    icon: Tv,
-    href: "/admin/waiting-screen",
-    glow: "cyan",
-  },
-  {
-    label: "Voting",
-    icon: Vote,
-    href: "/admin/voting",
-    glow: "purple",
-  },
-  {
-    label: "Result LED",
-    icon: BarChart3,
-    href: "/admin/result-led",
-    glow: "gold",
-  },
-  // {
-  //   label: "Lucky Draw",
-  //   icon: Gift,
-  //   href: "/admin/lucky-draw",
-  //   glow: "pink",
-  // },
-  {
-    label: "Mini Game",
-    icon: Gamepad2,
-    href: "/admin/mini-game",
-    glow: "cyan",
-  },
-  {
-    label: "Analytics",
-    icon: TrendingUp,
-    href: "/admin/analytics",
-    glow: "blue",
-  },
-  {
-    label: "Settings",
-    icon: Settings,
-    href: "/admin/settings",
-  },
-]
+// Glow color mapping for features
+const featureGlowMap: Record<string, "gold" | "purple" | "blue" | "cyan" | "pink"> = {
+  dashboard: "gold",
+  guests: "cyan",
+  participants: "blue",
+  emails: "purple",
+  "check-in": "blue",
+  "draw-results": "pink",
+  analytics: "blue",
+  settings: "gold",
+}
 
 const glowColors = {
   gold: "#FFD700",
@@ -117,10 +74,29 @@ const glowColors = {
 export default function AdminSidebarNew() {
   const pathname = usePathname()
   const router = useRouter()
-  const [isCollapsed, setIsCollapsed] = useState(false)
+  const dispatch = useAppDispatch()
+
+  // Get enabled features from Redux
+  const enabledFeatures = useAppSelector(selectEnabledFeatures)
+  const isCollapsed = useAppSelector(selectSidebarCollapsed)
   const [showHomePopup, setShowHomePopup] = useState(false)
 
+  // Convert features to nav items
+  const navItems = useMemo(() => {
+    return enabledFeatures.map((feature) => ({
+      id: feature.id,
+      label: feature.name,
+      icon: iconMap[feature.icon] || Home,
+      href: feature.path,
+      glow: featureGlowMap[feature.id],
+    }))
+  }, [enabledFeatures])
+
   const isActive = (href: string) => pathname === href
+
+  const toggleCollapsed = () => {
+    dispatch(setSidebarCollapsed(!isCollapsed))
+  }
 
   const handleLogoClick = () => {
     setShowHomePopup(true)
@@ -217,7 +193,7 @@ export default function AdminSidebarNew() {
 
         {/* Toggle Button */}
         <button
-          onClick={() => setIsCollapsed(!isCollapsed)}
+          onClick={toggleCollapsed}
           className="absolute -right-3 top-20 z-20 w-6 h-6 rounded-full bg-[#FFD700] flex items-center justify-center shadow-lg hover:scale-110 transition-transform"
         >
           {isCollapsed ? (

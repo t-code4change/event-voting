@@ -11,7 +11,8 @@ import {
   AccessControl,
   EventTheme,
   SystemInfo,
-  DangerZone
+  DangerZone,
+  FeatureManagement,
 } from "./components"
 import { formatDateTimeLocal, validateTimeRange } from "./utils/date-utils"
 
@@ -204,6 +205,9 @@ export default function AdminSettingsPage() {
           isActive={isActive}
           onActiveChange={setIsActive}
         />
+
+        {/* Feature Management */}
+        <FeatureManagement />
 
         {/* Event Theme */}
         <EventTheme />

@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { motion } from "framer-motion"
 import { toast } from "sonner"
@@ -16,6 +16,7 @@ import {
   Calendar,
   Users,
   TrendingUp,
+  Loader2,
 } from "lucide-react"
 import {
   DropdownMenu,
@@ -29,8 +30,10 @@ import { LogoutConfirmPopup } from "@/components/admin"
 import { SearchPanel } from "@/components/admin/SearchPanel"
 import { NotificationPanel } from "@/components/admin/NotificationPanel"
 import { logoutUser } from "@/lib/auth-utils"
-import { useAppDispatch } from "@/store/hooks"
+import { useAppDispatch, useAppSelector } from "@/store/hooks"
 import { logout as logoutAction } from "@/store/slices/authSlice"
+import { selectActiveEventId, setActiveEventId } from "@/store/slices/adminSettingsSlice"
+import { useGetMyEventsQuery } from "@/store/api"
 
 interface Event {
   id: string
@@ -44,42 +47,48 @@ interface Event {
   }
 }
 
-// Mock data - replace with real data
-const mockEvents: Event[] = [
-  {
-    id: "1",
-    name: "GLOW UP 2025",
-    date: "2025-01-14",
-    status: "live",
-    stats: {
-      checkins: 234,
-      votes: 1520,
-      totalGuests: 300,
-    },
-  },
-  {
-    id: "2",
-    name: "Summer Party 2024",
-    date: "2024-08-20",
-    status: "ended",
-    stats: {
-      checkins: 180,
-      votes: 980,
-      totalGuests: 200,
-    },
-  },
-]
-
 export default function AdminHeader() {
   const router = useRouter()
   const dispatch = useAppDispatch()
-  const [selectedEvent, setSelectedEvent] = useState<Event>(mockEvents[0])
+
+  // Get events from API
+  const { data: eventsData, isLoading: isLoadingEvents } = useGetMyEventsQuery({})
+  const activeEventId = useAppSelector(selectActiveEventId)
+
   const [isDark, setIsDark] = useState(true)
   const [showLogoutPopup, setShowLogoutPopup] = useState(false)
   const [isLoggingOut, setIsLoggingOut] = useState(false)
   const [showSearchPanel, setShowSearchPanel] = useState(false)
   const [showNotificationPanel, setShowNotificationPanel] = useState(false)
   const [unreadCount, setUnreadCount] = useState(3) // Mock initial count
+
+  // Convert API events to local format
+  const events: Event[] = (eventsData?.data || []).map((e: any) => ({
+    id: String(e.id),
+    name: e.name || e.title || `Event ${e.id}`,
+    date: e.eventDate || e.createdAt || new Date().toISOString(),
+    status: e.isActive ? "live" : "ended",
+    stats: {
+      checkins: e.participantCount || 0,
+      votes: e.voteCount || 0,
+      totalGuests: e.guestCount || 0,
+    },
+  }))
+
+  // Selected event
+  const selectedEvent = events.find((e) => e.id === String(activeEventId)) || events[0]
+
+  // Set default event if none selected
+  useEffect(() => {
+    if (!activeEventId && events.length > 0) {
+      dispatch(setActiveEventId(Number(events[0].id)))
+    }
+  }, [activeEventId, events, dispatch])
+
+  const handleEventChange = (event: Event) => {
+    dispatch(setActiveEventId(Number(event.id)))
+    toast.success(`Đã chọn sự kiện: ${event.name}`)
+  }
 
   const getStatusColor = (status: Event["status"]) => {
     switch (status) {
@@ -149,50 +158,62 @@ export default function AdminHeader() {
         <div className="flex items-center gap-4">
           <DropdownMenu>
             <DropdownMenuTrigger className="flex items-center gap-3 px-4 py-2 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-[#FFD700]/40 transition-all group">
-              <div className="flex items-center gap-3">
-                <div className="relative">
-                  <Calendar className="w-5 h-5 text-[#FFD700]" />
-                  {selectedEvent.status === "live" && (
-                    <motion.div
-                      className="absolute -top-1 -right-1 w-2 h-2 bg-green-500 rounded-full"
-                      animate={{
-                        scale: [1, 1.2, 1],
-                        opacity: [1, 0.8, 1],
-                      }}
-                      transition={{ duration: 1.5, repeat: Infinity }}
-                    />
-                  )}
+              {isLoadingEvents ? (
+                <div className="flex items-center gap-2">
+                  <Loader2 className="w-4 h-4 text-[#FFD700] animate-spin" />
+                  <span className="text-sm text-white/60">Đang tải...</span>
                 </div>
-
-                <div className="text-left">
-                  <div className="flex items-center gap-2">
-                    <span className="text-sm font-semibold text-white">
-                      {selectedEvent.name}
-                    </span>
-                    <span
-                      className={`
-                        inline-flex items-center gap-1 px-2 py-0.5 text-[10px] font-bold rounded-full
-                        ${getStatusColor(selectedEvent.status)} bg-opacity-20
-                      `}
-                    >
-                      <span
-                        className={`w-1.5 h-1.5 rounded-full ${getStatusColor(selectedEvent.status).split(' ')[0]}`}
+              ) : selectedEvent ? (
+                <div className="flex items-center gap-3">
+                  <div className="relative">
+                    <Calendar className="w-5 h-5 text-[#FFD700]" />
+                    {selectedEvent.status === "live" && (
+                      <motion.div
+                        className="absolute -top-1 -right-1 w-2 h-2 bg-green-500 rounded-full"
+                        animate={{
+                          scale: [1, 1.2, 1],
+                          opacity: [1, 0.8, 1],
+                        }}
+                        transition={{ duration: 1.5, repeat: Infinity }}
                       />
-                      {getStatusLabel(selectedEvent.status)}
-                    </span>
+                    )}
                   </div>
-                  <div className="flex items-center gap-3 text-[10px] text-white/40">
-                    <span className="flex items-center gap-1">
-                      <Users className="w-3 h-3" />
-                      {selectedEvent.stats.checkins}/{selectedEvent.stats.totalGuests}
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <TrendingUp className="w-3 h-3" />
-                      {selectedEvent.stats.votes} votes
-                    </span>
+
+                  <div className="text-left">
+                    <div className="flex items-center gap-2">
+                      <span className="text-sm font-semibold text-white">
+                        {selectedEvent.name}
+                      </span>
+                      <span
+                        className={`
+                          inline-flex items-center gap-1 px-2 py-0.5 text-[10px] font-bold rounded-full
+                          ${getStatusColor(selectedEvent.status)} bg-opacity-20
+                        `}
+                      >
+                        <span
+                          className={`w-1.5 h-1.5 rounded-full ${getStatusColor(selectedEvent.status).split(' ')[0]}`}
+                        />
+                        {getStatusLabel(selectedEvent.status)}
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-3 text-[10px] text-white/40">
+                      <span className="flex items-center gap-1">
+                        <Users className="w-3 h-3" />
+                        {selectedEvent.stats.checkins}/{selectedEvent.stats.totalGuests}
+                      </span>
+                      <span className="flex items-center gap-1">
+                        <TrendingUp className="w-3 h-3" />
+                        {selectedEvent.stats.votes} votes
+                      </span>
+                    </div>
                   </div>
                 </div>
-              </div>
+              ) : (
+                <div className="flex items-center gap-2">
+                  <Calendar className="w-5 h-5 text-white/40" />
+                  <span className="text-sm text-white/60">Chọn sự kiện</span>
+                </div>
+              )}
 
               <ChevronDown className="w-4 h-4 text-white/40 group-hover:text-white transition-colors" />
             </DropdownMenuTrigger>
@@ -206,17 +227,17 @@ export default function AdminHeader() {
               </DropdownMenuLabel>
               <DropdownMenuSeparator className="bg-white/5" />
 
-              {mockEvents.map((event) => (
+              {events.map((event) => (
                 <DropdownMenuItem
                   key={event.id}
                   className={`
                     p-3 rounded-lg cursor-pointer transition-all
-                    ${selectedEvent.id === event.id
+                    ${selectedEvent?.id === event.id
                       ? 'bg-[#FFD700]/20 border border-[#FFD700]/40'
                       : 'hover:bg-white/5'
                     }
                   `}
-                  onClick={() => setSelectedEvent(event)}
+                  onClick={() => handleEventChange(event)}
                 >
                   <div className="flex items-center justify-between w-full">
                     <div>
@@ -249,17 +270,19 @@ export default function AdminHeader() {
           </DropdownMenu>
 
           {/* Quick Open Event Page */}
-          <motion.a
-            href={`/event/${selectedEvent.id}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-[#FFD700] to-[#FFC107] text-black font-semibold text-sm hover:shadow-lg hover:shadow-[#FFD700]/30 transition-all"
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-          >
-            <ExternalLink className="w-4 h-4" />
-            Open Event Page
-          </motion.a>
+          {selectedEvent && (
+            <motion.a
+              href={`/event/${selectedEvent.id}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-[#FFD700] to-[#FFC107] text-black font-semibold text-sm hover:shadow-lg hover:shadow-[#FFD700]/30 transition-all"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <ExternalLink className="w-4 h-4" />
+              Open Event Page
+            </motion.a>
+          )}
         </div>
 
         {/* Right: Actions */}

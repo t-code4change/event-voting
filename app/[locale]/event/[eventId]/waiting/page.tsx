@@ -201,18 +201,25 @@ function PhotoSlide({ image, caption, transition, isActive }: PhotoSlideProps) {
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60" />
       </div>
 
-      {/* Caption */}
+      {/* Caption - Fixed wrapping and responsive */}
       {isActive && (
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1, duration: 1 }}
-          className="absolute bottom-32 left-1/2 -translate-x-1/2 text-center px-8 w-full max-w-4xl"
+          className="absolute bottom-24 md:bottom-32 left-1/2 -translate-x-1/2 text-center px-4 md:px-8 w-full"
+          style={{ maxWidth: '90%' }}
         >
-          <h2 className="text-3xl md:text-5xl lg:text-6xl font-semibold text-white drop-shadow-lg"
+          <h2
+            className="text-2xl md:text-4xl lg:text-5xl font-semibold text-white drop-shadow-lg"
             style={{
               textShadow: '0 0 30px rgba(255, 211, 106, 0.5), 0 2px 10px rgba(0,0,0,0.8)',
-              fontFamily: 'Outfit, Montserrat, sans-serif'
+              fontFamily: 'Outfit, Montserrat, sans-serif',
+              whiteSpace: 'normal',
+              overflowWrap: 'break-word',
+              wordBreak: 'break-word',
+              lineHeight: '1.3',
+              maxWidth: '100%'
             }}
           >
             {caption}
@@ -370,8 +377,8 @@ export default function WaitingPage() {
       <GoldenParticles />
       <SlowConfetti />
 
-      {/* Photo slideshow - 80% of screen */}
-      <div className="relative h-[80vh]">
+      {/* Photo slideshow - Responsive height */}
+      <div className="relative h-[75vh] md:h-[80vh]">
         {photos.map((photo, index) => (
           <PhotoSlide
             key={index}
@@ -383,19 +390,23 @@ export default function WaitingPage() {
         ))}
       </div>
 
-      {/* Bottom section - 20% */}
-      <div className="relative h-[20vh] flex items-center justify-between px-12 bg-gradient-to-t from-[#0B0B0F] via-[#1E1A33]/80 to-transparent">
+      {/* Bottom section - Responsive */}
+      <div className="relative min-h-[20vh] flex flex-col md:flex-row items-center justify-between gap-4 px-4 md:px-8 lg:px-12 py-6 bg-gradient-to-t from-[#0B0B0F] via-[#1E1A33]/80 to-transparent">
         {/* Left: Tagline */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 1 }}
-          className="flex-1"
+          className="flex-1 w-full md:w-auto text-center md:text-left"
         >
-          <p className="text-2xl md:text-3xl lg:text-4xl font-semibold text-[#FFD36A] italic"
+          <p
+            className="text-lg md:text-2xl lg:text-3xl font-semibold text-[#FFD36A] italic"
             style={{
               textShadow: '0 0 20px rgba(255, 211, 106, 0.6)',
-              fontFamily: 'Outfit, Montserrat, sans-serif'
+              fontFamily: 'Outfit, Montserrat, sans-serif',
+              whiteSpace: 'normal',
+              overflowWrap: 'break-word',
+              wordBreak: 'break-word'
             }}
           >
             "Chào đón những khoảnh khắc rực rỡ sắp tới..."
@@ -407,7 +418,7 @@ export default function WaitingPage() {
           initial={{ opacity: 0, x: 30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 1.2 }}
-          className="flex items-center gap-3"
+          className="flex items-center gap-2 md:gap-3"
         >
           <motion.div
             animate={{
@@ -419,29 +430,31 @@ export default function WaitingPage() {
             }}
             transition={{ duration: 3, repeat: Infinity }}
           >
-            <Sparkles className="w-10 h-10 text-[#FFD36A]" />
+            <Sparkles className="w-8 h-8 md:w-10 md:h-10 text-[#FFD36A]" />
           </motion.div>
           <div className="text-right">
-            <div className="text-3xl font-bold text-white"
+            <div
+              className="text-2xl md:text-3xl font-bold text-white"
               style={{
                 textShadow: '0 0 15px rgba(255, 211, 106, 0.5)',
               }}
             >
               Bright4Event
             </div>
-            <div className="text-sm text-[#FFD36A] italic">Light up your event</div>
+            <div className="text-xs md:text-sm text-[#FFD36A] italic">Light up your event</div>
           </div>
         </motion.div>
       </div>
 
-      {/* Progress indicator */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
+      {/* Progress indicator - Responsive */}
+      <div className="absolute bottom-3 md:bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-10">
         {photos.map((_, index) => (
           <motion.div
             key={index}
-            className="w-2 h-2 rounded-full"
+            className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full"
             style={{
               background: index === currentSlide ? '#FFD700' : 'rgba(255, 255, 255, 0.3)',
+              boxShadow: index === currentSlide ? '0 0 8px rgba(255, 215, 0, 0.8)' : 'none'
             }}
             animate={{
               scale: index === currentSlide ? 1.5 : 1,
