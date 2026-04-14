@@ -7,7 +7,7 @@ import { X, Filter, RotateCcw } from "lucide-react"
 export interface GuestFilters {
   checkInStatus?: "all" | "checked-in" | "pending"
   company?: string
-  emailStatus?: "all" | "not-sent" | "sending" | "sent" | "failed"
+  emailStatus?: "all" | "not-sent" | "pending" | "sending" | "sent" | "failed"
   dateFrom?: string
   dateTo?: string
 }

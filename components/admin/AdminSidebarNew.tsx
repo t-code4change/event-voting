@@ -89,6 +89,7 @@ export default function AdminSidebarNew() {
       icon: iconMap[feature.icon] || Home,
       href: feature.path,
       glow: featureGlowMap[feature.id],
+      badge: undefined as string | undefined,
     }))
   }, [enabledFeatures])
 

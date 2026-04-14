@@ -29,6 +29,7 @@
     "@supabase/auth-helpers-nextjs": "^0.10.0",
     "@supabase/ssr": "^0.1.0",
     "@supabase/supabase-js": "^2.80.0",
+    "@types/qs": "^6.15.0",
     "canvas-confetti": "^1.9.4",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
@@ -43,6 +44,7 @@
     "next-intl": "^4.5.3",
     "qrcode": "^1.5.4",
     "qrcode.react": "^3.2.0",
+    "qs": "^6.15.1",
     "react": "^18.2.0",
     "react-confetti": "^6.4.0",
     "react-dom": "^18.2.0",
@@ -67,5 +69,8 @@
     "tailwindcss": "^3.4.0",
     "tailwindcss-animate": "^1.0.7",
     "typescript": "^5.5.3"
+  },
+  "optionalDependencies": {
+    "@next/swc-darwin-arm64": "^16.2.3"
   }
 }

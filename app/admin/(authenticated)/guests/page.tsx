@@ -478,7 +478,7 @@ export default function GuestsPage() {
         onClose={() => setShowGuestFormPopup(false)}
         onSuccess={handleSuccess}
         eventId={String(eventId)}
-        guest={selectedGuest}
+        guest={selectedGuest ? { ...selectedGuest, id: String(selectedGuest.id) } as any : null}
         mode={formMode}
         currentGuestCount={totalGuests}
         maxGuests={maxGuests}
@@ -489,7 +489,7 @@ export default function GuestsPage() {
         onClose={() => setShowDeletePopup(false)}
         onSuccess={handleSuccess}
         eventId={String(eventId)}
-        guest={selectedGuest}
+        guest={selectedGuest ? { ...selectedGuest, id: String(selectedGuest.id) } as any : null}
       />
 
       <SendEmailPopup
@@ -497,7 +497,7 @@ export default function GuestsPage() {
         onClose={() => setShowSendEmailPopup(false)}
         onSuccess={handleSuccess}
         eventId={String(eventId)}
-        guest={selectedGuest}
+        guest={selectedGuest ? { ...selectedGuest, id: String(selectedGuest.id) } as any : null}
       />
 
       <EmailTemplateEditor

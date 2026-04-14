@@ -13,6 +13,7 @@ export interface Guest {
   checkInCode: string
   checkedIn: boolean
   checkedInAt?: string
+  notes?: string
   emailStatus: EmailStatus
   lastEmailSentAt?: string
   eventId: number
@@ -20,7 +21,7 @@ export interface Guest {
   updatedAt: string
 }
 
-export type EmailStatus = 'not-sent' | 'pending' | 'sent' | 'failed'
+export type EmailStatus = 'not-sent' | 'pending' | 'sending' | 'sent' | 'failed'
 
 export interface CreateGuestRequest {
   name: string
