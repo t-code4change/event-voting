@@ -216,7 +216,7 @@ export default function EventLandingPage() {
       title: "Mini Games tương tác",
       description: "Tham gia trò chơi vui nhộn cùng đồng nghiệp và giành phần thưởng hấp dẫn",
       color: "from-purple-500 to-violet-600",
-      link: `https://quaysotrungthuong.vn/app`,
+      link: `/event/${eventId}/minigame`,
       badge: "Fun",
       preview: "Chơi ngay"
     },
