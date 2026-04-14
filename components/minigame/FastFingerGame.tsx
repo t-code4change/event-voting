@@ -101,7 +101,7 @@ export default function FastFingerGame() {
 
       {/* START */}
       {screen === "start" && (
-        <motion.div key="start" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.9 }} className="max-w-lg w-full text-center">
+        <motion.div key="start" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.9 }} className="max-w-lg w-full text-center px-5">
           <motion.div animate={{ scale: [1, 1.1, 1], rotate: [0, 5, -5, 0] }} transition={{ duration: 2.5, repeat: Infinity }} className="mb-8 inline-block">
             <div className="w-36 h-36 mx-auto rounded-full flex items-center justify-center relative"
               style={{ background: "linear-gradient(135deg, #10B981, #059669)", boxShadow: "0 0 80px rgba(16,185,129,0.7), inset 0 1px 0 rgba(255,255,255,0.3)" }}>
@@ -240,7 +240,7 @@ export default function FastFingerGame() {
 
       {/* RESULT */}
       {screen === "result" && (
-        <motion.div key="result" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.9 }} className="max-w-lg w-full text-center">
+        <motion.div key="result" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.9 }} className="max-w-lg w-full text-center px-5">
           <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ type: "spring", duration: 0.8 }} className="mb-6">
             <div className="w-36 h-36 mx-auto rounded-full flex items-center justify-center mb-4"
               style={{ background: `linear-gradient(135deg, ${rating.color}, ${rating.color}88)`, boxShadow: `0 0 60px ${rating.color}80` }}>

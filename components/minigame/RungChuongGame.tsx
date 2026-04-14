@@ -133,7 +133,7 @@ export default function RungChuongGame() {
 
         {/* START */}
         {screen === "start" && (
-          <motion.div key="start" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.9 }} className="max-w-lg w-full text-center">
+          <motion.div key="start" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.9 }} className="max-w-lg w-full text-center px-5">
             <motion.div animate={{ rotate: [-15, 15, -15], y: [0, -8, 0] }} transition={{ duration: 1.5, repeat: Infinity }} className="mb-8 inline-block">
               <div className="w-36 h-36 mx-auto rounded-full flex items-center justify-center relative"
                 style={{ background: "linear-gradient(135deg, #F59E0B, #D97706)", boxShadow: "0 0 80px rgba(245,158,11,0.7), inset 0 1px 0 rgba(255,255,255,0.3)" }}>
@@ -281,7 +281,7 @@ export default function RungChuongGame() {
 
         {/* RESULT */}
         {screen === "result" && (
-          <motion.div key="result" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.9 }} className="max-w-lg w-full text-center">
+          <motion.div key="result" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.9 }} className="max-w-lg w-full text-center px-5">
             <motion.div initial={{ scale: 0, rotate: -180 }} animate={{ scale: 1, rotate: 0 }} transition={{ type: "spring", duration: 1 }} className="mb-6">
               <div className="w-36 h-36 mx-auto rounded-full flex items-center justify-center mb-4"
                 style={{ background: `linear-gradient(135deg, ${badge.color}, ${badge.color}88)`, boxShadow: `0 0 60px ${badge.color}80` }}>

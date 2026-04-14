@@ -77,7 +77,7 @@ export default function LuckyBoxGame() {
 
         {/* START */}
         {screen === "start" && (
-          <motion.div key="start" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.9 }} className="max-w-lg w-full text-center">
+          <motion.div key="start" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.9 }} className="max-w-lg w-full text-center px-5">
             <motion.div animate={{ y: [0, -16, 0], rotate: [0, -6, 6, 0] }} transition={{ duration: 3, repeat: Infinity }} className="mb-8 inline-block">
               <div className="w-36 h-36 mx-auto rounded-3xl flex items-center justify-center relative"
                 style={{ background: "linear-gradient(135deg, #FF6B35, #F7931E)", boxShadow: "0 0 80px rgba(255,107,53,0.7), inset 0 1px 0 rgba(255,255,255,0.3)" }}>
@@ -212,7 +212,7 @@ export default function LuckyBoxGame() {
 
         {/* RESULT */}
         {screen === "result" && (
-          <motion.div key="result" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.9 }} className="max-w-lg w-full text-center">
+          <motion.div key="result" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.9 }} className="max-w-lg w-full text-center px-5">
             <motion.div initial={{ scale: 0, rotate: -180 }} animate={{ scale: 1, rotate: 0 }} transition={{ type: "spring", duration: 1 }} className="mb-6">
               {wins.length > 0
                 ? <div className="text-8xl mb-4">🎉</div>
