@@ -137,18 +137,17 @@ function CircularTimer({ timeLeft, totalTime }: { timeLeft: number; totalTime: n
   const isUrgent = timeLeft <= 5
 
   return (
-    <div className="relative flex items-center justify-center" style={{ width: 140, height: 140 }}>
-      {/* Outer ring glow */}
-      <motion.div
-        className="absolute inset-0 rounded-full"
-        animate={{ boxShadow: isUrgent ? [`0 0 30px ${glowColor}`, `0 0 60px ${glowColor}`, `0 0 30px ${glowColor}`] : `0 0 20px ${glowColor}` }}
-        transition={{ duration: 0.5, repeat: isUrgent ? Infinity : 0 }}
-      />
-
-      <svg width="140" height="140" className="transform -rotate-90 absolute inset-0">
+    <div className="relative flex items-center justify-center flex-shrink-0" style={{ width: 140, height: 140 }}>
+      {/* SVG ring — overflow visible so glow doesn't clip */}
+      <svg
+        width="140"
+        height="140"
+        className="absolute inset-0 -rotate-90"
+        style={{ overflow: 'visible' }}
+      >
         {/* Track */}
-        <circle cx="70" cy="70" r={radius} stroke="rgba(255,255,255,0.08)" strokeWidth="8" fill="none" />
-        {/* Progress — no framer-motion animate so it doesn't reset each tick */}
+        <circle cx="70" cy="70" r={radius} stroke="rgba(255,255,255,0.1)" strokeWidth="8" fill="none" />
+        {/* Progress */}
         <circle
           cx="70"
           cy="70"
@@ -161,7 +160,7 @@ function CircularTimer({ timeLeft, totalTime }: { timeLeft: number; totalTime: n
           strokeLinecap="round"
           style={{
             transition: 'stroke-dashoffset 0.8s linear, stroke 0.3s ease',
-            filter: `drop-shadow(0 0 8px ${color})`,
+            filter: `drop-shadow(0 0 6px ${color}) drop-shadow(0 0 ${isUrgent ? '14px' : '10px'} ${color})`,
           }}
         />
       </svg>
