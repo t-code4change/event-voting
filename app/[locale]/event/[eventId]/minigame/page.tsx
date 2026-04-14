@@ -138,7 +138,7 @@ export default function MiniGamePage() {
       <GameSelector activeId={activeGameId} onChange={handleChangeGame} />
 
       {/* Game area */}
-      <div className="relative z-10 min-h-screen flex items-center justify-center p-4 pt-24">
+      <div className="relative z-10 min-h-screen flex items-center justify-center px-5 sm:px-8 pt-24 pb-10">
         <AnimatePresence mode="wait">
           <motion.div
             key={activeGameId}
