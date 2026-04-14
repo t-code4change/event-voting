@@ -29,40 +29,111 @@ const QUESTIONS: Question[] = [
   { id: "5", text: "Giải thưởng lớn nhất của sự kiện là gì?", options: ["Chuyến du lịch", "Tiền mặt", "Thiết bị điện tử", "Voucher mua sắm"], correctAnswer: 0, timeLimit: 15 },
 ]
 
-const OPTION_COLORS = [
-  { idle: "from-[#E53E3E]/20 to-[#C53030]/10 border-[#FC8181]/30 hover:border-[#FC8181]/70", letter: "bg-[#E53E3E] text-white", correct: "from-green-500/30 to-green-600/20 border-green-400", wrong: "from-red-500/30 to-red-600/20 border-red-400" },
-  { idle: "from-[#3182CE]/20 to-[#2B6CB0]/10 border-[#63B3ED]/30 hover:border-[#63B3ED]/70", letter: "bg-[#3182CE] text-white", correct: "from-green-500/30 to-green-600/20 border-green-400", wrong: "from-red-500/30 to-red-600/20 border-red-400" },
-  { idle: "from-[#D69E2E]/20 to-[#B7791F]/10 border-[#F6E05E]/30 hover:border-[#F6E05E]/70", letter: "bg-[#D69E2E] text-white", correct: "from-green-500/30 to-green-600/20 border-green-400", wrong: "from-red-500/30 to-red-600/20 border-red-400" },
-  { idle: "from-[#6B46C1]/20 to-[#553C9A]/10 border-[#B794F4]/30 hover:border-[#B794F4]/70", letter: "bg-[#6B46C1] text-white", correct: "from-green-500/30 to-green-600/20 border-green-400", wrong: "from-red-500/30 to-red-600/20 border-red-400" },
+// Use inline styles — Tailwind cannot compile arbitrary hex+opacity combos like from-[#hex]/20
+const OPTION_SCHEMES = [
+  { letter: "A", accent: "#E53E3E", bg: "rgba(229,62,62,0.18)", border: "rgba(252,129,129,0.35)", hoverBg: "rgba(229,62,62,0.32)", hoverBorder: "rgba(252,129,129,0.8)" },
+  { letter: "B", accent: "#3182CE", bg: "rgba(49,130,206,0.18)", border: "rgba(99,179,237,0.35)", hoverBg: "rgba(49,130,206,0.32)", hoverBorder: "rgba(99,179,237,0.8)" },
+  { letter: "C", accent: "#D69E2E", bg: "rgba(214,158,46,0.18)", border: "rgba(246,224,94,0.35)", hoverBg: "rgba(214,158,46,0.32)", hoverBorder: "rgba(246,224,94,0.8)" },
+  { letter: "D", accent: "#6B46C1", bg: "rgba(107,70,193,0.18)", border: "rgba(183,148,244,0.35)", hoverBg: "rgba(107,70,193,0.32)", hoverBorder: "rgba(183,148,244,0.8)" },
 ]
 
+// ─── Circular Timer ────────────────────────────────────────────────────────────
 function CircularTimer({ timeLeft, totalTime }: { timeLeft: number; totalTime: number }) {
   const percentage = (timeLeft / totalTime) * 100
-  const radius = 54
+  const radius = 38
   const circumference = 2 * Math.PI * radius
   const offset = circumference - (percentage / 100) * circumference
   const color = percentage > 60 ? '#5B7BFF' : percentage > 30 ? '#FFD700' : '#EF4444'
   const isUrgent = timeLeft <= 5
 
   return (
-    <div className="relative flex items-center justify-center flex-shrink-0" style={{ width: 140, height: 140 }}>
-      <svg width="140" height="140" className="absolute inset-0 -rotate-90" style={{ overflow: 'visible' }}>
-        <circle cx="70" cy="70" r={radius} stroke="rgba(255,255,255,0.1)" strokeWidth="8" fill="none" />
-        <circle cx="70" cy="70" r={radius} stroke={color} strokeWidth="8" fill="none"
+    <div className="relative flex items-center justify-center flex-shrink-0" style={{ width: 96, height: 96 }}>
+      <svg width="96" height="96" className="absolute inset-0 -rotate-90" style={{ overflow: 'visible' }}>
+        <circle cx="48" cy="48" r={radius} stroke="rgba(255,255,255,0.08)" strokeWidth="6" fill="none" />
+        <circle cx="48" cy="48" r={radius} stroke={color} strokeWidth="6" fill="none"
           strokeDasharray={circumference} strokeDashoffset={offset} strokeLinecap="round"
-          style={{ transition: 'stroke-dashoffset 0.8s linear, stroke 0.3s ease', filter: `drop-shadow(0 0 6px ${color}) drop-shadow(0 0 ${isUrgent ? '14px' : '10px'} ${color})` }} />
+          style={{ transition: 'stroke-dashoffset 0.8s linear, stroke 0.3s ease', filter: `drop-shadow(0 0 5px ${color}) drop-shadow(0 0 ${isUrgent ? '12px' : '8px'} ${color})` }} />
       </svg>
       <div className="relative z-10 flex flex-col items-center">
-        <motion.span className="text-4xl font-black tabular-nums leading-none" style={{ color }}
-          animate={isUrgent ? { scale: [1, 1.15, 1] } : { scale: 1 }} transition={{ duration: 0.4, repeat: isUrgent ? Infinity : 0 }}>
+        <motion.span className="text-2xl font-black tabular-nums leading-none" style={{ color }}
+          animate={isUrgent ? { scale: [1, 1.2, 1] } : { scale: 1 }} transition={{ duration: 0.4, repeat: isUrgent ? Infinity : 0 }}>
           {timeLeft}
         </motion.span>
-        <span className="text-[10px] text-white/40 uppercase tracking-widest mt-0.5">giây</span>
+        <span className="text-[9px] text-white/40 uppercase tracking-widest mt-0.5">giây</span>
       </div>
     </div>
   )
 }
 
+// ─── Option Button ─────────────────────────────────────────────────────────────
+function OptionButton({
+  option, idx, isSelected, isCorrect, showResult, onClick,
+}: {
+  option: string; idx: number; isSelected: boolean; isCorrect: boolean
+  showResult: boolean; onClick: () => void
+}) {
+  const [hovered, setHovered] = useState(false)
+  const scheme = OPTION_SCHEMES[idx]
+
+  // Determine bg / border / text based on state
+  let bg = hovered && !showResult ? scheme.hoverBg : scheme.bg
+  let border = hovered && !showResult ? scheme.hoverBorder : scheme.border
+  let textColor = "rgba(255,255,255,0.9)"
+  let accentBg = scheme.accent
+
+  if (showResult) {
+    if (isCorrect) {
+      bg = "rgba(34,197,94,0.22)"; border = "rgba(74,222,128,0.8)"; textColor = "#86efac"; accentBg = "#22c55e"
+    } else if (isSelected) {
+      bg = "rgba(239,68,68,0.22)"; border = "rgba(248,113,113,0.8)"; textColor = "#fca5a5"; accentBg = "#ef4444"
+    } else {
+      bg = "rgba(255,255,255,0.03)"; border = "rgba(255,255,255,0.08)"; textColor = "rgba(255,255,255,0.25)"
+      accentBg = "rgba(255,255,255,0.15)"
+    }
+  }
+
+  return (
+    <motion.button
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.08 + idx * 0.07 }}
+      whileHover={!showResult ? { y: -2 } : {}}
+      whileTap={!showResult ? { scale: 0.97 } : {}}
+      onClick={onClick}
+      disabled={showResult}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      className="relative flex items-center gap-4 p-4 rounded-2xl text-left w-full transition-all duration-200"
+      style={{ background: bg, border: `1.5px solid ${border}`, backdropFilter: "blur(12px)" }}
+    >
+      {/* Letter badge */}
+      <span className="flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center text-sm font-black text-white transition-all duration-200"
+        style={{ background: accentBg, boxShadow: showResult && isCorrect ? "0 0 12px rgba(34,197,94,0.6)" : `0 0 8px ${scheme.accent}50` }}>
+        {scheme.letter}
+      </span>
+
+      {/* Option text */}
+      <span className="flex-1 text-base md:text-lg font-semibold transition-colors duration-200" style={{ color: textColor }}>
+        {option}
+      </span>
+
+      {/* Result icon */}
+      {showResult && (isSelected || isCorrect) && (
+        <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ type: "spring", duration: 0.4 }}>
+          {isCorrect ? <CheckCircle2 className="w-6 h-6 text-green-400" /> : <XCircle className="w-6 h-6 text-red-400" />}
+        </motion.div>
+      )}
+
+      {/* Active left bar */}
+      {!showResult && (
+        <div className="absolute left-0 top-3 bottom-3 w-0.5 rounded-full transition-opacity duration-200"
+          style={{ background: scheme.accent, opacity: hovered ? 1 : 0 }} />
+      )}
+    </motion.button>
+  )
+}
+
+// ─── Score Badge ───────────────────────────────────────────────────────────────
 function ScoreBadge({ score, total }: { score: number; total: number }) {
   const pct = (score / total) * 100
   const badge = pct >= 90 ? { name: "TOP PLAYER 🏆", color: "#FFD700", glow: "rgba(255,215,0,0.6)", icon: Trophy }
@@ -83,6 +154,7 @@ function ScoreBadge({ score, total }: { score: number; total: number }) {
   )
 }
 
+// ─── Main ──────────────────────────────────────────────────────────────────────
 export default function QuizGame() {
   const total = QUESTIONS.length
   const [gameState, setGameState] = useState<GameState>({ screen: "start", currentQuestionIndex: 0, answers: Array(total).fill(null), score: 0, timeLeft: QUESTIONS[0].timeLimit })
@@ -108,7 +180,7 @@ export default function QuizGame() {
     const newAnswers = [...gameState.answers]
     newAnswers[gameState.currentQuestionIndex] = idx
     setGameState(p => ({ ...p, answers: newAnswers }))
-    setTimeout(() => handleNextQuestion(idx), 1200)
+    setTimeout(() => handleNextQuestion(idx), 1400)
   }
 
   const handleNextQuestion = (forcedSelected?: number) => {
@@ -136,9 +208,9 @@ export default function QuizGame() {
       <ConfettiEffect show={showConfetti} duration={5000} />
       <AnimatePresence mode="wait">
 
-        {/* START */}
+        {/* ═══ START ═══ */}
         {gameState.screen === "start" && (
-          <motion.div key="start" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.9 }} className="max-w-lg w-full text-center">
+          <motion.div key="start" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.9 }} className="max-w-lg w-full text-center px-4">
             <motion.div animate={{ rotate: [0, 8, -8, 0], y: [0, -12, 0] }} transition={{ duration: 3.5, repeat: Infinity }} className="mb-8 inline-block">
               <div className="w-32 h-32 mx-auto rounded-3xl flex items-center justify-center relative"
                 style={{ background: "linear-gradient(135deg, #5B7BFF, #9B59B6)", boxShadow: "0 0 80px rgba(91,123,255,0.7), inset 0 1px 0 rgba(255,255,255,0.2)" }}>
@@ -150,15 +222,17 @@ export default function QuizGame() {
               style={{ background: "linear-gradient(135deg, #5B7BFF, #B794F4, #FFD700)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>QUIZ</h1>
             <p className="text-2xl text-white/80 font-semibold mb-2">Mini Game</p>
             <p className="text-white/50 mb-10">Trả lời nhanh & chính xác để nhận quà!</p>
+
             <div className="grid grid-cols-2 gap-4 mb-10">
               {[{ icon: Sparkles, label: "Câu hỏi", value: total, color: "#FFD700" }, { icon: Clock, label: "Giây/câu", value: "15s", color: "#5B7BFF" }].map(({ icon: Icon, label, value, color }) => (
-                <div key={label} className="rounded-2xl p-5 text-center" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", backdropFilter: "blur(10px)" }}>
+                <div key={label} className="rounded-2xl p-5 text-center" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)", backdropFilter: "blur(10px)" }}>
                   <Icon className="w-6 h-6 mx-auto mb-2" style={{ color }} />
-                  <p className="text-white/50 text-xs uppercase tracking-widest mb-1">{label}</p>
+                  <p className="text-white/40 text-xs uppercase tracking-widest mb-1">{label}</p>
                   <p className="text-3xl font-black text-white">{value}</p>
                 </div>
               ))}
             </div>
+
             <motion.button onClick={handleStart} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
               className="relative px-14 py-5 rounded-full text-white text-xl font-black tracking-wide overflow-hidden"
               style={{ background: "linear-gradient(135deg, #5B7BFF, #9B59B6)", boxShadow: "0 0 40px rgba(91,123,255,0.5)" }}>
@@ -169,97 +243,109 @@ export default function QuizGame() {
           </motion.div>
         )}
 
-        {/* QUESTION */}
+        {/* ═══ QUESTION ═══ */}
         {gameState.screen === "question" && currentQuestion && (
-          <motion.div key={`q-${gameState.currentQuestionIndex}`} initial={{ opacity: 0, x: 60 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -60 }} transition={{ duration: 0.35 }} className="w-full max-w-3xl">
-            <div className="flex items-center gap-6 mb-8">
+          <motion.div key={`q-${gameState.currentQuestionIndex}`}
+            initial={{ opacity: 0, x: 60 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -60 }}
+            transition={{ duration: 0.3 }}
+            className="w-full max-w-3xl px-4">
+
+            {/* Top bar: progress + timer */}
+            <div className="flex items-center gap-5 mb-6">
               <div className="flex-1">
-                <div className="flex items-center justify-between text-white/50 text-xs uppercase tracking-widest mb-2">
-                  <span>Câu {gameState.currentQuestionIndex + 1} / {total}</span>
-                  <span>{Math.round(progress)}%</span>
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-white/50 text-xs font-semibold uppercase tracking-widest">
+                    Câu {gameState.currentQuestionIndex + 1} / {total}
+                  </span>
+                  <span className="text-white/30 text-xs">{Math.round(progress)}%</span>
                 </div>
-                <div className="h-1.5 rounded-full overflow-hidden" style={{ background: "rgba(255,255,255,0.08)" }}>
-                  <motion.div className="h-full rounded-full" style={{ background: "linear-gradient(90deg, #5B7BFF, #B794F4)", boxShadow: "0 0 12px rgba(91,123,255,0.8)" }}
-                    animate={{ width: `${progress}%` }} transition={{ duration: 0.5, ease: "easeOut" }} />
+                {/* Step dots */}
+                <div className="flex gap-1.5">
+                  {Array.from({ length: total }).map((_, i) => (
+                    <div key={i} className="flex-1 h-1.5 rounded-full transition-all duration-500"
+                      style={{ background: i < gameState.currentQuestionIndex ? "#5B7BFF" : i === gameState.currentQuestionIndex ? "linear-gradient(90deg,#5B7BFF,#B794F4)" : "rgba(255,255,255,0.1)", boxShadow: i === gameState.currentQuestionIndex ? "0 0 8px rgba(91,123,255,0.8)" : "none" }} />
+                  ))}
                 </div>
               </div>
               <CircularTimer timeLeft={gameState.timeLeft} totalTime={currentQuestion.timeLimit} />
             </div>
 
-            <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05 }}
-              className="relative mb-6 rounded-3xl overflow-hidden"
-              style={{ background: "linear-gradient(135deg, rgba(91,123,255,0.12), rgba(155,89,182,0.08))", border: "1px solid rgba(91,123,255,0.25)", backdropFilter: "blur(20px)", boxShadow: "0 0 60px rgba(91,123,255,0.15), inset 0 1px 0 rgba(255,255,255,0.08)" }}>
-              <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(91,123,255,0.5), transparent)" }} />
-              <div className="absolute top-4 left-4">
-                <span className="text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full" style={{ background: "rgba(91,123,255,0.25)", color: "#B794F4", border: "1px solid rgba(183,148,244,0.3)" }}>
+            {/* Question card */}
+            <motion.div
+              initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05 }}
+              className="relative mb-5 rounded-3xl overflow-hidden"
+              style={{
+                background: "linear-gradient(135deg, rgba(91,123,255,0.14) 0%, rgba(155,89,182,0.09) 100%)",
+                border: "1px solid rgba(91,123,255,0.3)",
+                backdropFilter: "blur(20px)",
+                boxShadow: "0 0 50px rgba(91,123,255,0.12), inset 0 1px 0 rgba(255,255,255,0.08)",
+              }}>
+              {/* Top shine line */}
+              <div className="absolute top-0 left-0 right-0 h-px"
+                style={{ background: "linear-gradient(90deg, transparent, rgba(91,123,255,0.6), rgba(183,148,244,0.4), transparent)" }} />
+
+              {/* Q badge */}
+              <div className="absolute top-4 left-5">
+                <span className="text-[10px] font-black uppercase tracking-[0.15em] px-3 py-1 rounded-full"
+                  style={{ background: "rgba(91,123,255,0.2)", color: "#B794F4", border: "1px solid rgba(183,148,244,0.3)" }}>
                   Q{gameState.currentQuestionIndex + 1}
                 </span>
               </div>
-              <div className="px-8 pt-12 pb-8">
-                <h2 className="text-2xl md:text-3xl font-bold text-white text-center leading-relaxed">{currentQuestion.text}</h2>
+
+              <div className="px-8 pt-14 pb-8">
+                <h2 className="text-xl md:text-2xl font-bold text-white text-center leading-relaxed">
+                  {currentQuestion.text}
+                </h2>
               </div>
             </motion.div>
 
+            {/* Options 2x2 grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-              {currentQuestion.options.map((option, idx) => {
-                const isSelected = selectedOption === idx
-                const isCorrect = idx === currentQuestion.correctAnswer
-                const showResult = selectedOption !== null
-                const scheme = OPTION_COLORS[idx]
-                let gradientClass = scheme.idle
-                if (showResult) gradientClass = isCorrect ? scheme.correct : isSelected ? scheme.wrong : "from-white/3 to-white/1 border-white/10"
-                return (
-                  <motion.button key={idx} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.08 + idx * 0.07 }}
-                    whileHover={!showResult ? { y: -3, scale: 1.02 } : {}} whileTap={!showResult ? { scale: 0.97 } : {}}
-                    onClick={() => handleSelectOption(idx)} disabled={showResult}
-                    className={`relative flex items-center gap-4 p-5 rounded-2xl text-left border-2 bg-gradient-to-r transition-all duration-300 group ${gradientClass}`}
-                    style={{ backdropFilter: "blur(10px)" }}>
-                    <span className={`flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center text-sm font-black transition-all duration-300 ${showResult && isCorrect ? "bg-green-500 text-white" : showResult && isSelected && !isCorrect ? "bg-red-500 text-white" : scheme.letter}`}>
-                      {String.fromCharCode(65 + idx)}
-                    </span>
-                    <span className={`flex-1 text-base md:text-lg font-semibold transition-colors duration-300 ${showResult && !isCorrect && !isSelected ? "text-white/35" : showResult && isCorrect ? "text-green-300" : showResult && isSelected ? "text-red-300" : "text-white"}`}>
-                      {option}
-                    </span>
-                    {showResult && (isSelected || isCorrect) && (
-                      <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ type: "spring", duration: 0.4 }}>
-                        {isCorrect ? <CheckCircle2 className="w-6 h-6 text-green-400" /> : <XCircle className="w-6 h-6 text-red-400" />}
-                      </motion.div>
-                    )}
-                    {!showResult && (<div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.05) 0%, transparent 60%)" }} />)}
-                  </motion.button>
-                )
-              })}
+              {currentQuestion.options.map((option, idx) => (
+                <OptionButton
+                  key={idx}
+                  option={option}
+                  idx={idx}
+                  isSelected={selectedOption === idx}
+                  isCorrect={idx === currentQuestion.correctAnswer}
+                  showResult={selectedOption !== null}
+                  onClick={() => handleSelectOption(idx)}
+                />
+              ))}
             </div>
           </motion.div>
         )}
 
-        {/* LOADING */}
+        {/* ═══ LOADING ═══ */}
         {gameState.screen === "loading" && (
           <motion.div key="loading" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.9 }} className="text-center">
             <div className="relative w-32 h-32 mx-auto mb-8">
-              <motion.div className="absolute inset-0 rounded-full" style={{ background: "conic-gradient(from 0deg, #5B7BFF, #B794F4, #FFD700, #5B7BFF)", filter: "blur(2px)" }}
+              <motion.div className="absolute inset-0 rounded-full"
+                style={{ background: "conic-gradient(from 0deg, #5B7BFF, #B794F4, #FFD700, #5B7BFF)", filter: "blur(2px)" }}
                 animate={{ rotate: 360 }} transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }} />
               <div className="absolute inset-2 rounded-full" style={{ background: "#070B1A" }} />
               <Zap className="absolute inset-0 m-auto w-12 h-12 text-[#5B7BFF]" />
             </div>
-            <motion.h2 animate={{ opacity: [0.4, 1, 0.4] }} transition={{ duration: 1.5, repeat: Infinity }} className="text-3xl font-black text-white mb-2">Đang tính điểm...</motion.h2>
+            <motion.h2 animate={{ opacity: [0.4, 1, 0.4] }} transition={{ duration: 1.5, repeat: Infinity }}
+              className="text-3xl font-black text-white mb-2">Đang tính điểm...</motion.h2>
             <p className="text-white/40">Chờ xíu nhé!</p>
           </motion.div>
         )}
 
-        {/* RESULT */}
+        {/* ═══ RESULT ═══ */}
         {gameState.screen === "result" && (
-          <motion.div key="result" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.9 }} className="max-w-lg w-full text-center">
+          <motion.div key="result" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.9 }} className="max-w-lg w-full text-center px-4">
             <motion.h1 initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="text-4xl md:text-5xl font-black text-white mb-2">Chúc mừng! 🎉</motion.h1>
             <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.15 }} className="text-white/50 mb-10">Bạn đã hoàn thành thử thách!</motion.p>
             <div className="mb-12"><ScoreBadge score={gameState.score} total={total} /></div>
             <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.3 }}
               className="rounded-3xl p-8 mb-8" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)", backdropFilter: "blur(20px)" }}>
               <p className="text-white/50 text-sm uppercase tracking-widest mb-3">Điểm số</p>
-              <div className="text-7xl md:text-8xl font-black mb-3" style={{ background: "linear-gradient(135deg, #5B7BFF, #B794F4, #FFD700)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+              <div className="text-7xl md:text-8xl font-black mb-3"
+                style={{ background: "linear-gradient(135deg, #5B7BFF, #B794F4, #FFD700)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
                 {gameState.score}<span className="text-4xl text-white/30">/{total}</span>
               </div>
-              <p className="text-lg text-white/70">Trả lời đúng <span className="text-[#FFD700] font-bold">{gameState.score}</span> / {total} câu</p>
+              <p className="text-lg text-white/70">Trả lời đúng <span className="font-bold" style={{ color: "#FFD700" }}>{gameState.score}</span> / {total} câu</p>
             </motion.div>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8 }} className="flex flex-col sm:flex-row gap-3 justify-center">
               <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
@@ -269,7 +355,8 @@ export default function QuizGame() {
                 <span className="relative z-10 flex items-center gap-2 justify-center"><Gift className="w-5 h-5" />NHẬN QUÀ NGAY</span>
               </motion.button>
               <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} onClick={handleRestart}
-                className="px-10 py-4 rounded-full text-white text-lg font-semibold" style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.15)" }}>
+                className="px-10 py-4 rounded-full text-white text-lg font-semibold"
+                style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.15)" }}>
                 Chơi lại
               </motion.button>
             </motion.div>
