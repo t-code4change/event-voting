@@ -22,11 +22,16 @@ interface GameState {
 }
 
 const QUESTIONS: Question[] = [
-  { id: "1", text: "Sự kiện Bright4Event được tổ chức lần đầu vào năm nào?", options: ["2020", "2021", "2022", "2023"], correctAnswer: 1, timeLimit: 15 },
-  { id: "2", text: "Đâu là slogan của sự kiện năm nay?", options: ["Glow Up 2025", "Shine Bright", "Light the Future", "Spark Joy"], correctAnswer: 0, timeLimit: 15 },
-  { id: "3", text: "Bao nhiêu hạng mục bình chọn trong sự kiện?", options: ["2 hạng mục", "3 hạng mục", "4 hạng mục", "5 hạng mục"], correctAnswer: 2, timeLimit: 15 },
-  { id: "4", text: "Thời gian bình chọn kết thúc vào lúc nào?", options: ["19:00", "20:00", "21:00", "22:00"], correctAnswer: 2, timeLimit: 15 },
-  { id: "5", text: "Giải thưởng lớn nhất của sự kiện là gì?", options: ["Chuyến du lịch", "Tiền mặt", "Thiết bị điện tử", "Voucher mua sắm"], correctAnswer: 0, timeLimit: 15 },
+  // FPT
+  { id: "1", text: "FPT Corporation được thành lập vào năm nào?", options: ["1985", "1988", "1991", "1995"], correctAnswer: 1, timeLimit: 15 },
+  // Vinamilk
+  { id: "2", text: "Vinamilk hiện là doanh nghiệp sữa lớn thứ bao nhiêu tại Đông Nam Á?", options: ["Thứ nhất", "Thứ hai", "Thứ ba", "Thứ tư"], correctAnswer: 0, timeLimit: 15 },
+  // Vietcombank
+  { id: "3", text: "Tên đầy đủ của Vietcombank là gì?", options: ["Ngân hàng Ngoại thương Việt Nam", "Ngân hàng Đầu tư Việt Nam", "Ngân hàng Công thương Việt Nam", "Ngân hàng Phát triển Việt Nam"], correctAnswer: 0, timeLimit: 15 },
+  // VinGroup
+  { id: "4", text: "Vingroup được thành lập bởi ai?", options: ["Trần Đình Long", "Phạm Nhật Vượng", "Nguyễn Thị Phương Thảo", "Đỗ Mười"], correctAnswer: 1, timeLimit: 15 },
+  // Bonus
+  { id: "5", text: "FPT Software có trụ sở chính tại thành phố nào của Việt Nam?", options: ["TP. Hồ Chí Minh", "Đà Nẵng", "Hà Nội", "Cần Thơ"], correctAnswer: 2, timeLimit: 15 },
 ]
 
 // Use inline styles — Tailwind cannot compile arbitrary hex+opacity combos like from-[#hex]/20

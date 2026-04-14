@@ -12,11 +12,16 @@ interface Question {
 }
 
 const QUESTIONS: Question[] = [
-  { text: "Màu sắc đặc trưng của sự kiện năm nay là gì?", options: ["Đỏ & Vàng", "Xanh & Trắng", "Tím & Vàng", "Cam & Đen"], correctAnswer: 2 },
-  { text: "CEO của công ty đứng ra tổ chức là ai?", options: ["Nguyễn Minh Tú", "Trần Văn Hải", "Lê Hoàng Nam", "Phạm Quốc Bảo"], correctAnswer: 0 },
-  { text: "Sự kiện diễn ra tại đâu?", options: ["Rex Hotel", "Caravelle Hotel", "Grand Palace", "New World Hotel"], correctAnswer: 2 },
-  { text: "Chủ đề của đêm gala là gì?", options: ["Vươn Tầm Cao Mới", "Kết Nối Tương Lai", "Ánh Sáng Rực Rỡ", "Hành Trình Mới"], correctAnswer: 2 },
-  { text: "Bao nhiêu năm công ty đã hoạt động?", options: ["5 năm", "8 năm", "10 năm", "12 năm"], correctAnswer: 2 },
+  // FPT
+  { text: "FPT viết tắt của cụm từ nào?", options: ["Finance & Phú Thọ", "Financing & Production", "The Corporation for Financing & Promoting Technology", "Fast & Powerful Technology"], correctAnswer: 2 },
+  // Vinamilk
+  { text: "Vinamilk có tên gốc tiếng Anh đầy đủ là gì?", options: ["Vietnam Milk JSC", "Vietnam Dairy Products JSC", "Viet Dairy Co. Ltd", "Vietnam National Milk Corp"], correctAnswer: 1 },
+  // Vietcombank
+  { text: "Vietcombank được thành lập vào năm nào?", options: ["1955", "1963", "1975", "1988"], correctAnswer: 1 },
+  // VinGroup
+  { text: "Thương hiệu xe hơi thuộc VinGroup là gì?", options: ["VinCar", "VinAuto", "VinFast", "VinDrive"], correctAnswer: 2 },
+  // Bonus mixed
+  { text: "FPT Telecom cung cấp dịch vụ gì chủ yếu?", options: ["Bảo hiểm", "Internet & Truyền hình", "Ngân hàng", "Bán lẻ"], correctAnswer: 1 },
 ]
 
 const BELL_TIME = 8 // seconds to press bell
