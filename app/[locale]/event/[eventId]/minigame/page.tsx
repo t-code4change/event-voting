@@ -74,6 +74,12 @@ const MOCK_QUESTIONS: Question[] = [
 
 // Particle Background Component
 function ParticleBackground() {
+  const [dimensions, setDimensions] = useState({ w: 1200, h: 800 })
+
+  useEffect(() => {
+    setDimensions({ w: window.innerWidth, h: window.innerHeight })
+  }, [])
+
   const particles = Array.from({ length: 30 }, (_, i) => i)
 
   return (
@@ -83,13 +89,13 @@ function ParticleBackground() {
           key={i}
           className="absolute w-1 h-1 bg-[#5B7BFF] rounded-full"
           initial={{
-            x: Math.random() * window.innerWidth,
-            y: Math.random() * window.innerHeight,
+            x: Math.random() * dimensions.w,
+            y: Math.random() * dimensions.h,
             opacity: Math.random() * 0.5 + 0.3
           }}
           animate={{
-            x: Math.random() * window.innerWidth,
-            y: Math.random() * window.innerHeight,
+            x: Math.random() * dimensions.w,
+            y: Math.random() * dimensions.h,
             opacity: [0.3, 0.8, 0.3],
             scale: [1, 1.5, 1]
           }}

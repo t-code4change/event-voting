@@ -2,13 +2,13 @@
 
 import { useState, useEffect, useMemo, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { useParams, useSearchParams } from "next/navigation"
+import { useParams } from "next/navigation"
 import { Crown, Sparkles, Trophy, Users, Vote, Maximize2, BarChart3, List, Play, Pause, Medal, Award } from "lucide-react"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import AnimatedCounter from "@/components/AnimatedCounter"
 import confetti from "canvas-confetti"
-import { useRealtimeResults } from "@/hooks/useRealtimeResults"
 import dynamic from "next/dynamic"
+import { DEMO_CATEGORIES, DEMO_INITIAL_VOTE_COUNTS } from "@/lib/demo-data"
 
 const ReactECharts = dynamic(() => import('echarts-for-react'), { ssr: false })
 
@@ -41,91 +41,56 @@ const COLORS = {
 
 export default function LiveDisplayPage() {
   const params = useParams()
-  const searchParams = useSearchParams()
   const eventId = params.eventId as string
-  const isDemoMode = searchParams?.get('demo') === '1'
-
   const [currentCategoryIndex, setCurrentCategoryIndex] = useState(0)
   const [isFullscreen, setIsFullscreen] = useState(false)
   const [viewMode, setViewMode] = useState<'list' | 'chart'>('list')
   const [previousTop1, setPreviousTop1] = useState<Record<string, string>>({})
   const prevCandidatesRef = useRef<Record<string, CandidateWithRank[]>>({})
-  const [demoData, setDemoData] = useState<CategoryData[]>([])
-  const [isAutoPlay, setIsAutoPlay] = useState(true) // Default is playing
+  const [isAutoPlay, setIsAutoPlay] = useState(true)
 
-  // Use realtime results hook
-  const { categories: realCategories, stats: realStats, loading } = useRealtimeResults(eventId)
+  // Always use demo data — build initial state from DEMO_CATEGORIES
+  const buildDemoCategories = () =>
+    DEMO_CATEGORIES.map((cat, ci) => ({
+      id: cat.id,
+      name: cat.name,
+      candidates: cat.candidates.map((c, i) => ({
+        id: c.id,
+        name: c.name,
+        description: c.description,
+        photo_url: c.photo_url,
+        vote_count: DEMO_INITIAL_VOTE_COUNTS[c.id] ?? (20 + Math.floor(Math.random() * 80)),
+        rank: i + 1,
+        percentage: 0,
+      })).sort((a, b) => b.vote_count - a.vote_count)
+        .map((c, i) => ({ ...c, rank: i + 1 })),
+    }))
 
-  // Choose data source: demo or real
-  const categories = isDemoMode ? demoData : realCategories
-  const stats = isDemoMode ? {
+  const [demoData, setDemoData] = useState<CategoryData[]>(() => buildDemoCategories())
+
+  const categories = demoData
+  const stats = {
     totalVotes: demoData.reduce((sum, cat) => sum + cat.candidates.reduce((s, c) => s + c.vote_count, 0), 0),
-    totalVoters: isDemoMode ? Math.floor(demoData.reduce((sum, cat) => sum + cat.candidates.reduce((s, c) => s + c.vote_count, 0), 0) / 2) : 0,
+    totalVoters: Math.floor(demoData.reduce((sum, cat) => sum + cat.candidates.reduce((s, c) => s + c.vote_count, 0), 0) / 2),
     totalCategories: demoData.length,
     totalCandidates: demoData.reduce((sum, cat) => sum + cat.candidates.length, 0),
-  } : realStats
+  }
+  const loading = false
 
-  // Demo mode: Generate initial data
+  // Simulate realtime vote updates
   useEffect(() => {
-    if (!isDemoMode) return
-
-    const demoCategories: CategoryData[] = [
-      {
-        id: 'king',
-        name: 'King of the Night',
-        candidates: generateDemoCandidates('king', 7)
-      },
-      {
-        id: 'queen',
-        name: 'Queen of the Night',
-        candidates: generateDemoCandidates('queen', 7)
-      },
-      {
-        id: 'smile',
-        name: 'Best Smile',
-        candidates: generateDemoCandidates('smile', 6)
-      },
-      {
-        id: 'creative',
-        name: 'Most Creative',
-        candidates: generateDemoCandidates('creative', 6)
-      },
-    ]
-
-    setDemoData(demoCategories)
-  }, [isDemoMode])
-
-  // Demo mode: Update votes periodically
-  useEffect(() => {
-    if (!isDemoMode || demoData.length === 0) return
-
     const interval = setInterval(() => {
       setDemoData(prev => prev.map(category => ({
         ...category,
-        candidates: category.candidates.map(candidate => {
-          // Random vote change: -2 to +5
-          const change = Math.floor(Math.random() * 8) - 2
-          const newCount = Math.max(0, candidate.vote_count + change)
-          return { ...candidate, vote_count: newCount }
-        }).sort((a, b) => b.vote_count - a.vote_count)
-          .map((c, i) => ({ ...c, rank: i + 1 }))
+        candidates: category.candidates.map(candidate => ({
+          ...candidate,
+          vote_count: Math.max(0, candidate.vote_count + Math.floor(Math.random() * 4)),
+        })).sort((a, b) => b.vote_count - a.vote_count)
+          .map((c, i) => ({ ...c, rank: i + 1 })),
       })))
-    }, 2000) // Update every 2 seconds
-
+    }, 2500)
     return () => clearInterval(interval)
-  }, [isDemoMode, demoData.length])
-
-  function generateDemoCandidates(prefix: string, count: number): CandidateWithRank[] {
-    return Array.from({ length: count }, (_, i) => ({
-      id: `${prefix}-${i}`,
-      name: `Candidate ${String.fromCharCode(65 + i)}`,
-      description: `Department ${i + 1}`,
-      photo_url: `https://i.pravatar.cc/200?img=${Math.floor(Math.random() * 70) + 1}`,
-      vote_count: Math.floor(Math.random() * 100) + 20,
-      rank: i + 1,
-      percentage: 0,
-    }))
-  }
+  }, [])
 
   // Demo voting end time: 21:00 today
   const votingEndTime = useMemo(() => {
@@ -195,10 +160,10 @@ export default function LiveDisplayPage() {
 
     const interval = setInterval(() => {
       setCurrentCategoryIndex((prev) => (prev + 1) % processedCategories.length)
-    }, isDemoMode ? 20000 : 10000)
+    }, 10000)
 
     return () => clearInterval(interval)
-  }, [processedCategories.length, isDemoMode, isAutoPlay])
+  }, [processedCategories.length,  isAutoPlay])
 
   // Track TOP 1 changes and trigger confetti
   useEffect(() => {
@@ -478,26 +443,26 @@ export default function LiveDisplayPage() {
                 <motion.div
                   className="px-4 py-2 rounded-full border-2 flex items-center gap-2"
                   style={{
-                    borderColor: isDemoMode ? COLORS.neonPink : '#ff0000',
-                    background: `${isDemoMode ? COLORS.neonPink : '#ff0000'}20`,
+                    borderColor: COLORS.neonPink,
+                    background: `${COLORS.neonPink}20`,
                   }}
                   animate={{
                     boxShadow: [
-                      `0 0 10px ${isDemoMode ? COLORS.neonPink : '#ff0000'}40`,
-                      `0 0 25px ${isDemoMode ? COLORS.neonPink : '#ff0000'}80`,
-                      `0 0 10px ${isDemoMode ? COLORS.neonPink : '#ff0000'}40`,
+                      `0 0 10px ${COLORS.neonPink}40`,
+                      `0 0 25px ${COLORS.neonPink}80`,
+                      `0 0 10px ${COLORS.neonPink}40`,
                     ]
                   }}
                   transition={{ duration: 1.5, repeat: Infinity }}
                 >
                   <motion.div
                     className="w-3 h-3 rounded-full"
-                    style={{ background: isDemoMode ? COLORS.neonPink : '#ff0000' }}
+                    style={{ background: COLORS.neonPink }}
                     animate={{ opacity: [1, 0.3, 1], scale: [1, 1.3, 1] }}
                     transition={{ duration: 1.2, repeat: Infinity }}
                   />
                   <span className="text-sm font-bold uppercase tracking-wider text-white">
-                    {isDemoMode ? 'DEMO MODE' : 'LIVE DATA'}
+                    {'DEMO MODE'}
                   </span>
                 </motion.div>
 
@@ -629,7 +594,7 @@ export default function LiveDisplayPage() {
               key={`list-${currentCategoryIndex}`}
               topCandidates={topCandidates}
               getRankColor={getRankColor}
-              isDemoMode={isDemoMode}
+              isDemoMode={true}
             />
           ) : (
             <ChartView
@@ -669,7 +634,7 @@ export default function LiveDisplayPage() {
 
             <div className="text-right">
               <p className="text-sm mb-1" style={{ color: '#ffffff99' }}>
-                {isDemoMode ? 'Demo Mode - Simulated Data' : 'Dữ liệu realtime từ hệ thống'}
+                {'Demo Mode - Simulated Data'}
               </p>
               <p className="text-lg font-semibold" style={{ color: COLORS.gold }}>
                 Bright4Event – Year End Party 2025
