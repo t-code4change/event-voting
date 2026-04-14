@@ -34,7 +34,11 @@ const OPTION_COLORS = [
   { bg: "from-[#6B46C1]/20 to-[#553C9A]/10 border-[#B794F4]/40", letter: "bg-[#6B46C1]" },
 ]
 
-export default function RungChuongGame() {
+interface RungChuongGameProps {
+  onComplete?: (score: number, total: number) => void
+}
+
+export default function RungChuongGame({ onComplete }: RungChuongGameProps) {
   const [screen, setScreen] = useState<"start" | "bell" | "answer" | "reveal" | "result">("start")
   const [qIndex, setQIndex] = useState(0)
   const [timeLeft, setTimeLeft] = useState(BELL_TIME)
@@ -110,7 +114,7 @@ export default function RungChuongGame() {
     setScreen("reveal")
     setTimeout(() => {
       if (qIndex + 1 < QUESTIONS.length) { setQIndex(q => q + 1); setSelected(null); setScreen("bell") }
-      else { setScreen("result"); if (newScore > 0) setShowConfetti(true) }
+      else { setScreen("result"); if (newScore > 0) setShowConfetti(true); onComplete?.(newScore, QUESTIONS.length) }
     }, 2000)
   }
 

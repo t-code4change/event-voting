@@ -160,7 +160,11 @@ function ScoreBadge({ score, total }: { score: number; total: number }) {
 }
 
 // ─── Main ──────────────────────────────────────────────────────────────────────
-export default function QuizGame() {
+interface QuizGameProps {
+  onComplete?: (score: number, total: number) => void
+}
+
+export default function QuizGame({ onComplete }: QuizGameProps) {
   const total = QUESTIONS.length
   const [gameState, setGameState] = useState<GameState>({ screen: "start", currentQuestionIndex: 0, answers: Array(total).fill(null), score: 0, timeLeft: QUESTIONS[0].timeLimit })
   const [selectedOption, setSelectedOption] = useState<number | null>(null)
@@ -198,7 +202,7 @@ export default function QuizGame() {
     } else {
       setGameState(p => ({ ...p, screen: "loading", score: newScore }))
       setSelectedOption(null)
-      setTimeout(() => { setGameState(p => ({ ...p, screen: "result" })); setShowConfetti(true) }, 2000)
+      setTimeout(() => { setGameState(p => ({ ...p, screen: "result" })); setShowConfetti(true); onComplete?.(newScore, total) }, 2000)
     }
   }
 

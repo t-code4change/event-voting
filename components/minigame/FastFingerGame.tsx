@@ -20,7 +20,11 @@ function getRating(avgMs: number) {
   return { label: "CÒN CẢI THIỆN 💪", color: "#B794F4", desc: "Luyện thêm nhé!" }
 }
 
-export default function FastFingerGame() {
+interface FastFingerGameProps {
+  onComplete?: (score: number, total: number) => void
+}
+
+export default function FastFingerGame({ onComplete }: FastFingerGameProps) {
   const [screen, setScreen] = useState<"start" | "game" | "result">("start")
   const [roundIndex, setRoundIndex] = useState(0)
   const [rounds, setRounds] = useState<Round[]>([])
@@ -81,6 +85,8 @@ export default function FastFingerGame() {
   const finishGame = (finalRounds: Round[]) => {
     clearTimer()
     setScreen("result")
+    const valid = finalRounds.filter(r => !r.missed)
+    onComplete?.(valid.length, ROUNDS)
   }
 
   const handleRestart = () => {
