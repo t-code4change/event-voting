@@ -137,19 +137,21 @@ export default function MiniGamePage() {
       {/* Game selector — fixed top-right */}
       <GameSelector activeId={activeGameId} onChange={handleChangeGame} />
 
-      {/* Game area */}
-      <div className="relative z-10 min-h-screen flex items-center justify-center px-5 sm:px-8 pt-24 pb-10">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeGameId}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
-            className="w-full flex items-center justify-center">
-            <ActiveGame />
-          </motion.div>
-        </AnimatePresence>
+      {/* Game area — overflow-y-auto so tall content (question screen) can scroll instead of sticking to top */}
+      <div className="relative z-10 overflow-y-auto" style={{ minHeight: '100vh' }}>
+        <div className="flex flex-col items-center justify-center px-5 sm:px-8 pb-10" style={{ minHeight: '100vh', paddingTop: '88px' }}>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeGameId}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.3 }}
+              className="w-full flex flex-col items-center">
+              <ActiveGame />
+            </motion.div>
+          </AnimatePresence>
+        </div>
       </div>
     </div>
   )
