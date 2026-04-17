@@ -7,7 +7,23 @@ import Header from "@/components/Header"
 import { CheckCircle2, Loader2, Lock, Crown, Sparkles, Smile, Palette, Check, Eye } from "lucide-react"
 import { showSuccessToast, showErrorToast } from "@/lib/toast-utils"
 import Link from "next/link"
-import { DEMO_CATEGORIES, DemoCategory, DemoCandidate } from "@/lib/demo-data"
+import { useGetEventConfigQuery } from "@/store/api/hono/eventsApi"
+
+interface Candidate {
+  id: string
+  name: string
+  photoUrl?: string
+  bio?: string
+}
+
+interface Category {
+  id: string
+  name: string
+  description?: string
+  maxVotesPerVoter: number
+  votingEndAt?: string
+  candidates: Candidate[]
+}
 
 // Category icon mapping
 const getCategoryIcon = (categoryName: string) => {
@@ -20,7 +36,7 @@ const getCategoryIcon = (categoryName: string) => {
 
 // Candidate Card Component
 interface CandidateCardProps {
-  candidate: DemoCandidate
+  candidate: Candidate
   isSelected: boolean
   onToggle: () => void
   votingEnded: boolean
@@ -66,7 +82,7 @@ function CandidateCard({ candidate, isSelected, onToggle, votingEnded }: Candida
         {/* Photo */}
         <div className="relative aspect-[3/4] overflow-hidden">
           <img
-            src={candidate.photo_url}
+            src={candidate.photoUrl}
             alt={candidate.name}
             className="w-full h-full object-cover"
           />
@@ -79,7 +95,7 @@ function CandidateCard({ candidate, isSelected, onToggle, votingEnded }: Candida
             {candidate.name}
           </h3>
           <p className="text-white/70 text-[14px] truncate mb-3">
-            {candidate.description}
+            {candidate.bio}
           </p>
 
           <button
@@ -241,7 +257,8 @@ export default function VotingPage() {
   const params = useParams()
   const eventId = params.eventId as string
 
-  const [categories] = useState(DEMO_CATEGORIES)
+  const { data: configData, isLoading: configLoading } = useGetEventConfigQuery(eventId, { skip: !eventId })
+  const categories = (configData?.data?.categories ?? []) as Category[]
   const [submitting, setSubmitting] = useState(false)
   const [selectedVotes, setSelectedVotes] = useState<Record<string, string[]>>({})
   const [votingEnded, setVotingEnded] = useState(false)
@@ -249,13 +266,13 @@ export default function VotingPage() {
   const [hasVoted, setHasVoted] = useState(false)
 
   const votingEndTime = useMemo(() => {
+    const catEndAt = categories[0]?.votingEndAt
+    if (catEndAt) return new Date(catEndAt)
     const end = new Date()
     end.setHours(21, 0, 0, 0)
-    if (end.getTime() < Date.now()) {
-      end.setDate(end.getDate() + 1)
-    }
+    if (end.getTime() < Date.now()) end.setDate(end.getDate() + 1)
     return end
-  }, [])
+  }, [categories])
 
   const toggleCandidate = (categoryId: string, candidateId: string) => {
     if (votingEnded) return
@@ -266,7 +283,7 @@ export default function VotingPage() {
 
       // Find category to check max_votes
       const category = categories.find(c => c.id === categoryId)
-      const maxVotes = category?.max_votes_per_voter ?? 1
+      const maxVotes = category?.maxVotesPerVoter ?? 1
 
       if (isSelected) {
         return { ...prev, [categoryId]: current.filter(id => id !== candidateId) }
@@ -299,6 +316,15 @@ export default function VotingPage() {
     setShowSuccess(true)
     setHasVoted(true)
   }
+
+  if (configLoading) return (
+    <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center">
+      <div className="text-center">
+        <div className="w-8 h-8 border-2 border-[#FFD700] border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+        <p className="text-white/60">Đang tải...</p>
+      </div>
+    </div>
+  )
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] relative overflow-hidden">
@@ -435,7 +461,7 @@ export default function VotingPage() {
                   )}
 
                   <p className="text-[#FFD700] text-sm mt-2">
-                    Chọn tối đa {category.max_votes_per_voter} ứng viên
+                    Chọn tối đa {category.maxVotesPerVoter} ứng viên
                   </p>
 
                   <div className="mt-6 h-px bg-gradient-to-r from-transparent via-[#FFD700]/50 to-transparent" />

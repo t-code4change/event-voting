@@ -24,7 +24,7 @@ import {
 } from "@/components/admin"
 import { toast } from "sonner"
 import { useAppSelector } from "@/store/hooks"
-import { selectActiveEventId } from "@/store/slices/adminSettingsSlice"
+import { selectActiveEvent } from "@/store/slices/adminSettingsSlice"
 import {
   useGetDrawResultsQuery,
   useGetDeletedDrawResultsQuery,
@@ -38,7 +38,8 @@ import Link from "next/link"
 type TabType = "results" | "deleted"
 
 export default function DrawResultsPage() {
-  const activeEventId = useAppSelector(selectActiveEventId)
+  const activeEvent = useAppSelector(selectActiveEvent)
+  const activeEventId = (activeEvent?.id as unknown as number) ?? null
   const eventId = activeEventId || 1
 
   const [activeTab, setActiveTab] = useState<TabType>("results")

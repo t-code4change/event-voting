@@ -5,6 +5,7 @@ import { motion } from "framer-motion"
 import { BarChart3, Trophy, Users, Vote, TrendingUp, Award, Crown, ExternalLink, Settings as SettingsIcon, ArrowUp } from "lucide-react"
 import { toast } from "sonner"
 import { AdminCard, AdminPageHeader, AdminButton, AdminLiveIndicator } from "@/components/admin"
+import { useActiveEvent } from "@/hooks/useActiveEvent"
 
 interface Candidate {
   id: string
@@ -34,6 +35,7 @@ interface Event {
 }
 
 export default function AdminResultsPage() {
+  const activeEvent = useActiveEvent()
   const [events, setEvents] = useState<Event[]>([])
   const [loading, setLoading] = useState(true)
   const [totalVoters, setTotalVoters] = useState(0)
@@ -95,7 +97,13 @@ export default function AdminResultsPage() {
         actions={
           <div className="flex items-center gap-3">
             <AdminLiveIndicator text="LIVE NOW" />
-            <AdminButton icon={ExternalLink}>
+            <AdminButton
+              icon={ExternalLink}
+              onClick={() => {
+                if (!activeEvent?.slug) { toast.error("Vui lòng chọn sự kiện trước"); return }
+                window.open(`/event/${activeEvent.slug}/results`, '_blank')
+              }}
+            >
               Open Result LED
             </AdminButton>
           </div>

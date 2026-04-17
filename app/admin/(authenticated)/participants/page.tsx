@@ -25,7 +25,7 @@ import {
 } from "@/components/admin"
 import { toast } from "sonner"
 import { useAppSelector } from "@/store/hooks"
-import { selectActiveEventId } from "@/store/slices/adminSettingsSlice"
+import { selectActiveEvent } from "@/store/slices/adminSettingsSlice"
 import {
   useGetParticipantsQuery,
   useDeleteParticipantMutation,
@@ -36,7 +36,8 @@ import Link from "next/link"
 
 export default function ParticipantsPage() {
   // Get active event from Redux
-  const activeEventId = useAppSelector(selectActiveEventId)
+  const activeEvent = useAppSelector(selectActiveEvent)
+  const activeEventId = (activeEvent?.id as unknown as number) ?? null
   const eventId = activeEventId || 1
 
   // Local state

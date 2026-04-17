@@ -15,6 +15,8 @@ import {
   Medal,
   Award,
 } from "lucide-react"
+import { toast } from "sonner"
+import { useActiveEvent } from "@/hooks/useActiveEvent"
 
 const gameTypes = [
   { id: "quiz", name: "Quiz Game", icon: Brain, description: "Câu hỏi trắc nghiệm", color: "#3B82F6" },
@@ -31,6 +33,7 @@ const leaderboard = [
 ]
 
 export default function MiniGameModule() {
+  const activeEvent = useActiveEvent()
   const [selectedGame, setSelectedGame] = useState(gameTypes[0])
   const [questions, setQuestions] = useState([
     { id: 1, text: "Câu hỏi 1: Bright4Event ra đời năm nào?", options: ["2023", "2024", "2025"], correct: 1 },
@@ -60,6 +63,10 @@ export default function MiniGameModule() {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            onClick={() => {
+              if (!activeEvent?.slug) { toast.error("Vui lòng chọn sự kiện trước"); return }
+              window.open(`/event/${activeEvent.slug}/minigame`, '_blank')
+            }}
             className="flex items-center gap-2 px-4 py-2 rounded-xl bg-[#FFD700] text-black font-semibold hover:bg-[#FFC107]"
           >
             <ExternalLink className="w-4 h-4" />

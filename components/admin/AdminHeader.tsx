@@ -32,11 +32,12 @@ import { NotificationPanel } from "@/components/admin/NotificationPanel"
 import { logoutUser } from "@/lib/auth-utils"
 import { useAppDispatch, useAppSelector } from "@/store/hooks"
 import { logout as logoutAction } from "@/store/slices/authSlice"
-import { selectActiveEventId, setActiveEventId } from "@/store/slices/adminSettingsSlice"
-import { useGetMyEventsQuery } from "@/store/api"
+import { selectActiveEvent, setActiveEvent } from "@/store/slices/adminSettingsSlice"
+import { useListEventsQuery } from "@/store/api/hono/eventsApi"
 
 interface Event {
   id: string
+  slug: string
   name: string
   date: string
   status: "live" | "upcoming" | "ended"
@@ -52,8 +53,8 @@ export default function AdminHeader() {
   const dispatch = useAppDispatch()
 
   // Get events from API
-  const { data: eventsData, isLoading: isLoadingEvents } = useGetMyEventsQuery({})
-  const activeEventId = useAppSelector(selectActiveEventId)
+  const { data: eventsData, isLoading: isLoadingEvents } = useListEventsQuery({})
+  const activeEvent = useAppSelector(selectActiveEvent)
 
   const [isDark, setIsDark] = useState(true)
   const [showLogoutPopup, setShowLogoutPopup] = useState(false)
@@ -63,30 +64,28 @@ export default function AdminHeader() {
   const [unreadCount, setUnreadCount] = useState(3) // Mock initial count
 
   // Convert API events to local format
-  const events: Event[] = (eventsData?.data || []).map((e: any) => ({
-    id: String(e.id),
-    name: e.name || e.title || `Event ${e.id}`,
-    date: e.eventDate || e.createdAt || new Date().toISOString(),
-    status: e.isActive ? "live" : "ended",
-    stats: {
-      checkins: e.participantCount || 0,
-      votes: e.voteCount || 0,
-      totalGuests: e.guestCount || 0,
-    },
+  const events: Event[] = (eventsData?.data || []).map((e) => ({
+    id: e.id,
+    slug: e.slug,
+    name: e.name,
+    date: e.startAt,
+    status: e.status === 'published' ? 'live' as const : e.status === 'ended' ? 'ended' as const : 'upcoming' as const,
+    stats: { checkins: 0, votes: 0, totalGuests: 0 },
   }))
 
   // Selected event
-  const selectedEvent = events.find((e) => e.id === String(activeEventId)) || events[0]
+  const selectedEvent = events.find((e) => e.id === activeEvent?.id) || events[0]
 
   // Set default event if none selected
   useEffect(() => {
-    if (!activeEventId && events.length > 0) {
-      dispatch(setActiveEventId(Number(events[0].id)))
+    if (!activeEvent && events.length > 0) {
+      const first = events[0]
+      dispatch(setActiveEvent({ id: first.id, slug: first.slug, name: first.name }))
     }
-  }, [activeEventId, events, dispatch])
+  }, [activeEvent, events, dispatch])
 
   const handleEventChange = (event: Event) => {
-    dispatch(setActiveEventId(Number(event.id)))
+    dispatch(setActiveEvent({ id: event.id, slug: event.slug, name: event.name }))
     toast.success(`Đã chọn sự kiện: ${event.name}`)
   }
 
@@ -272,7 +271,7 @@ export default function AdminHeader() {
           {/* Quick Open Event Page */}
           {selectedEvent && (
             <motion.a
-              href={`/event/${selectedEvent.id}`}
+              href={`/event/${selectedEvent.slug}`}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-[#FFD700] to-[#FFC107] text-black font-semibold text-sm hover:shadow-lg hover:shadow-[#FFD700]/30 transition-all"

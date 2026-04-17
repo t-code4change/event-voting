@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useMemo, useEffect, useCallback } from "react"
+import { useState, useMemo } from "react"
 import { motion } from "framer-motion"
 import { useParams } from "next/navigation"
 import Header from "@/components/Header"
@@ -8,32 +8,14 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Progress } from "@/components/ui/progress"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { BarChart3, TrendingUp, Trophy, Users, Vote, Crown, Sparkles, Monitor } from "lucide-react"
+import { TrendingUp, Trophy, Users, Vote, Crown, Sparkles, Monitor } from "lucide-react"
 import AnimatedCounter from "@/components/AnimatedCounter"
 import Link from "next/link"
 import PhotoCarousel from "@/components/PhotoCarousel"
 import CountdownTimer from "@/components/CountdownTimer"
 import ConfettiEffect from "@/components/ConfettiEffect"
-import { toast } from "@/hooks/use-toast"
-import {
-  DEMO_CATEGORIES,
-  DEMO_INITIAL_VOTE_COUNTS,
-  DEMO_INITIAL_STATS,
-} from "@/lib/demo-data"
-
-// Build results from demo data + vote counts
-function buildResults(voteCounts: Record<string, number>) {
-  return DEMO_CATEGORIES.map((cat) => {
-    const candidatesWithVotes = cat.candidates.map((c) => ({
-      ...c,
-      vote_count: voteCounts[c.id] ?? 0,
-      rank: 0,
-    }))
-    candidatesWithVotes.sort((a, b) => b.vote_count - a.vote_count)
-    candidatesWithVotes.forEach((c, i) => { c.rank = i + 1 })
-    return { ...cat, candidates: candidatesWithVotes }
-  })
-}
+import { useGetResultsQuery } from "@/store/api/hono/votingApi"
+import type { ResultCategory } from "@/store/api/hono/votingApi"
 
 export default function ResultsPage() {
   const params = useParams()
@@ -41,49 +23,29 @@ export default function ResultsPage() {
 
   const [isLive] = useState(true)
   const [votingEnded, setVotingEnded] = useState(false)
-  const [showConfetti, setShowConfetti] = useState(false)
-  const [loading, setLoading] = useState(true)
+  const [showConfetti] = useState(false)
 
-  // Demo vote counts — start with seed data then simulate live increments
-  const [voteCounts, setVoteCounts] = useState<Record<string, number>>(DEMO_INITIAL_VOTE_COUNTS)
-  const [stats, setStats] = useState(DEMO_INITIAL_STATS)
+  const { data: resultsData, isLoading } = useGetResultsQuery(eventId, {
+    skip: !eventId,
+    pollingInterval: 8000,
+  })
 
-  const categories = useMemo(() => buildResults(voteCounts), [voteCounts])
+  const categories: ResultCategory[] = resultsData?.data ?? []
 
-  // Simulate loading
-  useEffect(() => {
-    const t = setTimeout(() => setLoading(false), 800)
-    return () => clearTimeout(t)
-  }, [])
+  const totalVotes = useMemo(() =>
+    categories.reduce((sum, cat) =>
+      sum + cat.candidates.reduce((s, c) => s + c.voteCount, 0), 0),
+    [categories]
+  )
 
-  // Simulate realtime votes coming in every 4–8 seconds
-  useEffect(() => {
-    if (loading || votingEnded) return
+  const totalVoters = 0
+  const totalCategories = categories.length
+  const totalCandidates = useMemo(() =>
+    categories.reduce((sum, cat) => sum + cat.candidates.length, 0),
+    [categories]
+  )
 
-    const allCandidateIds = DEMO_CATEGORIES.flatMap((cat) => cat.candidates.map((c) => c.id))
-
-    const interval = setInterval(() => {
-      const randomId = allCandidateIds[Math.floor(Math.random() * allCandidateIds.length)]
-
-      setVoteCounts((prev) => ({ ...prev, [randomId]: (prev[randomId] ?? 0) + 1 }))
-      setStats((prev) => ({
-        ...prev,
-        totalVotes: prev.totalVotes + 1,
-        totalVoters: prev.totalVoters + (Math.random() > 0.5 ? 1 : 0),
-      }))
-
-      setShowConfetti(true)
-      toast({
-        variant: "success",
-        title: "Vote mới! ✨",
-        description: "Vote mới vừa được ghi nhận!",
-        duration: 2500,
-      } as any)
-      setTimeout(() => setShowConfetti(false), 2500)
-    }, 4000 + Math.random() * 4000)
-
-    return () => clearInterval(interval)
-  }, [loading, votingEnded])
+  const stats = { totalVotes, totalVoters, totalCategories, totalCandidates }
 
   const votingEndTime = useMemo(() => {
     const end = new Date()
@@ -211,14 +173,12 @@ export default function ResultsPage() {
       </section>
 
       <div className="container px-4 py-8 max-w-7xl">
-        {loading ? (
-          <div className="flex items-center justify-center py-16">
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-            >
-              <Sparkles className="h-12 w-12 text-[#FFD700]" />
-            </motion.div>
+        {isLoading ? (
+          <div className="min-h-[50vh] flex items-center justify-center">
+            <div className="text-center">
+              <div className="w-8 h-8 border-2 border-[#FFD700] border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+              <p className="text-white/60">Đang tải kết quả...</p>
+            </div>
           </div>
         ) : (
           <>
@@ -256,7 +216,7 @@ export default function ResultsPage() {
             {/* Results by Category */}
             <div className="space-y-12">
               {categories.map((category) => {
-                const maxVotes = Math.max(...category.candidates.map(c => c.vote_count), 1)
+                const maxVotes = Math.max(...category.candidates.map(c => c.voteCount), 1)
 
                 const getCategoryColor = (name: string) => {
                   if (name.toLowerCase().includes('king')) return {
@@ -318,7 +278,7 @@ export default function ResultsPage() {
                       <CardContent className="p-8">
                         <div className="space-y-6">
                           {category.candidates.map((candidate) => {
-                            const percentage = maxVotes > 0 ? (candidate.vote_count / maxVotes) * 100 : 0
+                            const percentage = maxVotes > 0 ? (candidate.voteCount / maxVotes) * 100 : 0
 
                             return (
                               <motion.div
@@ -346,7 +306,7 @@ export default function ResultsPage() {
                                 </motion.div>
 
                                 <Avatar className="h-16 w-16 border-2 border-[#FFD700]/50 shadow-lg">
-                                  <AvatarImage src={candidate.photo_url} alt={candidate.name} />
+                                  <AvatarImage src={candidate.photoUrl} alt={candidate.name} />
                                   <AvatarFallback className="text-xl font-semibold bg-gradient-to-br from-[#FFD700]/30 to-purple-600/30 text-[#FFD700]">
                                     {candidate.name.slice(0, 2).toUpperCase()}
                                   </AvatarFallback>
@@ -361,10 +321,10 @@ export default function ResultsPage() {
                                       >
                                         {candidate.name}
                                       </h3>
-                                      <p className="text-sm text-[#FFE68A]/80">{candidate.description}</p>
+                                      <p className="text-sm text-[#FFE68A]/80">{candidate.bio}</p>
                                     </div>
                                     <Badge className="ml-2 bg-gradient-to-r from-[#FFD700] to-[#FDB931] text-black border-0 font-bold text-base px-4 py-1">
-                                      <AnimatedCounter value={candidate.vote_count} /> phiếu
+                                      <AnimatedCounter value={candidate.voteCount} /> phiếu
                                     </Badge>
                                   </div>
 

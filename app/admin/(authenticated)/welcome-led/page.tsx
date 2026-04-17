@@ -11,6 +11,8 @@ import {
   Zap,
   Play,
 } from "lucide-react"
+import { toast } from "sonner"
+import { useActiveEvent } from "@/hooks/useActiveEvent"
 
 const templates = [
   { id: 1, name: "Classic Gold", gradient: "from-[#FFD700] via-[#FFC107] to-[#FFD700]", preview: "Chào mừng" },
@@ -27,6 +29,7 @@ const nameEffects = [
 ]
 
 export default function WelcomeLEDModule() {
+  const activeEvent = useActiveEvent()
   const [selectedTemplate, setSelectedTemplate] = useState(templates[0])
   const [selectedEffect, setSelectedEffect] = useState(nameEffects[0])
   const [guestName, setGuestName] = useState("Nguyễn Văn A")
@@ -57,6 +60,10 @@ export default function WelcomeLEDModule() {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            onClick={() => {
+              if (!activeEvent?.slug) { toast.error("Vui lòng chọn sự kiện trước"); return }
+              window.open(`/event/${activeEvent.slug}/welcome`, '_blank')
+            }}
             className="flex items-center gap-2 px-4 py-2 rounded-xl bg-[#FFD700] text-black font-semibold hover:bg-[#FFC107]"
           >
             <ExternalLink className="w-4 h-4" />

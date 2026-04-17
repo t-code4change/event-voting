@@ -22,7 +22,7 @@ import { AdminCard, AdminLoading, AdminEmptyState, AdminPageHeader } from "@/com
 import { useAppSelector } from "@/store/hooks"
 import {
   selectEnabledFeatures,
-  selectActiveEventId,
+  selectActiveEvent,
 } from "@/store/slices/adminSettingsSlice"
 import {
   useGetDashboardStatsQuery,
@@ -32,7 +32,8 @@ import {
 
 export default function DashboardPage() {
   const enabledFeatures = useAppSelector(selectEnabledFeatures)
-  const activeEventId = useAppSelector(selectActiveEventId)
+  const activeEvent = useAppSelector(selectActiveEvent)
+  const activeEventId = (activeEvent?.id as unknown as number) ?? null
 
   // Get active event
   const { data: eventData, isLoading: isLoadingEvent } = useGetActiveEventQuery()

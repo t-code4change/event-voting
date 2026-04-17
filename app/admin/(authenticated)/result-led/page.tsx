@@ -10,7 +10,7 @@ import {
 } from "lucide-react"
 import { toast } from "sonner"
 import { AdminCard, AdminPageHeader, AdminButton, AdminLiveIndicator } from "@/components/admin"
-import { useParams } from "next/navigation"
+import { useActiveEvent } from "@/hooks/useActiveEvent"
 
 interface ResultLEDSettings {
   displayMode: string
@@ -69,8 +69,7 @@ const ANIMATION_STYLES = [
 ]
 
 export default function ResultLEDPage() {
-  const params = useParams()
-  const eventId = params?.eventId || "demo-event"
+  const activeEvent = useActiveEvent()
 
   const [settings, setSettings] = useState<ResultLEDSettings>({
     displayMode: "leaderboard",
@@ -164,14 +163,20 @@ export default function ResultLEDPage() {
             <AdminLiveIndicator text="LIVE NOW" />
             <AdminButton
               icon={ExternalLink}
-              onClick={() => window.open(`/event/${eventId}/live`, '_blank')}
+              onClick={() => {
+                if (!activeEvent?.slug) { toast.error("Vui lòng chọn sự kiện trước"); return }
+                window.open(`/event/${activeEvent.slug}/live`, '_blank')
+              }}
             >
               Open Result LED
             </AdminButton>
             <AdminButton
               icon={ExternalLink}
               variant="secondary"
-              onClick={() => window.open(`/event/${eventId}/results`, '_blank')}
+              onClick={() => {
+                if (!activeEvent?.slug) { toast.error("Vui lòng chọn sự kiện trước"); return }
+                window.open(`/event/${activeEvent.slug}/results`, '_blank')
+              }}
             >
               Open Public Result
             </AdminButton>
@@ -435,7 +440,10 @@ export default function ResultLEDPage() {
 
               <AdminButton
                 icon={ExternalLink}
-                onClick={() => window.open(`/event/${eventId}/live`, '_blank')}
+                onClick={() => {
+                  if (!activeEvent?.slug) { toast.error("Vui lòng chọn sự kiện trước"); return }
+                  window.open(`/event/${activeEvent.slug}/live`, '_blank')
+                }}
                 className="w-full"
               >
                 Open Fullscreen Preview

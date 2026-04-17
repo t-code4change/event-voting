@@ -26,7 +26,7 @@ import {
 } from "@/components/admin"
 import { toast } from "sonner"
 import { useAppSelector } from "@/store/hooks"
-import { selectActiveEventId } from "@/store/slices/adminSettingsSlice"
+import { selectActiveEvent } from "@/store/slices/adminSettingsSlice"
 import {
   useGetEmailTemplatesQuery,
   useGetGuestsQuery,
@@ -43,7 +43,8 @@ export default function SendEmailPage() {
   const searchParams = useSearchParams()
   const preselectedTemplateId = searchParams.get("template")
 
-  const activeEventId = useAppSelector(selectActiveEventId)
+  const activeEvent = useAppSelector(selectActiveEvent)
+  const activeEventId = (activeEvent?.id as unknown as number) ?? null
   const eventId = activeEventId || 1
 
   // Step state

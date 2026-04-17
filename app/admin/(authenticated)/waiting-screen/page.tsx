@@ -24,6 +24,8 @@ import {
   AdminLiveIndicator,
   AdminRangeSlider,
 } from "@/components/admin"
+import { toast } from "sonner"
+import { useActiveEvent } from "@/hooks/useActiveEvent"
 
 const defaultSlides = [
   { id: 1, url: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800", type: "image" },
@@ -39,6 +41,7 @@ const quotes = [
 ]
 
 export default function WaitingScreenModule() {
+  const activeEvent = useActiveEvent()
   const [slides, setSlides] = useState(defaultSlides)
   const [currentSlide, setCurrentSlide] = useState(0)
   const [speed, setSpeed] = useState(5) // seconds
@@ -73,7 +76,13 @@ export default function WaitingScreenModule() {
             >
               {isPlaying ? "Pause" : "Play"}
             </AdminButton>
-            <AdminButton icon={ExternalLink}>
+            <AdminButton
+              icon={ExternalLink}
+              onClick={() => {
+                if (!activeEvent?.slug) { toast.error("Vui lòng chọn sự kiện trước"); return }
+                window.open(`/event/${activeEvent.slug}/waiting`, '_blank')
+              }}
+            >
               Open Waiting Screen
             </AdminButton>
           </>

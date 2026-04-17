@@ -11,11 +11,18 @@ export interface AdminFeature {
   description?: string
 }
 
+// Active event info
+export interface ActiveEvent {
+  id: string
+  slug: string
+  name: string
+}
+
 // Admin settings state
 interface AdminSettingsState {
   features: AdminFeature[]
   sidebarCollapsed: boolean
-  activeEventId: number | null
+  activeEvent: ActiveEvent | null
 }
 
 // Default features - 4 core features enabled by default
@@ -98,7 +105,7 @@ const defaultFeatures: AdminFeature[] = [
 const initialState: AdminSettingsState = {
   features: defaultFeatures,
   sidebarCollapsed: false,
-  activeEventId: null,
+  activeEvent: null,
 }
 
 const adminSettingsSlice = createSlice({
@@ -162,8 +169,8 @@ const adminSettingsSlice = createSlice({
     },
 
     // Set active event
-    setActiveEventId: (state, action: PayloadAction<number | null>) => {
-      state.activeEventId = action.payload
+    setActiveEvent: (state, action: PayloadAction<ActiveEvent | null>) => {
+      state.activeEvent = action.payload
     },
 
     // Reset to default features
@@ -188,8 +195,8 @@ export const selectFeatureById = (id: string) => (state: { adminSettings: AdminS
 export const selectSidebarCollapsed = (state: { adminSettings: AdminSettingsState }) =>
   state.adminSettings.sidebarCollapsed
 
-export const selectActiveEventId = (state: { adminSettings: AdminSettingsState }) =>
-  state.adminSettings.activeEventId
+export const selectActiveEvent = (state: { adminSettings: AdminSettingsState }) =>
+  state.adminSettings.activeEvent
 
 export const {
   toggleFeature,
@@ -199,7 +206,7 @@ export const {
   reorderFeatures,
   toggleSidebar,
   setSidebarCollapsed,
-  setActiveEventId,
+  setActiveEvent,
   resetFeatures,
 } = adminSettingsSlice.actions
 

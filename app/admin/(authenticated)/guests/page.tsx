@@ -35,7 +35,7 @@ import {
 } from "@/components/admin"
 import { toast } from "sonner"
 import { useAppSelector } from "@/store/hooks"
-import { selectActiveEventId } from "@/store/slices/adminSettingsSlice"
+import { selectActiveEvent } from "@/store/slices/adminSettingsSlice"
 import {
   useGetGuestsQuery,
   useCheckInGuestMutation,
@@ -45,7 +45,8 @@ import type { Guest, GuestFilters } from "@/types/admin"
 
 export default function GuestsPage() {
   // Get active event from Redux
-  const activeEventId = useAppSelector(selectActiveEventId)
+  const activeEvent = useAppSelector(selectActiveEvent)
+  const activeEventId = (activeEvent?.id as unknown as number) ?? null
   const eventId = activeEventId || 1 // Fallback for development
   const maxGuests = 500
 

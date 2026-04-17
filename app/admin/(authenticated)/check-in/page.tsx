@@ -16,8 +16,11 @@ import {
   Play,
   Square,
 } from "lucide-react"
+import { toast } from "sonner"
+import { useActiveEvent } from "@/hooks/useActiveEvent"
 
 export default function CheckInModule() {
+  const activeEvent = useActiveEvent()
   const [isCheckInEnabled, setIsCheckInEnabled] = useState(true)
   const [qrUrl, setQrUrl] = useState("https://bright4event.com/event/demo/check-in")
   const [scanAnimation, setScanAnimation] = useState(true)
@@ -135,6 +138,10 @@ export default function CheckInModule() {
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
+                onClick={() => {
+                  if (!activeEvent?.slug) { toast.error("Vui lòng chọn sự kiện trước"); return }
+                  window.open(`/event/${activeEvent.slug}/check-in`, '_blank')
+                }}
                 className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-[#FFD700] text-black font-semibold hover:bg-[#FFC107] transition-all"
               >
                 <ExternalLink className="w-4 h-4" />
